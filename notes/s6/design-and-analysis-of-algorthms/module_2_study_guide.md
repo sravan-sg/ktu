@@ -193,7 +193,8 @@ Let $Z$ be the new node.
 *   **Java's `TreeMap` and `TreeSet`:** Implemented internally using Red-Black trees because they guarantee $O(\log n)$ performance and suffer fewer rotation penalties on insertion than AVL trees.
 
 ### 3 Solved Analytical Examples
-**refference video :**https://share.gemini.google/SFAiIF4gt0pZ
+**refference video for deletion  :**https://youtu.be/CTvfzU_uNKE?si=EkzmM3zbgc3QwcTh
+**refference video for insertion  :**https://share.gemini.google/SFAiIF4gt0pZ
 **Example 1: Trace insertions: 10, 20, 30, 15.**
 1.  Insert 10: Root, color Black. [10(B)]
 2.  Insert 20: RED. [10(B) -> 20(R)]
@@ -227,6 +228,7 @@ Let $Z$ be the new node.
 
 ## 5. B-Trees (Disk-Oriented Structures)
 **refference link :**https://share.gemini.google/LtvSNjSineq8
+**refference video (basic introduction):**https://youtu.be/aZjYr87r1b8?si=US97F_Ks8OaCLA27
 ### Detailed Explanation
 In the Design and Analysis of Algorithms (DAA), we often study trees like AVL Trees and Red-Black Trees. These are excellent $O(\log n)$ data structures when your entire dataset fits into your computer's lightning-fast RAM (Primary Memory).
 However, DAA also forces us to think about the physical limitations of hardware. What happens when your dataset is so massive (like a database of 1 billion users) that it has to be stored on a Hard Drive (Secondary Storage)?
@@ -247,7 +249,9 @@ A B-Tree is parameterized by its minimum degree $t \ge 2$.
 *   An internal node with $k$ keys has $k+1$ children.
 
 **Insertion (Proactive Splitting):**
-To avoid a situation where a leaf overflows and causes a cascading split all the way to the root, B-trees usually perform proactive splitting. As we traverse down the tree to find the insertion point, if we encounter ANY node that is full ($2t-1$ keys), we immediately split it. This guarantees that when we reach the leaf, there will be room to insert.
+To avoid a situation where a leaf overflows and causes a cascading split all the way to the root, B-trees usually perform proactive splitting. As we traverse down the tree to find the insertion point, if we encounter ANY node that is full ($2t-1$ keys), we immediately split it. This guarantees that when we reach the leaf, there will be room to insert.\
+**refference video (insertion and deletion):**https://youtu.be/ownO77M4SWI?si=aWBYgmIROEtIDYVq
+
 
 ### Applications & Use Cases
 *   **Database Clustered Indexes:** Standard implementation for indexing large volumes of data on SSDs/HDDs. Because sequential disk reads are fast and random access is slow, fitting an entire B-Tree node into a single 8KB disk sector minimizes random I/O head movements.
@@ -288,6 +292,8 @@ To avoid a situation where a leaf overflows and causes a cascading split all the
 ## 6. Disjoint Sets (Union-Find)
 
 ### Detailed Explanation
+**refference link :**https://share.gemini.google/OrRAKUhINbvq
+**refference video :** https://youtu.be/wU6udHRIkcc?si=k7Iyn2_j3Opw0wUr
 Disjoint sets are beautifully simple yet mathematically profound. Represented as an array `parent[]` where `parent[i]` is the parent of element `i`. If `parent[i] == i`, `i` is the root of its set.
 
 **Optimizations:**
