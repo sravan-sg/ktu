@@ -41,6 +41,15 @@ asymptotic notations are mathematical tools used to describe the performance or 
 *   **Software Engineering SLA (Service Level Agreements):** When designing a high-frequency trading platform, engineers use worst-case Big-O bounds to mathematically guarantee that a trade order will be processed within micro-seconds regardless of the queue size.
 *   **Database Query Optimization:** Database engines use asymptotic bounds to estimate the cost of different query execution plans and select the one with the lowest Big-O complexity.
 
+**refference video:** https://youtu.be/b8Rc9INn6wY?si=-2hKLn2YaQCe5Sxq
+
+*   **Big O notation** can definitely look like a confusing alphabet soup at first glance, but it is just a way for programmers to talk about how a piece of code scales when it gets a lot of data.Let's break down the mathematical terms into plain English.The Core Players: $n$, $f(n)$, and $g(n)$Imagine you are throwing a party and need to wash the dishes afterward.$n$ (The Input Size): This is the amount of data your code has to process. In our analogy, $n$ is the number of guests.$f(n)$ (The Actual Time): This is the exact number of steps your algorithm takes to finish the job. In reality, $f(n)$ is often a messy, complicated equation (like $3n^2 + 5n + 2$) because it accounts for every little detail, like setting up the soap or drying the plates.$g(n)$ (The Benchmark): This is a clean, simplified mathematical category (like $n$, $n^2$, or $\log n$). When input sizes get huge, the small details (like the $+ 5n + 2$) stop mattering. We use $g(n)$ to categorize the general "shape" of how $f(n)$ grows.The Greek Letters: Upper, Lower, and Tight BoundsWhen programmers compare the messy reality ($f(n)$) to the clean benchmark ($g(n)$), they use three main symbols to set expectations.1. Big O ($O$) — The Upper Bound (Worst-Case)What it means: "My code will run no slower than this."How it's used: If your algorithm is $O(g(n))$, it means that as your data grows, your actual time $f(n)$ will always stay beneath a ceiling created by $g(n)$. This is the most common term because engineers generally want to know the absolute worst-case scenario before deploying code. 
+*   **Big Omega ($\Omega$)** — The Lower Bound (Best-Case)What it means: "My code will run no faster than this."How it's used: If your algorithm is $\Omega(g(n))$, it means your actual time $f(n)$ will never drop below the floor created by $g(n)$. Even if you get incredibly lucky with your data, it will still take at least this much time.
+*   **Big Theta ($\Theta$)** — The Tight Bound (Exact Scaling)What it means: "My code scales exactly like this."How it's used: If your algorithm is $\Theta(g(n))$, it means $f(n)$ is sandwiched perfectly. Both the worst-case ceiling ($O$) and the best-case floor ($\Omega$) grow at the exact same rate. It gives you a highly accurate picture of performance.Here is an interactive visualization so you can see how an actual algorithm ($f(n)$) is "trapped" by these boundaries ($g(n)$) as the input size grows.
+**refference document :** https://share.gemini.google/LBNZ2U6wFRuT
+
+
+
 ### 3 Solved Analytical Examples    
 **Example 1: Rigorous proof that $3n^3 + 2n^2 \neq O(n^2)$.**
 1. Assume the opposite: Suppose $3n^3 + 2n^2 \le c \cdot n^2$ for some constants $c > 0$ and all $n \ge n_0$.
@@ -73,6 +82,8 @@ asymptotic notations are mathematical tools used to describe the performance or 
 
 
 ## 2. Master's Theorem (Extended)
+
+**refference video:**   https://youtu.be/BnbFEoEReiY?si=GQsZuhfi_fwuOnSp
 
 ### Detailed Explanation
 The Master Theorem is derived from analyzing the recursion tree of the recurrence $T(n) = aT(n/b) + f(n)$.
@@ -115,11 +126,12 @@ The theorem compares the work done at the root ($f(n)$) with the work done at th
 ---
 
 ## 3. AVL Trees (Rigorous Rotations)
-
+### Why we usw al trees:https://share.gemini.google/TlZR04z0loAa
 ### Detailed Explanation
 AVL trees enforce balance rigidly. A node contains: `Key`, `LeftChild`, `RightChild`, and `Height`.
 The balance factor $BF = Height(Left) - Height(Right)$. Valid BFs are -1, 0, 1. If $BF$ becomes 2 or -2 after an insertion or deletion, a rotation is required.
 
+**refference video :** https://youtu.be/YWqla0UX-38?si=OrzYuSC4Iu-I0CNC 
 **The Four Rotations Details:**
 1.  **LL (Left-Left) Imbalance:** Node X has BF=2, and its left child Y has BF=1 or 0.
     *   *Action:* **Right Rotation** around X. Y becomes the new root of the subtree, X becomes Y's right child. Y's original right child becomes X's new left child.
@@ -134,6 +146,7 @@ The balance factor $BF = Height(Left) - Height(Right)$. Valid BFs are -1, 0, 1. 
 *   **Virtual Memory Areas:** In earlier Linux kernels, process memory maps (vm_area_struct) were managed using AVL trees to allow fast searching of unallocated memory regions.
 
 ### 3 Solved Analytical Examples
+**refference link :**  https://share.gemini.google/zDTjV65q3aux
 **Example 1: Construct an AVL tree by inserting 50, 25, 10, 5, 7.**
 1.  Insert 50 (BF 0).
 2.  Insert 25 (BF 1 at 50).
@@ -163,6 +176,9 @@ The balance factor $BF = Height(Left) - Height(Right)$. Valid BFs are -1, 0, 1. 
 ---
 
 ## 4. Red-Black Trees (Deep Mechanics)
+**refference link :** https://share.gemini.google/3xkCduVNCwcG
+
+**refference video :** https://youtu.be/3RQtq7PDHog?si=zGbRxNMSiY7gR5Re
 
 ### Detailed Explanation
 Red-Black trees use colors to maintain approximate balance. The longest path from root to leaf is no more than twice the length of the shortest path.
@@ -177,6 +193,7 @@ Let $Z$ be the new node.
 *   **Java's `TreeMap` and `TreeSet`:** Implemented internally using Red-Black trees because they guarantee $O(\log n)$ performance and suffer fewer rotation penalties on insertion than AVL trees.
 
 ### 3 Solved Analytical Examples
+**refference video :**https://share.gemini.google/SFAiIF4gt0pZ
 **Example 1: Trace insertions: 10, 20, 30, 15.**
 1.  Insert 10: Root, color Black. [10(B)]
 2.  Insert 20: RED. [10(B) -> 20(R)]
@@ -194,7 +211,7 @@ Let $Z$ be the new node.
 3.  Tree branch: 10(B) -> 15(R) -> 18(R).
 4.  Parent(15) is RED, Uncle(NULL, left of 10) is BLACK.
 5.  This forms a Right-Left "Triangle". **Case 2**.
-6.  Rotate Left around 15. The branch becomes 10(B) -> 18(R) -> 15(R) (where 15 is left child of 18).
+6.  Rotate Left around 15. The branch becomes 10(B) -> 18(R)->15(R) (where 15 is left child of 18).
 7.  Now it's a "Line" (**Case 3**).
 8.  Rotate Right around 10. Recolor 18 to B, 10 to R.
 9.  Final Subtree under 20: 18(B) is the child, with children 10(R) and 15(R).
@@ -209,8 +226,21 @@ Let $Z$ be the new node.
 ---
 
 ## 5. B-Trees (Disk-Oriented Structures)
-
+**refference link :**https://share.gemini.google/LtvSNjSineq8
 ### Detailed Explanation
+In the Design and Analysis of Algorithms (DAA), we often study trees like AVL Trees and Red-Black Trees. These are excellent $O(\log n)$ data structures when your entire dataset fits into your computer's lightning-fast RAM (Primary Memory).
+However, DAA also forces us to think about the physical limitations of hardware. What happens when your dataset is so massive (like a database of 1 billion users) that it has to be stored on a Hard Drive (Secondary Storage)?
+The Problem: Disk Access is Slow
+Reading data from a physical hard drive is incredibly slow compared to RAM.
+If you put a standard binary search tree on a hard drive, finding a record out of 1 billion might require traveling down 30 levels of the tree. That means 30 separate, slow "disk reads." The system would lag terribly.
+The Solution: The B-Tree ("Short and Fat")
+Instead of reading one single node at a time, a computer reads from a disk in large chunks called "Blocks" or "Pages."
+A B-Tree is designed to perfectly match this hardware quirk. Instead of being a "tall and skinny" binary tree (with 2 children per node), a B-Tree is a multi-way tree that is "short and fat."
+Massive Nodes: A single B-Tree node is exactly the size of a disk block.
+Hundreds of Keys: Because the node is so big, it can hold hundreds of keys inside it (e.g., [10, 25, 40, 89...]).
+Hundreds of Children: A node holding 100 keys will have 101 child pointers!
+
+Because it branches out so widely, a B-Tree rarely gets deeper than 3 or 4 levels. You can search through billions of records and mathematically guarantee that it will take no more than 3 or 4 slow disk accesses.
 A B-Tree is parameterized by its minimum degree $t \ge 2$.
 *   Every node (other than root) must have at least $t-1$ keys.
 *   Every node can have at most $2t-1$ keys.
