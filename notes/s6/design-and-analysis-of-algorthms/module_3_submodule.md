@@ -6,9 +6,26 @@ Module III: Graph Algorithms & Traversals
 
 Explanation
 
-A graph is a data structure consisting of vertices (nodes) and edges (connections between nodes). Graph traversal is the process of visiting every vertex and edge in a systematic way. There are two primary algorithms for this:
+A graph is a data structure consisting of vertices (nodes) and edges (connections between nodes).
+
+**Graph Representations:**
+**Refferl video:**https://youtu.be/5hPfm_uqXmw?si=3MZaUDSNCFp_ME62
+*   **Adjacency Matrix (The Grid Approach):** Imagine a grid (like a spreadsheet) where both the rows and the columns represent your nodes. If Node A is connected to Node B, you put a '1' in the box where Row A and Column B meet. If they aren't connected, you put a '0'. It's very fast to look up if two nodes are connected, but it takes up a lot of memory because you have to draw the whole grid even if there are very few connections.
+*   **Adjacency List (The Friends List Approach):** Imagine every node has its own personal "friends list" (a linked list). For Node A, you just write down the names of the nodes it is directly connected to. This is much better for saving memory when most nodes only have a few connections, because you only write down the connections that actually exist.
+
+
+**Refferl document:**https://share.gemini.google/70HbdAj0Qrif
+**Refferl video:**https://youtu.be/vf-cxgUXcMk?si=S6nbNN2XWYkXpWoL
+Graph traversal is the process of visiting every vertex and edge in a systematic way. There are two primary algorithms for this:
 Breadth-First Search (BFS): Explores the graph level by level. It starts at a source node, visits all its immediate neighbors, then visits all the neighbors of those neighbors. It uses a Queue (First-In-First-Out) data structure to keep track of nodes to visit next.
 Depth-First Search (DFS): Explores as far down a single path as possible before backtracking. It dives deep into the graph. It uses a Stack (Last-In-First-Out) data structure, or system recursion, to keep track of the path.
+
+**Types of Edges in Traversals (A Quick Summary):**
+During traversals, edges are classified based on how they are encountered:
+*   **Tree Edge:** The edges you actually travel on to discover new, unvisited nodes. They build the main structure of your search.
+*   **Back Edge (Mainly DFS):** An edge leading back to a node you are currently still exploring (an ancestor). Finding a back edge means there is a cycle (a loop) in the graph!
+*   **Forward Edge (Mainly DFS):** An edge leading forward to a node you've already fully explored (a descendant) through a different, longer path.
+*   **Cross Edge:** An edge between two nodes that don't have a direct parent/child relationship (e.g., jumping between different branches of your search). BFS often finds cross edges connecting nodes on the same level.
 
 Time and Space Complexity:
 Time Complexity: For both BFS and DFS, the time complexity is $\Theta(V + E)$ when the graph is represented as an adjacency list (where $V$ is the number of vertices and $E$ is the number of edges). If an adjacency matrix is used, the complexity becomes $\Theta(V^2)$.
