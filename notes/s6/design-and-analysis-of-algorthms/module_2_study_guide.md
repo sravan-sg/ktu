@@ -293,7 +293,7 @@ To avoid a situation where a leaf overflows and causes a cascading split all the
 
 ### Detailed Explanation
 **refference link :**https://share.gemini.google/OrRAKUhINbvq
-**refference video :** https://youtu.be/wU6udHRIkcc?si=k7Iyn2_j3Opw0wUr
+**refference video :** https://youtu.be/wU6udHRIkcc?si=BrZ6U2DZ8kmPGZ30
 Disjoint sets are beautifully simple yet mathematically profound. Represented as an array `parent[]` where `parent[i]` is the parent of element `i`. If `parent[i] == i`, `i` is the root of its set.
 
 **Optimizations:**

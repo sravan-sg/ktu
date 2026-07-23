@@ -57,6 +57,8 @@ The runtime increases by a factor of 8.
 - **Time Complexity:** A mathematical representation of the time an algorithm takes to run, expressed as a function of the input size $n$. It abstracts away hardware speed, focusing on the growth rate of the number of operations.
 - **Space Complexity:** A measure of the amount of working memory (RAM) an algorithm needs. It is the sum of **fixed space** (instructions, constants) and **variable/auxiliary space** (dynamic allocations, recursive stack). 
 
+ **refference video:** https://youtu.be/h_BY76gPfCQ?si=xnLoneBFpwjxaabZ
+
 ### Example
 Finding a name in a physical phone book.
 - **Time Complexity:** If you read page by page, time grows linearly. If you open to the middle and halve the book repeatedly, time grows logarithmically.
@@ -272,6 +274,9 @@ for(i=0; i<n; i++) {
 When an algorithm calls itself recursively, its running time is defined by a **Recurrence Equation**.
 - **Iteration Method:** Also called the substitution or unrolling method. We expand the recurrence algebraically, substituting the equation into itself until a discernible mathematical series emerges, which we then solve down to the base case.
 - **Recursion Tree Method:** A visual approach where we draw a tree representing the recursive calls. Each node displays the non-recursive cost (the work done at that specific level). We sum the costs across each horizontal level, and then sum all the levels.
+
+**refference video:** https://youtu.be/w8tEY8luUSE?si=urXNvcAngMZDteIS.
+
 
 ### Example
 Suppose a problem of size $n$ is divided into 2 subproblems of size $n/2$, and combining them takes $n$ steps. 

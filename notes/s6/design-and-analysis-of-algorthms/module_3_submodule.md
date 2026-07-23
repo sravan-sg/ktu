@@ -104,7 +104,8 @@ Substitute the values: $10,000 + 50,000 = 60,000$ operations.
 Conclusion: The algorithm will scale linearly with the sum of users and connections, requiring roughly bounded $\sim 60,000$ primitive loop iterations, avoiding the $O(V^2)$ cost of a $100,000,000$ cell adjacency matrix.
 
 2. Minimum Cost Spanning Trees (MCST)
-
+**refferal text:**https://share.gemini.google/5Ub5WwziwseQ
+**refferal video:**https://youtu.be/vNhvBrc02G4?si=E4D5pjw5GwjepDP9
 Explanation
 
 A Spanning Tree of a connected, undirected graph is a subgraph that includes all the vertices of the original graph but has no cycles (it must be a tree). A graph can have many spanning trees.
@@ -112,9 +113,16 @@ A Minimum Cost Spanning Tree (MCST) is a spanning tree where the sum of the weig
 
 Key Properties: If a graph has $V$ vertices, any spanning tree will have exactly $V - 1$ edges.
 
-(Note: The specific algorithms to find MCSTs—Kruskal's and Prim's—are covered deeply in Module V under Greedy Algorithms, but we will demonstrate their logic here as SSSP foundations).
+**Algorithms for MCST:**
+*   **Kruskal's Algorithm:** A greedy approach that sorts all edges in the graph from lowest weight to highest weight. It then repeatedly picks the smallest edge and adds it to the spanning tree, *as long as it doesn't create a cycle*. It uses a Disjoint-Set (Union-Find) data structure to efficiently check for cycles. (Focuses on edges).
+**refferal video:**https://youtu.be/ZtZaR7EcI5Y?si=ee5EngQSkAIU89MW
+*   **Prim's Algorithm:** A greedy approach that starts from an arbitrary node and grows the spanning tree one edge at a time. At each step, it looks at all edges connecting the current growing tree to unvisited nodes and picks the absolute minimum weight edge. It usually uses a Min-Priority Queue. (Focuses on vertices).
+**refferal video:**https://youtu.be/EjVHtpWkIho?si=5qfmIAtFY8AXD5Jm
+
+*(Note: These are covered deeply in Module V under Greedy Algorithms, but their logic is fundamental here).*
 
 Example
+**refferal video :**https://youtu.be/71SJL5lOOzY?si=AZeJaXX9KR32JPN4
 Imagine 4 cities that need to be connected to a power grid. There are various costs to lay cables between different cities. The MCST is the cheapest possible network of cables that ensures every single city has power, without building redundant loop-backs.
 
 Applications & Use Cases
@@ -224,6 +232,8 @@ Wait! Dijkstra assumes once a node is visited, its shortest path is final. If th
 Conclusion: Dijkstra finalized $B$ before considering negative paths. It only works on non-negative graphs.
 
 4. Topological Sorting
+**refferal text:**https://share.gemini.google/IaEKdVj2AZND
+**refferal video:**https://youtu.be/dis_c84ejhQ?si=KEWaASFjBquOWswq
 Explanation
 Topological Sorting is a linear ordering of vertices in a Directed Acyclic Graph (DAG) such that for every directed edge $U \rightarrow V$, vertex $U$ comes before vertex $V$ in the ordering.
 Note: A topological sort is only possible if the graph has no cycles.
@@ -357,3 +367,30 @@ Look at the original edges connecting vertices from $SCC_1$ to $SCC_2$. We had o
 Shrink the SCCs into single super-nodes. Draw a directed edge between them based on original crossing edges.
 
 Final Answer: The Meta-Graph is $SCC_1 \rightarrow SCC_2$. Crucial Theorem: The Meta-Graph of SCCs is always a Directed Acyclic Graph (DAG). If it had a cycle, the two SCCs would just merge into one larger SCC.
+
+6. Articulation Points & Biconnected Components
+
+Explanation
+
+In an undirected graph, an **Articulation Point** (or Cut Vertex) is a vertex whose removal (along with all its connected edges) increases the number of connected components in the graph. In simple terms, it is a single point of failure that breaks the network into disconnected pieces.
+
+A **Biconnected Graph** is a connected graph that has no articulation points. This means there are at least two completely separate paths between any pair of vertices, making it highly fault-tolerant. 
+
+A **Biconnected Component (BCC)** is a maximal biconnected sub-graph. Any graph can be broken down into a set of biconnected components, which are effectively "glued" together at the articulation points.
+
+We typically use a modified **DFS (Depth-First Search)** to find articulation points. It relies on keeping track of:
+1. When a node was discovered (`discovery_time`).
+2. The lowest discovery time reachable from the current node's subtree via a back-edge (`lowest_time`).
+
+Time Complexity: $O(V + E)$ using DFS.
+
+Example
+
+Imagine a computer network topology connecting multiple cities. 
+*   **Articulation Point:** A central router in Chicago connecting the East Coast network to the West Coast network. If that single Chicago router goes down, the East and West coasts can no longer communicate.
+*   **Biconnected Component:** A ring network of computers in a single office. If any one computer in the ring fails, data can simply be routed the opposite way around the ring, so no one gets disconnected.
+
+Applications & Use Cases
+
+Network Reliability: Identifying critical single points of failure in telecommunications, power grids, or transportation networks.
+Social Network Analysis: Finding key individuals (information brokers) whose removal would split a community into completely isolated groups.

@@ -74,7 +74,7 @@ N
 
 To get more study materails visit www.ktunotes.in
 
-Introduction to Algorithm AnalysisTime and Space ComplexityElementary operations and Computation of Time ComplexityBest, worst and Average Case ComplexitiesComplexity
+Introduction to Algorithm AnalysisTime and Space ComplexityElementary operations and Computation of Time ComplexityBest, worst and Average Case ComplexitiesComplexity
 Calculation of simple algorithms
 Recurrence Equations:Solution of Recurrence Equations –
 Iteration Method and Recursion Tree Methods
