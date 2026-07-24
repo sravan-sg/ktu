@@ -176,6 +176,8 @@ Final Answer: Edge $(B-C, 5)$ is guaranteed to be in the MCST.
 
 
 3. Single Source Shortest Path Algorithms (Dijkstra's)
+**refferal text:**https://share.gemini.google/5SBQLOkBwHRI
+**refferal video:**https://youtu.be/smHnz2RHJBY?si=rPB-jJXaZWNE4szU
 Explanation
 The Single Source Shortest Path (SSSP) problem asks: Given a specific starting node (source), what is the shortest possible path (lowest total edge weight) to every other node in the graph?
 The most famous algorithm for this is Dijkstra's Algorithm. It maintains a list of the minimum known distance to every node. It continually visits the unvisited node with the smallest known distance, and checks if it can update the distances to its neighbors to be shorter (a process called relaxation).
@@ -303,6 +305,8 @@ Conclusion: Because the algorithm terminates with unvisited nodes, we have mathe
 
 
 5. Strongly Connected Components (SCC)
+**refferal text:**https://share.gemini.google/nXIAoSgZPdaM
+**refferal video:**https://youtu.be/R6uoSjZ2imo?si=NS-BARd_b7lTBbvQ
 Explanation
 In a directed graph, a Strongly Connected Component (SCC) is a maximal sub-graph where every single vertex is reachable from every other vertex within that sub-graph. If you pick any two nodes $A$ and $B$ in an SCC, there is a path from $A$ to $B$ AND a path from $B$ to $A$.
 Kosaraju's Algorithm is the standard method for finding SCCs. It operates in 3 steps:
