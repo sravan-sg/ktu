@@ -169,10 +169,28 @@ func quickSort(arr []int) []int {
 ```
 
 ### 3. Strassen’s Matrix Multiplication
+**refference document:**https://share.gemini.google/ogEpGfrbXv5B
+**refference video:**https://youtu.be/DkGMht7MOec?si=tE0BQjzL60BMmA1j
 #### Explanation
 Standard matrix multiplication for two n x n matrices involves three nested loops, giving it a cubic time complexity of O(n^3).
 Volker Strassen discovered a Divide and Conquer approach. He proved that you don't need 8 recursive multiplication calls to multiply the 4 quadrants of a split matrix. By using clever algebraic combinations, you only need 7 multiplication calls. Because multiplication operations are far more computationally expensive than additions, dropping from 8 to 7 recursive calls drastically improves the algorithm's performance on massive matrices.
 - **Time Complexity**: Reduced from O(n^3) to exactly O(n^(log_2 7)) ≈ O(n^2.81).
+
+
+
+
+**The Catch: Real-World Limitations**
+
+Despite breaking the $O(N^3)$ barrier, Strassen's algorithm is not always used in real life for a few reasons:dynamic programming and 
+**The "Hidden Constant":** Big-O notation ignores constants. Strassen's algorithm requires a massive amount of extra additions, subtractions, and memory allocations for those $M$ matrices. For small matrices (e.g., $N < 100$), the standard $O(N^3)$ algorithm is actually much faster because it has very little overhead.
+**The Crossover Point:** In industry, libraries implement a hybrid approach. They use Strassen's algorithm to recursively break massive matrices down until the sub-matrices are around size $64 \times 64$, and then they switch back to the standard $O(N^3)$ algorithm to avoid Strassen's overhead.
+**Numerical Instability:** Because Strassen's algorithm relies on heavy addition and subtraction of potentially large floating-point numbers, it is more prone to rounding errors than standard multiplication.
+
+
+
+
+
+
 
 #### Solved Examples
 **Example 3.1: The Standard vs. Strassen Sub-problem Count**
@@ -185,14 +203,14 @@ Volker Strassen discovered a Divide and Conquer approach. He proved that you don
 **Example 3.2: Strassen's 7 Formulas**
 - **Problem**: Define the 7 core multiplications (P1 through P7) used in Strassen's method for matrices A and B split into quadrants A_11, A_12, etc.
 - **Solution**:
-    P1 = A_11 x (B_12 - B_22)
-    P2 = (A_11 + A_12) x B_22
-    P3 = (A_21 + A_22) x B_11
-    P4 = A_22 x (B_21 - B_11)
-    P5 = (A_11 + A_22) x (B_11 + B_22)
-    P6 = (A_12 - A_22) x (B_21 + B_22)
-    P7 = (A_11 - A_21) x (B_11 + B_12)
-    (Note: You combine these 7 values using specific additions/subtractions to yield the 4 quadrants of the final matrix C).
+    - P1 = A_11 x (B_12 - B_22)
+    - P2 = (A_11 + A_12) x B_22
+    - P3 = (A_21 + A_22) x B_11
+    - P4 = A_22 x (B_21 - B_11)
+    - P5 = (A_11 + A_22) x (B_11 + B_22)
+    - P6 = (A_12 - A_22) x (B_21 + B_22)
+    - P7 = (A_11 - A_21) x (B_11 + B_12)
+    - *(Note: You combine these 7 values using specific additions/subtractions to yield the 4 quadrants of the final matrix C).*
 
 **Example 3.3: Analysis via Recurrence Relation**
 - **Problem**: Formulate and solve the recurrence relation for Strassen's Algorithm.
@@ -205,6 +223,8 @@ Volker Strassen discovered a Divide and Conquer approach. He proved that you don
     3. Result: The complexity is firmly Θ(n^(log_2 7)), proving it is asymptotically faster than O(n^3).
 
 ### 4. Dynamic Programming (DP) & The Optimality Principle
+**refference video:**https://youtu.be/lVR2u9lsxl8?si=hGzRJBv_Wme_FJYt
+**refference document:**https://share.gemini.google/4JSiipRGcPgn
 #### Explanation
 Dynamic Programming is a bottom-up algorithm design strategy. Like Divide and Conquer, it breaks problems into smaller sub-problems.
 The Critical Difference: In Divide and Conquer, sub-problems are independent. In Dynamic Programming, sub-problems overlap. DP algorithms solve each sub-problem exactly once and store the answer in a memory table (an array or matrix). If the same sub-problem is encountered again, it simply looks up the answer instead of recalculating it. This memory-saving technique is called Memoization or Tabulation.
@@ -233,6 +253,9 @@ Algorithm DynamicProgramming(n) {
 - **Natural Language Processing**: Spell checkers use the Levenshtein Distance (a DP algorithm) to find the minimum edits required to fix a typo.
 
 ### 5. Optimal Matrix Chain Multiplication
+**refference video:**https://youtu.be/cCgwzmHkijQ?si=C6rwflBKGn6eHPFT
+**refference document:**https://share.gemini.google/2Lp0EGMIV5Y6
+
 #### Explanation
 When multiplying a long sequence (chain) of matrices, matrix multiplication is associative: (A x B) x C = A x (B x C). The final mathematical answer is the same, but the number of scalar multiplications required can vary massively depending on where you place the parentheses.
 The Matrix Chain Multiplication algorithm uses Dynamic Programming to find the absolute most efficient way to parenthesize a chain of matrices.
@@ -269,6 +292,7 @@ The Matrix Chain Multiplication algorithm uses Dynamic Programming to find the a
     4. It will then compute chains of length 2 (the diagonal just above), then length 3, until reaching m[1, 4] (the top right corner), which holds the final answer.
 
 ### 6. Bellman-Ford Algorithm
+**refference document:**https://share.gemini.google/TVFOFLMPGOOI
 While Dijkstra's algorithm (Module III) finds the shortest path, it mathematically fails if a graph contains negative weight edges. The Bellman-Ford algorithm solves this problem using Dynamic Programming.
 It works by "relaxing" (updating) every single edge in the graph exactly V - 1 times (where V is the number of vertices). By the Principle of Optimality, any shortest path in a graph without negative cycles can have at most V - 1 edges.
 - **Negative Cycle Detection**: After V - 1 iterations, it runs one final check. If any edge can still be relaxed and made shorter, it proves the graph contains a negative weight cycle (meaning no shortest path exists because you could just loop the negative cycle forever to reach -∞).
