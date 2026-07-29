@@ -293,10 +293,19 @@ The Matrix Chain Multiplication algorithm uses Dynamic Programming to find the a
 
 ### 6. Bellman-Ford Algorithm
 **refference document:**https://share.gemini.google/TVFOFLMPGOOI
+**refference video:**https://youtu.be/KudAWAMiQog?si=lauVLaf-0dxyHoP_
 While Dijkstra's algorithm (Module III) finds the shortest path, it mathematically fails if a graph contains negative weight edges. The Bellman-Ford algorithm solves this problem using Dynamic Programming.
 It works by "relaxing" (updating) every single edge in the graph exactly V - 1 times (where V is the number of vertices). By the Principle of Optimality, any shortest path in a graph without negative cycles can have at most V - 1 edges.
 - **Negative Cycle Detection**: After V - 1 iterations, it runs one final check. If any edge can still be relaxed and made shorter, it proves the graph contains a negative weight cycle (meaning no shortest path exists because you could just loop the negative cycle forever to reach -∞).
 - **Time Complexity**: O(V · E). Slower than Dijkstra, but far more robust.
+
+**The Core Problem: Why Dijkstra Fails**
+Dijkstra's is a Greedy Algorithm. It assumes that once a node is marked as "visited" (finalized), we have found the absolute cheapest path to it.
+If there is a massive negative weight hidden deep in the graph, a long, terrible path might suddenly become the cheapest path. Because Dijkstra never looks backward to re-evaluate nodes it has already locked in, it misses these hidden negative shortcuts entirely.
+
+**Summary: When to use which?**
+Use Dijkstra ($O(E \log V)$): When you are routing GPS traffic, finding map directions, or dealing with any physical distances where negative weights are impossible. Speed is your top priority.
+Use Bellman-Ford ($O(V \times E)$): When dealing with financial networks, chemistry state changes, or any system where a transaction can yield a negative cost (profit). You sacrifice speed to guarantee accuracy and safely detect impossible infinite loops!
 
 #### Solved Examples
 **Example 6.1: The Relaxation Logic**
