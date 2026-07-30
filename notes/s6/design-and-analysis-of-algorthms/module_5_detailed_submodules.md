@@ -48,28 +48,10 @@ Algorithm Greedy(a, n)
     return solution;
 }
 ```
-Algorithm Greedy(a, n)
-This line defines the start of the algorithm. It takes two parameters: a, which is the set of raw inputs (like tasks to schedule or items to put in a bag), and n, which is the total count of those inputs.
 
-solution = ∅;
-Greedy algorithms build a solution piece by piece. This line creates an empty container (represented by the mathematical empty set symbol ∅) where we will store our winning selections.
-
-for i = 1 to n do
-This establishes a loop that runs n times. Because a greedy algorithm generally evaluates the available options step-by-step without looking back, it needs a loop to iterate through the choices.
-
-x = select(a);
-This is the heart of the greedy strategy. The select function examines the remaining options in a and greedily picks the one that looks like the absolute best choice at this exact moment, ignoring future consequences. For example, if you are making change for a dollar, select would grab the largest coin possible first (a quarter).
-
-if feasible(solution, x) then
-Even if an item looks like a great choice, it might not be allowed. This line checks if adding the newly selected item x violates the problem's constraints. For example, if you are packing a backpack with a 50 lb limit, feasible checks if adding item x pushes the total weight over 50 lbs.
-
-solution = union(solution, x);
-If the item x passes the feasibility test, it is permanently added to the solution set. The word union means we are merging the new item x into our existing collection. In a greedy algorithm, once a choice is made and added to the solution, it is never reconsidered or removed.
-
-return solution;
-Once the loop finishes (meaning we have evaluated our choices n times), the algorithm terminates and hands back the final, built-up solution to the user.
 
 ### 3. The Fractional Knapsack Problem
+**Refferal video:**https://youtu.be/oTTzNMHM05I?si=aA-RTsgpJi3p59SJ
 #### Explanation:
 You are given $n$ items, each with a specific weight ($w_i$) and a value ($v_i$). You have a knapsack that can carry a maximum weight capacity of $W$. Your goal is to maximize the total value in the knapsack. Unlike the 0/1 Knapsack (which requires DP), the Fractional Knapsack allows you to break items into fractions.
 
@@ -108,8 +90,11 @@ A Spanning Tree of a connected, undirected graph is a subgraph that includes all
 
 Prim's Algorithm is a greedy approach that starts at an arbitrary node and maintains a single, growing tree. At each step, it safely adds the cheapest edge that connects a vertex inside the tree to a vertex outside the tree.
 
-#### Applications:
+#### Applications & Use Cases:
 Laying out electrical wiring, network routing, and designing printed circuit boards.
+Network Design: Telecommunications networks, water supply networks, and electrical grids.
+Approximation Algorithms: Used as a baseline to solve the NP-Hard Travelling Salesman Problem.
+Cluster Analysis: Used in machine learning to group similar data points.
 
 #### Solved Example 2: Prim's Algorithm
 **Problem:** Find the MCST for a graph with vertices $V = \{A, B, C, D\}$ and weighted edges: $(A,B, 1)$, $(A,C, 4)$, $(B,C, 2)$, $(B,D, 5)$, $(C,D, 3)$.
