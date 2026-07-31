@@ -48,6 +48,11 @@ Algorithm Backtrack(k)
 Solving Sudoku puzzles, finding paths in a maze, and solving constraint-satisfaction problems like scheduling.
 
 ### 2. Backtracking: The N-Queen's Problem
+**refference video(using state space tree):**https://youtu.be/xFv_Hl4B83A?si=NdHBlfhJvoq8-WNC
+**refference video:**https://youtu.be/eMkqz0pxb1s?si=EnbM7rI9vv1evzm4
+**refference link:**https://share.gemini.google/WLjT1u5V2Sqy
+
+
 #### Explanation:
 The N-Queens problem asks you to place $N$ chess queens on an $N \times N$ chessboard so that no two queens threaten each other. This means no two queens can share the same row, column, or diagonal.
 
@@ -73,6 +78,8 @@ The N-Queens problem asks you to place $N$ chess queens on an $N \times N$ chess
 **Result:** A valid solution is found: $[(2,1), (4,2), (1,3), (3,4)]$.
 
 ### 3. Backtracking: 0/1 Knapsack Problem
+**refference video**https://youtu.be/38p8vyDggrY?si=xUQk8MbG4-j3MrqW
+**refference link**https://share.gemini.google/jMfy7rfMRHmy
 #### Explanation:
 You are given $N$ items, each with a weight and a value, and a knapsack with a maximum capacity $W$. You must either take an item completely or leave it (0/1). The goal is to maximize the value without exceeding capacity.
 While Dynamic Programming is the standard approach, Backtracking can solve it by exploring a state-space tree where the left branch includes an item, and the right branch excludes it.
@@ -99,6 +106,8 @@ While Dynamic Programming is the standard approach, Backtracking can solve it by
 **Result:** The maximum value is 7 (Including $I_1$ and $I_2$).
 
 ### 4. Branch and Bound: Travelling Salesman Problem (TSP)
+**refference video:**https://youtu.be/1FEP_sNb62k?si=ndW9Fqyhbn8zk2Jc
+**refference link:**https://share.gemini.google/J74nsNnly2aK
 #### Explanation:
 Branch and Bound (B&B) is an optimization technique specifically for minimization/maximization problems. Like backtracking, it explores a state-space tree, but it computes a Bound (an estimated minimum or maximum cost) at each node. If a node's bound is worse than the best solution already found, the entire subtree is pruned.
 
