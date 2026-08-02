@@ -1,0 +1,40 @@
+APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY
+Sixth semester B.Tech examinations (S), September 2020
+Course Code: CS302
+Course Name: DESIGN AND ANALYSIS OF ALGORITHMS
+Max. Marks: 100 Duration: 3 Hours
+
+PART A
+Answer all questions, each carries 3 marks.
+1. Express the return value of the function "mystery" in theta - notation.
+2. Is 2^(n+1) = O(2^n)? Is 2^2n = O(2^n)? Justify
+3. Define a B-tree. Give an example.
+4. Implement UNION using linked list representation of disjoint sets.
+
+PART B
+Answer any two full questions, each carries 9 marks.
+5. a) Solve T(n)=2T(n/2)+2 if n>2...
+6. a) Show the red-black tree that result...
+7. a) Consider the following C function...
+
+PART C
+Answer all questions, each carries 3 marks.
+8. What is principle of optimality?
+9. Explain the characteristics of problems that can be solved using dynamic programming.
+10. Find the possible topological orderings...
+11. How the edges of a graph can be classified based on DFS?
+
+PART D
+Answer any two full questions, each carries 9 marks.
+12. a) Give a control abstraction for Divide and Conquer method...
+13. a) Define strongly connected components...
+14. a) Write Dijkstra's Single Source Shortest path algorithm...
+
+PART E
+Answer any four full questions, each carries 10 marks.
+15. a) Compare Divide and Conquer and Dynamic programming methodologies.
+16. a) Explain Branch and bound technique.
+17. a) Explain Kruskal's algorithm with an example.
+18. a) Explain control abstraction of greedy method.
+19. a) Explain the concept of backtracking.
+20. a) Define NP-Hard and NP-complete problems.

@@ -1,0 +1,40 @@
+APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY
+Sixth Semester B.Tech Degree Regular and Supplementary Examination July 2021
+Course Code: CS302
+Course Name: DESIGN AND ANALYSIS OF ALGORITHMS
+Max. Marks: 100 Duration: 3 Hours
+
+PART A
+Answer all questions, each carries 3 marks.
+1. Define the terms Best case, Worst case and Average case time complexities.
+2. Analyse the complexity of the following function...
+3. List out the properties of red-black tree.
+4. What is meant by height balanced tree? Give examples.
+
+PART B
+Answer any two full questions, each carries 9 marks.
+5. a) Solve using iteration method...
+6. a) State Master's theorem...
+7. a) Construct a Red Black tree by inserting 10, 20, 30, 15, 16 and 27...
+
+PART C
+Answer all questions, each carries 3 marks.
+8. Define spanning tree of a graph. Write the total number of spanning trees...
+9. Write the algorithm to find Strongly Connected Components in a graph.
+10. Explain Divide and Conquer strategy with example.
+11. What are the characteristics required by problems so that they can be solved by dynamic programming approach?
+
+PART D
+Answer any two full questions, each carries 9 marks.
+12. Apply these algorithms on the following graph. Let A be the source vertex...
+13. a) Write down and explain Bellman Ford algorithm...
+14. a) Write Dijkstra's Single Source Shortest path algorithm and illustrate with example.
+
+PART E
+Answer any four full questions, each carries 10 marks.
+15. Apply these algorithms on the following graph...
+16. a) Give a comparison between dynamic programming and divide and conquer strategy.
+17. a) Formulate fractional Knapsack problem. Write greedy algorithm...
+18. Define N-Queens problem. Write down and explain an algorithm to solve N-Queens problem...
+19. a) Define NP-Hard and NP-complete problems.
+20. a) Define Travelling Salesman Problem (TSP).

@@ -227,7 +227,8 @@ Let $Z$ be the new node.
 ---
 
 ## 5. B-Trees (Disk-Oriented Structures)
-**refference link :**https://share.gemini.google/LtvSNjSineq8
+**refference link :**https://share.g
+emini.google/LtvSNjSineq8
 **refference video (basic introduction):**https://youtu.be/aZjYr87r1b8?si=US97F_Ks8OaCLA27
 ### Detailed Explanation
 In the Design and Analysis of Algorithms (DAA), we often study trees like AVL Trees and Red-Black Trees. These are excellent $O(\log n)$ data structures when your entire dataset fits into your computer's lightning-fast RAM (Primary Memory).
