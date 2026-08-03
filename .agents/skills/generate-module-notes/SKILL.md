@@ -37,10 +37,14 @@ notes/semester-<number>/<subject-name>/
 
 ## Step-by-Step Execution Plan
 
+**IMPORTANT**: This pipeline must be applied iteratively to **ALL modules** (Module 1 through Module N) defined in the syllabus, not just a single module.
+
 ### Step 1: Read Knowledge Base & Syllabus
 1. Locate target subject directory: `notes/semester-<number>/<subject-name>/`.
-2. Read `syllabus.md` to extract Module X title, submodules, and full list of topics.
+2. Read `syllabus.md` to extract titles, submodules, and the full list of topics for all modules.
 3. List and inspect all Markdown files in `knowledge/`. Extract textbook formulas, code, and numerical problems.
+
+*(For each Module X extracted from the syllabus, perform Steps 2 through 6)*
 
 ---
 
@@ -54,7 +58,13 @@ Create directory `notes/semester-<number>/<subject-name>/module-<number>/`.
 
 For each topic in Module X:
 - Create a dedicated file: `notes/semester-<number>/<subject-name>/module-<number>/<topic-kebab-case>.md`.
-- Include core intuition, theoretical framework, algorithms & pseudocode, mathematical derivations, comparative tables, real-world systems insights, and solved exam problems.
+- Ensure there is a detailed definition and core intuition about each topic at the beginning, mirroring the comprehensive style and fundamental concepts given in Module 1 and also
+- For every single topic within a requested module, you must provide:
+  - **Explanation**: A clear, conceptual breakdown of the topic.
+  - **Example**: A basic theoretical or visual example to explain the concept.
+  - **Applications & Use Cases**: Real-world software engineering scenarios where this algorithm or concept is applied.
+  - **3 Solved Numerical/Analytical Examples**: Step-by-step mathematical or algorithmic walkthroughs (e.g., solving recurrence relations, stepping through a tree rotation, or tracing a graph traversal).
+- Keep the tone academic, highly detailed, and structured for easy studying.
 
 ---
 

@@ -5,73 +5,63 @@
 
 ---
 
-## 1. Complexity Frameworks Overview
+## 1. Core Intuition & Fundamental Concepts
 
+### Explanation
 An algorithm's running time doesn't just depend on the size of the input $n$, but also on **how the input data is arranged**.
+- **Worst-Case Complexity $T_{\text{worst}}(n)$**: The maximum time the algorithm could possibly take for any input of size $n$. This provides an absolute upper bound guarantee.
+- **Best-Case Complexity $T_{\text{best}}(n)$**: The minimum time the algorithm could take for an input of size $n$. It represents the "luckiest" possible scenario.
+- **Average-Case Complexity $T_{\text{avg}}(n)$**: The expected running time averaged over all possible inputs of size $n$, based on the probability distribution of inputs.
 
-```
-                         Input Data of Size n
-                                  |
-      +---------------------------+---------------------------+
-      |                           |                           |
-      v                           v                           v
-  Best Case                   Average Case               Worst Case
-(Lucky layout)             (Expected layout)         (Unlucky layout)
-Min time needed            Average time needed       Max time guaranteed
-```
+### Example
+Imagine searching for your car in a large parking lot containing $n$ cars:
+- **Best Case:** Your car is the very first one you check. (Time: $O(1)$)
+- **Worst Case:** You check every single car, and yours is the very last one (or isn't there at all). (Time: $O(n)$)
+- **Average Case:** You check about half the cars before finding yours. (Time: $O(n)$)
 
-1. **Worst-Case Complexity $T_{\text{worst}}(n)$**:
-   - The maximum time the algorithm could possibly take for any input of size $n$.
-   - **Why it matters**: It gives a strict **guarantee**. The program will *never* be slower than this limit. This is vital for real-time systems like airplane controls or banking apps.
-
-2. **Best-Case Complexity $T_{\text{best}}(n)$**:
-   - The minimum time the algorithm could take for any input of size $n$.
-   - **Why it matters**: It represents the luckiest scenario (e.g., searching for a number and finding it on the very first try). It is rarely useful because real life is seldom perfectly lucky.
-
-3. **Average-Case Complexity $T_{\text{avg}}(n)$**:
-   - The expected running time averaged over all possible inputs of size $n$.
-   - **Why it matters**: It tells us how the algorithm will perform on typical, everyday data.
+### Applications & Use Cases
+- **Safety-Critical Systems:** Air traffic control or self-driving cars *must* know the **worst-case** execution time to guarantee decisions are made before a collision.
+- **Database Query Optimizers:** Databases use **average-case** analysis when generating execution plans, assuming queries reflect typical user distributions.
+- **Sorting in Libraries:** Many programming languages use quicksort by default because its **average-case** is extremely fast ($O(n \log n)$), even though its worst-case is slow ($O(n^2)$).
 
 ---
 
-## 2. Detailed Example: Linear Search Case Analysis
+## 2. 3 Solved Numerical/Analytical Examples
 
-Let's search for a target value $x$ in an array of $n$ numbers:
+### Example 1: Linear Search
+**Problem:** Analyze the Best, Worst, and Average case time complexities for searching element $x$ in an array of $n$ elements.
+**Step-by-step Solution:**
+1. **Best Case:** The element $x$ is found at index $0$. The loop executes 1 time.
+   $T_{\text{best}}(n) = O(1)$.
+2. **Worst Case:** The element $x$ is at index $n-1$ or not present. The loop executes $n$ times.
+   $T_{\text{worst}}(n) = O(n)$.
+3. **Average Case:** Assume $x$ is uniformly distributed. The probability of finding $x$ at any index $i$ is $1/n$. Number of checks for index $i$ is $i+1$.
+   $T_{\text{avg}}(n) = \sum_{i=0}^{n-1} \frac{1}{n} \times (i+1) = \frac{1}{n} \left( \frac{n(n+1)}{2} \right) = \frac{n+1}{2}$.
+   Since $(n+1)/2$ scales linearly, $T_{\text{avg}}(n) = O(n)$.
 
-```python
-def linear_search(A, n, x):
-    for i in range(n):
-        if A[i] == x:
-            return i     # Found! Return index
-    return -1            # Not found!
-```
+### Example 2: Insertion Sort
+**Problem:** Trace the Best and Worst cases for sorting an array of size $n$ using Insertion Sort.
+**Step-by-step Solution:**
+1. **Best Case (Already Sorted Array):** For an array like `[1, 2, 3, 4, 5]`, the inner `while` loop condition immediately fails for every element because each new element is already greater than the previous one. 
+   Total comparisons = $n - 1$.
+   $T_{\text{best}}(n) = O(n)$.
+2. **Worst Case (Reverse Sorted Array):** For an array like `[5, 4, 3, 2, 1]`, every new element must be compared and swapped past *all* previously sorted elements.
+   Total comparisons = $1 + 2 + 3 + \dots + (n-1) = \frac{n(n-1)}{2}$.
+   $T_{\text{worst}}(n) = O(n^2)$.
+3. **Average Case (Random Array):** On average, an element needs to be shifted past half of the already sorted elements.
+   Total comparisons $\approx \frac{1}{2} \times \frac{n(n-1)}{2} = \frac{n^2 - n}{4}$.
+   $T_{\text{avg}}(n) = O(n^2)$.
 
-### Case Derivations:
-
-- **Best Case**: The value $x$ happens to be at the very first slot ($A[0]$).
-  - Loop runs 1 time.
-  - $T_{\text{best}}(n) = O(1)$ (Constant time).
-
-- **Worst Case**: The value $x$ is at the very last slot ($A[n-1]$) or is missing completely.
-  - Loop runs all $n$ times.
-  - $T_{\text{worst}}(n) = O(n)$ (Linear time).
-
-- **Average Case Analysis**:
-  - Suppose $x$ is present in the array with probability $p = 1$, and is equally likely to be at any index from $0$ to $n-1$.
-  - If $x$ is at index $0$, it takes $1$ check.
-  - If $x$ is at index $1$, it takes $2$ checks.
-  - If $x$ is at index $i$, it takes $i + 1$ checks.
-
-$$\text{Average checks} = \frac{1 + 2 + 3 + \dots + n}{n} = \frac{\frac{n(n+1)}{2}}{n} = \frac{n+1}{2}$$
-
-For large $n$, $\frac{n+1}{2} \approx \frac{n}{2}$, which is still proportional to $n$. Therefore, $T_{\text{avg}}(n) = \Theta(n)$.
-
----
-
-## 3. Asymptotic Cases Summary Reference
-
-| Case | Definition | Math Representation | Practical Usage |
-| :--- | :--- | :--- | :--- |
-| **Worst-Case** | Maximum time over all inputs of size $n$ | $T_{\text{worst}}(n) = \max T(I)$ | Guaranteed safety limit (Critical systems) |
-| **Best-Case** | Minimum time over all inputs of size $n$ | $T_{\text{best}}(n) = \min T(I)$ | Rarely useful (Optimistic scenario) |
-| **Average-Case** | Expected time averaged over all inputs | $T_{\text{avg}}(n) = E[T(I)]$ | Predicts real-world typical performance |
+### Example 3: Adding an Element to a Dynamic Array (Vector)
+**Problem:** Analyze the Best and Worst case time complexity of appending an element to a dynamic array that doubles its capacity when full.
+**Step-by-step Solution:**
+1. **Best/Average Case (Capacity not reached):** The dynamic array has empty slots remaining. We simply place the element at the next available index `n`.
+   Time taken = 1 assignment operation.
+   $T_{\text{best}}(n) = T_{\text{avg}}(n) = O(1)$.
+2. **Worst Case (Capacity reached):** The array is full. The algorithm must:
+   - Allocate a new array of size $2n$.
+   - Copy all $n$ existing elements to the new array.
+   - Insert the new element.
+   Time taken = $O(n)$ copies + 1 insertion.
+   $T_{\text{worst}}(n) = O(n)$.
+*(Note: Across $n$ insertions, this averages out to $O(1)$ amortized time).*

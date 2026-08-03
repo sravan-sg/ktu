@@ -5,81 +5,88 @@
 
 ---
 
-## 1. Loop Pattern Lookup Table
+## 1. Core Intuition & Fundamental Concepts
 
-By looking at how loops are structured, you can quickly spot their time complexity:
+### Explanation
+Calculating the complexity of simple algorithms is the process of translating source code (loops, recursive calls, basic math operations) into a mathematical function $f(n)$, which describes the algorithm's performance as the input size $n$ grows. Instead of executing the code, we perform static analysis by identifying the fundamental structure of the loops:
+- **Sequential Statements**: Time adds up ($O(1) + O(1) = O(1)$).
+- **Independent Loops**: Time scales linearly ($O(n)$).
+- **Nested Loops**: Time multiplies ($O(n) \times O(n) = O(n^2)$).
+- **Logarithmic Loops**: The loop counter doubles or halves at each step ($O(\log n)$).
 
-| Loop Type | Code Example | Execution Count Formula | Complexity |
-| :--- | :--- | :--- | :--- |
-| **Simple Linear Loop** | `for i in range(n):` | Iterates $n$ times | $\Theta(n)$ |
-| **Stepped Linear Loop** | `for i in range(0, n, 2):` | Iterates $n/2$ times | $\Theta(n)$ |
-| **Independent Nested Loops** | `for i in range(n):`<br>&nbsp;&nbsp;`for j in range(m):` | Iterates $n \times m$ times | $\Theta(n \cdot m)$ |
-| **Dependent Nested Loops** | `for i in range(1, n+1):`<br>&nbsp;&nbsp;`for j in range(1, i+1):` | $1 + 2 + 3 + \dots + n = \frac{n(n+1)}{2}$ | $\Theta(n^2)$ |
-| **Logarithmic Loop (Multiply)** | `i = 1`<br>`while i < n: i = i * 2` | $i$ takes values $1, 2, 4, 8, \dots, 2^k \ge n$ | $\Theta(\log n)$ |
-| **Logarithmic Loop (Divide)** | `i = n`<br>`while i > 1: i = i // 2` | $i$ takes values $n, n/2, n/4, \dots \le 1$ | $\Theta(\log n)$ |
-| **Square-Root Loop** | `i = 1`<br>`while i * i <= n: i += 1` | Runs until $i^2 > n \implies i > \sqrt{n}$ | $\Theta(\sqrt{n})$ |
+### Example
+Think of calculating complexity like estimating the time to read a library. 
+- Reading one specific book's title on a shelf is a **Sequential Statement** ($O(1)$).
+- Scanning every book on one shelf is a **Linear Loop** ($O(n)$).
+- If for *every* book on the shelf you must also check *every* page in the book, that is a **Nested Loop** ($O(n \times m)$).
 
----
-
-## 2. Walkthrough Derivations for Common Loops
-
-### Example 2.1: Logarithmic Multiplication Loop
-```python
-def log_example(n):
-    i = 1
-    count = 0
-    while i < n:
-        count += 1
-        i = i * 2
-```
-- At step 0: $i = 1 = 2^0$
-- At step 1: $i = 2 = 2^1$
-- At step 2: $i = 4 = 2^2$
-- At step $k$: $i = 2^k$
-
-The loop stops when $i \ge n \implies 2^k \ge n$.  
-Taking $\log_2$ on both sides: $k = \log_2 n$.  
-**Time Complexity**: $\Theta(\log n)$.
+### Applications & Use Cases
+- **Compiler Optimization**: Modern compilers like GCC or Clang analyze the complexity of loops to decide whether to unroll them for hardware acceleration.
+- **API Rate Limiting & Backend Design**: When engineers build REST APIs, they must calculate the complexity of their database queries. An $O(n^2)$ nested loop to match users with their transactions will crash the backend server when millions of users hit the API at the same time.
 
 ---
 
-### Example 2.2: Insertion Sort Step-Count Analysis
-Insertion Sort works like sorting playing cards in your hand. You take one card at a time and slide it left until it is in the right spot:
+## 2. 3 Solved Numerical/Analytical Examples
 
-```python
-def insertion_sort(A, n):
-    for j in range(1, n):             # Line 1: Outer loop runs (n-1) times
-        key = A[j]                    # Line 2
-        i = j - 1                     # Line 3
-        while i >= 0 and A[i] > key:  # Line 4: Inner shift loop
-            A[i + 1] = A[i]           # Line 5
-            i = i - 1                 # Line 6
-        A[i + 1] = key                # Line 7
+### Example 1: Dependent Nested Loops (Triangular Loop)
+**Problem:** Calculate the time complexity of the following dependent nested loops.
+```text
+count = 0
+for i = 1 to n do:
+    for j = 1 to i do:
+        count = count + 1
 ```
+**Step-by-step Solution:**
+1. Notice that the inner loop's bound depends on the outer loop's current value `i`.
+2. When `i=1`, inner loop runs 1 time.
+3. When `i=2`, inner loop runs 2 times.
+4. When `i=n`, inner loop runs $n$ times.
+5. The total number of times `count = count + 1` executes is the sum of the first $n$ integers:
+   $$\text{Total Executions} = 1 + 2 + 3 + \dots + n = \frac{n(n+1)}{2} = \frac{n^2 + n}{2}$$
+6. Dropping the constants and lower-order terms, the time complexity is $O(n^2)$.
 
-- **Best Case (Already Sorted Array)**:
-  - The inner `while` loop condition `A[i] > key` fails immediately on the very first check.
-  - Inner loop runs $1$ time per outer loop iteration.
-  - Total steps $\approx (n-1) \times 1 = \Theta(n)$ (Linear time).
-
-- **Worst Case (Reverse Sorted Array)**:
-  - For every card $j$, you must shift it past all $j$ previous cards.
-  - Inner loop runs $1 + 2 + 3 + \dots + (n-1) = \frac{n(n-1)}{2}$ times.
-  - Total steps $\approx \Theta(n^2)$ (Quadratic time).
-
----
-
-## 3. Real-World Engineering Trade-offs & Hardware Insights
-
-### Array Locality vs. Linked List Memory Traversal
-Why do algorithms operating on contiguous arrays run faster in real life than those operating on linked lists or binary trees, even if both have the same theoretical Big-O complexity?
-
+### Example 2: Logarithmic Stepped Loop
+**Problem:** Calculate the time complexity of a loop where the iterator multiplies.
+```text
+i = 1
+while i < n do:
+    print(i)
+    i = i * 3
 ```
-CPU Cache Line (64 Bytes)
-+---------------------------------------------------+
-| A[0] | A[1] | A[2] | A[3] | A[4] | A[5] | A[6] |  ---> Array (Sequential Memory)
-+---------------------------------------------------+
-```
+**Step-by-step Solution:**
+1. Let's trace the value of `i` at each step $k$.
+2. Step 0: $i = 1 = 3^0$
+3. Step 1: $i = 3 = 3^1$
+4. Step 2: $i = 9 = 3^2$
+5. Step $k$: $i = 3^k$
+6. The loop stops when $i \ge n$, meaning $3^k \ge n$.
+7. Solving for $k$ (the number of steps), we take the base-3 logarithm of both sides:
+   $k \ge \log_3(n)$
+8. Since logarithms of different bases only differ by a constant multiplier ($\log_3(n) = \frac{\log_2(n)}{\log_2(3)}$), we ignore the base in Big-O notation. The time complexity is $O(\log n)$.
 
-- **CPU Cache Hits (Array)**: Modern computer CPUs load data from RAM in 64-byte chunks into high-speed **L1/L2 Cache**. Reading `A[0]` automatically fetches `A[1]` through `A[7]` into the cache. This makes array loops lightning fast.
-- **CPU Cache Misses (Linked List / Pointer Chasing)**: Linked list nodes and tree nodes are scattered randomly across RAM. Moving to `node.next` requires jumping to a new RAM address, causing a **cache miss** and slowing down execution.
+### Example 3: Mixed Independent and Dependent Loops
+**Problem:** Calculate the overall time complexity of this code block.
+```text
+// Loop Block A
+for i = 1 to n do:
+    for j = 1 to n do:
+        x = x + 1
+
+// Loop Block B
+k = n
+while k > 1 do:
+    k = k / 2
+```
+**Step-by-step Solution:**
+1. **Analyze Loop Block A**: 
+   The outer loop runs $n$ times. The inner loop runs exactly $n$ times for *every* outer loop iteration. 
+   Total executions for Block A = $n \times n = n^2$. Thus, $T_A(n) = O(n^2)$.
+2. **Analyze Loop Block B**:
+   The loop variable `k` starts at $n$ and halves at every step until it reaches 1. 
+   The sequence of values is $n, n/2, n/4, \dots, n/2^m$.
+   The loop stops when $n/2^m \le 1 \implies 2^m \ge n \implies m \ge \log_2(n)$.
+   Total executions for Block B = $\log_2(n)$. Thus, $T_B(n) = O(\log n)$.
+3. **Combine Complexities**:
+   Since the blocks run sequentially (one after the other), we add their complexities.
+   $T(n) = T_A(n) + T_B(n) = O(n^2) + O(\log n)$.
+4. According to the rules of asymptotic notation, we only keep the fastest-growing term. Since $n^2$ grows much faster than $\log n$, the final complexity is $O(n^2)$.

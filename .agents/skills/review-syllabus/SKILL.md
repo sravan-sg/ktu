@@ -33,7 +33,7 @@ Before writing notes for a subject, check whether `notes/<semester>/<subject>/` 
 2. **Extract** these facts directly from the file — do not invent or supplement from outside knowledge:
    - Course code and full course name
    - Credits / L-T-P structure
-   - Module list, and every topic within each module (preserve the syllabus ordering)
+   - Module list, including **every single topic and subtopic** within each module (preserve the exact syllabus ordering exhaustively, as this `syllabus.md` file serves as the sole source of truth forwarded to the `generate-module-notes` and `prepare-knowledge` agents)
    - Textbooks and references (note which modules each textbook covers, if stated)
    - Grading / exam structure (internal marks, end-sem pattern, per-module weightage, question-paper pattern)
 
