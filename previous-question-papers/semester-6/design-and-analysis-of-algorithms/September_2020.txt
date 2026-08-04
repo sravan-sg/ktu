@@ -1,40 +1,180 @@
+Reg No.:
+03000CS302052001
+CLIOS COLLEGE OF ENGINEERING & TEGA.
+LIBRARY
+181512010
+Name:
 APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY
 Sixth semester B.Tech examinations (S), September 2020
 Course Code: CS302
 Course Name: DESIGN AND ANALYSIS OF ALGORITHMS
-Max. Marks: 100 Duration: 3 Hours
+Max. Marks: 100
+ |  | PART A
+ | 
+ |  | Answer all questions, each carries3 marks.
+ | Marks
 
-PART A
-Answer all questions, each carries 3 marks.
-1. Express the return value of the function "mystery" in theta - notation.
-2. Is 2^(n+1) = O(2^n)? Is 2^2n = O(2^n)? Justify
-3. Define a B-tree. Give an example.
-4. Implement UNION using linked list representation of disjoint sets.
+1
+2
+ |  | Express the return value of the function "mystery" in  notation.
+intmystery(int n) {
+int j $j=0$,total $=0;$
+for ( $int~i=1;j<=n;i++)\{$
+++total;
+$j+=2^{*}i;$
+}
+return total;
+}
+Is $2^{n+1}=O(2^{n})?$ Is $2^{2n}=O(2^{n})?$ Justify
+ | (3)
+(3)
 
-PART B
-Answer any two full questions, each carries 9 marks.
-5. a) Solve T(n)=2T(n/2)+2 if n>2...
-6. a) Show the red-black tree that result...
-7. a) Consider the following C function...
 
+
+
+
+
+
+
+3
+ |  | Define a B-tree. Give an example.
+ | (3)
+
+4
+ |  | Implement UNION using linked list representation of disjoint sets.
+ | (3)
+
+ |  | PART B
+Answer any two full questions, each carries9 marks.
+ | 
+5
+ | a)
+ | Solve $T(n)=2T(n/2)+2$ if $n>2$
+ 1 if $n=2$ Using iteration method.
+ | (4)
+
+ | b)
+ | Solve $T(n)=2T(\sqrt{n})+logn$
+ | (5)
+
+6
+ | a)
+ | Show the red-black tree that result after successively inserting the keys
+ | (9)
+
+ |  | 41,38,31,12,19,8 into an initially empty red-black tree.
+ | 
+7
+ | a)
+ | Consider the following C function
+ | (4)
+
+ |  | intcheck(int n) {
+ | 
+ |  | inti,j;
+ | 
+ |  | for $(i=1;i<=n;i++)\{$
+ | 
+Duration: 3 Hours
+Page 1 of 3
+for $(j=1;j<n;j+=i)\{$
+03000CS302052001
+$printf("\%d",i+j)$
+}
+}
+}
+Find the time complexity of check in terms of 0
+notation.
+b) Find the minimum and maximum height of
+Assume that height of the root is 0.
+any AVL-tree with  nodes. (5)
 PART C
-Answer all questions, each carries 3 marks.
-8. What is principle of optimality?
-9. Explain the characteristics of problems that can be solved using dynamic programming.
-10. Find the possible topological orderings...
-11. How the edges of a graph can be classified based on DFS?
-
+Answer all questions, each carries3 marks.
+8
+What is principle of optimality?
+(3)
+9
+Explain the characteristics of problems that can be solved using dynamic
+programming.
+(3)
+10
+Find the possible topological orderings for the following graph
+(3)
+a
+b
+C
+d
+11
+How the edges of a graph can be classified based on DFS?
+(3)
 PART D
-Answer any two full questions, each carries 9 marks.
-12. a) Give a control abstraction for Divide and Conquer method...
-13. a) Define strongly connected components...
-14. a) Write Dijkstra's Single Source Shortest path algorithm...
-
+Answer any two full questions, each carries marks.
+12 a) Give a control abstraction for Divide and Conquer method. Explain with an
+(5)
+example.
+b) Explain the effect of negative weight edges and negative weight cycles on
+shortest paths.
+(4)
+13 a) Define strongly connected components. How DFS can be used to find strongly
+connected components?
+(4)
+b) Find an optimal paranthesizationof a matrix-chain product whose sequence of
+dimensions is $4\times10,10\times3,3\times12,12\times20,20\times7$
+(5)
+(7)
+14 a) Write Dijkstra's Single Source Shortest path algorithm. Analyse the complexity.
+SELIOS COLLEGE OF ENGINEERING & TER
+LIBRARY
+Page 2 of 3
+A
+03000CS302052001
+b) Is it possible to find all pairs of shortest paths using Dijkstra's algorithm? (2)
+Justify.
 PART E
-Answer any four full questions, each carries 10 marks.
-15. a) Compare Divide and Conquer and Dynamic programming methodologies.
-16. a) Explain Branch and bound technique.
-17. a) Explain Kruskal's algorithm with an example.
-18. a) Explain control abstraction of greedy method.
-19. a) Explain the concept of backtracking.
-20. a) Define NP-Hard and NP-complete problems.
+15 a)
+b)
+16 a)
+Answer any four full questions, each carries10 marks.
+Compare Divide and Conquer and Dynamic programming methodologies.
+Write an algorithm to merge 2 sorted arrays into a single sorted array.
+Explain Branch and bound technique.
+(4)
+(6)
+(3)
+b)
+17 a)
+How Travelling Salesperson Problem can be solved using Branch and bound.
+Explain Kruskal's algorithm with an example.
+(7)
+(6)
+an
+b) Derive its complexity of kruskal'salgorithm..
+18 a) Explain control abstraction of greedy method.
+b) Write greedy algorithm for knapsack problem.
+c) Find
+optimal solution to the
+(4)
+(3)
+(4)
+knapsack
+instance
+$n=7$ (3)
+$m=15,(p_{1},p_{2},......p_{7})=(10,5,15,7,6,18,3)$ and $(w_{1},w_{2},.........w_{7})=(2,3,5,7,1,4,1).$
+19 a) Explain the concept of backtracking.
+(3)
+b) How backtracking can be used to solve N-queens problem.
+(4)
+c) Draw the state space tree for 4 Queens problem.
+(3)
+20 a) Define NP-Hard and NP-complete problems.
+(4)
+b) With examples explain polynomial time reducibility.
+(4)
+(2)
+c) What do you mean by intractable problems?
+****
+ELIOS COLLEGE OF ENGINEERING &
+LIBRARY
+& TEC
+ANDEUM IS 4007009
+Page 3 of 3

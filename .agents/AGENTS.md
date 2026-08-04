@@ -59,8 +59,7 @@ The repository contains three custom skills in `.agents/skills/` to automate cou
 
 ### 4. `generate-module-notes` (`.agents/skills/generate-module-notes/SKILL.md`)
 - **Trigger**: When user requests generating or scaffolding study notes for course modules.
-- **Function**: Reads textbook Markdown files in `knowledge/`, creates `module-<number>/` directories containing topic detailed notes (`<topic>.md`), `detailed-notes.md` index, `revision-notes.md`, and updates subject root `README.md`.
-- **Safety**: Pre-write check — requires explicit user confirmation before overwriting existing note files.
+- **Function**: Performs pre-check syllabus mapping, cross-referencing audit (missing, underdeveloped, misplaced topics), and autonomous self-correction (Auto-Add missing topics, Auto-Expand underdeveloped topics, Auto-Relocate misplaced topics). Generates 5-part topic notes (`<topic>.md`), `detailed-notes.md`, `revision-notes.md`, subject `README.md`, `Correction_Log.md`, and `Syllabus_Gap_Analysis.md`.
 
 ### 5. `audit-syllabus-gaps` (`.agents/skills/audit-syllabus-gaps/SKILL.md`)
 - **Trigger**: When user requests verifying, auditing, or performing a gap analysis on course notes.
@@ -91,3 +90,4 @@ The repository contains three custom skills in `.agents/skills/` to automate cou
    - **3 Solved Numerical/Analytical Examples**: Step-by-step mathematical or algorithmic walkthroughs (e.g. solving recurrence relations, stepping through a tree rotation, or tracing a graph traversal). Use actual PYQ problems whenever possible and tag them (e.g. `[April 2018]`).
    - **Previous Year Questions & Solutions**: Dedicated sub-section listing raw past questions paired immediately with 100% complete, self-contained solutions.
 8. **Mandatory Syllabus Gap Analysis Audit**: Upon completing note generation for any subject, run the `audit-syllabus-gaps` skill to generate `notes/<semester>/<subject>/Syllabus_Gap_Analysis.md` documenting missing topics, underdeveloped topics, misplaced topics, and the completion percentage.
+9. **Automated PYQ Pipeline & 2-Stage Verification Checkpoints**: When fetching previous year question papers (`python3 scripts/pyq_scraper_pipeline.py`), every file MUST pass Primary Verification (Metadata/URL: University, Subject Code, Subject Title) and Secondary Verification (Header Inspection: University Name, Subject Code, Subject Title) before being converted into `.txt` and saved with standardized names (`Month_Year.txt`) in `previous-question-papers/<semester>/<subject>/`. Temporary staging files must be cleaned up immediately.

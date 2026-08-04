@@ -1,40 +1,152 @@
+Reg No.:
+Name:
+03000CS302052102
 APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY
-Sixth Semester B.Tech Degree Regular and Supplementary Examination July 2021
+Sixth Semester B. Toch Degree Regular and Supplementary Examination July 2021
+CS307B.Teeb_St
+- Design and Analysis of Algorithms - July 2021
 Course Code: CS302
 Course Name: DESIGN AND ANALYSIS OF ALGORITHMS
-Max. Marks: 100 Duration: 3 Hours
-
+Max. Marks: 100
 PART A
-Answer all questions, each carries 3 marks.
-1. Define the terms Best case, Worst case and Average case time complexities.
-2. Analyse the complexity of the following function...
-3. List out the properties of red-black tree.
-4. What is meant by height balanced tree? Give examples.
-
+Answer all questions, each carries 3 marks
+Duration: 3 Hours
+Marks
+1
+2
+Define the terms Best case, Worst case and Average case time complexities.
+Analyse the complexity of the following function:
+(3)
+(3)
+void function(int n)
+{
+int count  0,
+for $rinti=n/2$ $i<=a;i++)$
+for $(InL~j=I$ $j<-uij=2=j\rangle$
+for (int $k-l;$ k  n; $k=k=2)$
+count;
+3
+4
+List out the properties of red-black mec.
+What is meant by height balanced tree? Give exemples.
+(3)
+(3)
 PART B
-Answer any two full questions, each carries 9 marks.
-5. a) Solve using iteration method...
-6. a) State Master's theorem...
-7. a) Construct a Red Black tree by inserting 10, 20, 30, 15, 16 and 27...
-
+Answer any two full questions, coch carries 9 marks.
+5
+a)
+Solve using iteration method.
+(4)
+i) $T(n)=2~T(n/2)+n$
+ii) $T(n)=2~T(n/2)\div n^{2}$
+b) Solve the recurrence using recursion tree method:
+(5)
+$T(1)=1$
+$T(n)=3T(n/4)+\varpi n^{2}$
+6 a) Stare Master's theorem.
+b) Solve using Masiers theorem:
+(3)
+(6)
+  $T(n)=3~T(n/4)+n~lng~n$
+it) $T(n)=9~T(n/])+n$
+Page 1 cl 3
+03000CS302052102
+7 a) Construct a Red Black tree by inserting 10, 20, 30, 15, 16 and 27 into an initially
+(5)
+empty free.
+b) What do you incan by asymptotic growili rate? Define Big Oh, Big Omega and
+(4)
+Theta notion.
 PART C
-Answer all questions, each carries 3 marks.
-8. Define spanning tree of a graph. Write the total number of spanning trees...
-9. Write the algorithm to find Strongly Connected Components in a graph.
-10. Explain Divide and Conquer strategy with example.
-11. What are the characteristics required by problems so that they can be solved by dynamic programming approach?
-
+Answer ali questions, each carries 3 marks.
+8
+Define spanning tree of a graph. Write the total number of spanning trees
+possible for a complete graph with 4 verticos.
+(3)
+9
+Write the algorithm to find Strongly Connected Components in a graph.
+(3)
+10
+Explain Divide and Conquer strategy with example.
+(3)
+11
+What are the characteristics required by problems so that they can be solved by
+(3)
+dynamic programming approach?
 PART D
-Answer any two full questions, each carries 9 marks.
-12. Apply these algorithms on the following graph. Let A be the source vertex...
-13. a) Write down and explain Bellman Ford algorithm...
-14. a) Write Dijkstra's Single Source Shortest path algorithm and illustrate with example.
-
+Answer any two full questions, cach carries 9 marks.
+12
+Apply these algorithms on the following graph. Let A be the source vertex.
+Analyse complexity of each algorithm.
+(9)
+ ) BFS) DFS
+A
+B
+H
+C
+D
+G
+E
+F
+13 a) Write down and explain Bellman Ford algorithun. Will your algorithm detect all
+negative cycles in the graph? Justify your answer.
+(4)
+b) Explain Sirassen's matrix muluplication with example and analyse ins
+(5)
+complexity.
+example.
+14 a) Write Dijkstra's Single Source Shortest path algorithm and illustrate with (5)
+b) Write an algorillim to merge 2 sorted arrays into a single sorted array.
+(4)
+Page 2 of 3
+15
+03000CS302052102
 PART E
 Answer any four full questions, each carries 10 marks.
-15. Apply these algorithms on the following graph...
-16. a) Give a comparison between dynamic programming and divide and conquer strategy.
-17. a) Formulate fractional Knapsack problem. Write greedy algorithm...
-18. Define N-Queens problem. Write down and explain an algorithm to solve N-Queens problem...
-19. a) Define NP-Hard and NP-complete problems.
-20. a) Define Travelling Salesman Problem (TSP).
+Apply these algorithms on the following graph, Let A be the source vertex.
+Analyse complexity of each algorithm.
+1) Prims) Kruskal
+11
+A
+B
+7
+10
+9
+C
+D
+8
+12
+E
+16 a) Give a comparison between dynamic programming and divide and ennquer
+strategy.
+(10)
+(3)
+b) Explain greedy approach. Write general Greedy Algorithm.
+(5)
+c) Explain the differences between Prim's and Kruskal's Minimum Spanning Tree
+algorahms.
+(2)
+17 a) Formulate fractional Knapsack problem. Write greedy algorithm for Fractional
+Knapsack problem.
+(4)
+(6)
+18
+b) Find optimal solution for the following Knapsack problem.
+$n-3$, $m=20$, $W\rightarrow\{18,15,10\}$, $P=\{25,24,20\}$
+Deline N-Queens problem. Write down and explain an algorithm  solve N.
+Queens problem using Backtracking technique. Illustrate in with suitable
+example
+19) Define NP-Hard and NP-complete problems.
+(10)
+b) What do you mean by intractable problems?
+c) Write notes on polynomial time reducibility, Give examples.
+20 a) Define Travelling Salesman Problem (TSP).
+b) Explain the basic steps that are to be followed to solve TSP using branch and
+brund, Illustrate with an example.
+Page 3 of 3
+E
+(4)
+(2)
+(4)
+(3)
+(7)

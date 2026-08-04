@@ -26,6 +26,28 @@ A **Balanced Tree** is like an office manager who strictly enforces that no draw
 
 ---
 
+### Red-Black Tree Deletion Techniques (4 Structural Cases)
+When deleting a node from a Red-Black tree, if a Black node is removed, it introduces a **"Double Black"** violation (loss of black-height). Balance is restored by considering the color of the sibling $S$ and its children:
+1. **Case 1 (Sibling $S$ is Red):** Perform a rotation at parent $P$, swap colors of $P$ and $S$. This transforms the situation into Case 2, 3, or 4 where sibling is Black.
+2. **Case 2 (Sibling $S$ is Black, both of $S$'s children are Black):** Recolor $S$ to Red. Push the "Double Black" property up to parent $P$. If $P$ was Red, it becomes Black (done); if $P$ was Black, repeat fixup at $P$.
+3. **Case 3 (Sibling $S$ is Black, $S$'s inner child is Red, outer child is Black):** Perform a rotation at $S$ towards the inner child and swap colors of $S$ and its child. This converts the setup to Case 4.
+4. **Case 4 (Sibling $S$ is Black, $S$'s outer child is Red):** Perform a rotation at parent $P$, recolor $S$ to parent's color, color parent $P$ Black, and color $S$'s outer child Black. Removes the Double Black violation completely.
+
+---
+
+### B-Tree Deletion Operations (3 Cases)
+Deleting a key $k$ from a B-Tree of order $m$ must preserve the property that every node (except root) contains at least $\lceil m/2 \rceil - 1$ keys:
+1. **Case 1 (Key $k$ is in a Leaf Node):**
+   - If leaf has $> \lceil m/2 \rceil - 1$ keys: Simply remove $k$.
+   - If leaf has minimum keys: Borrow a key from an immediate sibling (via parent) if sibling has extra keys. If sibling also has minimum keys, **merge** the leaf, its sibling, and the separating key from parent.
+2. **Case 2 (Key $k$ is in an Internal Node):**
+   - Find the **In-order Predecessor** (largest key in left child) or **In-order Successor** (smallest key in right child).
+   - Replace key $k$ with predecessor/successor key $k'$, then recursively delete $k'$ from the leaf node.
+3. **Case 3 (Underflow Propagation to Parent):**
+   - If merging reduces parent's key count below $\lceil m/2 \rceil - 1$, apply borrow/merge recursively up toward the root. If root becomes empty, its only child becomes the new root, reducing tree height by 1.
+
+---
+
 ## 2. 3 Solved Numerical/Analytical Examples
 
 ### Example 1: AVL Tree Imbalance and Rotation

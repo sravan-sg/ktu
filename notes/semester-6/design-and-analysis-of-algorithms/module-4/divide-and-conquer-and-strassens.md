@@ -13,7 +13,25 @@
 2. **Conquer**: Recursively solve these tiny sub-problems. (Eventually, the problem becomes so small that the answer is trivial).
 3. **Combine**: Merge the results of the sub-problems to produce the final global answer.
 
-Standard Matrix Multiplication requires multiplying every row by every column, resulting in an $O(n^3)$ time complexity. **Strassen's Matrix Multiplication** uses Divide and Conquer to split matrices into 4 quadrants. By employing a clever algebraic trick, Strassen reduced the number of required recursive multiplications from 8 to 7, bringing the time complexity down to $O(n^{2.81})$.
+Standard Matrix Multiplication requires multiplying every row by every column, resulting in an $O(n^3)$ time complexity. **Strassen's Matrix Multiplication** uses Divide and Conquer to split matrices into 4 $n/2 \times n/2$ submatrices:
+$$\begin{pmatrix} A_{11} & A_{12} \\ A_{21} & A_{22} \end{pmatrix} \begin{pmatrix} B_{11} & B_{12} \\ B_{21} & B_{22} \end{pmatrix} = \begin{pmatrix} C_{11} & C_{12} \\ C_{21} & C_{22} \end{pmatrix}$$
+
+By employing a clever algebraic reduction, Strassen computes only **7 matrix products** ($P_1$ to $P_7$) instead of 8:
+- $P_1 = A_{11} \cdot (B_{12} - B_{22})$
+- $P_2 = (A_{11} + A_{12}) \cdot B_{22}$
+- $P_3 = (A_{21} + A_{22}) \cdot B_{11}$
+- $P_4 = A_{22} \cdot (B_{21} - B_{11})$
+- $P_5 = (A_{11} + A_{22}) \cdot (B_{11} + B_{22})$
+- $P_6 = (A_{12} - A_{22}) \cdot (B_{21} + B_{22})$
+- $P_7 = (A_{11} - A_{21}) \cdot (B_{11} + B_{12})$
+
+The resultant submatrices $C_{ij}$ are combined using matrix additions/subtractions:
+- $C_{11} = P_5 + P_4 - P_2 + P_6$
+- $C_{12} = P_1 + P_2$
+- $C_{21} = P_3 + P_4$
+- $C_{22} = P_5 + P_1 - P_3 - P_7$
+
+This drops the total recursive multiplications from 8 to 7, resulting in the recurrence $T(n) = 7T(n/2) + O(n^2) \implies O(n^{\log_2 7}) \approx \mathbf{O(n^{2.81})}$.
 
 ### Example
 Imagine organizing an enormous unsorted dictionary to find a specific word. Looking page by page (Linear Search) takes too long.

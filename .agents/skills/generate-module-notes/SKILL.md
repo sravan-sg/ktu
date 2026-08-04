@@ -1,16 +1,18 @@
 ---
 name: generate-module-notes
-description: Generate comprehensive modular study notes following the module directory structure (notes/semester-<number>/<subject-name>/module-<number>/). Produces topic-wise detailed notes linked via detailed-notes.md, 1 revision-notes.md per module, and updates the subject root README.md. Use when generating, scaffolding, or updating course notes.
+description: Generate comprehensive modular study notes following the module directory structure (notes/semester-<number>/<subject-name>/module-<number>/) with built-in syllabus mapping, cross-referencing audit, auto-correction loop, and correction logging.
 ---
 
-# Generate Modular Study Notes Pipeline
+# Generate Modular Study Notes Pipeline (With Auto-Correction Loop)
 
-Generates topic-wise detailed notes and module revision notes according to the strict workspace directory structure:
+Generates topic-wise detailed notes, module revision guides, and subject root documentation while automatically auditing and self-correcting syllabus gaps according to the strict workspace directory structure:
 
 ```
 notes/semester-<number>/<subject-name>/
-├── README.md                           # Master subject guide linking all topic detailed notes & module revision notes
+├── README.md                           # Master subject guide linking all topic detailed notes & revision notes
 ├── syllabus.md                         # Extracted syllabus, grading criteria & exam focus
+├── Syllabus_Gap_Analysis.md            # Audit report & completion metrics
+├── Correction_Log.md                   # Auto-correction execution log
 ├── knowledge/                          # Ingested PDF-to-Markdown reference texts
 ├── module-1/                           # Module 1 directory
 │   ├── detailed-notes.md               # Detailed notes index for Module 1 (links to topic files)
@@ -28,68 +30,50 @@ notes/semester-<number>/<subject-name>/
 
 ## Core Guidelines & Style Constraints
 
-- **MANDATORY Knowledge Ingestion First**: Before writing any note section, you MUST first read and inspect all converted textbook Markdown files in the subject's `knowledge/` directory (`notes/semester-<number>/<subject-name>/knowledge/`). Extract exact definitions, proofs, pseudocode, and numerical examples directly from these source texts.
-- **MANDATORY Previous Year Questions (PYQ) Integration**: You MUST read and analyze all question papers available in the `previous-question-papers/semester-<number>/<subject-name>/` directory. When generating notes, explicitly highlight topics that are frequently asked in exams, and incorporate relevant previous year questions as solved examples or practice questions in the notes.
-- **Simplicity & Clarity**: Write in plain, clear, easy-to-understand language. Avoid dense jargon or unnecessarily complex terms. Introduce technical terms only after giving simple intuitive explanations.
-- **Senior CS Professor Persona**: Teach *why* concepts work, not just *what* they are. Combine intuition, step-by-step mathematical derivations, clear code snippets, and real-world engineering use-cases.
-- **100% Syllabus Coverage**: Ensure every topic listed for Module X in `syllabus.md` gets its own dedicated topic markdown file (`<topic-name>.md`) inside `module-X/`.
+- **MANDATORY Knowledge Ingestion First**: Before writing any note section, read and inspect all converted textbook Markdown files in `notes/semester-<number>/<subject-name>/knowledge/`. Extract exact definitions, proofs, pseudocode, and numerical examples directly from these source texts.
+- **MANDATORY Previous Year Questions (PYQ) Integration**: Read and analyze all question papers in `previous-question-papers/semester-<number>/<subject-name>/`. Incorporate past questions with **100% self-contained, in-place solutions** (NO shortcut pointers like *"See Example X above"* or *"See Section 1"*).
+- **Mandatory 5-Part Topic Structure**: Every single topic markdown file (`<topic-kebab-case>.md`) MUST strictly contain all 5 of these sections:
+  1. **Explanation**: A clear, conceptual breakdown of the topic and core intuition.
+  2. **Example**: A basic theoretical or visual example explaining the concept.
+  3. **Applications & Use Cases**: Real-world software engineering scenarios where this algorithm/concept is applied.
+  4. **3 Solved Numerical/Analytical Examples**: Step-by-step mathematical or algorithmic walkthroughs (recurrences, tree rotations, graph traces), tagged with PYQ sessions where applicable (e.g. `[April 2018]`).
+  5. **Previous Year Questions & Solutions**: Sub-section listing raw past questions paired with full, complete, in-place solutions.
+- **Senior CS Professor Persona**: Teach *why* concepts work, combining intuition, step-by-step mathematical derivations, clear code snippets, and real-world engineering trade-offs.
 
 ---
 
-## Step-by-Step Execution Plan
+## Automated Verification & Self-Correction Workflow
 
-**IMPORTANT**: This pipeline must be applied iteratively to **ALL modules** (Module 1 through Module N) defined in the syllabus, not just a single module.
+Whenever this skill is executed for any semester and subject, it MUST automatically execute the following 5-step loop:
 
-### Step 1: Read Knowledge Base, PYQs & Syllabus
+### Step 1: Syllabus Mapping (Pre-check)
 1. Locate target subject directory: `notes/semester-<number>/<subject-name>/`.
-2. Read `syllabus.md` to extract titles, submodules, and the full list of topics for all modules.
-3. List and inspect all Markdown files in `knowledge/`. Extract textbook formulas, code, and numerical problems.
-4. Read all `.txt` or `.pdf` files in the `previous-question-papers/semester-<number>/<subject-name>/` directory. Map the questions to their corresponding modules/topics so you can integrate them as high-yield exam focus points.
+2. Read the official syllabus document `notes/semester-<number>/<subject-name>/syllabus.md` (or raw file in `syllabus/semester-<number>/<subject-name>/`).
+3. Extract an explicit, exhaustive list of every topic and subtopic belonging to Module 1 through Module N.
 
-*(For each Module X extracted from the syllabus, perform Steps 2 through 6)*
+### Step 2: Content Verification & Audit (Cross-Referencing)
+Scan all existing module folders (`module-1/` through `module-N/`) and compare existing note files against the mapped syllabus to identify:
+- **Missing Topics**: Syllabus topics with zero coverage in `module-X/`.
+- **Underdeveloped Topics**: Topics that exist but lack standard KTU depth, complete derivations, step-by-step walkthroughs, or are missing any of the mandatory 5 sections.
+- **Misplaced Topics**: Topics documented in the wrong module directory.
 
----
+### Step 3: Automatic Self-Correction (Autonomous Execution)
+Fix all issues identified in Step 2 immediately without asking for user permission:
+- **Auto-Add**: Generate comprehensive, KTU-standard notes for any Missing Topics following the 5-part template and place them into the correct `module-X/<topic-kebab-case>.md` file.
+- **Auto-Expand**: Rewrite and expand any Underdeveloped Topics so they meet university-level academic depth and complete all 5 mandatory sections.
+- **Auto-Relocate**: Move any Misplaced Topics out of their current file into the correct `module-X/` directory and update index links.
 
-### Step 2: Create Module Directory `module-<number>/`
+### Step 4: Generate & Update Modular Notes & Indices
+For all modules (Module 1 through Module N):
+1. Write/update `<topic-kebab-case>.md` files for all topics.
+2. Write/update `module-<number>/detailed-notes.md` (master index for Module X).
+3. Write/update `module-<number>/revision-notes.md` (4-part submodule summary).
+4. Update subject root `README.md` to link all detailed notes and revision guides.
 
-Create directory `notes/semester-<number>/<subject-name>/module-<number>/`.
-
----
-
-### Step 3: Write Topic-Wise Detailed Notes Files
-
-For each topic in Module X:
-- Create a dedicated file: `notes/semester-<number>/<subject-name>/module-<number>/<topic-kebab-case>.md`.
-- Ensure there is a detailed definition and core intuition about each topic at the beginning, mirroring the comprehensive style and fundamental concepts given in Module 1 and also
-- For every single topic within a requested module, you must provide:
-  - **Explanation**: A clear, conceptual breakdown of the topic.
-  - **Example**: A basic theoretical or visual example to explain the concept.
-  - **Applications & Use Cases**: Real-world software engineering scenarios where this algorithm or concept is applied.
-  - **3 Solved Numerical/Analytical Examples**: Step-by-step mathematical or algorithmic walkthroughs (e.g., solving recurrence relations, stepping through a tree rotation, or tracing a graph traversal). **IMPORTANT**: Whenever possible, use actual problems extracted from the `previous-question-papers/semester-<number>/<subject-name>/` files for these examples, and tag them (e.g., `[April 2018]`).
-  - **Previous Year Questions & Solutions**: A dedicated sub-section listing the raw questions asked about this topic in past exams, paired immediately with complete, self-contained, step-by-step solutions or mathematical proofs. **CRITICAL**: Never use shortcut cross-references like "See Example X above" or "See Section 1". Always write out the full derivation, pseudocode, trace, or proof directly in the solution block.
-- Keep the tone academic, highly detailed, and structured for easy studying.
-
----
-
-### Step 4: Write `module-<number>/detailed-notes.md`
-
-Create `notes/semester-<number>/<subject-name>/module-<number>/detailed-notes.md`:
-- Serves as the master index for Module X.
-- Provides a summary overview of the module.
-- Includes clickable relative markdown links to every `<topic-kebab-case>.md` file created in Step 3.
-
----
-
-### Step 5: Write `module-<number>/revision-notes.md`
-
-Create `notes/semester-<number>/<subject-name>/module-<number>/revision-notes.md`:
-- Standardized 4-part submodule template (*Explanation, Real-World Example, Applications & Use Cases, 3 Solved Numerical Micro-Examples*) for each topic in Module X.
-
----
-
-### Step 6: Create or Update Subject Root `README.md`
-
-Create or update `notes/semester-<number>/<subject-name>/README.md`:
-- **Header & Scope**: Subject code, title, semester, credits, and course overview.
-- **Detailed Notes Section**: Table of Contents listing every module and linking to all topic-wise detailed notes files (`[Topic Name](module-X/topic-name.md)`).
-- **Revision Notes Section (Final Section)**: Dedicated section providing direct links to the revision notes file of each module (`[Module X Revision Notes](module-X/revision-notes.md)`).
+### Step 5: Logging & Report Generation
+Output two log files in `notes/semester-<number>/<subject-name>/`:
+1. **`Correction_Log.md`**: Detailing exact actions taken during Step 3 (items Auto-Added, Auto-Expanded, or Auto-Relocated).
+2. **`Syllabus_Gap_Analysis.md`**: Global verification report detailing:
+   - Module-by-module syllabus coverage
+   - Audit checklist (5-part template, self-contained PYQs, folder structure)
+   - Final Completion Percentage (100% target)
