@@ -29,6 +29,7 @@ notes/semester-<number>/<subject-name>/
 ## Core Guidelines & Style Constraints
 
 - **MANDATORY Knowledge Ingestion First**: Before writing any note section, you MUST first read and inspect all converted textbook Markdown files in the subject's `knowledge/` directory (`notes/semester-<number>/<subject-name>/knowledge/`). Extract exact definitions, proofs, pseudocode, and numerical examples directly from these source texts.
+- **MANDATORY Previous Year Questions (PYQ) Integration**: You MUST read and analyze all question papers available in the `previous-question-papers/semester-<number>/<subject-name>/` directory. When generating notes, explicitly highlight topics that are frequently asked in exams, and incorporate relevant previous year questions as solved examples or practice questions in the notes.
 - **Simplicity & Clarity**: Write in plain, clear, easy-to-understand language. Avoid dense jargon or unnecessarily complex terms. Introduce technical terms only after giving simple intuitive explanations.
 - **Senior CS Professor Persona**: Teach *why* concepts work, not just *what* they are. Combine intuition, step-by-step mathematical derivations, clear code snippets, and real-world engineering use-cases.
 - **100% Syllabus Coverage**: Ensure every topic listed for Module X in `syllabus.md` gets its own dedicated topic markdown file (`<topic-name>.md`) inside `module-X/`.
@@ -39,10 +40,11 @@ notes/semester-<number>/<subject-name>/
 
 **IMPORTANT**: This pipeline must be applied iteratively to **ALL modules** (Module 1 through Module N) defined in the syllabus, not just a single module.
 
-### Step 1: Read Knowledge Base & Syllabus
+### Step 1: Read Knowledge Base, PYQs & Syllabus
 1. Locate target subject directory: `notes/semester-<number>/<subject-name>/`.
 2. Read `syllabus.md` to extract titles, submodules, and the full list of topics for all modules.
 3. List and inspect all Markdown files in `knowledge/`. Extract textbook formulas, code, and numerical problems.
+4. Read all `.txt` or `.pdf` files in the `previous-question-papers/semester-<number>/<subject-name>/` directory. Map the questions to their corresponding modules/topics so you can integrate them as high-yield exam focus points.
 
 *(For each Module X extracted from the syllabus, perform Steps 2 through 6)*
 
@@ -63,7 +65,8 @@ For each topic in Module X:
   - **Explanation**: A clear, conceptual breakdown of the topic.
   - **Example**: A basic theoretical or visual example to explain the concept.
   - **Applications & Use Cases**: Real-world software engineering scenarios where this algorithm or concept is applied.
-  - **3 Solved Numerical/Analytical Examples**: Step-by-step mathematical or algorithmic walkthroughs (e.g., solving recurrence relations, stepping through a tree rotation, or tracing a graph traversal).
+  - **3 Solved Numerical/Analytical Examples**: Step-by-step mathematical or algorithmic walkthroughs (e.g., solving recurrence relations, stepping through a tree rotation, or tracing a graph traversal). **IMPORTANT**: Whenever possible, use actual problems extracted from the `previous-question-papers/semester-<number>/<subject-name>/` files for these examples, and tag them (e.g., `[April 2018]`).
+  - **Previous Year Questions & Solutions**: A dedicated sub-section listing the raw questions asked about this topic in past exams, paired immediately with complete, self-contained, step-by-step solutions or mathematical proofs. **CRITICAL**: Never use shortcut cross-references like "See Example X above" or "See Section 1". Always write out the full derivation, pseudocode, trace, or proof directly in the solution block.
 - Keep the tone academic, highly detailed, and structured for easy studying.
 
 ---

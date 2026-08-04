@@ -52,16 +52,47 @@ Imagine searching for your car in a large parking lot containing $n$ cars:
    Total comparisons $\approx \frac{1}{2} \times \frac{n(n-1)}{2} = \frac{n^2 - n}{4}$.
    $T_{\text{avg}}(n) = O(n^2)$.
 
-### Example 3: Adding an Element to a Dynamic Array (Vector)
-**Problem:** Analyze the Best and Worst case time complexity of appending an element to a dynamic array that doubles its capacity when full.
+### Example 3: Analytical Justification of Asymptotic Growth [April 2018]
+**Problem:** Is $2^{n+1} = O(2^n)$? Is $2^{2n} = O(2^n)$? Justify your answer.
 **Step-by-step Solution:**
-1. **Best/Average Case (Capacity not reached):** The dynamic array has empty slots remaining. We simply place the element at the next available index `n`.
-   Time taken = 1 assignment operation.
-   $T_{\text{best}}(n) = T_{\text{avg}}(n) = O(1)$.
-2. **Worst Case (Capacity reached):** The array is full. The algorithm must:
-   - Allocate a new array of size $2n$.
-   - Copy all $n$ existing elements to the new array.
-   - Insert the new element.
-   Time taken = $O(n)$ copies + 1 insertion.
-   $T_{\text{worst}}(n) = O(n)$.
-*(Note: Across $n$ insertions, this averages out to $O(1)$ amortized time).*
+1. **Part A: $2^{n+1} = O(2^n)$**
+   - By definition of Big-O, $f(n) = O(g(n))$ if there exists constants $c > 0, n_0 \ge 0$ such that $f(n) \le c \cdot g(n)$ for all $n \ge n_0$.
+   - $2^{n+1} = 2^1 \cdot 2^n = 2 \cdot 2^n$.
+   - If we choose $c = 2$ and $n_0 = 1$, then $2 \cdot 2^n \le 2 \cdot 2^n$ holds true.
+   - **Conclusion:** Yes, $2^{n+1} = O(2^n)$.
+2. **Part B: $2^{2n} = O(2^n)$**
+   - $2^{2n} = (2^n)^2 = 2^n \cdot 2^n$.
+   - For $2^{2n} \le c \cdot 2^n$ to be true, dividing both sides by $2^n$ gives $2^n \le c$.
+   - Since $2^n$ grows to infinity as $n$ increases, there is no constant $c$ that can bound it.
+   - **Conclusion:** No, $2^{2n} \neq O(2^n)$.
+
+---
+
+### Previous Year Questions & Solutions
+
+1. **"Is $2^{n+1} = O(2^n)$? Is $2^{2n} = O(2^n)$? Justify your answer." [April 2018, Sept 2020]**
+   - **Solution:**
+     - **Part A: Is $2^{n+1} = O(2^n)$?**
+       - **Definition:** $f(n) = O(g(n))$ if $\exists c > 0, n_0 \ge 0$ such that $f(n) \le c \cdot g(n)$ for all $n \ge n_0$.
+       - $2^{n+1} = 2^1 \cdot 2^n = 2 \cdot 2^n$.
+       - Choose constant $c = 2$ and $n_0 = 1$.
+       - Since $2 \cdot 2^n \le 2 \cdot 2^n$ holds for all $n \ge 1$, the condition is satisfied.
+       - **Verdict:** **YES**, $2^{n+1} = O(2^n)$.
+     - **Part B: Is $2^{2n} = O(2^n)$?**
+       - $2^{2n} = (2^n)^2 = 2^n \cdot 2^n$.
+       - Assume $2^{2n} \le c \cdot 2^n$ for some constant $c$.
+       - Dividing both sides by $2^n$ yields $2^n \le c$.
+       - As $n \to \infty$, $2^n$ grows without bound, so no fixed constant $c$ can bound it.
+       - **Verdict:** **NO**, $2^{2n} \ne O(2^n)$.
+
+2. **"Explain Asymptotic notations in algorithm analysis." [Dec 2019]**
+   - **Solution:** Asymptotic notations are mathematical tools used to describe the limiting behavior of a function when the input size $n \to \infty$:
+     - **Big-O Notation ($O$)**: Represents the **Upper Bound** (worst-case performance). $f(n) = O(g(n))$ means $f(n) \le c \cdot g(n)$ for $n \ge n_0$.
+     - **Big-Omega Notation ($\Omega$)**: Represents the **Lower Bound** (best-case performance). $f(n) = \Omega(g(n))$ means $f(n) \ge c \cdot g(n)$ for $n \ge n_0$.
+     - **Big-Theta Notation ($\Theta$)**: Represents the **Tight Bound** (exact growth rate). $f(n) = \Theta(g(n))$ means $c_1 \cdot g(n) \le f(n) \le c_2 \cdot g(n)$ for $n \ge n_0$.
+
+3. **"Define the terms Best case, Worst case and Average case time complexities." [July 2021]**
+   - **Solution:**
+     - **Worst-Case Complexity $T_{\text{worst}}(n)$**: The maximum number of operations an algorithm performs over all inputs of size $n$. It provides a guaranteed upper bound on execution time.
+     - **Best-Case Complexity $T_{\text{best}}(n)$**: The minimum number of operations performed over all inputs of size $n$, representing the most favorable scenario.
+     - **Average-Case Complexity $T_{\text{avg}}(n)$**: The expected number of operations averaged over all possible inputs of size $n$, weighted by their probability distribution: $T_{\text{avg}}(n) = \sum P(I) \cdot T(I)$.

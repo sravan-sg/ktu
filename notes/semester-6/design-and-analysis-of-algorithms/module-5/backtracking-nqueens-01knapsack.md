@@ -23,8 +23,8 @@ Imagine navigating a physical corn maze looking for an exit. You pick a path and
 
 ## 2. 3 Solved Numerical/Analytical Examples
 
-### Example 1: N-Queens Constraint Logic
-**Problem:** Prove the specific mathematical constraints used to prune branches in the N-Queens problem on an $N \times N$ board. If a queen is placed at row $i$ and column $j$, how do we mathematically verify that a new queen at row $r$ and column $c$ is safe?
+### Example 1: N-Queens Constraint Logic [April 2018, Dec 2019]
+**Problem:** State the N-queens problem. Prove the specific mathematical constraints used to prune branches in the N-Queens problem on an $N \times N$ board. If a queen is placed at row $i$ and column $j$, how do we mathematically verify that a new queen at row $r$ and column $c$ is safe?
 **Step-by-step Solution:**
 1. **Row Constraint:** A queen can attack anything in its row.
    - Constraint: $r \neq i$.
@@ -35,8 +35,8 @@ Imagine navigating a physical corn maze looking for an exit. You pick a path and
    - Constraint: $|r - i| \neq |c - j|$.
 4. **Conclusion:** Before placing a queen at $(r, c)$, the algorithm loops through all previously placed queens. If *any* previous queen at $(i, j)$ violates either $c = j$ or $|r - i| = |c - j|$, the algorithm prunes the branch and immediately tries column $c+1$.
 
-### Example 2: 4-Queens State Space Tree Trace
-**Problem:** Trace the initial backtracking steps to place 4 queens on a $4 \times 4$ board.
+### Example 2: 4-Queens State Space Tree Trace [April 2018]
+**Problem:** Explain the solution by tracing the initial backtracking steps to place 4 queens on a $4 \times 4$ board.
 **Step-by-step Solution:**
 1. **Row 1:** Place $Q_1$ at $(1, 1)$. (Valid).
 2. **Row 2:** 
@@ -69,3 +69,41 @@ Imagine navigating a physical corn maze looking for an exit. You pick a path and
    - $U = 65$. `MaxProfit` $= 60$.
    - Since $65 > 60$, it is mathematically possible that this branch holds a better solution.
 4. **Conclusion:** The algorithm will **NOT** prune this branch, and will continue to explore whether including or excluding $I_3$ yields the 65 profit. *(If $U$ had been 50, the algorithm would have pruned immediately without looking at $I_3$)*.
+
+---
+
+### Previous Year Questions & Solutions
+
+1. **"Define N-Queens problem. Write down and explain an algorithm to solve N-Queens problem." [Dec 2019, July 2021]**
+   - **Solution:**
+     - **Definition:** The N-Queens problem asks to place $N$ chess queens on an $N \times N$ chessboard so that no two queens attack each other (no two queens share the same row, column, or diagonal).
+     ```text
+     NQueens(row, n):
+         if row > n:
+             print solution board and return true
+         for col = 1 to n:
+             if IsSafe(row, col):
+                 board[row] = col        // place queen at (row, col)
+                 NQueens(row + 1, n)     // recurse to next row
+                 board[row] = 0          // backtrack
+     
+     IsSafe(r, c):
+         for i = 1 to r - 1:
+             if board[i] == c or abs(board[i] - c) == abs(i - r):
+                 return false            // column or diagonal conflict
+         return true
+     ```
+
+2. **"Explain 8-Queens problem and its backtracking solution." [April 2018]**
+   - **Solution:**
+     - The 8-Queens problem places 8 queens on an $8 \times 8$ board.
+     - **Constraint Logic:** For a queen at $(i, j)$ and a new candidate queen at $(r, c)$:
+       1. **Column Conflict:** $c == j$.
+       2. **Diagonal Conflict:** $|r - i| == |c - j|$.
+     - **Backtracking Mechanism:** The algorithm places queens row by row. If row $r$ has no safe column $c \in [1, 8]$, the branch is pruned. The algorithm steps back (backtracks) to row $r-1$, moves the queen in row $r-1$ to its next available safe column, and resumes forward search.
+
+3. **"Explain the concept of Backtracking." [Sept 2020]**
+   - **Solution:** Backtracking is a systematic search strategy for solving constraint satisfaction and optimization problems by building candidate solutions incrementally along a State Space Tree. Key features:
+     1. **Depth-First Search (DFS):** Explores choices node by node.
+     2. **Pruning (Bounding/Bounding Function):** If a partial candidate violates constraints, the algorithm immediately abandons the entire subtree (prunes the branch).
+     3. **Backtrack Step:** Returns to the parent decision node and attempts the next choice.

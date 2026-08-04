@@ -49,7 +49,7 @@ There are three different bidding rooms (Branches). You peek into Room A and the
 3. **Formulate Bounding Function:** $c(x) = g(x) + h(x)$.
 4. **Execution Logic:** When branching, LCBB will calculate $c(x)$ for sliding a tile Up, Down, Left, or Right. It will always prioritize exploring the board state with the lowest $c(x)$ (the state that appears closest to the solved configuration).
 
-### Example 3: TSP Cost Matrix Reduction (Finding the Root Lower Bound)
+### Example 3: TSP Cost Matrix Reduction (Finding the Root Lower Bound) [April 2018]
 **Problem:** You are solving the Travelling Salesman Problem for 4 cities using B&B. The original cost matrix $C$ is below. Find the absolute minimum Lower Bound cost of the root node by reducing the matrix (ensuring every row and column has at least one 0).
 $$C = \begin{bmatrix} \infty & 20 & 30 & 10 \\ 15 & \infty & 16 & 4 \\ 3 & 5 & \infty & 2 \\ 19 & 6 & 18 & \infty \end{bmatrix}$$
 **Step-by-step Solution:**
@@ -66,3 +66,32 @@ $$C = \begin{bmatrix} \infty & 20 & 30 & 10 \\ 15 & \infty & 16 & 4 \\ 3 & 5 & \
    - Col 4 Min = 0. $\rightarrow [0, 0, 0, \infty]$ (No change)
    - Total Column Reduction Cost $= 1 + 0 + 12 + 0 = 13$.
 3. **Final Result:** The Lower Bound for the root node is the sum of all reduction costs: $22 + 13 =$ **$35$**. Any valid TSP tour in this graph will cost absolutely no less than 35.
+
+---
+
+### Previous Year Questions & Solutions
+
+1. **"Define Travelling Salesman Problem (TSP). Explain Branch and Bound technique." [April 2018, July 2021, Sept 2020]**
+   - **Solution:**
+     - **TSP Definition:** Given a set of $n$ cities and an $n \times n$ distance/cost matrix $C[i,j]$, find the tour of minimum total cost that visits every city exactly once and returns to the starting city (minimum-weight Hamiltonian Cycle).
+     - **Branch and Bound Technique:**
+       1. **Branching:** Construct a State Space Tree. At the root, start at city 1. Branch to unvisited cities at each level.
+       2. **Bounding Function:** At each node, compute a Lower Bound $L$ on the cost of any tour rooted at that node using **Row and Column Reduction** on the cost matrix.
+       3. **Pruning:** Maintain a global `UpperBound` (cost of the best full tour found so far). If a node's $L \ge \text{UpperBound}$, kill/prune that node immediately.
+       4. **Search Strategy:** Use Least-Cost (LC-Search) using a Priority Queue to expand the live node with the lowest lower bound first.
+
+2. **"Draw and explain the State Space Tree for 4-City TSP." [April 2018]**
+   - **Solution:**
+     For 4 cities $\{1, 2, 3, 4\}$ starting at City 1:
+     - **Level 0 (Root):** Path `[1]`. Matrix reduced to find initial Lower Bound $L_0$.
+     - **Level 1 (Branching):** 3 Children: Node 2 `[1->2]`, Node 3 `[1->3]`, Node 4 `[1->4]`.
+     - **Level 2 (Branching from 1->2):** 2 Children: Node 5 `[1->2->3]`, Node 6 `[1->2->4]`.
+     - **Level 3 (Leaf):** Path `[1->2->3->4->1]`. Total tour cost computed. Updates `UpperBound`.
+     - *Pruning:* If $L(\text{Node 3}) \ge \text{UpperBound}$, subtree under `[1->3]` is never expanded.
+
+3. **"Explain Row and Column Reduction method for finding Lower Bound in TSP." [April 2018, Sept 2020]**
+   - **Solution:**
+     1. **Row Reduction:** Subtract the minimum element of each row $i$ ($r_i$) from all entries in row $i$.
+     2. **Column Reduction:** Subtract the minimum element of each column $j$ ($c_j$) from all entries in column $j$.
+     3. **Root Lower Bound:** $L_0 = \sum_{i=1}^n r_i + \sum_{j=1}^n c_j$.
+     4. **Child Lower Bound (Moving $i \to j$):** Set row $i = \infty$, column $j = \infty$, $C[j,1] = \infty$. Reduce new matrix (additional reduction cost $r$). Child bound $L_{child} = L_{parent} + C[i,j] + r$.

@@ -61,8 +61,8 @@ Algorithm Sum(A, n):
   Since it grows linearly, $T(n) = O(n)$.
 - **Space Analysis:** Only variables `total` and `i` are used in auxiliary space. $S(n) = O(1)$ auxiliary space.
 
-#### Example 3: Nested Loops (Matrix Addition)
-**Problem:** Calculate the time complexity of adding two $n \times n$ matrices.
+#### Example 3: Nested Loops (Matrix Addition) [April 2018, Dec 2019]
+**Problem:** Analyse the complexity of the following program (adding two $n \times n$ matrices).
 ```text
 Algorithm MatrixAdd(A, B, n):
 1. for i = 1 to n do                // Cost c1, executes (n + 1) times
@@ -78,3 +78,30 @@ Algorithm MatrixAdd(A, B, n):
   $T(n) = (c_2 + c_3)n^2 + (c_1 + c_2)n + c_1$
   Since the highest degree term is $n^2$, $T(n) = O(n^2)$.
 - **Space Analysis:** We create a new matrix $C$ of size $n \times n$. Therefore, auxiliary space is $O(n^2)$.
+
+---
+
+### Previous Year Questions & Solutions
+
+1. **"Analyse the complexity of the following program: Matrix Addition of two n x n matrices A and B." [April 2018]**
+   - **Solution:**
+     ```text
+     for i = 1 to n do               // Executed (n + 1) times
+         for j = 1 to n do           // Executed n * (n + 1) times
+             C[i][j] = A[i][j] + B[i][j] // Executed n * n times
+     ```
+     **Frequency Count Analysis:**
+     - Outer loop header comparison: $n + 1$ times.
+     - Inner loop header comparison: $n(n + 1) = n^2 + n$ times.
+     - Assignment statement inside inner loop: $n \times n = n^2$ times.
+     - Total Operation Count $T(n) = (n + 1) + (n^2 + n) + n^2 = 2n^2 + 2n + 1$.
+     - Dropping lower-order terms and constant coefficients, the time complexity is **$O(n^2)$**.
+     - **Space Complexity:** Storing output matrix $C$ requires $n \times n$ memory cells, yielding an Auxiliary Space Complexity of **$O(n^2)$**.
+
+2. **"Analyse the complexity of the following function containing nested loops." [Dec 2019]**
+   - **Solution:**
+     When analyzing a function with nested loops, determine the iteration count of each loop:
+     1. Identify the loop bounds and step size (e.g., incrementing by 1, doubling, or dependent on outer variable).
+     2. Express total executions as a summation: $T(n) = \sum_{i=1}^{n} \sum_{j=1}^{i} O(1) = \frac{n(n+1)}{2}$.
+     3. Take the dominant term as $n \to \infty$. Thus, $T(n) = \Theta(n^2)$.
+     4. Memory space is $O(1)$ auxiliary space if operations are done in-place without additional array allocation.

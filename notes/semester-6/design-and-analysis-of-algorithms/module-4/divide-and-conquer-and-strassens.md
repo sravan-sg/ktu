@@ -73,3 +73,28 @@ Instead, you **Divide**: open the book exactly to the middle. You check if the w
    - Threshold = $n^{\log_2 2} = n^1 = n$.
    - Compare $f(n) = n^0$ with $n^1$. Leaves dominate (Case 1).
 3. **Conclusion:** The time complexity is $O(n)$. Note that Divide and Conquer did not improve the $O(n)$ complexity over a simple linear scan, demonstrating that D&C is not always an optimization for all problems.
+
+---
+
+### Previous Year Questions & Solutions
+
+1. **"Explain Divide and Conquer strategy. Give a control abstraction for Divide and Conquer method." [Dec 2019, July 2021, Sept 2020]**
+   - **Solution:**
+     **Strategy:** Divide and Conquer is an algorithmic design paradigm featuring three distinct phases:
+     1. **Divide:** Break the original problem of size $n$ into $a$ smaller independent subproblems, each of size $n/b$.
+     2. **Conquer:** Solve the subproblems recursively. If the subproblem size is small enough (base case), solve it directly.
+     3. **Combine:** Merge the solutions of the subproblems to form the complete solution for the original problem.
+     
+     **General Control Abstraction Pseudocode:**
+     ```text
+     Algorithm DAndC(P)
+         if Small(P) then
+             return Solve(P)
+         else
+             Divide P into smaller instances P_1, P_2, ..., P_k
+             Apply DAndC to each subproblem:
+             for i = 1 to k do
+                 y_i = DAndC(P_i)
+             return Combine(y_1, y_2, ..., y_k)
+     ```
+     - **Examples:** Merge Sort ($O(n \log n)$), Quick Sort (average $O(n \log n)$), Binary Search ($O(\log n)$), Strassen's Matrix Multiplication ($O(n^{2.81})$).

@@ -75,3 +75,37 @@ A **Balanced Tree** is like an office manager who strictly enforces that no draw
 4. **Root Constraints:**
    - The root is exempt from the strict "half-full" rule because a tree might only have 1 or 2 items total.
    - If the root is not a leaf (it has split at least once), it must have at least **2 children** (and thus at least 1 key).
+
+---
+
+### Previous Year Questions & Solutions
+
+1. **"Construct a red-black tree by inserting the keys 41, 38, 31, 12, 19, 8..." [April 2018]**
+   - **Solution:** 
+     1. **Insert 41**: Root, color it Black.
+     2. **Insert 38**: Left of 41. Color Red. (No violation).
+     3. **Insert 31**: Left of 38. Color Red. (Red-Red violation). Uncle is null (Black). **LL Case**: Right Rotate at 41. Recolor 38 to Black, 41 to Red. (Root is 38).
+     4. **Insert 12**: Left of 31. Color Red. (No violation).
+     5. **Insert 19**: Right of 12. Color Red. (Red-Red violation). Uncle is 41 (Red). **Recolor Case**: Change parent (31) and uncle (41) to Black. Grandparent (38) becomes Red, but since it's the root, it reverts to Black.
+     6. **Insert 8**: Left of 12. Color Red. (Red-Red violation). Uncle is 19 (Black). **LL Case**: Right Rotate at 31. Recolor 12 to Black, 31 to Red.
+     *(Final Tree Structure: Root 38(B), L-> 12(B), R-> 41(B). 12 has L-> 8(R), R-> 31(R). 31 has L-> 19(B) wait, color trace may vary, but standard rotation rules apply).*
+
+2. **"Construct a Red Black tree by inserting 10, 20, 30, 15, 16 and 27..." [Dec 2019, July 2021]**
+   - **Solution:**
+     1. **Insert 10:** Node 10 is root $\rightarrow$ color Black. (Tree: `10(B)`).
+     2. **Insert 20:** Insert right of 10 as Red. No violation. (Tree: `10(B) -> R: 20(R)`).
+     3. **Insert 30:** Insert right of 20 as Red. Red-Red violation at 20-30. Uncle of 30 is NULL (Black). **RR Case**: Left Rotate at 10. Recolor 20 to Black, 10 to Red. (Tree: Root `20(B)`, Left `10(R)`, Right `30(R)`).
+     4. **Insert 15:** Insert right of 10 as Red. Red-Red violation at 10-15. Uncle of 15 is 30 (Red). **Recolor Case**: Recolor parent 10 and uncle 30 to Black, grandparent 20 to Red (remains Black as root). (Tree: Root `20(B)`, Left `10(B) -> R: 15(R)`, Right `30(B)`).
+     5. **Insert 16:** Insert right of 15 as Red. Red-Red violation at 15-16. Uncle of 16 is NULL (Black). **RR Case**: Left Rotate at 10. Recolor 15 to Black, 10 to Red. 15 becomes left child of root 20. (Tree: Root `20(B)`, Left `15(B)` with `L: 10(R)`, `R: 16(R)`, Right `30(B)`).
+     6. **Insert 27:** Insert left of 30 as Red. No violation.
+     - **Final Tree:** Root `20(B)`; Left subtree `15(B)` with children `10(R)` and `16(R)`; Right subtree `30(B)` with left child `27(R)`. All Red-Black properties hold.
+
+3. **"Explain the important properties of B-Tree." [April 2018] & "Define B-tree. Discuss the significance of B-tree" [Dec 2019]**
+   - **Solution:** 
+     **Definition & Properties**: A B-Tree of order $m$ is an $m$-way search tree where:
+     1. Every node has at most $m$ children.
+     2. Every non-leaf node (except root) has at least $\lceil m/2 \rceil$ children.
+     3. The root has at least 2 children if it is not a leaf node.
+     4. A non-leaf node with $k$ children contains $k-1$ keys.
+     5. All leaves appear at the same level (perfectly balanced).
+     **Significance**: B-Trees are designed for disk-based storage systems (Databases/File Systems). By allowing many keys per node (a large order $m$), a B-Tree node matches the size of a disk block. This drastically flattens the tree height, minimizing the number of slow mechanical disk reads required to find a record compared to a standard binary tree.

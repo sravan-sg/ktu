@@ -26,22 +26,19 @@
 
 ## 2. 3 Solved Numerical/Analytical Examples
 
-### Example 1: Dijkstra's Algorithm Trace
-**Problem:** Trace Dijkstra’s algorithm to find the shortest path from Source $S$ to all nodes. Nodes: $\{S, A, B\}$. Edges: $(S,A,weight=4), (S,B,weight=1), (B,A,weight=2)$.
+### Example 1: Bellman-Ford Algorithm Trace [April 2018]
+**Problem:** Write down and explain Bellman-Ford algorithm by tracing it on a graph with nodes $\{S, A, B\}$ and edges $(S \to A, 4), (S \to B, 1), (B \to A, 2)$.
 **Step-by-step Solution:**
-1. **Initialization:** Distances: $D[S]=0, D[A]=\infty, D[B]=\infty$. Unvisited set = $\{S, A, B\}$.
-2. **Step 1:** Extract minimum distance node $\rightarrow S$ ($D[S]=0$).
-   - Check neighbor $A$: $D[S] + 4 = 4$. $4 < \infty$. Update $D[A]=4$.
-   - Check neighbor $B$: $D[S] + 1 = 1$. $1 < \infty$. Update $D[B]=1$.
-   - Unvisited = $\{A, B\}$.
-3. **Step 2:** Extract minimum distance node $\rightarrow B$ ($D[B]=1$).
-   - Check neighbor $A$: $D[B] + 2 = 1 + 2 = 3$. $3 < D[A]$ (which is 4). Update $D[A]=3$.
-   - Unvisited = $\{A\}$.
-4. **Step 3:** Extract minimum distance node $\rightarrow A$ ($D[A]=3$).
-   - No outgoing edges from $A$.
-   - Unvisited = $\{\}$.
-5. **Final Distances:** $D[S]=0, D[B]=1, D[A]=3$. 
-*(Note: Because Dijkstra is greedy, it permanently locked in $B$'s distance before finding the shortcut to $A$ via $B$.)*
+1. **Algorithm Explanation:** 1) Initialize all distances to $\infty$, except $D[S]=0$. 2) Relax every single edge in the graph $V-1$ times. 3) Check for negative weight cycles by relaxing one more time; if any distance decreases, a cycle exists.
+2. **Initialization:** $D[S]=0, D[A]=\infty, D[B]=\infty$. Edges: $e_1=(S,A,4), e_2=(S,B,1), e_3=(B,A,2)$.
+3. **Pass 1 (Relax all edges):**
+   - Relax $e_1 (S \to A)$: $D[S] + 4 = 4 < \infty$. Update $D[A]=4$.
+   - Relax $e_2 (S \to B)$: $D[S] + 1 = 1 < \infty$. Update $D[B]=1$.
+   - Relax $e_3 (B \to A)$: $D[B] + 2 = 1+2 = 3 < 4$. Update $D[A]=3$.
+   - Distances after Pass 1: $D[S]=0, D[A]=3, D[B]=1$.
+4. **Pass 2 (Relax all edges again):**
+   - $V-1$ = 2 passes required. None of the distances change during Pass 2 because the shortest paths were already found.
+5. **Final Distances:** $D[S]=0, D[B]=1, D[A]=3$.
 
 ### Example 2: Kahn's Algorithm for Topological Sorting
 **Problem:** Perform a topological sort on a DAG with vertices $\{1, 2, 3, 4\}$ and edges $(1 \to 2), (1 \to 3), (2 \to 4), (3 \to 4)$.
@@ -78,3 +75,52 @@
    - $A \to C \to B$. ($B \to A$ is blocked because $A$ is visited).
    - DFS finishes. SCC Found: $\{A, C, B\}$.
 4. **Conclusion:** Because the entire graph forms a cycle, Kosaraju's correctly grouped all 3 nodes into a single Strongly Connected Component.
+
+---
+
+### Previous Year Questions & Solutions
+
+1. **"Write down and explain Bellman Ford algorithm..." [April 2018, July 2021]**
+   - **Solution:**
+     ```text
+     BellmanFord(G, w, s):
+         Initialize dist[v] = infinity for all v, dist[s] = 0
+         for i = 1 to |V| - 1:
+             for each edge (u, v) in E:
+                 if dist[u] + w(u, v) < dist[v]:
+                     dist[v] = dist[u] + w(u, v)
+         
+         // Check for negative-weight cycles
+         for each edge (u, v) in E:
+             if dist[u] + w(u, v) < dist[v]:
+                 return "Graph contains a negative weight cycle"
+         return dist
+     ```
+     **Explanation:**
+     - **Concept:** Uses dynamic programming to compute single-source shortest paths. Unlike Dijkstra, Bellman-Ford handles negative edge weights.
+     - **Mechanism:** Relaxes all $E$ edges $|V|-1$ times because a simple shortest path can contain at most $|V|-1$ edges. A $V^{th}$ pass checks if any distance can still decrease; if so, a negative cycle exists.
+     - **Complexity:** Time: $O(V \cdot E)$, Space: $O(V)$.
+
+2. **"What are different classification of edges based on DFS?" [Dec 2019, Sept 2020]**
+   - **Solution:** During a DFS traversal of a directed graph, edges $u \to v$ are classified into four types based on the discovery and finishing times:
+     1. **Tree Edge**: Edge in the DFS depth-first forest ($v$ is discovered for the first time from $u$).
+     2. **Back Edge**: Edge connecting $u$ to an ancestor $v$ in the DFS tree. *Presence of a back-edge indicates a cycle.*
+     3. **Forward Edge**: Non-tree edge connecting $u$ to a descendant $v$ in the DFS tree.
+     4. **Cross Edge**: All other edges (connecting nodes in different DFS subtrees or parallel branches with no ancestor relationship).
+
+3. **"Write Dijkstra's Single Source Shortest Path Algorithm." [July 2021, Sept 2020]**
+   - **Solution:**
+     ```text
+     Dijkstra(G, w, s):
+         Initialize dist[v] = infinity, visited[v] = false, dist[s] = 0
+         Insert all vertices into Min-PriorityQueue Q keying on dist[]
+         while Q is not empty:
+             u = ExtractMin(Q)
+             visited[u] = true
+             for each neighbor v of u:
+                 if not visited[v] and dist[u] + w(u,v) < dist[v]:
+                     dist[v] = dist[u] + w(u,v)
+                     DecreaseKey(Q, v, dist[v])
+     ```
+     - **Constraint:** Requires all edge weights to be non-negative ($w(u,v) \ge 0$).
+     - **Complexity:** Time: $O((V + E) \log V)$ using Binary Min-Heap; $O(E + V \log V)$ using Fibonacci Heap.

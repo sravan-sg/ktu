@@ -90,3 +90,13 @@ while k > 1 do:
    Since the blocks run sequentially (one after the other), we add their complexities.
    $T(n) = T_A(n) + T_B(n) = O(n^2) + O(\log n)$.
 4. According to the rules of asymptotic notation, we only keep the fastest-growing term. Since $n^2$ grows much faster than $\log n$, the final complexity is $O(n^2)$.
+
+---
+
+### Previous Year Questions & Solutions
+
+1. **"Analyse the complexity of the following function..." [July 2021]**
+   - **Solution:** To analyze any given function, follow the static analysis approach outlined in **Section 1**. Identify independent loops ($O(N)$), nested dependent loops ($O(N^2)$), and logarithmic stepped loops ($O(\log N)$). Combine them by taking the highest-order term. See **Examples 1, 2, and 3** for standard loop trace solutions.
+
+2. **"Express the return value of the function "mystery" in theta - notation." [September 2020]**
+   - **Solution:** The Theta ($\Theta$) notation requires calculating both the upper bound ($O$) and the lower bound ($\Omega$). Trace the loop iterations of the `mystery` function mathematically. If the loop invariably executes $\frac{n(n-1)}{2}$ times (like Example 1), the exact return value scales strictly quadratically, making it $\Theta(n^2)$.

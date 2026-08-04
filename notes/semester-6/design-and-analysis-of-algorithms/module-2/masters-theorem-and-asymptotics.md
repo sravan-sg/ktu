@@ -28,7 +28,7 @@ The theorem just asks: Who is the bottleneck? The workers (Case 1), the manager 
 
 ## 2. 3 Solved Numerical/Analytical Examples
 
-### Example 1: Case 1 (Subproblem Heavy - Leaves Dominate)
+### Example 1: Case 1 (Subproblem Heavy - Leaves Dominate) [April 2018]
 **Problem:** Solve the recurrence $T(n) = 9T(n/3) + n$ using the Master's Theorem.
 **Step-by-step Solution:**
 1. **Identify Variables:** Compare to $T(n) = aT(n/b) + f(n)$. 
@@ -40,7 +40,7 @@ The theorem just asks: Who is the bottleneck? The workers (Case 1), the manager 
    The work done at the leaves (subproblems) vastly outweighs the work done at the root.
 4. **Result:** $T(n) = \Theta(n^{\log_b a}) = \Theta(n^2)$.
 
-### Example 2: Case 2 (Balanced Work)
+### Example 2: Case 2 (Balanced Work) [Dec 2019]
 **Problem:** Solve the recurrence $T(n) = 2T(n/2) + n$ using the Master's Theorem (This is Merge Sort).
 **Step-by-step Solution:**
 1. **Identify Variables:** 
@@ -67,3 +67,26 @@ The theorem just asks: Who is the bottleneck? The workers (Case 1), the manager 
    $3 (n/4) \log(n/4) \le c (n \log n)$.
    $(3/4) n \log(n/4) \le (3/4) n \log n$. This holds true for $c = 3/4$.
 5. **Result:** $T(n) = \Theta(f(n)) = \Theta(n \log n)$.
+
+---
+
+### Previous Year Questions & Solutions
+
+1. **"State Master's Theorem. Find the solution to the recurrence equation $T(n) = 4T(n/2) + n$." [April 2018, July 2021]**
+   - **Solution:**
+     - **Statement of Master's Theorem:** Let $a \ge 1$ and $b > 1$ be constants, let $f(n)$ be a function, and let $T(n) = aT(n/b) + f(n)$.
+       1. **Case 1:** If $f(n) = O(n^{\log_b a - \epsilon})$ for some $\epsilon > 0$, then $T(n) = \Theta(n^{\log_b a})$.
+       2. **Case 2:** If $f(n) = \Theta(n^{\log_b a})$, then $T(n) = \Theta(n^{\log_b a} \log n)$.
+       3. **Case 3:** If $f(n) = \Omega(n^{\log_b a + \epsilon})$ for some $\epsilon > 0$ and $a f(n/b) \le c f(n)$ for $c < 1$, then $T(n) = \Theta(f(n))$.
+     - **Solving $T(n) = 4T(n/2) + n$:**
+       1. Extract parameters: $a = 4$, $b = 2$, $f(n) = n$.
+       2. Calculate threshold: $n^{\log_b a} = n^{\log_2 4} = n^2$.
+       3. Compare $f(n) = n^1$ with $n^2$: $n = O(n^{2 - 1})$ where $\epsilon = 1 > 0$.
+       4. Leaves cost $n^2$ dominates $f(n)$. By Case 1, **$T(n) = \Theta(n^2)$**.
+
+2. **"Solve $T(n) = 2T(n/2) + \Theta(n)$ using Master's Theorem." [Dec 2019, Sept 2020]**
+   - **Solution:**
+     1. Extract parameters: $a = 2$, $b = 2$, $f(n) = \Theta(n)$.
+     2. Calculate threshold: $n^{\log_b a} = n^{\log_2 2} = n^1$.
+     3. Compare $f(n) = \Theta(n^1)$ with threshold $n^1$: $f(n) = \Theta(n^{\log_b a})$.
+     4. Work at each level is balanced. By Case 2, **$T(n) = \Theta(n \log n)$**.

@@ -68,8 +68,8 @@ Imagine you are exploring a dark, branching hedge maze looking for an exit:
 7. **Finish:** All nodes visited.
    - Final DFS Order: **A, B, D, E, C, F**.
 
-### Example 3: Time and Space Complexity Proof
-**Problem:** Mathematically prove the Time and Space Complexity of a standard BFS traversal on a graph represented as an Adjacency List with $V$ vertices and $E$ edges.
+### Example 3: Time and Space Complexity Proof (DFS & BFS) [April 2018]
+**Problem:** Write down the DFS/BFS algorithm conceptually and mathematically prove the Time and Space Complexity on a graph represented as an Adjacency List with $V$ vertices and $E$ edges.
 **Step-by-step Solution:**
 1. **Space Complexity:**
    - BFS requires a Queue data structure to hold nodes waiting to be processed. In the worst case (e.g., a star graph where a central node connects to all others), the Queue holds $V-1$ nodes.
@@ -78,5 +78,42 @@ Imagine you are exploring a dark, branching hedge maze looking for an exit:
 2. **Time Complexity:**
    - The outer `while (queue is not empty)` loop dequeues each vertex exactly once. This takes $O(V)$ time.
    - Inside the loop, the algorithm iterates through the neighbor list of the dequeued vertex. Across the *entire execution* of the algorithm, the total number of items in all neighbor lists combined is $2E$ for an undirected graph (or $E$ for a directed graph).
-   - Therefore, the inner loop body executes a total of $O(E)$ times globally.
-   - Adding the vertex processing and edge scanning together, the Time Complexity is strictly bounded by **$O(V + E)$**.
+   - Therefore, the inner loop body executes a total of $O(E)$ times globally across all vertices.
+   - Adding the vertex processing and edge scanning together, the Time Complexity for both DFS and BFS is strictly bounded by **$O(V + E)$**.
+
+---
+
+### Previous Year Questions & Solutions
+
+1. **"Write down DFS algorithm and analyse the time complexity..." [April 2018]**
+   - **Solution:**
+     ```text
+     DFS(u):
+         visited[u] = true
+         process(u)
+         for each neighbor v of u:
+             if not visited[v]:
+                 DFS(v)
+     ```
+     **Time Complexity Analysis:**
+     - Each vertex $u \in V$ is visited and marked `visited[u] = true` exactly once $\implies O(V)$ operations.
+     - For each vertex, the algorithm iterates over its adjacency list. Summing adjacency list lengths across all vertices yields $\sum \text{deg}(v) = 2E$ for undirected graphs ($E$ for directed graphs).
+     - Total execution time is $O(V + 2E) = \mathbf{O(V + E)}$.
+     - **Space Complexity:** $O(V)$ for the `visited` array and call stack depth in the worst case (skewed path).
+
+2. **"Write the applications of BFS and DFS..." [Dec 2019]**
+   - **Solution:**
+     - **BFS Applications:**
+       1. **Unweighted Shortest Path:** Finds the minimum number of edges between source and target (e.g. GPS routing, degrees of separation in social networks).
+       2. **Level-Order Processing:** Peer-to-peer network flooding and broadcasting (e.g. BitTorrent node discovery).
+       3. **Bipartite Graph Testing:** Coloring vertices using 2 colors level-by-level to check if a graph is 2-colorable.
+     - **DFS Applications:**
+       1. **Topological Sorting:** Ordering tasks with dependencies in Directed Acyclic Graphs (DAGs).
+       2. **Cycle Detection:** Checking for back-edges during traversal to detect loops in graphs.
+       3. **Pathfinding & Backtracking:** Maze solving, Sudoku, and finding Strongly Connected Components (Kosaraju's/Tarjan's algorithm).
+
+3. **"Write a short note on graph traversals..." [Dec 2019]**
+   - **Solution:**
+     A graph traversal is a systematic procedure for visiting every vertex and edge in a graph $G=(V,E)$ without getting stuck in infinite loops (achieved via a `visited[]` boolean array).
+     - **Depth-First Search (DFS):** Explores as deep as possible along each branch before backtracking using a Stack (or recursion). Time: $O(V+E)$, Space: $O(V)$.
+     - **Breadth-First Search (BFS):** Explores all immediate 1-hop neighbors before moving to 2-hop neighbors using a FIFO Queue. Time: $O(V+E)$, Space: $O(V)$.

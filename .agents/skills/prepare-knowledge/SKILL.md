@@ -12,7 +12,8 @@ Automatically convert downloaded reference books, textbooks, or documents inside
 ### 1. Locate the Subject Directories
 
 1. Find the subject's note directory under `notes/`: `notes/<semester>/<subject>/` (e.g., `notes/semester-6/design-and-analysis-of-algorithms/`).
-2. Verify that the root `textbooks/` directory `textbooks/semester-<number>/<subject-name>/` exists and contains the downloaded PDF documents (e.g., `Introduction_to_Algorithms_Cormen_3rd_Ed.pdf`).
+2. Verify that the root `textbooks/` directory `textbooks/semester-<number>/<subject-name>/` exists and contains the downloaded PDF documents.
+3. Check for the existence of the `previous-question-papers/semester-<number>/<subject-name>/` directory containing `.txt` or `.pdf` exam papers.
 
 ### 2. Create the Knowledge Directory
 
@@ -33,7 +34,8 @@ For each PDF file in `textbooks/semester-<number>/<subject-name>/`:
 Create or update a central index file `notes/<semester>/<subject>/knowledge/README.md` containing:
 - A title: `# Knowledge Base: <Subject Name>`
 - A table listing all converted markdown documents, their local file links, and the syllabus modules or topics they cover.
-- A confirmation section noting that the knowledge base is fully processed and ready to be read by the AI agent to generate study notes.
+- A section listing all Previous Year Questions (PYQs) found in the `previous-question-papers/semester-<number>/<subject-name>/` directory, linking to the raw `.txt` or `.pdf` files.
+- A confirmation section noting that the knowledge base and PYQs are fully processed and ready to be read by the AI agent to generate study notes.
 
 ## Rules & Guardrails
 

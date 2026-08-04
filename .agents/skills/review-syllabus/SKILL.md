@@ -7,14 +7,14 @@ description: Read a course syllabus file from the syllabus/ folder and generate 
 
 Turn a raw syllabus file into a concise, accurate `syllabus.md` study guide, written from the perspective of a **senior Computer Science professor** advising students on how to master the course.
 
-Syllabus files live in `syllabus/`. They are messy PDF/scrape exports (run-together words, collapsed formatting). Read carefully and reconstruct intended structure; do not quote verbatim.
+Syllabus files live in `syllabus/semester-<number>/<subject-name>/` (or `syllabus/`). They are messy PDF/scrape exports (run-together words, collapsed formatting). Read carefully and reconstruct intended structure; do not quote verbatim.
 
 ## Modes
 
 Pick the mode from what the user provides:
 
-- **Mode 1 — single file.** The user gives a specific syllabus file path (or a subject name that resolves to exactly one file in `syllabus/`). Process only that file.
-- **Mode 2 — batch.** No file is given. List every syllabus file in the `syllabus/` directory and process each one, repeating the Steps below per file.
+- **Mode 1 — single file.** The user gives a specific syllabus file path (or a subject name that resolves to exactly one file in `syllabus/semester-<number>/<subject-name>/`). Process only that file.
+- **Mode 2 — batch.** No file is given. List every syllabus file under the `syllabus/` directory tree and process each one, repeating the Steps below per file.
 
 In both modes, run the **Pre-write check** before generating notes for a subject.
 
