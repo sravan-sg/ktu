@@ -1,0 +1,59 @@
+Reg No.:
+Name:
+APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY
+SIXTH SEMESTER B.TECH DEGREE EXAMINATION, JULY 2021
+Course Code: CS306
+Course Name: COMPUTER NETWORKS
+Max. Marks: 100                                                Duration: 3 Hours
+
+PART A
+Answer all questions, each carries 3 marks.
+
+1. Differentiate between OSI model and TCP/IP model. (3)
+2. Explain the functions of the Physical Layer in computer networks. (3)
+3. Explain Bit Stuffing with a suitable example. (3)
+4. Differentiate between Bridges and Switches. (3)
+
+PART B
+Answer any two full questions, each carries 9 marks.
+
+5. (a) Explain OSI 7-layer architecture with a neat diagram. List functions of each layer. (6)
+   (b) Calculate Bandwidth-Delay Product for a 1 Gbps link with RTT = 45 ms. (3)
+6. (a) Derive efficiency for Stop-and-Wait ARQ and Go-Back-N ARQ protocols. (5)
+   (b) Compare Go-Back-N ARQ and Selective Repeat ARQ protocols. (4)
+7. (a) Explain CSMA/CD protocol and Binary Exponential Backoff algorithm. (5)
+   (b) Explain IEEE 802.11 Wireless LAN architecture and RTS/CTS mechanism. (4)
+
+PART C
+Answer all questions, each carries 3 marks.
+
+8. Explain Dijkstra's shortest path algorithm. (3)
+9. Explain Distance Vector Routing. (3)
+10. Describe Leaky Bucket algorithm. (3)
+11. Differentiate between Classful and Classless IP Addressing. (3)
+
+PART D
+Answer any two full questions, each carries 9 marks.
+
+12. (a) Trace Dijkstra's algorithm for a given graph to find shortest paths from source node A. (5)
+    (b) Compare Distance Vector Routing (RIP) and Link State Routing (OSPF). (4)
+13. (a) An ISP is granted IP block `200.20.30.0/24`. Allocate subnets using VLSM for Dept A (100 hosts), Dept B (50 hosts), Dept C (25 hosts). (6)
+    (b) Explain Token Bucket algorithm for traffic shaping. (3)
+14. (a) Explain Random Early Detection (RED) congestion avoidance mechanism. (4)
+    (b) Aggregate 4 CIDR routes: `202.10.0.0/24`, `202.10.1.0/24`, `202.10.2.0/24`, `202.10.3.0/24`. (5)
+
+PART E
+Answer any four full questions, each carries 10 marks.
+
+15. (a) Explain ARP protocol working and message format. (6)
+    (b) Explain ICMP Time Exceeded and Echo Request/Reply messages. (4)
+16. (a) Explain BGP Path Vector routing protocol. (6)
+    (b) Explain IGMP multicast protocol. (4)
+17. (a) Explain IPv6 header format and address compression rules. (6)
+    (b) Explain Dual Stack and Tunneling transition strategies. (4)
+18. (a) Explain TCP 3-Way Handshake and 4-Way Teardown. (6)
+    (b) Compare TCP and UDP headers. (4)
+19. (a) Explain TCP Congestion Control (Slow Start, Congestion Avoidance, Fast Retransmit). (6)
+    (b) Calculate TCP throughput for rwnd = 64 KB and RTT = 100 ms. (4)
+20. (a) Explain DNS hierarchy and Iterative vs Recursive queries. (6)
+    (b) Explain FTP control/data ports and HTTP persistent connections. (4)

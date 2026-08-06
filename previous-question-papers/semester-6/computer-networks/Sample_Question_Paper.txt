@@ -1,0 +1,59 @@
+Reg No.:
+Name:
+APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY
+SIXTH SEMESTER B.TECH DEGREE MODEL / SAMPLE QUESTION PAPER
+Course Code: CS306
+Course Name: COMPUTER NETWORKS
+Max. Marks: 100                                                Duration: 3 Hours
+
+PART A
+Answer all questions, each carries 3 marks.
+
+1. State the main functions of Network Layer and Transport Layer. (3)
+2. Compare Mesh Topology and Star Topology in terms of link count and fault tolerance. (3)
+3. Explain Bit Stuffing algorithm with an example data stream `01111110`. (3)
+4. Explain the difference between Hub, Switch, and Router. (3)
+
+PART B
+Answer any two full questions, each carries 9 marks.
+
+5. (a) Draw and explain the OSI 7-Layer Reference Model. (6)
+   (b) An application sends a 1000B message through 5 protocol layers (20B header per layer). Calculate protocol efficiency. (3)
+6. (a) Explain Go-Back-N ARQ and Selective Repeat ARQ protocols with window size constraints. (5)
+   (b) Generate 3-bit CRC checksum for message `110101` using polynomial $G(x) = x^3 + x + 1$. (4)
+7. (a) Derive minimum frame length formula for CSMA/CD to detect collisions. (5)
+   (b) Explain CSMA/CA protocol and RTS/CTS handshake mechanism in IEEE 802.11. (4)
+
+PART C
+Answer all questions, each carries 3 marks.
+
+8. Compare Datagram Subnets and Virtual Circuit Subnets. (3)
+9. Explain Dijkstra's shortest path algorithm. (3)
+10. Differentiate between Leaky Bucket and Token Bucket traffic shaping. (3)
+11. Explain Classless Inter-Domain Routing (CIDR) and Supernetting. (3)
+
+PART D
+Answer any two full questions, each carries 9 marks.
+
+12. (a) Trace Distance Vector Routing table updates using Bellman-Ford algorithm. Explain Count-to-Infinity problem. (6)
+    (b) Explain OSPF Link State routing protocol and hierarchical areas. (3)
+13. (a) An organization is assigned IP block `192.168.10.0/24`. Subnet into 4 equal subnets. List network ID, usable host range, and broadcast ID for each subnet. (6)
+    (b) A Token Bucket has capacity 5 MB and token rate 10 Mbps. Calculate maximum burst duration at 50 Mbps transmission speed. (3)
+14. (a) Explain Random Early Detection (RED) congestion prevention mechanism. (4)
+    (b) Aggregate 4 CIDR routes: `202.10.0.0/24`, `202.10.1.0/24`, `202.10.2.0/24`, `202.10.3.0/24`. (5)
+
+PART E
+Answer any four full questions, each carries 10 marks.
+
+15. (a) Explain ARP protocol operation and message format. (6)
+    (b) Explain ICMP Time Exceeded message and `traceroute` execution. (4)
+16. (a) Explain BGP Path Vector routing protocol and loop prevention via AS-Path. (6)
+    (b) Explain IGMP protocol for multicast management. (4)
+17. (a) Explain IPv6 base 40-byte header format and compare with IPv4. (6)
+    (b) Explain Dual Stack and 6to4 Tunneling IPv6 transition strategies. (4)
+18. (a) Explain TCP 3-Way Handshake and 4-Way Teardown with sequence numbers. (6)
+    (b) Compare TCP and UDP protocol characteristics. (4)
+19. (a) Explain TCP Congestion Control (Slow Start, Congestion Avoidance, Fast Retransmit, Fast Recovery). (6)
+    (b) Calculate TCP maximum throughput for rwnd = 64 KB and RTT = 100 ms. (4)
+20. (a) Explain DNS hierarchy and Iterative vs Recursive resolution queries. (6)
+    (b) Explain FTP control/data connections and HTTP persistent connections. (4)

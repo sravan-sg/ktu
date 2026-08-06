@@ -1,0 +1,59 @@
+Reg No.:
+Name:
+APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY
+SIXTH SEMESTER B.TECH DEGREE MODEL / SAMPLE QUESTION PAPER
+Course Code: CS302
+Course Name: DESIGN AND ANALYSIS OF ALGORITHMS
+Max. Marks: 100                                                Duration: 3 Hours
+
+PART A
+Answer all questions, each carries 3 marks.
+
+1. Define Time Complexity and Space Complexity. Distinguish between fixed and variable space components. (3)
+2. Solve the recurrence relation $T(n) = 2T(n/2) + n$ using the Iteration Method. (3)
+3. State the Master's Theorem for divide-and-conquer recurrences. Give an example where it cannot be applied. (3)
+4. List the fundamental properties of a Red-Black Tree. (3)
+
+PART B
+Answer any two full questions, each carries 9 marks.
+
+5. (a) Solve the recurrence equation $T(n) = 3T(n/4) + n \log n$ using the Recursion Tree Method. (5)
+   (b) Calculate the worst-case, best-case, and average-case time complexities of Quick Sort. (4)
+6. (a) Construct a Red-Black Tree by inserting the keys `10, 20, 30, 15, 16, 27` in order. Show all recoloring and rotation steps. (6)
+   (b) Explain AVL tree LL, RR, LR, and RL rotations with neat structural diagrams. (3)
+7. (a) Explain B-Tree insertion and deletion operations. Construct a B-Tree of order $m = 5$ for keys `10, 20, 30, 40, 50, 60, 70, 80`. (6)
+   (b) Explain Disjoint Set Union and Find operations with Path Compression and Union by Rank heuristics. (3)
+
+PART C
+Answer all questions, each carries 3 marks.
+
+8. Define Strongly Connected Components (SCC) in a directed graph. Name an algorithm to find SCCs. (3)
+9. State the Control Abstraction for the Divide and Conquer strategy. (3)
+10. Explain Strassen's Matrix Multiplication algorithm and state its recurrence relation. (3)
+11. State the Principle of Optimality in Dynamic Programming. (3)
+
+PART D
+Answer any two full questions, each carries 9 marks.
+
+12. (a) Explain Depth First Search (DFS) and Breadth First Search (BFS) graph traversals. State their time and space complexities. (5)
+    (b) Trace Topological Sorting on a Directed Acyclic Graph (DAG) with 6 vertices using DFS. (4)
+13. (a) Find the Optimal Matrix Chain Multiplication order and minimum multiplication cost for 4 matrices with dimensions $A_1(10 \times 30), A_2(30 \times 5), A_3(5 \times 60), A_4(60 \times 10)$. (6)
+    (b) Compare Divide and Conquer and Dynamic Programming strategies with concrete examples. (3)
+14. (a) Apply Bellman-Ford algorithm to find single-source shortest paths from source vertex $S$ in a graph containing negative edge weights. (6)
+    (b) Explain 2-way Merge Sort and analyze its time complexity using recurrence relations. (3)
+
+PART E
+Answer any four full questions, each carries 10 marks.
+
+15. (a) State the Greedy Strategy Control Abstraction. Solve the Fractional Knapsack Problem for capacity $W = 50$ and items with weights $(10, 20, 30)$ and values $(60, 100, 120)$. (6)
+    (b) Differentiate between Fractional Knapsack (Greedy) and 0/1 Knapsack (Dynamic Programming/Backtracking). (4)
+16. (a) Apply Prim's Algorithm and Kruskal's Algorithm to find the Minimum Cost Spanning Tree (MCST) for a weighted graph with 6 vertices. Show step-by-step edge selection. (6)
+    (b) Prove the Cut Property for Minimum Spanning Trees. (4)
+17. (a) Explain Backtracking Control Abstraction. Solve the 4-Queens Problem using the state-space tree representation. (6)
+    (b) Explain the 0/1 Knapsack Problem using Backtracking. (4)
+18. (a) Explain Branch and Bound strategy. Solve the Travelling Salesman Problem (TSP) for a $4 \times 4$ cost matrix using matrix reduction bounds. (7)
+    (b) Differentiate between Backtracking and Branch & Bound approaches. (3)
+19. (a) Define Complexity Classes P, NP, NP-Hard, and NP-Complete. Explain the concept of Polynomial-Time Reduction. (6)
+    (b) Prove that if an NP-Complete problem can be solved in polynomial time, then $P = NP$. (4)
+20. (a) Define Non-Deterministic Algorithms. Write non-deterministic pseudocode for the Clique Problem or 3-SAT. (5)
+    (b) Classify standard computer science problems (Sorting, Shortest Path, TSP, 3-SAT, Halting Problem) into P, NP-Complete, NP-Hard, and Undecidable. (5)

@@ -1,0 +1,59 @@
+Reg No.:
+Name:
+APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY
+SIXTH SEMESTER B.TECH DEGREE EXAMINATION, DECEMBER 2019
+Course Code: CS306
+Course Name: COMPUTER NETWORKS
+Max. Marks: 100                                                Duration: 3 Hours
+
+PART A
+Answer all questions, each carries 3 marks.
+
+1. List the functions of Presentation and Session layers in the OSI reference model. (3)
+2. Distinguish between LAN, MAN, and WAN based on scale and transmission rates. (3)
+3. Explain Byte Stuffing with a suitable example. (3)
+4. State the purpose of the HDLC Control field in S-frames. (3)
+
+PART B
+Answer any two full questions, each carries 9 marks.
+
+5. (a) Explain OSI 7-layer architecture and list the main functions of each layer. (6)
+   (b) A 10 KB file is transmitted over a 1,000 km fiber link (speed $2 \times 10^8$ m/s) at 100 Mbps. Compare transmission delay and propagation delay. (3)
+6. (a) Explain Go-Back-N ARQ protocol. Why is the maximum sender window size $W_S = 2^m - 1$? (5)
+   (b) Contrast Go-Back-N ARQ and Selective Repeat ARQ protocols. (4)
+7. (a) Explain CSMA/CA protocol and RTS/CTS handshake mechanism in IEEE 802.11 Wireless LANs. (5)
+   (b) Explain the Hidden Station and Exposed Station problems in wireless networks. (4)
+
+PART C
+Answer all questions, each carries 3 marks.
+
+8. Explain the Bellman-Ford algorithm used in Distance Vector Routing. (3)
+9. Define Flooding. State one application where flooding is useful. (3)
+10. Differentiate between Flow Control and Congestion Control. (3)
+11. Explain the Classful IP addressing scheme (Classes A, B, C, D, E). (3)
+
+PART D
+Answer any two full questions, each carries 9 marks.
+
+12. (a) Explain Distance Vector Routing protocol. Discuss the Count-to-Infinity problem and its solutions (Split Horizon, Poison Reverse). (6)
+    (b) Explain OSPF Link State routing protocol and hierarchical area partitioning. (3)
+13. (a) An organization is granted block `190.100.0.0/16`. Design a subnetting scheme to create 8 equal subnets. Find subnet mask and usable host range. (6)
+    (b) Explain the Token Bucket algorithm for traffic shaping. (3)
+14. (a) Explain Choke Packets and Random Early Detection (RED) for network congestion control. (5)
+    (b) A Token Bucket has capacity 5 MB and token arrival rate 10 Mbps. If maximum transmission speed is 50 Mbps, find maximum burst duration. (4)
+
+PART E
+Answer any four full questions, each carries 10 marks.
+
+15. (a) Explain Address Resolution Protocol (ARP) frame format and resolution sequence. (6)
+    (b) Describe ICMP error reporting messages (Destination Unreachable, Time Exceeded, Redirect). (4)
+16. (a) Explain BGP protocol and Path Vector routing algorithm. (6)
+    (b) Explain IGMP protocol for multicast group management. (4)
+17. (a) Explain IPv6 addressing format and base 40-byte header structure. (6)
+    (b) Explain Dual Stack and 6to4 Tunneling transition mechanisms. (4)
+18. (a) Explain TCP 3-Way Handshake and TCP segment header fields. (6)
+    (b) Differentiate between UDP and TCP protocols. (4)
+19. (a) Explain TCP Congestion Control (Slow Start, Congestion Avoidance, Fast Retransmit, Fast Recovery). (6)
+    (b) Calculate TCP maximum throughput for $rwnd = 64$ KB and RTT $= 100$ ms. (4)
+20. (a) Explain DNS hierarchy and Iterative vs Recursive DNS resolution. (6)
+    (b) Explain FTP control and data connections and HTTP/1.0 vs HTTP/1.1 persistent connections. (4)

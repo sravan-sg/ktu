@@ -1,0 +1,80 @@
+Course code | Course Name | L-T-P- Credits | Year of Introduction
+CS306 | Computer Networks | 3-0-0-3 | 2016
+
+KUKTU Students
+STUDENTS
+Prerequisite: Nil
+Course Objectives
+To build an understanding of the fundamental concepts of computer networking.
+To introduce the basic taxonomy and terminology of computer networking.
+• To introduce advanced networking concepts.
+
+Syllabus
+Concept of layering, LAN technologies (Ethernet), Flow and error control techniques, switching,
+IPv4/IPv6, routers and routing algorithms (distance vector, link state), TCP/UDP and sockets,
+congestion control, Application layer protocols.
+
+Expected Outcome
+The students will be able to
+i. Visualise the different aspects of networks, protocols and network design models.
+ii. Examine various Data Link layer design issues and Data Link protocols.
+iii. Analyse and compare different LAN protocols.
+iv. Compare and select appropriate routing algorithms for a network.
+V. Examine the important aspects and functions of network layer, transport layer and
+application layer in internetworking.
+
+Text Books
+1. Andrew S. Tanenbaum, Computer Networks, 4/e, PHI.
+2. Behrouz A. Forouzan, Data Communications and Networking, 4/e, Tata McGraw Hill.
+3. Larry L. Peterson & Bruce S. Dave, Computer Networks-A Systems Approach, 5/e,
+Morgan Kaufmann, 2011.
+
+References
+1. Fred Halsall, Computer Networking and the Internet, 5/e.
+2. James F. Kurose, Keith W. Ross, Computer Networking: A Top-Down Approach, 6/e.
+3. Keshav, An Engineering Approach to Computer Networks, Addison Wesley, 1998.
+4. Request for Comments (RFC) Pages - IETF -https://www.ietf.org/rfc.html
+5. W. Richard Stevens. TCP/IP Illustrated volume 1, Addison-Wesley, 2005.
+6. William Stallings, Computer Networking with Internet Protocols, Prentice-Hall, 2004.
+
+Course Plan
+Module | Contents | Hours | End Sem. Exam Marks
+I | Introduction Uses Network Hardware - LAN-MAN - WAN, Internetworks - Network Software - Protocol hierarchies - Design issues for the layers Interface & Service Service Primitives. Reference models - OSI - TCP/IP. | 07 | 15%
+II | Data Link layer Design Issues Flow Control and ARQ techniques. Data link Protocols HDLC. DLL in Internet. MAC Sub layer IEEE 802 FOR LANS & MANS, IEEE 802.3, 802.4, 802.5. Bridges - Switches High Speed LANs - Gigabit Ethernet. Wireless LANs - 802.11 a/b/g/n, 802.15.PPP | 08 | 15%
+ | FIRST INTERNAL EXAMINATION |  | 
+For more study materials>www.ktustudents.in
+Ⅲ | Network layer - Routing - Shortest path routing, Flooding, Distance Vector Routing, Link State Routing, RIP, OSPF, Routing for mobile hosts. | 07 | 15%
+IV | Congestion control algorithms QoS. Internetworking Network layer in internet. IPv4 IP Addressing Classless and Classfull Addressing. Sub-netting. | 07 | 15%
+ | SECOND INTERNAL EXAMINATION |  | 
+V | Internet Control Protocols ICMP, ARP, RARP, BOOTP. Internet Multicasting IGMP, Exterior Routing Protocols BGP. IPv6 Addressing - Issues, ICMPv6. | 07 | 20%
+VI | Transport Layer TCP & UDP. Application layer FTP, DNS, Electronic mail, MIME, SNMP. Introduction to World Wide Web. | 07 | 20%
+ | END SEMESTER EXAM |  | 
+
+Question Paper Pattern
+1. There will be five parts in the question paper - A, B, C, D, E
+2. Part A
+a. Total marks: 12
+b. Four questions each having 3 marks, uniformly covering modules I and II; Allfour
+questions have to be answered.
+3. Part B
+a. Total marks: 18
+b. Three questions each having 9 marks, uniformly covering modules I and II; Two
+questions have to be answered. Each question can have a maximum of three
+subparts.
+4. Part C
+a. Total marks: 12
+b. Four questions each having 3 marks, uniformly covering modules III and IV;
+Allfour questions have to be answered.
+5. Part D
+a. Total marks: 18
+Estd.
+b. Three questions each having 9 marks, uniformly covering modules III and IV;
+Two questions have to be answered. Each question can have a maximum of three
+subparts
+6. Part E
+a. Total Marks: 40
+b. Six questions each carrying 10 marks, uniformly covering modules V and VI; four
+questions have to be answered.
+c. A question can have a maximum of three sub-parts.
+7. There should be at least 60% analytical/numerical questions.
+For more study materials>www.ktustudents.in

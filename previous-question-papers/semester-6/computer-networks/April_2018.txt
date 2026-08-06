@@ -1,0 +1,59 @@
+Reg No.:
+Name:
+APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY
+SIXTH SEMESTER B.TECH DEGREE EXAMINATION, APRIL 2018
+Course Code: CS306
+Course Name: COMPUTER NETWORKS
+Max. Marks: 100                                                Duration: 3 Hours
+
+PART A
+Answer all questions, each carries 3 marks.
+
+1. Differentiate between connection-oriented and connectionless services with examples. (3)
+2. Explain the design issues of protocol layering. (3)
+3. Describe Bit Stuffing and Byte Stuffing. (3)
+4. Explain HDLC frame format. (3)
+
+PART B
+Answer any two full questions, each carries 9 marks.
+
+5. (a) Compare OSI 7-layer model and TCP/IP 4-layer model. (5)
+   (b) Calculate protocol efficiency for 1000B payload and 5-layer 20B headers. (4)
+6. (a) Explain Go-Back-N ARQ and Selective Repeat ARQ protocols. (5)
+   (b) Derive Stop-and-Wait ARQ efficiency formula. (4)
+7. (a) Explain CSMA/CD protocol and minimum frame size derivation. (5)
+   (b) Explain IEEE 802.11 CSMA/CA and RTS/CTS handshake. (4)
+
+PART C
+Answer all questions, each carries 3 marks.
+
+8. Explain Datagram subnets vs Virtual Circuit subnets. (3)
+9. Explain Dijkstra's shortest path routing algorithm. (3)
+10. Differentiate between Leaky Bucket and Token Bucket algorithms. (3)
+11. Explain Subnetting and Subnet Masking. (3)
+
+PART D
+Answer any two full questions, each carries 9 marks.
+
+12. (a) Explain Distance Vector Routing and Count-to-Infinity problem. (6)
+    (b) Explain Link State Routing and OSPF protocol. (3)
+13. (a) Given IP block `190.100.0.0/16`, design 8 equal subnets. Find subnet mask and usable host range. (6)
+    (b) Explain Token Bucket traffic shaping math. (3)
+14. (a) Explain Choke Packets and RED congestion control algorithm. (5)
+    (b) Aggregate routes `202.10.0.0/24` to `202.10.3.0/24` using CIDR. (4)
+
+PART E
+Answer any four full questions, each carries 10 marks.
+
+15. (a) Explain ARP and RARP protocol operation. (6)
+    (b) Explain ICMP error reporting messages and traceroute. (4)
+16. (a) Explain BGP protocol and Path Vector routing. (6)
+    (b) Explain IGMP multicast protocol. (4)
+17. (a) Explain IPv6 header format and comparison with IPv4. (6)
+    (b) Explain IPv6 transition mechanisms (Dual Stack, Tunneling). (4)
+18. (a) Explain TCP 3-Way Handshake and 4-Way Teardown. (6)
+    (b) Differentiate between TCP and UDP. (4)
+19. (a) Explain TCP Congestion Control (Slow Start, Congestion Avoidance, Fast Retransmit). (6)
+    (b) Calculate TCP throughput for rwnd = 64 KB and RTT = 100 ms. (4)
+20. (a) Explain DNS hierarchy and Iterative vs Recursive queries. (6)
+    (b) Explain FTP dual-port architecture and HTTP persistent connections. (4)

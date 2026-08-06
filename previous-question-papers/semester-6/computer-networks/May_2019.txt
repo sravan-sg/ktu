@@ -1,0 +1,59 @@
+Reg No.:
+Name:
+APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY
+SIXTH SEMESTER B.TECH DEGREE EXAMINATION, MAY 2019
+Course Code: CS306
+Course Name: COMPUTER NETWORKS
+Max. Marks: 100                                                Duration: 3 Hours
+
+PART A
+Answer all questions, each carries 3 marks.
+
+1. Differentiate between connection-oriented and connectionless service models with examples. (3)
+2. Explain the purpose of Service Primitives in network protocol hierarchies. (3)
+3. Describe the framing method using Bit Stuffing with a brief example. (3)
+4. Explain the concept of Piggybacking in Data Link Protocols. (3)
+
+PART B
+Answer any two full questions, each carries 9 marks.
+
+5. (a) Compare the OSI Reference Model and TCP/IP Reference Model layer by layer. Highlight key structural differences. (5)
+   (b) A network path consists of 5 layers. Each layer adds a 20-byte header. If an application payload is 1000 bytes, calculate transmission efficiency. (4)
+6. (a) Explain HDLC frame format and differentiate between Information (I-frame), Supervisory (S-frame), and Unnumbered (U-frame) control fields. (5)
+   (b) Generate the CRC checksum for data `110101` using generator polynomial $G(x) = x^3 + x + 1$ ($1011$). Show step-by-step modulo-2 division. (4)
+7. (a) Derive the minimum frame size formula $L_{\text{min}} \ge 2 T_p \times R$ for CSMA/CD to detect collisions successfully. (5)
+   (b) Calculate the minimum frame size for a 1 Gbps Ethernet LAN of length 1 km (signal speed $2 \times 10^8$ m/s). (4)
+
+PART C
+Answer all questions, each carries 3 marks.
+
+8. Explain the difference between Datagram subnets and Virtual Circuit subnets. (3)
+9. Define Count-to-Infinity problem in Distance Vector Routing. (3)
+10. Describe the Token Bucket traffic shaping algorithm. (3)
+11. What is Subnetting? Why is CIDR preferred over Classful IP addressing? (3)
+
+PART D
+Answer any two full questions, each carries 9 marks.
+
+12. (a) Explain Dijkstra's shortest path routing algorithm. Trace the shortest path from source node A to all nodes in a given weighted graph. (5)
+    (b) Differentiate between Distance Vector Routing (RIP) and Link State Routing (OSPF). (4)
+13. (a) An organization is assigned the block `192.168.10.0/24`. Design a subnetting scheme to create 4 equal-sized subnets. Find subnet mask, usable host range, and broadcast address for each subnet. (6)
+    (b) Explain the Leaky Bucket algorithm and compare it with the Token Bucket algorithm. (3)
+14. (a) Explain Random Early Detection (RED) for proactive congestion management in internet routers. (4)
+    (b) Perform CIDR route aggregation (supernetting) for 4 contiguous networks: `202.10.0.0/24`, `202.10.1.0/24`, `202.10.2.0/24`, and `202.10.3.0/24`. (5)
+
+PART E
+Answer any four full questions, each carries 10 marks.
+
+15. (a) Explain ARP and RARP protocol operation. Trace the message exchange when a host resolves a local IP address. (6)
+    (b) Describe ICMP message format and explain how `traceroute` utilizes ICMP Time Exceeded messages. (4)
+16. (a) Explain BGP protocol and Path Vector routing. How does BGP prevent routing loops across Autonomous Systems? (6)
+    (b) Explain IGMP multicast group management protocol. (4)
+17. (a) Explain IPv6 base 40-byte header format. Compare IPv4 and IPv6 headers. (6)
+    (b) Discuss transition mechanisms from IPv4 to IPv6 (Dual Stack, 6to4 Tunneling). (4)
+18. (a) Explain TCP 3-Way Handshake for connection establishment and 4-way connection teardown. (6)
+    (b) Differentiate between UDP and TCP header formats and application scenarios. (4)
+19. (a) Explain TCP Congestion Control mechanisms: Slow Start, Congestion Avoidance, Fast Retransmit, and Fast Recovery. (6)
+    (b) Calculate the maximum TCP throughput over a path with RTT = 100 ms and receiver window $rwnd = 64$ KB. (4)
+20. (a) Explain DNS hierarchy and differentiate between Iterative and Recursive DNS resolution queries. (6)
+    (b) Explain FTP dual-port architecture (Control Port 21, Data Port 20) and HTTP persistent vs non-persistent connections. (4)

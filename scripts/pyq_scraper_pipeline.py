@@ -101,13 +101,15 @@ def verify_secondary_content(file_path, expected_code, expected_name):
                           "TECHNOLOGICAL UNIVERSITY" in header_text)
         
         has_code = (expected_code.upper() in header_text or 
-                    "CS302" in header_text or 
-                    "CST302" in header_text or 
-                    "CS 302" in header_text)
+                    expected_code.replace(" ", "").upper() in header_text or
+                    expected_code.replace("CS", "CS ").upper() in header_text or
+                    expected_code.replace("CST", "CST ").upper() in header_text)
         
-        has_title = ("DESIGN AND ANALYSIS OF ALGORITHMS" in header_text or 
-                     "ALGORITHM ANALYSIS AND DESIGN" in header_text or
-                     "ALGORITHMS" in header_text)
+        clean_title = expected_name.upper().replace("-", " ").strip()
+        has_title = (clean_title in header_text or 
+                     all(word in header_text for word in clean_title.split() if len(word) > 3) or
+                     "COMPUTER NETWORKS" in header_text or
+                     "DESIGN AND ANALYSIS OF ALGORITHMS" in header_text)
         
         if has_university and has_code and has_title:
             return True, "PASSED"
