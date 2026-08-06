@@ -1,4 +1,4 @@
-# Module 5 — Topic 2: BGP, Internet Multicasting & IPv6 Transition
+# Module 5 — Topic 2: BGP, Internet Multicasting & IPv6 Transition (ICMPv6 & NDP)
 
 > **Module 5**: Internet Control Protocols, Multicasting & IPv6  
 > **Course**: CS306 Computer Networks
@@ -10,22 +10,30 @@
 ### Explanation
 As internetworks scale globally across different administrative domains, specialized protocols manage inter-domain routing, multicasting, and address extension:
 
-1. **Exterior Routing Protocol — BGP (Border Gateway Protocol)**:
-   - Inter-domain routing protocol used between different **Autonomous Systems (AS)**.
-   - Uses **Path Vector Routing**: Advertises the complete sequence of Autonomous System numbers (AS-Path) to reach a destination prefix, preventing routing loops.
-   - Operates over reliable TCP connections (Port 179). Policy-driven routing (routing decisions based on business rules rather than shortest path).
+#### 1. Exterior Routing Protocol — BGP (Border Gateway Protocol)
+- Inter-domain routing protocol used between different **Autonomous Systems (AS)**.
+- Uses **Path Vector Routing**: Advertises the complete sequence of Autonomous System numbers (AS-Path) to reach a destination prefix, preventing routing loops.
+- Operates over reliable TCP connections (Port 179). Policy-driven routing (routing decisions based on business rules rather than shortest path).
 
-2. **Internet Multicasting (IGMP)**:
-   - Transmission from 1 sender to a specific group of subscribed hosts (Class D addresses `224.0.0.0/4`).
-   - **IGMP (Internet Group Management Protocol)**: Used by hosts to inform local routers of their group membership. Routers use DVMRP or PIM to prune multicast trees.
+---
 
-3. **IPv6 Protocol & Transition Mechanisms**:
-   - Designed to replace IPv4, providing **128-bit addresses** ($3.4 \times 10^{38}$ unique IPs).
-   - **Simplified Header**: Fixed 40-byte header (8 fields instead of 14 in IPv4). Removes header checksum to speed up router processing.
-   - **Transition Mechanisms**:
-     - *Dual Stack*: Devices run both IPv4 and IPv6 protocol stacks simultaneously.
-     - *Tunneling*: Encapsulating IPv6 packets inside IPv4 headers to cross IPv4-only networks (6to4 tunneling).
-     - *Header Translation (NAT-PT)*: Translating IPv6 headers into IPv4 headers at border gateways.
+#### 2. Internet Multicasting (IGMP)
+- Transmission from 1 sender to a specific group of subscribed hosts (Class D addresses `224.0.0.0/4`).
+- **IGMP (Internet Group Management Protocol)**: Used by hosts to inform local routers of their group membership. Routers use DVMRP or PIM to prune multicast trees.
+
+---
+
+#### 3. IPv6 Protocol, ICMPv6 & Neighbor Discovery Protocol (NDP)
+- Designed to replace IPv4, providing **128-bit addresses** ($3.4 \times 10^{38}$ unique IPs).
+- **Simplified Fixed Header**: 40-byte base header (8 fields instead of 14 in IPv4). Removes header checksum to speed up router processing.
+- **ICMPv6 (Internet Control Message Protocol v6)**: Combines ICMPv4, IGMP, and ARP functions into a single protocol.
+  - **Neighbor Discovery Protocol (NDP)**: Replaces ARP in IPv6. Uses ICMPv6 messages:
+    - *Router Solicitation (RS) / Router Advertisement (RA)*: Discovers local routers and prefixes for Stateless Address Autoconfiguration (SLAAC).
+    - *Neighbor Solicitation (NS) / Neighbor Advertisement (NA)*: Resolves IPv6 addresses to Layer 2 MAC addresses (replacing ARP) and detects duplicate IP addresses (DAD).
+- **Transition Mechanisms**:
+  - *Dual Stack*: Devices run both IPv4 and IPv6 protocol stacks simultaneously.
+  - *Tunneling*: Encapsulating IPv6 packets inside IPv4 headers to cross IPv4-only networks (6to4 tunneling).
+  - *Header Translation (NAT-PT)*: Translating IPv6 headers into IPv4 headers at border gateways.
 
 ---
 
@@ -74,9 +82,14 @@ Show how BGP detects routing loops and selects the active path.
      - Address size: 32 bits (IPv4) vs 128 bits (IPv6).
      - Checksum: IPv4 has header checksum; IPv6 removes checksum for processing speed.
      - Fragmentation: Routers fragment in IPv4; only sender fragments in IPv6.
-     - Multicast/Broadcast: IPv4 uses broadcast; IPv6 eliminates broadcast, using multicast & anycast.
 
-2. **"Explain BGP protocol and Path Vector routing." [Dec 2019]**
+2. **"Explain Neighbor Discovery Protocol (NDP) in ICMPv6." [Dec 2019]**
    - **Solution:**
-     **BGP (Border Gateway Protocol):** De-facto inter-domain routing protocol of the Internet. Uses Path Vector routing to advertise destination network prefixes along with the sequence of Autonomous Systems (AS-Path) traversed.
-     **Path Vector Advantage:** Prevents routing loops because an AS rejects any route listing its own AS number in the path. Allows ISPs to enforce complex commercial and security routing policies.
+     NDP operates over ICMPv6 to perform key link-layer functions in IPv6:
+     - **Address Resolution (Replacing ARP)**: Uses Neighbor Solicitation (NS) and Neighbor Advertisement (NA) to map IPv6 addresses to MAC addresses.
+     - **Router Discovery & SLAAC**: Router Advertisement (RA) periodically broadcasts network prefixes allowing hosts to auto-assign their own IPv6 addresses.
+     - **Duplicate Address Detection (DAD)**: Ensures no two hosts on the same link share the same IPv6 address.
+
+3. **"Explain BGP protocol and Path Vector routing." [Dec 2019]**
+   - **Solution:**
+     **BGP (Border Gateway Protocol):** De-facto inter-domain routing protocol of the Internet. Uses Path Vector routing to advertise destination network prefixes along with the sequence of Autonomous Systems (AS-Path) traversed to prevent routing loops.

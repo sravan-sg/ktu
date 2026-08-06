@@ -14,9 +14,10 @@ This study workspace provides comprehensive, professor-grade notes and rapid rev
 ## 📖 Detailed Notes by Module & Topic
 
 ### [Module 1: Network Architecture & Reference Models](module-1/detailed-notes.md)
-- **[Topic 1: Network Hardware, Software & Topologies](module-1/network-hardware-software-and-topologies.md)**
-- **[Topic 2: Protocol Hierarchies, Layer Design Issues & Services](module-1/protocol-hierarchies-design-issues-and-services.md)**
-- **[Topic 3: OSI Reference Model vs TCP/IP Reference Model](module-1/osi-vs-tcp-ip-reference-models.md)**
+- **[Topic 1: Introduction & Uses of Computer Networks](module-1/introduction-and-uses-of-computer-networks.md)**
+- **[Topic 2: Network Hardware, Software & Topologies](module-1/network-hardware-software-and-topologies.md)**
+- **[Topic 3: Protocol Hierarchies, Layer Design Issues & Services](module-1/protocol-hierarchies-design-issues-and-services.md)**
+- **[Topic 4: OSI Reference Model vs TCP/IP Reference Model](module-1/osi-vs-tcp-ip-reference-models.md)**
 
 ---
 

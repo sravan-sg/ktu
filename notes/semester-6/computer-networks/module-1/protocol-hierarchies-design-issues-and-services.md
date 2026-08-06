@@ -8,32 +8,83 @@
 ## 1. Core Intuition & Fundamental Concepts
 
 ### Explanation
-To reduce design complexity, modern networks are organized as a stack of **layers** or **levels**, each built upon the one below it. 
+To manage the immense complexity of network communications, networks are structured as a stack of **layers** or **levels**, each built upon the one below it. 
 
-Key terminology:
-- **Protocol**: An agreed-upon set of rules and conventions governing communication between two **peer entities** at the same layer across different machines.
+Key Terminology:
+- **Protocol**: An agreed-upon set of rules and conventions governing communication between two **peer entities** operating at the same layer on different machines.
 - **Service**: A set of operations/primitives that a lower layer offers to the layer immediately above it (across an Interface).
-- **Interface**: Defines the primitive operations and services that the lower layer makes available to the upper layer.
-- **Encapsulation**: As data moves down the protocol stack from layer $N+1$ to layer $N$, layer $N$ prepends a **Header** ($H_N$) containing control information (addressing, checksums, sequence numbers). At the receiving host, **Decapsulation** strips headers as data moves up.
+- **Interface**: Defines the primitive operations and boundary rules through which Layer $N$ exposes its services to Layer $N+1$.
+- **Encapsulation**: As data moves down the protocol stack from Layer $N+1$ to Layer $N$, Layer $N$ prepends a **Header** ($H_N$) containing control info (addresses, checksums, sequence numbers). At the receiving host, **Decapsulation** strips headers as data ascends.
 
-**Key Layer Design Issues**:
-1. **Addressing**: Identifying senders and receivers (e.g. MAC address at Layer 2, IP address at Layer 3, Port number at Layer 4).
-2. **Error Control**: Detecting and correcting corrupted or lost bits/packets (checksums, CRC, ARQ).
-3. **Flow Control**: Preventing a fast sender from overwhelming a slow receiver.
-4. **Multiplexing / Demultiplexing**: Combining multiple higher-layer streams over a single lower-layer channel.
-5. **Routing**: Finding optimal paths through a network of intermediate routers.
+---
 
-### Example
+### Key Design Issues for Layers
+
+Every layer in a network architecture must address several core engineering design issues:
+
+1. **Addressing & Naming**:
+   - Disambiguating senders and receivers at different levels of granularity.
+   - Examples: MAC addresses (Layer 2 physical link), IP addresses (Layer 3 network host), Port numbers (Layer 4 application process).
+
+2. **Error Control**:
+   - Physical circuits are imperfect and flip bits due to noise, attenuation, or interference.
+   - Requires mechanisms for **Error Detection** (Checksums, CRC) and **Error Correction / Retransmission** (ARQ protocols).
+
+3. **Flow Control**:
+   - Prevents a fast, high-capacity sender from overflowing the limited buffer space of a slow receiver.
+   - Implemented using Feedback mechanisms (Stop-and-Wait, Sliding Window).
+
+4. **Multiplexing & Demultiplexing**:
+   - **Multiplexing**: Combining multiple higher-layer application data streams over a single shared lower-layer physical transmission channel.
+   - **Demultiplexing**: Separating combined traffic streams at the destination based on protocol port tags.
+
+5. **Routing & Scalability**:
+   - Finding optimal, shortest, or least-cost paths when multiple intermediate physical paths exist between source and destination routers.
+
+6. **Fragmentation & Reassembly**:
+   - Dividing large packets into smaller fragments when traversing networks with smaller Maximum Transmission Units (MTUs), and reassembling them correctly at the destination.
+
+---
+
+### Service Primitives & Service Types
+
+A service is formally specified by a set of **Primitives** (basic operations/calls) available to user processes or higher layers:
+
+```
+    Client (Layer N+1)                             Server (Layer N+1)
+            │                                              ▲
+  1. REQUEST│                                              │2. INDICATION
+            ▼                                              │
+  ┌────────────────────────────────────────────────────────────────┐
+  │                           LAYER N                              │
+  └────────────────────────────────────────────────────────────────┘
+            ▲                                              │
+   4.CONFIRM│                                              │3. RESPONSE
+            │                                              ▼
+```
+
+#### The 4 Abstract Service Primitives:
+1. **REQUEST**: An entity at Layer $N+1$ asks Layer $N$ to perform a service (e.g. establish a connection, send data).
+2. **INDICATION**: An entity at Layer $N$ notifies an entity at Layer $N+1$ that a service request or event has occurred.
+3. **RESPONSE**: An entity at Layer $N+1$ responds to an `INDICATION` primitive.
+4. **CONFIRM**: An entity at Layer $N$ notifies the requesting entity at Layer $N+1$ that its prior `REQUEST` has completed.
+
+#### Service Classification:
+- **Confirmed Services**: Uses all 4 primitives (`REQUEST`, `INDICATION`, `RESPONSE`, `CONFIRM`). Used in connection setup (e.g., TCP connection establishment).
+- **Unconfirmed Services**: Uses only 2 primitives (`REQUEST`, `INDICATION`). No confirmation is returned to the sender (e.g., UDP datagram delivery).
+
+---
+
+### Real-World Example
 Think of international diplomacy:
-- The **President of Country A** wants to send a message to the **President of Country B**.
-- Layer 3 (Presidents): High-level message ("Let's sign a treaty").
-- Layer 2 (Translators/Secretaries): Translates message into official diplomatic language, adds header ("To Minister of Foreign Affairs, Country B"), passes to courier.
-- Layer 1 (Couriers/Postal Service): Encloses letter in envelope, stamps tracking ID, ships via airplane.
-- The Presidents (Peers) communicate logically via their protocols, but physical communication flows vertically down through translators and couriers.
+- **Presidents (Layer 3 Peers)**: Communicate logically ("Let me sign a treaty").
+- **Translators (Layer 2)**: Translate message, append formal headers ("To Foreign Minister"), pass to courier.
+- **Couriers (Layer 1)**: Put letter in stamped envelope, transport via airplane.
+- The Presidents communicate logically via their protocol, but physical communication flows vertically down through translators and couriers using primitive interfaces.
 
 ### Applications & Use Cases
 - **HTTP over TLS over TCP over IP over Ethernet**: Web browsers encapsulate HTTP requests inside TLS encryption headers, TCP segment headers, IP packet headers, and Ethernet frame headers.
-- **Modular Software Development**: Protocol layering allows swapping out physical media (Wi-Fi vs Fiber Ethernet) without rewriting the application code (Web Browser or Database engine).
+- **Modular Network Protocol Replacement**: Protocol layering allows swapping out physical media (Wi-Fi vs Fiber Ethernet) without rewriting upper-layer application software (Web Browser or Database engine).
 
 ---
 
@@ -54,17 +105,16 @@ Think of international diplomacy:
 ### Example 2: Connection-Oriented vs Connectionless Service Primitives
 **Problem:** Contrast Connection-Oriented Service with Connectionless Service using Service Primitives. Trace the primitive sequence for establishing, transferring, and releasing a connection.
 **Step-by-step Solution:**
-1. **Connection-Oriented Service (e.g. TCP):**
-   - Modeled after the telephone system.
+1. **Connection-Oriented Service (Confirmed Service):**
    - Requires 3 distinct phases: (1) Connection Establishment, (2) Data Transfer, (3) Connection Release.
    - **Primitive Sequence:**
-     - Client issues `LISTEN` / `CONNECT.request` $\rightarrow$ Server receives `CONNECT.indication`.
+     - Client issues `CONNECT.request` $\rightarrow$ Server receives `CONNECT.indication`.
      - Server issues `CONNECT.response` $\rightarrow$ Client receives `CONNECT.confirm`.
      - Client issues `DATA.request` $\rightarrow$ Server receives `DATA.indication`.
      - Client/Server issues `DISCONNECT.request`.
-2. **Connectionless Service (e.g. UDP / IP):**
-   - Modeled after the postal system.
-   - Each message (Datagram) carries complete destination address and is routed independently. No setup phase required.
+2. **Connectionless Service (Unconfirmed Service):**
+   - Each message (Datagram) carries a complete destination address and is routed independently. No setup phase required.
+   - Primitive Sequence: Client issues `UNITDATA.request` $\rightarrow$ Server receives `UNITDATA.indication`.
 
 ### Example 3: Service Primitives Delay Walkthrough
 **Problem:** In a client-server setup using service primitives, a client issues a `CONNECT.request` at time $t = 0$. One-way propagation delay between client and server is $10 \text{ ms}$, and processing time at the server is $2 \text{ ms}$. At what time does the client receive `CONNECT.confirm`?
@@ -87,12 +137,18 @@ Think of international diplomacy:
    - **Solution:**
      **Protocol Hierarchy:** Networks are layered to break complex communications into modular subtasks. Each layer $N$ provides services to layer $N+1$ using primitives, shielding upper layers from physical implementation details. Peer entities at layer $N$ exchange protocol data units (PDUs) adhering to layer $N$ protocols.
      **Key Design Issues:**
-     - **Addressing:** Disambiguating multiple hosts and processes.
-     - **Error Control:** Detecting and recovering from flipped bits using checksums and ACKs.
-     - **Flow Control:** Matching transmission rates between fast senders and slow receivers.
-     - **Routing:** Finding shortest paths through intermediate networks.
+     - *Addressing*: Disambiguating senders/receivers (MAC, IP, Port numbers).
+     - *Error Control*: Detecting/correcting corrupted bits using checksums & ARQ.
+     - *Flow Control*: Matching rates between fast senders and slow receivers.
+     - *Multiplexing*: Combining multiple upper streams over 1 lower link.
+     - *Routing*: Determining optimal paths through subnets.
 
-2. **"Differentiate between Connection-Oriented and Connectionless services with examples." [April 2018]**
+2. **"Explain the 4 service primitives (Request, Indication, Response, Confirm) and differentiate between Confirmed and Unconfirmed services." [April 2018, July 2021]**
    - **Solution:**
-     - **Connection-Oriented Service:** Establishes a virtual circuit before transmitting data. Guarantees in-order delivery and reliability (e.g. TCP, File Transfer, Web Browsing).
-     - **Connectionless Service:** Transmits independent datagrams directly without prior negotiation. Faster, lower overhead, but offers no guarantee of in-order delivery or arrival (e.g. UDP, DNS queries, Video Streaming).
+     - **Request**: Layer $N+1$ requests a service from Layer $N$.
+     - **Indication**: Layer $N$ notifies Layer $N+1$ of an incoming request or event.
+     - **Response**: Layer $N+1$ responds to an indication.
+     - **Confirm**: Layer $N$ notifies requesting Layer $N+1$ that service is completed.
+     **Confirmed vs Unconfirmed:**
+     - *Confirmed Services* use all 4 primitives (`Request`, `Indication`, `Response`, `Confirm`) to guarantee acknowledgment (e.g. TCP setup).
+     - *Unconfirmed Services* use only 2 primitives (`Request`, `Indication`) without returning confirmation (e.g. UDP datagram transmission).

@@ -10,21 +10,39 @@
 ### Explanation
 In broadcast networks, multiple hosts share a single transmission channel. The **Medium Access Control (MAC)** sublayer resolves channel contention:
 
-1. **Random Access Protocols**:
-   - **ALOHA**: Pure ALOHA allows stations to transmit immediately (vulnerable time $2T_t$, max efficiency $18.4\%$). Slotted ALOHA synchronizes time slots ($1T_t$, max efficiency $36.8\%$).
-   - **CSMA/CD (Carrier Sense Multiple Access with Collision Detection)**: Used in Ethernet (IEEE 802.3). Station listens before speaking ("Carrier Sense"), transmits, and listens while transmitting to detect collisions ("Collision Detection"). Upon collision, aborts and executes **Binary Exponential Backoff**.
-   - **CSMA/CA (Collision Avoidance)**: Used in Wi-Fi (IEEE 802.11). Avoids collisions using Inter-Frame Spaces (IFS), Random Backoff timers, and **RTS/CTS (Request-to-Send / Clear-to-Send)** handshakes to solve the **Hidden Station Problem**.
+#### 1. Random Access Protocols
+- **ALOHA**: Pure ALOHA transmits immediately (vulnerable time $2T_t$, max efficiency $18.4\%$). Slotted ALOHA synchronizes time slots ($1T_t$, max efficiency $36.8\%$).
+- **CSMA/CD (Carrier Sense Multiple Access with Collision Detection)**: Used in wired Ethernet (IEEE 802.3). Station listens before speaking ("Carrier Sense"), transmits, and listens while transmitting to detect collisions. Upon collision, aborts, transmits jam signal, and executes **Binary Exponential Backoff**.
+- **CSMA/CA (Collision Avoidance)**: Used in Wireless LANs (IEEE 802.11). Avoids collisions using Inter-Frame Spaces (IFS), Random Backoff timers, and **RTS/CTS (Request-to-Send / Clear-to-Send)** handshakes to solve the **Hidden Station Problem** and **Exposed Station Problem**.
 
-2. **IEEE 802 LAN Standards**:
-   - **IEEE 802.3**: Ethernet (CSMA/CD, 10 Mbps to 10 Gbps+).
-   - **IEEE 802.4**: Token Bus.
-   - **IEEE 802.5**: Token Ring (Token passing protocol).
-   - **IEEE 802.11**: Wireless LANs (802.11a/b/g/n/ac).
-   - **IEEE 802.15**: Wireless Personal Area Networks (Bluetooth).
+---
 
-3. **Interconnection Devices**:
-   - **Bridge / Switch (Layer 2)**: Learns MAC addresses dynamically, maintains MAC forwarding tables, isolates collision domains.
-   - **Router (Layer 3)**: Routes packets between subnets based on IP addresses, isolates broadcast domains.
+#### 2. IEEE 802 LAN/MAN Standards & Wireless Protocols
+- **IEEE 802.3**: Ethernet (CSMA/CD, 10 Mbps Fast/Gigabit/10GbE).
+- **IEEE 802.4 & 802.5**: Token Bus and Token Ring (Token passing deterministic protocol).
+- **IEEE 802.11**: Wireless LANs (802.11a/b/g/n/ac/ax Wi-Fi).
+- **IEEE 802.15 (Bluetooth / WPAN)**: Wireless Personal Area Networks. Operates in 2.4 GHz ISM band using Frequency Hopping Spread Spectrum (FHSS). 
+  - **Piconet**: Consists of 1 Master node and up to 7 Active Slave nodes.
+  - **Scatternet**: Interconnected Piconets sharing bridge nodes.
+- **Point-to-Point Protocol (PPP)**: Data link protocol used over direct serial links.
+  - **LCP (Link Control Protocol)**: Negotiates link options, authentication (PAP/CHAP), and compression.
+  - **NCP (Network Control Protocol)**: Negotiates network-layer configurations (IP address assignment).
+
+---
+
+#### 3. Interconnection Devices & Spanning Tree Protocol
+- **Bridge / Switch (Layer 2)**:
+  - **Backward Learning Algorithm**: Inspects source MAC address of incoming frames to build MAC address forwarding table automatically.
+  - **Forwarding & Filtering**: If destination MAC is in table on same port, frame is dropped (filtered). If on different port, forwarded. If unknown MAC, flooded to all ports except source.
+  - **Spanning Tree Protocol (STP / IEEE 802.1D)**: Prevents broadcast storms and infinite loops in redundant switch topologies by disabling redundant links to form a logical loop-free tree.
+- **Router (Layer 3)**: Routes packets between subnets based on IP addresses, isolates broadcast domains.
+
+---
+
+### Real-World Example
+Think of a switch like a smart mailroom clerk:
+- When a new letter arrives from Room 101 signed by "Alice", the clerk writes down: `Alice -> Room 101` (Backward Learning).
+- When a letter arrives addressed to "Bob", the clerk checks the lookup table. If Bob's room is known (`Bob -> Room 105`), the letter goes straight to Room 105 (Filtering & Forwarding). If Bob is unknown, the clerk shouts down every hallway asking for Bob (Flooding).
 
 ---
 
@@ -52,16 +70,22 @@ In broadcast networks, multiple hosts share a single transmission channel. The *
    Options: $0, 51.2, 102.4, 153.6, 204.8, 256.0, 307.2, 358.4 \mu\text{s}$.
 4. **Collision Probability:** Probability that both choose same $k = 1/8 = 12.5\%$.
 
-### Example 3: Pure ALOHA vs Slotted ALOHA Throughput
-**Problem:** A channel of 56 kbps is shared by multiple stations using Pure ALOHA. Each station transmits 1,000-bit frames. What is the maximum channel throughput in frames/sec?
+### Example 3: Backward Learning Algorithm Trace for Layer 2 Switch
+**Problem:** A 4-port switch with an empty MAC table receives the following sequence of Ethernet frames:
+1. Frame from MAC `A` on Port 1 to MAC `B`.
+2. Frame from MAC `C` on Port 3 to MAC `A`.
+3. Frame from MAC `B` on Port 2 to MAC `C`.
+Trace the MAC table after each step and state which ports receive forwarded frames.
 **Step-by-step Solution:**
-1. **Pure ALOHA Throughput Formula:** $S = G e^{-2G}$.
-2. **Maximum Throughput occurs at $G = 0.5$:**
-   $$S_{\text{max}} = 0.5 \times e^{-1} \approx 0.184 \text{ (18.4\%)}$$
-3. **Calculate Maximum Bits/sec:**
-   $$\text{Rate} = 0.184 \times 56,000 \text{ bps} = 10,304 \text{ bps}$$
-4. **Calculate Throughput in Frames/sec:**
-   $$\text{Frames/sec} = \frac{10,304 \text{ bps}}{1000 \text{ bits/frame}} = \mathbf{10.3 \text{ frames/sec}}$$
+1. **Frame 1 (`A` -> `B` on Port 1):**
+   - *Learns:* `A` is on Port 1. MAC Table: `{A: Port 1}`.
+   - *Destination `B` is unknown:* Floods frame to Ports 2, 3, and 4.
+2. **Frame 2 (`C` -> `A` on Port 3):**
+   - *Learns:* `C` is on Port 3. MAC Table: `{A: Port 1, C: Port 3}`.
+   - *Destination `A` is known (Port 1):* Forwards frame **only** to Port 1 (Filtered on Ports 2 & 4).
+3. **Frame 3 (`B` -> `C` on Port 2):**
+   - *Learns:* `B` is on Port 2. MAC Table: `{A: Port 1, C: Port 3, B: Port 2}`.
+   - *Destination `C` is known (Port 3):* Forwards frame **only** to Port 3.
 
 ---
 
@@ -80,3 +104,9 @@ In broadcast networks, multiple hosts share a single transmission channel. The *
      - **Hidden Station Problem:** Station A and C cannot hear each other, but both can hear B. If A and C transmit to B simultaneously, collisions occur at B.
      - **Exposed Station Problem:** Station B transmits to A. Station C wants to transmit to D. C hears B and wrongly assumes medium is busy, unnecessarily delaying transmission.
      - **RTS/CTS Solution:** A sends Request-to-Send (RTS) to B. B replies with Clear-to-Send (CTS) broadcast. C hears CTS and defers transmission, preventing collisions at B.
+
+3. **"Explain Point-to-Point Protocol (PPP) and LCP/NCP negotiation." [April 2018]**
+   - **Solution:**
+     - **PPP**: Data link protocol for point-to-point connections over serial lines. Provides byte-oriented framing, error detection, and link management.
+     - **LCP (Link Control Protocol)**: Establishes, configures, and tests the data link connection. Negotiates maximum payload size (MRU) and authentication protocols (PAP or CHAP).
+     - **NCP (Network Control Protocol)**: Establishes and configures network layer protocols (e.g. IP Control Protocol IPCP to assign IP addresses dynamically).
