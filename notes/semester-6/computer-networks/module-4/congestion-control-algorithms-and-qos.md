@@ -8,23 +8,64 @@
 ## 1. Core Intuition & Fundamental Concepts
 
 ### Explanation
-When total network traffic exceeds the processing/forwarding capacity of intermediate routers, queues build up and **congestion** occurs. 
+When total network traffic exceeds the processing or forwarding capacity of intermediate routers, queues build up and **congestion** occurs. 
 
-**Congestion Control vs Flow Control**:
-- **Flow Control**: Point-to-point management between 1 fast sender and 1 slow receiver.
-- **Congestion Control**: Global network-wide management to prevent intermediate routers/links from becoming overwhelmed.
+#### Congestion Control vs Flow Control
+- **Flow Control**: Point-to-point rate matching between a single fast sender and a single slow receiver (e.g., sliding window).
+- **Congestion Control**: Global network-wide traffic management to prevent intermediate routers and shared links from becoming overwhelmed.
 
-**Traffic Shaping & Congestion Control Algorithms**:
+---
+
+### Traffic Shaping & Congestion Control Algorithms
+
 1. **Leaky Bucket Algorithm**:
    - Converts bursty incoming traffic into a **smooth, constant-rate outgoing stream**.
-   - Modeled as a bucket with a small hole at the bottom. If the bucket overflows, incoming packets are dropped.
+   - Modeled as a bucket with a small hole at the bottom. If input arrives faster than the leak rate, data accumulates in the bucket buffer. If the bucket overflows, incoming packets are dropped.
+
 2. **Token Bucket Algorithm**:
    - Tokens arrive into the bucket at a constant rate $r$. The bucket can hold up to $b$ tokens.
-   - To send a $1$-byte packet, the sender must consume $1$ token. Allows **controlled burstiness** up to bucket capacity $b$.
+   - To transmit a packet, the sender must consume tokens corresponding to packet size. Allows **controlled burstiness** up to bucket capacity $b$.
+
 3. **Choke Packets**:
-   - A congested router generates a choke packet sent directly back to the source host ordering it to reduce transmission rate.
+   - When a router's queue utilization exceeds a threshold, it generates a control packet (choke packet) sent directly back to the source host commanding it to reduce its transmission rate.
+
 4. **Random Early Detection (RED)**:
-   - Routers monitor average queue length. When queue size exceeds a threshold, the router randomly drops incoming packets *before* the queue fills completely, forcing TCP senders to slow down gracefully.
+   - Proactive router queue management. The router monitors average queue length. When queue size exceeds a minimum threshold $Min_{th}$, the router randomly drops incoming packets *before* the buffer fills completely, forcing TCP senders to slow down gracefully via Fast Retransmit.
+
+---
+
+### Quality of Service (QoS) Architecture
+
+**Quality of Service (QoS)** refers to network mechanisms used to guarantee performance requirements (throughput, delay, jitter, packet loss) for specific applications.
+
+```
+                             ┌────────────────────────────────────────┐
+                             │       QUALITY OF SERVICE METRICS       │
+                             └───────────────────┬────────────────────┘
+                                                 │
+        ┌──────────────────────┬─────────────────┴──────┬──────────────────────┐
+        ▼                      ▼                        ▼                      ▼
+┌──────────────┐       ┌──────────────┐         ┌──────────────┐       ┌──────────────┐
+│  BANDWIDTH   │       │    DELAY     │         │    JITTER    │       │ PACKET LOSS  │
+├──────────────┤       ├──────────────┤         ├──────────────┤       ├──────────────┤
+│ Data rate in │       │ Time from    │         │ Variation in │       │ % of dropped │
+│ bps or Mbps  │       │ Src to Dst   │         │ packet delay │       │ buffer frames│
+└──────────────┘       └──────────────┘         └──────────────┘       └──────────────┘
+```
+
+#### 1. Techniques for Improving QoS
+- **Overprovisioning**: Building excess link bandwidth so congestion rarely occurs.
+- **Buffering**: Receiver buffers audio/video packets to smooth out delay variations (Jitter).
+- **Packet Scheduling Algorithms**:
+  - *FIFO (First-In, First-Out)*: Serves packets in arrival order.
+  - *Fair Queueing (FQ)*: Maintains separate queues per flow, serving them round-robin.
+  - *Weighted Fair Queueing (WFQ)*: Assigns priority weights to queues so high-priority flows (VoIP) receive a higher fraction of bandwidth.
+
+#### 2. Differentiated Services (DiffServ) vs Integrated Services (IntServ)
+- **Integrated Services (IntServ / RSVP)**:
+  - Flow-based QoS model. Applications use **RSVP (Resource Reservation Protocol)** to reserve explicit bandwidth across all intermediate routers before transmitting. High state overhead per router (does not scale globally).
+- **Differentiated Services (DiffServ / DSCP)**:
+  - Class-based QoS model. Edge routers classify packets and tag the 6-bit **DSCP (Differentiated Services Code Point)** field in the IPv4 header. Core routers treat packets based on Per-Hop Behaviors (**EF - Expedited Forwarding** for low latency, **AF - Assured Forwarding** for guaranteed delivery).
 
 ---
 
@@ -35,7 +76,7 @@ When total network traffic exceeds the processing/forwarding capacity of interme
 **Step-by-step Solution:**
 1. **Formulate Burst Equation:**
    In time $S$, the maximum data transmitted is $M \times S$.
-   This data comes from the initial bucket capacity $b$ plus new tokens generated during time $S$ ($r \times S$):
+   This data comes from initial capacity $b$ plus new tokens generated during time $S$ ($r \times S$):
    $$M \times S = b + r \times S$$
 2. **Solve for Burst Duration $S$:**
    $$S (M - r) = b \implies S = \frac{b}{M - r}$$
@@ -57,7 +98,7 @@ When total network traffic exceeds the processing/forwarding capacity of interme
    - $t=2$: 8MB arrives. Current = $6 + 8 = 14\text{MB} \implies$ **4MB dropped**. Transmits 4MB. Remaining = 6MB.
    - Total Dropped = 6MB. Output rate is constant 4MB/s.
 2. **Token Bucket (Cap 8MB, Token Rate 4MB/s):**
-   - $t=0$: Initial tokens = 8MB. 12MB arrives. Transmits 8MB immediately in burst, remaining 4MB queued or sent at 4MB/s.
+   - $t=0$: Initial tokens = 8MB. 12MB arrives. Transmits 8MB immediately in burst, remaining 4MB sent at 4MB/s.
 
 ### Example 3: Jitter & Delay Variance Analysis for QoS
 **Problem:** A real-time VoIP audio stream transmits packets at intervals of $20 \text{ ms}$. The arrival times at the receiver for 4 consecutive packets are $t_1 = 20 \text{ ms}$, $t_2 = 45 \text{ ms}$, $t_3 = 60 \text{ ms}$, $t_4 = 85 \text{ ms}$. Calculate the absolute delay jitter between consecutive packets.
@@ -77,8 +118,8 @@ When total network traffic exceeds the processing/forwarding capacity of interme
      - **Leaky Bucket:** Discards packets when bucket overflows. Produces a rigid, strictly uniform output rate regardless of input burstiness. Ideal for smooth traffic shaping.
      - **Token Bucket:** Discards tokens (not packets) when bucket overflows. Allows hosts to transmit at full interface speed in bursts up to token capacity $b$. Flexible traffic shaping for bursty application data.
 
-2. **"Define Congestion. Explain Choke Packets and RED mechanism for congestion prevention." [Dec 2019]**
+2. **"Define Quality of Service (QoS). Explain IntServ (RSVP) vs DiffServ (DSCP)." [Dec 2019]**
    - **Solution:**
-     **Congestion:** Occurs when load on network (number of packets sent) exceeds available capacity of routers/links, degrading throughput.
-     **Choke Packets:** Router experiencing queue congestion sends feedback control packet back to source host commanding it to reduce sending rate.
-     **RED (Random Early Detection):** Proactive queue management. Router calculates weighted average queue size. When queue exceeds threshold $Min_{th}$, router drops incoming packets with probability $P$, triggering TCP window reduction before buffer overflow occurs.
+     - **QoS Metrics**: Bandwidth, Delay, Jitter, Packet Loss.
+     - **IntServ (Integrated Services)**: Uses RSVP to make explicit end-to-end bandwidth reservations per flow. High state overhead on core routers.
+     - **DiffServ (Differentiated Services)**: Classifies traffic at edge routers using 6-bit DSCP headers. Core routers prioritize packets based on Per-Hop Behaviors (EF / AF) without maintaining per-flow state.

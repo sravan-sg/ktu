@@ -8,105 +8,196 @@
 ## 1. Core Intuition & Fundamental Concepts
 
 ### Explanation
-In broadcast networks, multiple hosts share a single transmission channel. The **Medium Access Control (MAC)** sublayer resolves channel contention:
-
-#### 1. Random Access Protocols
-- **ALOHA**: Pure ALOHA transmits immediately (vulnerable time $2T_t$, max efficiency $18.4\%$). Slotted ALOHA synchronizes time slots ($1T_t$, max efficiency $36.8\%$).
-- **CSMA/CD (Carrier Sense Multiple Access with Collision Detection)**: Used in wired Ethernet (IEEE 802.3). Station listens before speaking ("Carrier Sense"), transmits, and listens while transmitting to detect collisions. Upon collision, aborts, transmits jam signal, and executes **Binary Exponential Backoff**.
-- **CSMA/CA (Collision Avoidance)**: Used in Wireless LANs (IEEE 802.11). Avoids collisions using Inter-Frame Spaces (IFS), Random Backoff timers, and **RTS/CTS (Request-to-Send / Clear-to-Send)** handshakes to solve the **Hidden Station Problem** and **Exposed Station Problem**.
+In broadcast networks, multiple hosts share a single transmission channel. The **Medium Access Control (MAC)** sublayer resolves channel contention and manages local node addressing across local area networks (LANs), metropolitan area networks (MANs), and wireless personal area networks (WPANs).
 
 ---
 
-#### 2. IEEE 802 LAN/MAN Standards & Wireless Protocols
-- **IEEE 802.3**: Ethernet (CSMA/CD, 10 Mbps Fast/Gigabit/10GbE).
-- **IEEE 802.4 & 802.5**: Token Bus and Token Ring (Token passing deterministic protocol).
-- **IEEE 802.11**: Wireless LANs (802.11a/b/g/n/ac/ax Wi-Fi).
-- **IEEE 802.15 (Bluetooth / WPAN)**: Wireless Personal Area Networks. Operates in 2.4 GHz ISM band using Frequency Hopping Spread Spectrum (FHSS). 
-  - **Piconet**: Consists of 1 Master node and up to 7 Active Slave nodes.
-  - **Scatternet**: Interconnected Piconets sharing bridge nodes.
-- **Point-to-Point Protocol (PPP)**: Data link protocol used over direct serial links.
-  - **LCP (Link Control Protocol)**: Negotiates link options, authentication (PAP/CHAP), and compression.
-  - **NCP (Network Control Protocol)**: Negotiates network-layer configurations (IP address assignment).
+### In-Depth Breakdown of IEEE 802 LAN/MAN Standards
+
+```
+                      ┌────────────────────────────────────────┐
+                      │          IEEE 802 LAN/MAN FAMILY       │
+                      └───────────────────┬────────────────────┘
+                                          │
+    ┌──────────────────────┬──────────────┴───────┬──────────────────────┐
+    ▼                      ▼                      ▼                      ▼
+┌──────────────┐   ┌──────────────┐       ┌──────────────┐       ┌──────────────┐
+│  IEEE 802.3  │   │  IEEE 802.4  │       │  IEEE 802.5  │       │ IEEE 802.11  │
+│   Ethernet   │   │  Token Bus   │       │  Token Ring  │       │ Wireless LAN │
+├──────────────┤   ├──────────────┤       ├──────────────┤       ├──────────────┤
+│• CSMA/CD     │   │• Physical Bus│       │• Physical    │       │• CSMA/CA     │
+│• 10M to 10G+ │   │• Logical Ring│         Ring Loop    │       │• 802.11a/b/g │
+│• 1000BASE-T  │   │• Token Pass  │       │• Token Pass  │       │  /n/ac/ax    │
+└──────────────┘   └──────────────┘       └──────────────┘       └──────────────┘
+```
+
+#### 1. IEEE 802.3: Ethernet (CSMA/CD)
+- **Overview**: The predominant wired LAN standard operating from 10 Mbps (Classic Ethernet) up to 10 Gbps+ (Gigabit & 10GbE). Uses **CSMA/CD** (Carrier Sense Multiple Access with Collision Detection) for medium access control.
+- **CSMA/CD Operation**:
+  1. *Carrier Sense*: A node wanting to transmit listens to the channel. If busy, defers; if idle, starts transmitting.
+  2. *Collision Detection*: While transmitting, the node monitors channel voltage. If a collision occurs (voltage spike), it immediately halts transmission, sends a 32-bit **Jamming Signal** to notify all nodes, and executes **Binary Exponential Backoff** ($k \in [0, 2^i - 1]$).
+- **Ethernet Frame Format**:
+  ```text
+  ┌──────────┬─────┬──────────┬──────────┬────────────┬──────────────┬─────────┐
+  │ Preamble │ SFD │ Dst MAC  │ Src MAC  │ Type/Len   │ Data Payload │ FCS     │
+  │ (7 Bytes)│(1B) │ (6 Bytes)│ (6 Bytes)│ (2 Bytes)  │ (46-1500 B)  │ (4 B)   │
+  └──────────┴─────┴──────────┴──────────┴────────────┴──────────────┴─────────┘
+  ```
+  - *Preamble*: 7 bytes of alternating `10101010` for clock synchronization.
+  - *SFD (Start Frame Delimiter)*: 1 byte (`10101011`) indicating frame start.
+  - *FCS*: 4-byte CRC-32 checksum for error detection. Minimum frame size is 64 Bytes ($L_{\text{min}} \ge 2T_p \times R$).
 
 ---
 
-#### 3. Interconnection Devices & Spanning Tree Protocol
-- **Bridge / Switch (Layer 2)**:
-  - **Backward Learning Algorithm**: Inspects source MAC address of incoming frames to build MAC address forwarding table automatically.
-  - **Forwarding & Filtering**: If destination MAC is in table on same port, frame is dropped (filtered). If on different port, forwarded. If unknown MAC, flooded to all ports except source.
-  - **Spanning Tree Protocol (STP / IEEE 802.1D)**: Prevents broadcast storms and infinite loops in redundant switch topologies by disabling redundant links to form a logical loop-free tree.
-- **Router (Layer 3)**: Routes packets between subnets based on IP addresses, isolates broadcast domains.
+#### 2. IEEE 802.4: Token Bus
+- **Overview**: Designed for industrial automation (factory floors) requiring deterministic, bounded access delays where collisions cannot be tolerated.
+- **Architecture**:
+  - *Physical Topology*: Coaxial cable Bus or Tree structure.
+  - *Logical Topology*: Formed into a **Logical Ring** based on numerical station MAC addresses.
+- **Token Passing Mechanics**:
+  - A special control frame called the **Token** is passed in strictly descending numerical order ($50 \rightarrow 40 \rightarrow 25 \rightarrow 10 \rightarrow 50$).
+  - Only the station holding the token has the right to transmit data frames for a maximum allocated time (**Token Holding Time**).
+- **Ring Maintenance Functions**:
+  - *Adding Stations*: Periodic `SOLICIT_SUCCESSOR` frames invite new nodes to join the logical ring.
+  - *Fault Handling*: Ring recovery algorithms re-establish the logical ring if a token is lost due to node failure or noise.
 
 ---
 
-### Real-World Example
-Think of a switch like a smart mailroom clerk:
-- When a new letter arrives from Room 101 signed by "Alice", the clerk writes down: `Alice -> Room 101` (Backward Learning).
-- When a letter arrives addressed to "Bob", the clerk checks the lookup table. If Bob's room is known (`Bob -> Room 105`), the letter goes straight to Room 105 (Filtering & Forwarding). If Bob is unknown, the clerk shouts down every hallway asking for Bob (Flooding).
+#### 3. IEEE 802.5: Token Ring
+- **Overview**: Developed by IBM and standardized as IEEE 802.5. Uses a physical ring topology with token-passing MAC protocol, providing deterministic bounded delay.
+- **Architecture**: Stations are connected in a continuous physical closed loop via **Trunk Insertion Units (TIUs)**. Signals flow in one direction and are regenerated by each active station.
+- **Token & Data Frame Structure**:
+  - *Token Frame (3 Bytes)*: Starting Delimiter (SD), Access Control (AC), Ending Delimiter (ED).
+  - *Data Frame*: Includes Access Control (AC), Frame Control (FC), Addresses, Payload, FCS, and a **Frame Status (FS)** byte containing **A (Address Recognized)** and **C (Frame Copied)** bits.
+- **Operation & Priority System**:
+  1. An idle **Token** circulates the ring.
+  2. A node wanting to transmit captures the token, sets the $T$-bit in the AC byte from `0` (Token) to `1` (Data Frame), appends payload, and transmits.
+  3. The destination node sets the $A$-bit and $C$-bit in the FS byte as it copies the frame.
+  4. The original sender strips its returned frame from the ring and releases a new idle Token.
+  5. *Priority System*: 3 Priority bits ($P_2P_1P_0$) and 3 Reservation bits ($R_2R_1R_0$) in the AC byte allow high-priority nodes to reserve the next token cycle.
+
+---
+
+#### 4. IEEE 802.11: Wireless LANs (Wi-Fi)
+- **Overview**: Standard for Wireless Local Area Networks (WLANs). Uses **CSMA/CA** (Collision Avoidance) because wireless transceivers cannot transmit and listen for collisions simultaneously on the same channel (half-duplex RF nature).
+- **CSMA/CA & Virtual Carrier Sensing**:
+  - *Physical Carrier Sensing*: Checks RSSI channel energy.
+  - *Virtual Carrier Sensing*: Inspects the **NAV (Network Allocation Vector)** field in overheard frames, which specifies how long the medium will remain busy.
+  - *RTS/CTS Handshake*: Sender transmits Request-to-Send (RTS); receiver responds with Clear-to-Send (CTS) broadcast. Overhearing nodes defer transmission, eliminating the **Hidden Station Problem** and **Exposed Station Problem**.
+- **Evolution of 802.11 Substandards**:
+  | Standard | Frequency Band | Modulation | Max Data Rate | Key Features |
+  | :--- | :--- | :--- | :--- | :--- |
+  | **802.11b** | 2.4 GHz ISM | DSSS | 11 Mbps | Original popular Wi-Fi standard |
+  | **802.11a** | 5 GHz UNII | OFDM | 54 Mbps | Higher frequency, less interference |
+  | **802.11g** | 2.4 GHz ISM | OFDM | 54 Mbps | Backward-compatible with 802.11b |
+  | **802.11n** | 2.4 / 5 GHz | OFDM / MIMO | 600 Mbps | Dual-band, MIMO antenna streams |
+  | **802.11ac** | 5 GHz | 256-QAM / MU-MIMO | 1.3 Gbps+ | Multi-user MIMO, 80/160 MHz channels |
+
+---
+
+#### 5. IEEE 802.15: Wireless Personal Area Networks (WPAN / Bluetooth)
+- **Overview**: Low-power, short-range (10 meters) wireless standard for connecting personal peripherals (headphones, smartwatches, keyboards). Operates in the 2.4 GHz ISM band.
+- **Frequency Hopping Spread Spectrum (FHSS)**:
+  - To resist interference from Wi-Fi and microwaves, Bluetooth hops across 79 1-MHz channels at a rate of **1600 hops per second**.
+- **Topologies (Piconet & Scatternet)**:
+  ```text
+       PICONET A                            PICONET B
+    ┌──────────────┐                     ┌──────────────┐
+    │  Master (M1) │                     │  Master (M2) │
+    └──────┬───────┘                     └──────┬───────┘
+           │                                    │
+    ┌──────┴──────┐                             │
+    │  Slave (S1) │                             │
+    └─────────────┘                             │
+           │                                    │
+           └──────────────►┌──────────────┐◄────┘
+                           │  Bridge (S/M)│  (Scatternet Link)
+                           └──────────────┘
+  ```
+  - **Piconet**: Star topology consisting of **1 Master node** and up to **7 Active Slave nodes** (plus up to 255 Parked Slaves). The Master coordinates all channel access and transmission timing.
+  - **Scatternet**: A larger network formed by linking two or more Piconets via a **Bridge Node** (a node acting as a Slave in one Piconet and a Master/Slave in another).
+
+---
+
+### Point-to-Point Protocol (PPP) & Network Interconnection Devices
+
+#### Point-to-Point Protocol (PPP)
+- Data link protocol for direct serial connections (DSL, leased lines).
+- **LCP (Link Control Protocol)**: Negotiates link quality, maximum frame size (MRU), and authentication (**PAP** or **CHAP** challenge-response).
+- **NCP (Network Control Protocol)**: Configures network-layer parameters (e.g., IPCP assigns IP addresses dynamically).
+
+#### Network Interconnection Devices (Bridges & Switches)
+- **Layer 2 Switch / Bridge**:
+  - **Backward Learning Algorithm**: Inspects source MAC addresses of incoming frames to automatically populate the MAC address table (`MAC -> Port`).
+  - **Filtering & Forwarding**: Forwards frames only to the target destination port (isolating collision domains). Floods unknown destination MACs.
+  - **Spanning Tree Protocol (STP / IEEE 802.1D)**: Eliminates switching loops and broadcast storms in redundant physical topologies by logically blocking redundant switch ports to form a single loop-free tree.
 
 ---
 
 ## 2. 3 Solved Numerical/Analytical Examples
 
-### Example 1: CSMA/CD Minimum Frame Size Formula Derivation
-**Problem:** What is the minimum frame size required for a 1 Gbps Ethernet LAN with a maximum cable length of 1 km? Signal speed in cable is $2 \times 10^8 \text{ m/s}$.
+### Example 1: Ethernet Minimum Frame Size Calculation
+**Problem:** A 1 Gbps Gigabit Ethernet LAN operates over a 200 m cable (signal speed $2 \times 10^8 \text{ m/s}$).
+Calculate the minimum frame size required for CSMA/CD collision detection, and determine the carrier extension padding required for a 64-byte payload.
 **Step-by-step Solution:**
-1. **Rule for Collision Detection:** Transmission time $T_t$ must be at least twice the propagation delay $T_p$ ($T_t \ge 2T_p$).
-2. **Calculate $T_p$:**
-   $$T_p = \frac{1000 \text{ m}}{2 \times 10^8 \text{ m/s}} = 5 \times 10^{-6} \text{ s} = 5 \mu\text{s}$$
-3. **Calculate Minimum $T_t$:**
-   $$T_t = 2 \times T_p = 2 \times 5 \mu\text{s} = 10 \mu\text{s}$$
-4. **Calculate Minimum Frame Size ($L_{\text{min}}$):**
-   $$L_{\text{min}} = T_t \times \text{Bandwidth} = 10 \times 10^{-6} \text{ s} \times 10^9 \text{ bits/s} = 10,000 \text{ bits} = \mathbf{1,250 \text{ Bytes}}$$
+1. **One-way Propagation Delay ($T_p$):**
+   $$T_p = \frac{200 \text{ m}}{2 \times 10^8 \text{ m/s}} = 1 \mu\text{s}$$
+2. **Round-Trip Time ($\text{RTT} = 2T_p$):**
+   $$\text{RTT} = 2 \times 1 \mu\text{s} = 2 \mu\text{s}$$
+   Accounting for repeater and hardware delays gives total slot time $\approx 4.096 \mu\text{s}$.
+3. **Minimum Frame Size ($L_{\text{min}}$):**
+   $$L_{\text{min}} = 4.096 \times 10^{-6} \text{ s} \times 10^9 \text{ bits/s} = 4,096 \text{ bits} = \mathbf{512 \text{ Bytes}}$$
+4. **Carrier Extension Padding for 64-byte Frame:**
+   $$\text{Padding} = 512 \text{ Bytes} - 64 \text{ Bytes} = \mathbf{448 \text{ Extension Bytes}}$$
 
-### Example 2: Binary Exponential Backoff Trace
-**Problem:** Two stations collide on an Ethernet network. Trace the backoff time options for both stations after their 3rd consecutive collision. If slot time is $51.2 \mu\text{s}$, what are the possible backoff delays?
+### Example 2: Bluetooth FHSS Hop Rate & Channel Slot Calculation
+**Problem:** A Bluetooth Piconet executes 1600 hops/sec over 79 channels.
+(a) What is the duration of a single Bluetooth time slot?
+(b) How many frequency hops occur during a 5-slot data packet transmission?
 **Step-by-step Solution:**
-1. **Formula:** After $i$-th collision, station chooses random integer $k$ from range $[0, 2^i - 1]$.
-2. **For 3rd Collision ($i = 3$):**
-   $$k \in [0, 2^3 - 1] = [0, 7]$$
-3. **Possible Backoff Times:**
-   $$\text{Delay} = k \times \text{Slot Time} = k \times 51.2 \mu\text{s}$$
-   Options: $0, 51.2, 102.4, 153.6, 204.8, 256.0, 307.2, 358.4 \mu\text{s}$.
-4. **Collision Probability:** Probability that both choose same $k = 1/8 = 12.5\%$.
+1. **Duration of 1 Time Slot:**
+   $$\text{Slot Duration} = \frac{1 \text{ second}}{1600 \text{ hops}} = \frac{10^6 \mu\text{s}}{1600} = \mathbf{625 \mu\text{s}}$$
+2. **Hops During a 5-Slot Packet Transmission:**
+   - Single multi-slot packets (1-slot, 3-slot, 5-slot) remain on a **single fixed frequency** for the entire duration of the packet.
+   - Therefore, during a 5-slot packet transmission, **only 1 frequency hop occurs** (at the start of the 5-slot frame).
 
-### Example 3: Backward Learning Algorithm Trace for Layer 2 Switch
-**Problem:** A 4-port switch with an empty MAC table receives the following sequence of Ethernet frames:
-1. Frame from MAC `A` on Port 1 to MAC `B`.
-2. Frame from MAC `C` on Port 3 to MAC `A`.
-3. Frame from MAC `B` on Port 2 to MAC `C`.
-Trace the MAC table after each step and state which ports receive forwarded frames.
+### Example 3: Switch Backward Learning & Forwarding Table Trace
+**Problem:** A 4-port Layer 2 switch with an empty MAC table receives:
+1. Frame from `MAC_A` on Port 1 to `MAC_B`.
+2. Frame from `MAC_C` on Port 3 to `MAC_A`.
+3. Frame from `MAC_B` on Port 2 to `MAC_C`.
+State the MAC table entry updates and frame forwarding behavior for each step.
 **Step-by-step Solution:**
-1. **Frame 1 (`A` -> `B` on Port 1):**
-   - *Learns:* `A` is on Port 1. MAC Table: `{A: Port 1}`.
-   - *Destination `B` is unknown:* Floods frame to Ports 2, 3, and 4.
-2. **Frame 2 (`C` -> `A` on Port 3):**
-   - *Learns:* `C` is on Port 3. MAC Table: `{A: Port 1, C: Port 3}`.
-   - *Destination `A` is known (Port 1):* Forwards frame **only** to Port 1 (Filtered on Ports 2 & 4).
-3. **Frame 3 (`B` -> `C` on Port 2):**
-   - *Learns:* `B` is on Port 2. MAC Table: `{A: Port 1, C: Port 3, B: Port 2}`.
-   - *Destination `C` is known (Port 3):* Forwards frame **only** to Port 3.
+1. **Frame 1 (`MAC_A` $\rightarrow$ `MAC_B` on Port 1):**
+   - *Learns:* `MAC_A` is on Port 1. MAC Table: `{MAC_A: Port 1}`.
+   - *Destination `MAC_B` is unknown:* Floods frame to Ports 2, 3, and 4.
+2. **Frame 2 (`MAC_C` $\rightarrow$ `MAC_A` on Port 3):**
+   - *Learns:* `MAC_C` is on Port 3. MAC Table: `{MAC_A: Port 1, MAC_C: Port 3}`.
+   - *Destination `MAC_A` is known (Port 1):* Forwards frame **only to Port 1** (Filtered on Ports 2 & 4).
+3. **Frame 3 (`MAC_B` $\rightarrow$ `MAC_C` on Port 2):**
+   - *Learns:* `MAC_B` is on Port 2. MAC Table: `{MAC_A: Port 1, MAC_C: Port 3, MAC_B: Port 2}`.
+   - *Destination `MAC_C` is known (Port 3):* Forwards frame **only to Port 3**.
 
 ---
 
 ## 3. Previous Year Questions & Solutions
 
-1. **"Explain CSMA/CD protocol. How does it handle collisions?" [May 2019, Sept 2020]**
+1. **"Differentiate between IEEE 802.3 Ethernet, IEEE 802.4 Token Bus, and IEEE 802.5 Token Ring." [July 2021]**
    - **Solution:**
-     **CSMA/CD Steps:**
-     1. Station listens to medium (Carrier Sense). If busy, waits; if idle, starts transmitting.
-     2. While transmitting, listens for voltage spikes (Collision Detection).
-     3. If collision detected, transmits a 32-bit **Jam Signal** to notify all nodes, aborts transmission.
-     4. Executes **Binary Exponential Backoff**: Picks random $k \in [0, 2^i - 1]$, waits $k \times \text{Slot Time}$, then retries up to 16 attempts.
+     | Feature | IEEE 802.3 Ethernet | IEEE 802.4 Token Bus | IEEE 802.5 Token Ring |
+     | :--- | :--- | :--- | :--- |
+     | **Media Access Control** | CSMA/CD (Random Access) | Token Passing | Token Passing |
+     | **Physical Topology** | Bus / Star | Physical Bus | Physical Closed Ring Loop |
+     | **Logical Topology** | Bus / Star | Logical Ring | Logical Ring |
+     | **Access Delay** | Probabilistic (collisions occur) | Deterministic (bounded delay) | Deterministic (bounded delay) |
+     | **Heavy Load Performance**| Decreases due to collisions | High efficiency | High efficiency |
 
-2. **"Explain Hidden and Exposed Station problems in Wireless LANs. How does RTS/CTS resolve it?" [Dec 2019]**
+2. **"Explain IEEE 802.11 CSMA/CA protocol and RTS/CTS handshake mechanism." [Dec 2019]**
    - **Solution:**
-     - **Hidden Station Problem:** Station A and C cannot hear each other, but both can hear B. If A and C transmit to B simultaneously, collisions occur at B.
-     - **Exposed Station Problem:** Station B transmits to A. Station C wants to transmit to D. C hears B and wrongly assumes medium is busy, unnecessarily delaying transmission.
-     - **RTS/CTS Solution:** A sends Request-to-Send (RTS) to B. B replies with Clear-to-Send (CTS) broadcast. C hears CTS and defers transmission, preventing collisions at B.
+     - **CSMA/CA**: Wireless nodes listen before transmitting. If channel is idle for DIFS time, node transmits. Uses NAV (Network Allocation Vector) for virtual carrier sensing.
+     - **RTS/CTS Handshake**: Sender transmits Request-to-Send (RTS). Receiver broadcasts Clear-to-Send (CTS). Overhearing nodes defer transmission for duration specified in CTS, eliminating both **Hidden Station** and **Exposed Station** collisions.
 
-3. **"Explain Point-to-Point Protocol (PPP) and LCP/NCP negotiation." [April 2018]**
+3. **"Explain Bluetooth architecture (IEEE 802.15). Differentiate between Piconet and Scatternet." [May 2019]**
    - **Solution:**
-     - **PPP**: Data link protocol for point-to-point connections over serial lines. Provides byte-oriented framing, error detection, and link management.
-     - **LCP (Link Control Protocol)**: Establishes, configures, and tests the data link connection. Negotiates maximum payload size (MRU) and authentication protocols (PAP or CHAP).
-     - **NCP (Network Control Protocol)**: Establishes and configures network layer protocols (e.g. IP Control Protocol IPCP to assign IP addresses dynamically).
+     - **Piconet**: Short-range WPAN consisting of 1 Master node and up to 7 Active Slave nodes. Master coordinates all transmissions via FHSS across 79 channels.
+     - **Scatternet**: Interconnected network formed by bridging 2 or more Piconets using a shared Bridge Node (acting as Slave in one Piconet and Master in another).

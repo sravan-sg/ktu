@@ -1,4 +1,4 @@
-# Module 3 — Topic 1: Network Layer Design & Shortest Path Routing
+# Module 3 — Topic 1: Network Layer Design Issues, Shortest Path Routing & Flooding
 
 > **Module 3**: Network Layer & Routing Algorithms  
 > **Course**: CS306 Computer Networks
@@ -8,28 +8,72 @@
 ## 1. Core Intuition & Fundamental Concepts
 
 ### Explanation
-The **Network Layer** (Layer 3) is responsible for routing packets from source to destination across multiple intermediate network hops (routers):
+The **Network Layer** (Layer 3) is responsible for end-to-end packet delivery from source to destination across multiple intermediate network hops (routers).
 
-1. **Network Layer Services**:
-   - **Connectionless Service (Datagram Subnet)**: Each packet is routed independently using the destination IP address. Fast, resilient to router crashes, but packets may arrive out-of-order.
-   - **Connection-Oriented Service (Virtual-Circuit Subnet)**: A path is established before sending data. All packets follow the same path (virtual circuit ID), ensuring in-order arrival.
+---
 
-2. **Shortest Path Routing (Dijkstra's Algorithm)**:
-   - Represents the network as a weighted graph where vertices are routers and edges are physical communication links.
-   - Computes the minimum-cost path from a source router to all other routers using edge weights (distance, delay, or cost).
+### 1. Network Layer Design Issues & Subnet Models
 
-3. **Flooding**:
-   - Every incoming packet is retransmitted on every outgoing link except the one it arrived on.
-   - Generates duplicate packets, but guarantees delivery over the shortest path without requiring routing tables. Used in military applications and routing protocol initialization (LSA flooding).
+```
+   Host A                             Router 1                           Router 2
+  ┌──────┐                           ┌──────┐                           ┌──────┐
+  │App/T │                           │      │                           │      │
+  ├──────┤   1. Packet Transmission  ├──────┤   2. Store & Forward      ├──────┤
+  │ Net  ├──────────────────────────►│ Net  ├──────────────────────────►│ Net  │
+  └──────┘   (Full Frame Received)   └──────┘   (Check Checksum & Route)└──────┘
+```
 
-### Example
+1. **Store-and-Forward Packet Switching**:
+   - Packets travel hop-by-hop across intermediate routers.
+   - When a packet arrives at a router, it is stored in a memory buffer until the entire frame is received and its checksum is verified. Only then is it processed and forwarded to the next router along the output queue.
+
+2. **Services Provided to Transport Layer**:
+   - Shielding the transport layer from the physical details and transmission technologies of intermediate subnets.
+   - Providing uniform addressing mechanisms across heterogeneous networks (LANs, WANs, Satellite links).
+
+3. **Subnet Architectures: Datagram vs Virtual-Circuit Subnets**:
+   - **Connectionless (Datagram Subnet)**:
+     - Each packet is treated independently and carries full 32-bit source and destination IP addresses.
+     - Routers evaluate destination IP at every hop to choose the best outgoing link.
+     - Resilient to router failures (packets naturally route around crashed routers), but packets may arrive out-of-order.
+   - **Connection-Oriented (Virtual-Circuit Subnet)**:
+     - A virtual path is established between source and destination before data transfer begins.
+     - Packets carry a short **Virtual Circuit Identifier (VCI)** instead of full IP addresses.
+     - All packets follow the exact same established path, guaranteeing in-order arrival, but a single router crash along the path terminates the virtual circuit.
+
+| Parameter | Datagram Subnet | Virtual Circuit Subnet |
+| :--- | :--- | :--- |
+| **Circuit Setup** | Not required | Mandatory setup phase |
+| **Addressing** | Each packet carries full 32-bit IP | Packets carry short 16-bit VCI |
+| **Router State Info** | No connection state stored in routers | Routers store state table for each VC |
+| **Routing** | Dynamic routing per packet | Path chosen during setup; all packets follow it |
+| **Effect of Router Crash** | Minimal (packets rerouted automatically) | All VCs passing through crashed router terminate |
+| **Quality of Service** | Difficult to guarantee | Easy to allocate bandwidth during setup |
+
+---
+
+### 2. Shortest Path Routing (Dijkstra's Algorithm)
+- Represents the network as a weighted graph $G = (V, E)$ where vertices $V$ are routers and edges $E$ are physical links.
+- Edge weights represent physical distance, propagation delay, or link cost.
+- Computes the minimum-cost path from a source router $s$ to all destination routers.
+
+---
+
+### 3. Flooding & Its Mechanisms
+- A static routing technique where every incoming packet is retransmitted on every outgoing link except the one it arrived on.
+- **Flooding Variations**:
+  - **Uncontrolled Flooding**: Routers forward all packets blindly, causing infinite packet duplication loops.
+  - **Controlled Flooding (Hop Count / TTL)**: Each packet carries a **Time-to-Live (TTL)** counter. Each router decrements TTL by 1; when TTL reaches 0, the packet is discarded.
+  - **Controlled Flooding (Sequence Numbers)**: Source router appends a sequence number to every packet. Intermediate routers log `<Source IP, Sequence No>` in a history buffer and drop duplicate packets.
+  - **Selective Flooding**: Routers forward incoming packets only on links that lead approximately in the direction of the destination.
+
+---
+
+### Real-World Example
 Think of Network Layer Routing like Google Maps GPS Navigation:
-- **Datagram Routing**: Each driver evaluates traffic conditions at every intersection (router) independently.
-- **Dijkstra's Shortest Path**: The GPS server analyzes road distances and speed limits (link costs) to compute the single optimal route before you start driving.
-
-### Applications & Use Cases
-- **Enterprise Network Edge**: Routers build forwarding tables to send internet traffic to local ISP gateways.
-- **CDN Global Traffic Steering**: Content Delivery Networks (Cloudflare, Akamai) use shortest-path latency metrics to route users to the nearest edge server.
+- **Datagram Subnet**: Drivers check live traffic independently at every intersection and can switch routes midway.
+- **Virtual Circuit Subnet**: A train traveling along a fixed railway track system—switches are aligned during setup, and all train cars follow the exact same track sequence.
+- **Flooding**: Emergency radio broadcasts sent to all local radio towers simultaneously to ensure 100% immediate coverage regardless of local tower failures.
 
 ---
 
@@ -93,3 +137,9 @@ Think of Network Layer Routing like Google Maps GPS Navigation:
    - **Solution:**
      - **Datagram Subnet:** Connectionless. Each packet routed independently using full 32-bit IP destination address. No setup phase. Resilient to router failures. Out-of-order arrival possible.
      - **Virtual Circuit Subnet:** Connection-oriented. 3-phase setup (Setup, Data, Teardown). Packets carry short Virtual Circuit Identifier (VCI). In-order delivery guaranteed. Router failure breaks connection.
+
+3. **"Explain Flooding routing algorithm. Differentiate between Controlled and Uncontrolled flooding." [April 2018]**
+   - **Solution:**
+     - **Flooding**: Packet is retransmitted on every outgoing link except the arriving link.
+     - **Uncontrolled Flooding**: Routers forward indefinitely $\rightarrow$ packet storms.
+     - **Controlled Flooding**: Uses TTL field (decremented per hop until 0) or Sequence Number buffers (drops seen packets) to prevent infinite loops.

@@ -1,4 +1,4 @@
-# Module 1 — Topic 3: OSI Reference Model vs TCP/IP Reference Model
+# Module 1 — Topic 4: OSI Reference Model vs TCP/IP Reference Model
 
 > **Module 1**: Network Architecture & Reference Models  
 > **Course**: CS306 Computer Networks
@@ -8,95 +8,116 @@
 ## 1. Core Intuition & Fundamental Concepts
 
 ### Explanation
-To standardize network architecture, two major reference models were created:
+To standardize global communications across disparate hardware platforms, formal reference models specify layered abstractions.
 
-1. **OSI (Open Systems Interconnection) Reference Model**:
-   Created by ISO as a formal 7-layer theoretical blueprint:
-   - **Layer 7: Application Layer**: User interface, web browsers, email clients (HTTP, FTP, SMTP).
-   - **Layer 6: Presentation Layer**: Data formatting, encryption, compression, character encoding (ASCII, JPEG, SSL/TLS).
-   - **Layer 5: Session Layer**: Manages sessions, dialog control, checkpointing, and synchronization.
-   - **Layer 4: Transport Layer**: End-to-end reliability, segmentation, process-to-process flow control (TCP, UDP).
-   - **Layer 3: Network Layer**: Logical addressing (IP), routing packets across subnets.
-   - **Layer 2: Data Link Layer**: Framing, physical addressing (MAC), hop-to-hop error/flow control.
-   - **Layer 1: Physical Layer**: Transmitting raw bitstream over physical media (voltage, cables, fiber, radio).
+```
+       OSI 7-LAYER MODEL                       TCP/IP 4-LAYER MODEL
+  ┌─────────────────────────┐               ┌─────────────────────────┐
+  │  7. Application Layer   │               │   4. Application Layer  │
+  ├─────────────────────────┤               │ (HTTP, FTP, DNS, SMTP)  │
+  │  6. Presentation Layer  │ ────────────► ├─────────────────────────┤
+  ├─────────────────────────┤               │   3. Transport Layer    │
+  │  5. Session Layer       │               │       (TCP, UDP)        │
+  ├─────────────────────────┤               ├─────────────────────────┤
+  │  4. Transport Layer     │ ────────────► │   2. Internet Layer     │
+  ├─────────────────────────┤               │       (IP, ICMP)        │
+  │  3. Network Layer       │ ────────────► ├─────────────────────────┤
+  ├─────────────────────────┤               │ 1. Network Access Layer │
+  │  2. Data Link Layer     │ ────────────► │ (Ethernet, Wi-Fi, PPP)  │
+  ├─────────────────────────┤               └─────────────────────────┘
+  │  1. Physical Layer      │
+  └─────────────────────────┘
+```
 
-2. **TCP/IP Reference Model**:
-   A practical 4-layer (or 5-layer) implementation suite that powers the modern Internet:
-   - **Application Layer**: Combines OSI layers 5, 6, and 7 (HTTP, DNS, FTP, SSH).
-   - **Transport Layer**: Identical to OSI Layer 4 (TCP, UDP).
-   - **Internet Layer**: Equivalent to OSI Layer 3 (IP, ICMP, ARP).
-   - **Host-to-Network / Link Layer**: Combines OSI layers 1 and 2 (Ethernet, Wi-Fi, PPP).
+---
 
-### Example
-Imagine ordering a book online from Amazon:
-- **Application (Layer 7)**: You click "Buy Now" in your browser (HTTP).
-- **Presentation (Layer 6)**: Credit card details are encrypted (TLS/SSL).
-- **Session (Layer 5)**: Keeps your user shopping session open across pages.
-- **Transport (Layer 4)**: Splits order into segments, assigns port numbers (Port 443).
-- **Network (Layer 3)**: Adds IP addresses (your IP $\rightarrow$ Amazon Server IP).
-- **Data Link (Layer 2)**: Adds MAC addresses for local Wi-Fi router.
-- **Physical (Layer 1)**: Converts data into radio waves over 2.4 GHz Wi-Fi.
+### Detailed Functions of the OSI 7 Layers
 
-### Applications & Use Cases
-- **Network Troubleshooting**: Engineers isolate failures by layer ("Ping works at Layer 3, but browser fails at Layer 7—must be a firewall or DNS issue").
-- **Hardware Specialization**: Switches operate primarily at Layer 2 (MAC), Routers operate at Layer 3 (IP), and Firewalls inspect up to Layer 7.
+1. **Layer 7 — Application Layer**:
+   - Provides user interface services and application-level network protocols (HTTP, FTP, SMTP, DNS, Telnet).
+
+2. **Layer 6 — Presentation Layer**:
+   - Handles data syntax formatting, character encoding (ASCII, EBCDIC, Unicode), data compression (JPEG, MP3), and encryption/decryption (SSL/TLS).
+
+3. **Layer 5 — Session Layer**:
+   - Establishes, manages, and terminates dialog sessions between applications. Provides dialog control (Simplex, Half-Duplex, Full-Duplex) and checkpointing for recovery.
+
+4. **Layer 4 — Transport Layer**:
+   - Manages end-to-end, process-to-process communication. Performs segmentation, port addressing (Layer 4 ports), flow control, error control, and in-order delivery (TCP, UDP).
+
+5. **Layer 3 — Network Layer**:
+   - Handles host-to-host routing across subnets. Assigns logical addresses (IP addresses), determines shortest paths using routing algorithms, and handles packet fragmentation.
+
+6. **Layer 2 — Data Link Layer**:
+   - Provides reliable node-to-node hop transmission across a single physical link. Groups bits into **Frames**, handles physical MAC addressing, CRC error detection, and MAC medium access (CSMA/CD).
+
+7. **Layer 1 — Physical Layer**:
+   - Transmits raw, uninterpreted **Bit Streams** over physical media (copper wires, optical fibers, radio waves). Defines electrical voltage levels, pin layouts, bit rates, and signal timing.
+
+---
+
+### Key Structural Differences: OSI vs TCP/IP
+
+| Feature / Metric | OSI Reference Model | TCP/IP Reference Model |
+| :--- | :--- | :--- |
+| **Development Approach** | Theoretical model created by ISO *before* protocols were written | Practical model created by DoD *after* TCP/IP protocols were implemented |
+| **Layer Count** | 7 Layers | 4 Layers (or 5-layer hybrid model) |
+| **Session & Presentation** | Separate dedicated Layers 5 & 6 | Combined into Application Layer 4 |
+| **Network Layer Services** | Supports both Connectionless & Connection-Oriented | Connectionless IP Service only at Network Layer |
+| **Transport Layer Services**| Connection-Oriented only | Choice of Connectionless (UDP) or Connection-Oriented (TCP) |
+| **Protocol Independence** | Strictly decoupled (protocols fit hidden behind interfaces) | Protocol-dependent (protocols came first, model is a description) |
 
 ---
 
 ## 2. 3 Solved Numerical/Analytical Examples
 
-### Example 1: Layer-by-Layer Encapsulation Overhead Calculation
-**Problem:** An application sends a 500-Byte message. Calculate the total size of the frame sent onto the physical medium given the following headers:
-- Application Layer: No header
-- Transport Layer (TCP): 20 Bytes
-- Network Layer (IPv4): 20 Bytes
-- Data Link Layer (Ethernet): 18 Bytes (14B Header + 4B Trailer CRC)
+### Example 1: Multi-Layer Protocol Encapsulation Overhead
+**Problem:** An application sends a 1,000-byte message down the OSI 7-layer stack.
+- Layer 7, 6, 5 add no headers.
+- Layer 4 (Transport) adds 20 Bytes.
+- Layer 3 (Network) adds 20 Bytes.
+- Layer 2 (Data Link) adds 18 Bytes (14B Header + 4B Trailer).
+- Layer 1 (Physical) adds 8 Bytes (Preamble + SFD).
+Calculate the total transmitted frame size, header overhead percentage, and throughput efficiency on a 100 Mbps link.
 **Step-by-step Solution:**
-1. **Application Payload:** $L_7 = 500 \text{ Bytes}$.
-2. **Transport Segment Size:** $L_4 = 500 + 20 = 520 \text{ Bytes}$.
-3. **Network Datagram Size:** $L_3 = 520 + 20 = 540 \text{ Bytes}$.
-4. **Data Link Frame Size:** $L_2 = 540 + 18 = 558 \text{ Bytes}$.
-5. **Efficiency Calculation:**
-   $$\eta = \frac{\text{Payload}}{\text{Total Frame Size}} = \frac{500}{558} \times 100 = 89.61\%$$
+1. **Total Overhead:** $20 + 20 + 18 + 8 = 66 \text{ Bytes}$.
+2. **Total Frame Size:** $1000 + 66 = 1,066 \text{ Bytes} = 8,528 \text{ bits}$.
+3. **Header Overhead %:**
+   $$\text{Overhead \%} = \frac{66}{1066} \times 100 = \mathbf{6.19\%}$$
+4. **Throughput Efficiency ($\eta$):**
+   $$\eta = \frac{1000}{1066} \times 100 = \mathbf{93.81\%}$$
 
-### Example 2: Layer Mapping and Function Matrix
-**Problem:** Map the following network components/protocols to their exact OSI and TCP/IP layers: (a) Router, (b) Ethernet Switch, (c) IP Protocol, (d) TCP Protocol, (e) HTTP Protocol.
+### Example 2: Bandwidth-Delay Product (BDP) Calculation
+**Problem:** A satellite link operates at $R = 10 \text{ Mbps}$ with a Round-Trip Time $\text{RTT} = 500 \text{ ms}$.
+(a) Calculate the Bandwidth-Delay Product (BDP) in bits and bytes.
+(b) How many 1,000-byte TCP segments can be "in flight" on the wire simultaneously?
 **Step-by-step Solution:**
-| Component / Protocol | OSI Layer | TCP/IP Layer | Primary Function |
-| :--- | :--- | :--- | :--- |
-| **HTTP Protocol** | Layer 7 (Application) | Application Layer | Web document transfer |
-| **TCP Protocol** | Layer 4 (Transport) | Transport Layer | Reliable end-to-end delivery & congestion control |
-| **IP Protocol** | Layer 3 (Network) | Internet Layer | Packet routing & logical addressing |
-| **Ethernet Switch** | Layer 2 (Data Link) | Host-to-Network Layer | MAC-based frame switching |
-| **Router** | Layer 3 (Network) | Internet Layer | Inter-network packet routing |
+1. **Calculate BDP:**
+   $$\text{BDP} = R \times \text{RTT} = 10 \times 10^6 \text{ bps} \times 0.5 \text{ s} = 5,000,000 \text{ bits}$$
+   $$\text{BDP in Bytes} = \frac{5,000,000}{8} = \mathbf{625,000 \text{ Bytes} \approx 625 \text{ KB}}$$
+2. **Calculate In-Flight Segments:**
+   $$\text{Segments} = \frac{625,000 \text{ Bytes}}{1,000 \text{ Bytes/segment}} = \mathbf{625 \text{ segments}}$$
 
-### Example 3: Comparative Analysis — OSI Model vs TCP/IP Model
-**Problem:** Compare the OSI and TCP/IP models based on: (1) Origin, (2) Layer Count, (3) Service/Interface Distinction, and (4) Protocol Placement.
+### Example 3: Layer Address Mapping Trace
+**Problem:** Trace the destination address changes as a packet travels from Host A (IP `10.0.0.2`, MAC `AA:AA:AA:AA:AA:AA`) through Router R (Port 1 MAC `RR:RR:RR:RR:RR:01`, Port 2 MAC `RR:RR:RR:RR:RR:02`) to Host B (IP `192.168.1.5`, MAC `BB:BB:BB:BB:BB:BB`).
 **Step-by-step Solution:**
-1. **Origin:** OSI is a theoretical standard created by ISO *before* protocols were invented. TCP/IP was designed alongside actual working protocols (ARPANET).
-2. **Layer Count:** OSI has 7 layers; TCP/IP has 4 layers (or 5 layers in modern hybrid models).
-3. **Service/Interface Distinction:** OSI strictly distinguishes between Services, Interfaces, and Protocols. TCP/IP initially blurred these distinctions, fitting existing protocols into layers.
-4. **Network Layer Services:** OSI supports both connection-oriented and connectionless communication at the Network Layer. TCP/IP supports *only* connectionless communication (IP) at the Internet Layer.
+1. **Hop 1: Host A to Router R (Port 1):**
+   - Layer 3 IP Header: `[Src IP: 10.0.0.2, Dst IP: 192.168.1.5]` (Unchanged)
+   - Layer 2 Frame Header: `[Src MAC: AA:AA:AA:AA:AA:AA, Dst MAC: RR:RR:RR:RR:RR:01]`
+2. **Hop 2: Router R (Port 2) to Host B:**
+   - Layer 3 IP Header: `[Src IP: 10.0.0.2, Dst IP: 192.168.1.5]` (Unchanged)
+   - Layer 2 Frame Header: `[Src MAC: RR:RR:RR:RR:RR:02, Dst MAC: BB:BB:BB:BB:BB:BB]`
+3. **Key Finding:** Layer 3 IP addresses remain end-to-end constant; Layer 2 MAC addresses change at every router hop.
 
 ---
 
 ## 3. Previous Year Questions & Solutions
 
-1. **"Draw the 7 layers of the OSI reference model and explain the main functions of each layer." [April 2018, July 2021]**
+1. **"Compare OSI 7-layer model and TCP/IP 4-layer model. List main functions of each OSI layer." [May 2019, July 2021]**
    - **Solution:**
-     **Diagram:** `[Application] -> [Presentation] -> [Session] -> [Transport] -> [Network] -> [Data Link] -> [Physical]`
-     **Functions:**
-     - **Physical:** Raw bit transmission over physical media, signal encoding, bit synchronization.
-     - **Data Link:** Framing, MAC physical addressing, hop-to-hop flow and error control (CRC).
-     - **Network:** Logical addressing (IP), routing packets across intermediate networks, congestion handling.
-     - **Transport:** Process-to-process communication (Port numbers), segmentation, end-to-end error recovery (TCP).
-     - **Session:** Dialog control, session checkpointing, authorization.
-     - **Presentation:** Data syntax conversion, encryption/decryption, compression.
-     - **Application:** Network services directly exposed to end-user applications (HTTP, FTP, SMTP).
+     **OSI Functions:** Physical (bits), Data Link (frames, MAC), Network (packets, routing), Transport (end-to-end reliability), Session (dialog control), Presentation (formatting/encryption), Application (user UI).
+     **Comparison:** OSI is theoretical with 7 layers created before protocols; TCP/IP is practical with 4 layers created after protocols. OSI supports connectionless/connection-oriented at Network layer; TCP/IP supports only connectionless IP at Internet layer.
 
-2. **"Compare the OSI model and the TCP/IP model." [Dec 2019]**
+2. **"Explain protocol encapsulation and decapsulation with a diagram." [April 2018]**
    - **Solution:**
-     - **Structure:** OSI has 7 layers; TCP/IP has 4 layers (Application, Transport, Internet, Host-to-Network).
-     - **Design Philosophy:** OSI is a generic theoretical model; TCP/IP is a practical implementation model.
-     - **Network Layer Protocol:** OSI supports connection-oriented & connectionless; TCP/IP supports only connectionless (IP).
-     - **Transport Layer Protocol:** OSI supports only connection-oriented; TCP/IP supports both connection-oriented (TCP) and connectionless (UDP).
+     As application data moves down the stack, each layer prepends a header ($H_4, H_3, H_2$) containing addressing and control data (Encapsulation). At the receiving host, as bits ascend, each layer strips its corresponding header before passing payload up (Decapsulation).

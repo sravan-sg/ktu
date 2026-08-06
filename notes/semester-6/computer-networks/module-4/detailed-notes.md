@@ -6,21 +6,25 @@
 
 ## 📖 Module Overview
 
-Module 4 covers Traffic Shaping algorithms (Leaky Bucket vs Token Bucket), Congestion Control mechanisms (Choke Packets, RED), Quality of Service (QoS / Jitter), IPv4 Header structure, Classful IP addressing, Subnetting, Variable Length Subnet Masking (VLSM), and CIDR Route Aggregation.
+Module 4 covers network congestion control algorithms, traffic shaping (Leaky Bucket, Token Bucket), proactive queue management (Choke Packets, RED), Quality of Service (QoS metrics, IntServ/RSVP vs DiffServ/DSCP, packet scheduling WFQ), Internetworking in the Internet, IPv4 header format, Classful IP Addressing (Classes A, B, C, D, E), and Classless IP Addressing (CIDR, Subnetting math, VLSM, Supernetting).
 
 ---
 
 ## 📑 Detailed Topic Guides
 
 1. **[Topic 1: Congestion Control Algorithms & Quality of Service (QoS)](congestion-control-algorithms-and-qos.md)**
-   - Leaky Bucket vs Token Bucket burst rate calculations.
-   - Choke Packets and RED (Random Early Detection).
-   - Jitter and delay variance math.
+   - Congestion Control vs Flow Control.
+   - Traffic Shaping: Leaky Bucket & Token Bucket algorithms with burst math.
+   - Congestion Prevention: Choke Packets & Random Early Detection (RED).
+   - Quality of Service (QoS): Metrics (Bandwidth, Delay, Jitter, Packet Loss).
+   - QoS Architectures: Integrated Services (IntServ / RSVP) vs Differentiated Services (DiffServ / DSCP).
+   - Packet Scheduling: FIFO, Fair Queueing (FQ), Weighted Fair Queueing (WFQ).
 
-2. **[Topic 2: IPv4 Addressing, Subnetting & CIDR](ipv4-addressing-subnetting-and-cidr.md)**
-   - Classful IP addressing (Classes A, B, C, D, E).
-   - Subnetting calculations, subnet masks, usable host ranges.
-   - VLSM allocation and CIDR supernetting.
+2. **[Topic 2: Internetworking, IPv4 Header & IP Addressing (Classful & CIDR)](ipv4-addressing-subnetting-and-cidr.md)**
+   - Internetworking & Network Layer in the Internet (Store-and-forward routers, Heterogeneous subnets, Tunneling).
+   - Complete IPv4 Datagram Header format & field breakdown.
+   - Classful IP Addressing (Classes A, B, C, D, E, NetID/HostID split, Private IP ranges RFC 1918).
+   - Classless Inter-Domain Routing (CIDR): Slash notation `/n`, Subnetting calculation walkthroughs, VLSM allocation, and Supernetting (Route Aggregation).
 
 ---
 

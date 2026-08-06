@@ -6,21 +6,26 @@
 
 ## 📖 Module Overview
 
-Module 6 explores Transport Layer end-to-end communication (UDP vs TCP, 3-way handshake, 4-way teardown, AIMD congestion control), Application Layer services (DNS hierarchy & resolution), file transfer (FTP dual-port architecture), email protocols (SMTP, MIME), and web architecture (HTTP/1.0 vs HTTP/1.1).
+Module 6 covers Transport Layer services (UDP datagrams, TCP segment header format, 3-way handshake & 4-way teardown connection management, TCP state machine, sliding window flow control, and AIMD congestion control), as well as Application Layer protocols (FTP dual-port architecture, DNS hierarchy & resolution, Electronic Mail SMTP & MIME Base64 encoding, SNMP network management framework, and HTTP/WWW).
 
 ---
 
 ## 📑 Detailed Topic Guides
 
-1. **[Topic 1: Transport Layer (TCP, UDP & TCP Congestion Control)](transport-layer-tcp-udp-and-congestion-control.md)**
-   - UDP datagrams vs TCP byte streams.
-   - TCP 3-Way Handshake & 4-Way Teardown sequence numbers.
-   - AIMD Congestion Control ($cwnd$, Slow Start, Congestion Avoidance, Fast Retransmit).
+1. **[Topic 1: Transport Layer: TCP Segment Header, Connection Management, Sliding Window & Congestion Control](transport-layer-tcp-udp-and-congestion-control.md)**
+   - UDP vs TCP comparison.
+   - Complete 20-byte TCP Segment Header format ASCII diagram & field descriptions.
+   - Connection Management: 3-Way Handshake, 4-Way Teardown, and TCP State Machine.
+   - TCP Flow Control & Bytes-Oriented Sliding Window (Silly Window Syndrome & Nagle's Algorithm).
+   - TCP Congestion Control: Slow Start, Congestion Avoidance, Fast Retransmit, Fast Recovery (Tahoe vs Reno).
 
-2. **[Topic 2: Application Layer Protocols (DNS, FTP, SMTP, HTTP & WWW)](application-layer-protocols-dns-ftp-smtp-http.md)**
-   - DNS hierarchical database & Iterative vs Recursive resolution.
-   - FTP dual-port architecture (Control Port 21, Data Port 20).
-   - SMTP, MIME Base64 encoding math, HTTP/1.0 vs HTTP/1.1 persistent connections.
+2. **[Topic 2: Application Layer Protocols: FTP, DNS, Electronic Mail (SMTP), MIME & SNMP](application-layer-protocols-dns-ftp-smtp-http.md)**
+   - FTP: Control Connection (Port 21) vs Data Connection (Port 20), Active vs Passive modes.
+   - DNS: Hierarchy (Root, TLD, Authoritative), Resource Records (A, AAAA, CNAME, MX, NS), Iterative vs Recursive resolution.
+   - Electronic Mail (SMTP): Push protocol over TCP Port 25, Mail Transfer Agent (MTA) & Mail User Agent (MUA), SMTP command sequence.
+   - MIME: Multipurpose Internet Mail Extensions headers, Base64 encoding math (33.3% overhead).
+   - SNMP: Architecture (Manager, Agent, SMI, MIB), PDU Types (`GetRequest`, `SetRequest`, `Trap`), UDP Ports 161/162.
+   - HTTP & WWW: Non-persistent HTTP/1.0 vs Persistent HTTP/1.1.
 
 ---
 

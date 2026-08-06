@@ -1,4 +1,4 @@
-# Module 4 — Topic 2: IPv4 Addressing, Subnetting & CIDR
+# Module 4 — Topic 2: Internetworking, IPv4 Header & IP Addressing (Classful & CIDR)
 
 > **Module 4**: Congestion Control, QoS & IPv4 Subnetting  
 > **Course**: CS306 Computer Networks
@@ -8,22 +8,69 @@
 ## 1. Core Intuition & Fundamental Concepts
 
 ### Explanation
-The IPv4 protocol uses a **32-bit logical address** formatted in dotted-decimal notation (e.g. `192.168.1.1`):
+The Internet is a global **Internetwork**—a collection of disparate physical networks (Ethernet LANs, Wi-Fi, Optical WANs, Satellite links) connected by routers operating under a common protocol: **IPv4 (Internet Protocol Version 4)**.
 
-1. **Classful IP Addressing**:
-   - **Class A**: Range `0.0.0.0` to `127.255.255.255`. Leading bits `0`. Network bits = 8, Host bits = 24.
-   - **Class B**: Range `128.0.0.0` to `191.255.255.255`. Leading bits `10`. Network bits = 16, Host bits = 16.
-   - **Class C**: Range `192.0.0.0` to `223.255.255.255`. Leading bits `110`. Network bits = 24, Host bits = 8.
-   - **Class D**: Range `224.0.0.0` to `239.255.255.255` (Multicast). Leading bits `1110`.
-   - **Class E**: Range `240.0.0.0` to `255.255.255.255` (Experimental).
+---
 
-2. **Subnetting**:
-   - Borrowing bits from the Host portion to create sub-networks (Subnets).
-   - **Subnet Mask**: 32-bit mask where network/subnet bits are 1s and host bits are 0s (e.g. `255.255.255.192` for `/26`).
+### 1. Internetworking & Network Layer in the Internet
+- **Heterogeneous Subnets**: Different networks have different frame formats, Maximum Transmission Units (MTU), physical speeds, and addressing schemes.
+- **Tunneling**: When an IPv6 or specialized packet must cross an intermediate IPv4-only network, the entire packet is encapsulated inside an outer IPv4 header at the entry router and stripped at the exit router.
+- **IPv4 Datagram Header Format**:
+  ```text
+  0                   1                   2                   3
+  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+  |Version|  IHL  |Type of Service|          Total Length         |
+  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+  |         Identification        |Flags|     Fragment Offset     |
+  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+  |  Time to Live |    Protocol   |        Header Checksum        |
+  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+  |                       Source IP Address                       |
+  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+  |                    Destination IP Address                     |
+  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+  |                    Options (if any) + Padding                 |
+  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+  ```
+  - **Version (4 bits)**: Specifies protocol version (`4` for IPv4).
+  - **IHL (Internet Header Length - 4 bits)**: Specifies header length in 32-bit words (minimum = 5, i.e., 20 Bytes).
+  - **Type of Service / DSCP (8 bits)**: Used for QoS traffic classification.
+  - **Total Length (16 bits)**: Total datagram size including header and payload (max 65,535 Bytes).
+  - **Identification, Flags (DF, MF), Fragment Offset**: Handles packet fragmentation when packet size exceeds MTU.
+  - **Time to Live (TTL - 8 bits)**: Hop count limit to prevent infinite loops (decremented per hop; discarded when TTL = 0).
+  - **Protocol (8 bits)**: Specifies upper-layer payload protocol (`6` for TCP, `17` for UDP, `1` for ICMP).
+  - **Header Checksum (16 bits)**: Error detection checksum over the IPv4 header.
 
-3. **CIDR (Classless Inter-Domain Routing)**:
-   - Eliminates rigid A/B/C class boundaries using prefix length notation `/n` (e.g. `200.10.20.0/22`).
-   - Allows **Supernetting (Route Aggregation)** to collapse multiple routing table entries into a single prefix.
+---
+
+### 2. Classful IP Addressing
+IPv4 uses a **32-bit logical address** formatted as 4 octets in dotted-decimal notation (e.g. `192.168.1.1`).
+Originally partitioned into rigid Classes A, B, C, D, E based on leading bits:
+
+| Class | Leading Bits | First Octet Range | NetID / HostID Split | Default Subnet Mask | Max Networks / Hosts |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Class A** | `0...` | `1.0.0.0` to `127.255.255.255` | 8 bits NetID / 24 bits HostID | `255.0.0.0` (`/8`) | 128 nets / $16,777,214$ hosts |
+| **Class B** | `10..` | `128.0.0.0` to `191.255.255.255` | 16 bits NetID / 16 bits HostID | `255.255.0.0` (`/16`) | 16,384 nets / $65,534$ hosts |
+| **Class C** | `110.` | `192.0.0.0` to `223.255.255.255` | 24 bits NetID / 8 bits HostID | `255.255.255.0` (`/24`) | $2,097,152$ nets / 254 hosts |
+| **Class D** | `1110` | `224.0.0.0` to `239.255.255.255` | Multicast Addressing | N/A | Reserved for Multicasting |
+| **Class E** | `1111` | `240.0.0.0` to `255.255.255.255` | Experimental / Research | N/A | Reserved for Research |
+
+#### Special IP Addresses:
+- **Loopback Address**: `127.0.0.1` (used for internal host software testing).
+- **Private IP Ranges (RFC 1918)**:
+  - Class A Private: `10.0.0.0/8` (`10.0.0.0` – `10.255.255.255`)
+  - Class B Private: `172.16.0.0/12` (`172.16.0.0` – `172.31.255.255`)
+  - Class C Private: `192.168.0.0/16` (`192.168.0.0` – `192.168.255.255`)
+
+---
+
+### 3. Classless IP Addressing (CIDR)
+To solve the depletion of Class B addresses and routing table explosion, **CIDR (Classless Inter-Domain Routing)** was introduced:
+- **Slash Notation (`/n`)**: Replaces rigid class boundaries with arbitrary prefix lengths (e.g. `200.10.20.0/22`).
+- **Subnetting**: Borrowing bits from the Host portion to create smaller subnets ($2^s$ subnets, $2^h - 2$ usable hosts).
+- **VLSM (Variable Length Subnet Masking)**: Allocating subnet masks of different sizes based on exact host requirements.
+- **Supernetting (Route Aggregation)**: Combining multiple contiguous network prefixes into a single routing table entry (e.g., combining 4 `/24` networks into 1 `/22` supernet).
 
 ---
 
@@ -43,22 +90,10 @@ The IPv4 protocol uses a **32-bit logical address** formatted in dotted-decimal 
    $$\text{Usable Hosts} = 2^h - 2 = 2^6 - 2 = 64 - 2 = \mathbf{62 \text{ hosts/subnet}}$$
    Block size $= 2^h = 64$.
 4. **Subnet Breakdowns:**
-   - **Subnet 0:** `192.168.10.0` to `192.168.10.63`
-     - Network ID: `192.168.10.0`
-     - Usable Range: `192.168.10.1` – `192.168.10.62`
-     - Broadcast ID: `192.168.10.63`
-   - **Subnet 1:** `192.168.10.64` to `192.168.10.127`
-     - Network ID: `192.168.10.64`
-     - Usable Range: `192.168.10.65` – `192.168.10.126`
-     - Broadcast ID: `192.168.10.127`
-   - **Subnet 2:** `192.168.10.128` to `192.168.10.191`
-     - Network ID: `192.168.10.128`
-     - Usable Range: `192.168.10.129` – `192.168.10.190`
-     - Broadcast ID: `192.168.10.191`
-   - **Subnet 3:** `192.168.10.192` to `192.168.10.255`
-     - Network ID: `192.168.10.192`
-     - Usable Range: `192.168.10.193` – `192.168.10.254`
-     - Broadcast ID: `192.168.10.255`
+   - **Subnet 0:** `192.168.10.0` to `192.168.10.63` (Usable: `.1` to `.62`, Broadcast: `.63`)
+   - **Subnet 1:** `192.168.10.64` to `192.168.10.127` (Usable: `.65` to `.126`, Broadcast: `.127`)
+   - **Subnet 2:** `192.168.10.128` to `192.168.10.191` (Usable: `.129` to `.190`, Broadcast: `.191`)
+   - **Subnet 3:** `192.168.10.192` to `192.168.10.255` (Usable: `.193` to `.254`, Broadcast: `.255`)
 
 ### Example 2: VLSM (Variable Length Subnet Masking) Allocation
 **Problem:** An ISP has block `200.20.30.0/24`. Allocate subnets for 3 departments: Dept A (100 hosts), Dept B (50 hosts), Dept C (25 hosts).
@@ -80,10 +115,7 @@ The IPv4 protocol uses a **32-bit logical address** formatted in dotted-decimal 
 **Problem:** A router has 4 contiguous Class C routes: `202.10.0.0/24`, `202.10.1.0/24`, `202.10.2.0/24`, `202.10.3.0/24`. Aggregate these into a single CIDR supernet block.
 **Step-by-step Solution:**
 1. **Convert 3rd Octet to Binary:**
-   - $0 = 00000000_2$
-   - $1 = 00000001_2$
-   - $2 = 00000010_2$
-   - $3 = 00000011_2$
+   - $0 = 00000000_2$, $1 = 00000001_2$, $2 = 00000010_2$, $3 = 00000011_2$.
 2. **Find Matching Prefix Bits:**
    - First 2 octets (`202.10`) match completely (16 bits).
    - In 3rd octet, the first 6 bits (`000000`) are identical across all 4 networks.
@@ -94,15 +126,14 @@ The IPv4 protocol uses a **32-bit logical address** formatted in dotted-decimal 
 
 ## 3. Previous Year Questions & Solutions
 
-1. **"An organization is granted the block 190.100.0.0/16. Design a subnetting scheme to create 8 equal subnets. Find subnet mask, first and last address of each subnet." [April 2018, Dec 2019]**
+1. **"Explain Classful IP Addressing scheme (Classes A, B, C, D, E) with network and host bit split." [May 2019, July 2021]**
    - **Solution:**
-     - 8 subnets $\implies 2^3 = 8 \implies 3$ bits borrowed. New prefix $= 16 + 3 = \mathbf{/19}$.
-     - Subnet Mask: `255.255.224.0`.
-     - Block size in 3rd octet $= 256 / 8 = 32$.
-     - Subnet 0: `190.100.0.0` to `190.100.31.255` (Usable: `.0.1` to `.31.254`).
-     - Subnet 1: `190.100.32.0` to `190.100.63.255` (Usable: `.32.1` to `.63.254`).
-     - ... up to Subnet 7: `190.100.224.0` to `190.100.255.255`.
+     - **Class A**: Leading bit `0`. 8-bit NetID, 24-bit HostID (`1.0.0.0` to `127.255.255.255`). Default mask `/8`.
+     - **Class B**: Leading bits `10`. 16-bit NetID, 16-bit HostID (`128.0.0.0` to `191.255.255.255`). Default mask `/16`.
+     - **Class C**: Leading bits `110`. 24-bit NetID, 8-bit HostID (`192.0.0.0` to `223.255.255.255`). Default mask `/24`.
+     - **Class D**: Leading bits `1110`. Multicast reserved (`224.0.0.0` to `239.255.255.255`).
+     - **Class E**: Leading bits `1111`. Experimental reserved (`240.0.0.0` to `255.255.255.255`).
 
-2. **"Explain IPv4 header format with a neat diagram." [May 2019, July 2021]**
+2. **"Explain IPv4 datagram header fields in detail." [Dec 2019]**
    - **Solution:**
-     **Fields:** Version (4b), IHL (4b), Type of Service (8b), Total Length (16b), Identification (16b), Flags (3b: DF, MF), Fragment Offset (13b), TTL (8b), Protocol (8b), Header Checksum (16b), Source IP Address (32b), Destination IP Address (32b), Options (Variable).
+     Version (4b), IHL (4b), Type of Service/DSCP (8b), Total Length (16b), Identification (16b), Flags (DF, MF - 3b), Fragment Offset (13b), TTL (8b), Protocol (8b), Header Checksum (16b), Source IP (32b), Destination IP (32b).
