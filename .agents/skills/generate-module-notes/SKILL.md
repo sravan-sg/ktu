@@ -1,9 +1,9 @@
 ---
 name: generate-module-notes
-description: Generate comprehensive modular study notes following the module directory structure (notes/semester-<number>/<subject-name>/module-<number>/) with built-in syllabus mapping, cross-referencing audit, auto-correction loop, and correction logging.
+description: Generate comprehensive, highly descriptive modular study notes following the module directory structure (notes/semester-<number>/<subject-name>/module-<number>/) with built-in syllabus mapping, textbook knowledge integration, cross-referencing audit, auto-correction loop, sample question paper generation, and gap analysis logging.
 ---
 
-# Generate Modular Study Notes Pipeline (With Auto-Correction Loop)
+# Master Modular Study Notes Pipeline (With Auto-Correction & Quality Audit)
 
 Generates topic-wise detailed notes, module revision guides, and subject root documentation while automatically auditing and self-correcting syllabus gaps according to the strict workspace directory structure:
 
@@ -13,32 +13,33 @@ notes/semester-<number>/<subject-name>/
 ├── syllabus.md                         # Extracted syllabus, grading criteria & exam focus
 ├── Syllabus_Gap_Analysis.md            # Audit report & completion metrics
 ├── Correction_Log.md                   # Auto-correction execution log
-├── knowledge/                          # Ingested PDF-to-Markdown reference texts
+├── knowledge/                          # Ingested PDF-to-Markdown reference texts & README.md index
 ├── module-1/                           # Module 1 directory
 │   ├── detailed-notes.md               # Detailed notes index for Module 1 (links to topic files)
-│   ├── <topic-1>.md                    # Individual detailed notes for Topic 1
-│   ├── <topic-2>.md                    # Individual detailed notes for Topic 2
+│   ├── <topic-1-kebab-case>.md         # Individual detailed notes for Topic 1
+│   ├── <topic-2-kebab-case>.md         # Individual detailed notes for Topic 2
 │   └── revision-notes.md               # Last-minute revision notes for Module 1
 ├── module-2/                           # Module 2 directory
 │   ├── detailed-notes.md
-│   ├── <topic-1>.md ...
+│   ├── <topic-1-kebab-case>.md ...
 │   └── revision-notes.md
 ...
 ```
 
 ---
 
-## Core Guidelines & Style Constraints
+## Core Guidelines & Quality Constraints
 
-- **MANDATORY Knowledge Ingestion First**: Before writing any note section, read and inspect all converted textbook Markdown files in `notes/semester-<number>/<subject-name>/knowledge/`. Extract exact definitions, proofs, pseudocode, and numerical examples directly from these source texts.
-- **MANDATORY Previous Year Questions (PYQ) Integration**: Read and analyze all question papers in `previous-question-papers/semester-<number>/<subject-name>/`. Incorporate past questions with **100% self-contained, in-place solutions** (NO shortcut pointers like *"See Example X above"* or *"See Section 1"*).
+- **MANDATORY Knowledge Ingestion First**: Before writing any note section, read and inspect all converted textbook Markdown files in `notes/semester-<number>/<subject-name>/knowledge/` and reference textbooks in `textbooks/semester-<number>/<subject-name>/`. Extract exact definitions, proofs, pseudocode, and numerical examples directly from prescribed textbooks (Tanenbaum, Forouzan, Peterson & Davie, Cormen, etc.).
+- **MANDATORY Exhaustive Descriptive Depth**: Every topic note must be **in-depth and highly descriptive**. Avoid superficial one-liners or quick bullet summaries. Include complete architectural diagrams, state transition machines, full mathematical derivations, ASCII protocol headers, and pseudocode algorithms.
+- **MANDATORY PYQ & Sample Question Paper Integration**: Read and analyze all question papers in `previous-question-papers/semester-<number>/<subject-name>/` (including past university papers and synthesized `Sample_Question_Paper.txt`). Incorporate past questions with **100% self-contained, in-place solutions** (NO shortcut pointers like *"See Example X above"* or *"See Section 1"*).
 - **Mandatory 5-Part Topic Structure**: Every single topic markdown file (`<topic-kebab-case>.md`) MUST strictly contain all 5 of these sections:
-  1. **Explanation**: A clear, conceptual breakdown of the topic and core intuition.
-  2. **Example**: A basic theoretical or visual example explaining the concept.
-  3. **Applications & Use Cases**: Real-world software engineering scenarios where this algorithm/concept is applied.
-  4. **3 Solved Numerical/Analytical Examples**: Step-by-step mathematical or algorithmic walkthroughs (recurrences, tree rotations, graph traces), tagged with PYQ sessions where applicable (e.g. `[April 2018]`).
-  5. **Previous Year Questions & Solutions**: Sub-section listing raw past questions paired with full, complete, in-place solutions.
-- **Senior CS Professor Persona**: Teach *why* concepts work, combining intuition, step-by-step mathematical derivations, clear code snippets, and real-world engineering trade-offs.
+  1. **Explanation**: A clear, highly descriptive conceptual breakdown of the topic and core intuition.
+  2. **Example**: A basic theoretical, visual, or structural diagram example explaining the concept.
+  3. **Applications & Use Cases**: Real-world software/systems engineering scenarios where this algorithm/concept is applied.
+  4. **3 Solved Numerical/Analytical Examples**: Step-by-step mathematical or algorithmic walkthroughs (recurrences, tree rotations, graph traces, subnetting math), tagged with PYQ sessions where applicable (e.g. `[April 2018]`, `[May 2019]`, `[Sample Question Paper]`).
+  5. **Previous Year Questions & Solutions**: Sub-section listing raw past questions paired immediately with full, complete, in-place solutions.
+- **Senior CS Professor Persona**: Teach *why* concepts work, combining deep intuition, step-by-step mathematical derivations, clear code snippets, and real-world engineering trade-offs.
 
 ---
 

@@ -1,13 +1,13 @@
 # CS306 — Computer Networks
 
 > **Semester**: Semester 6 (S6) | **Scheme**: 2016 | **Credits**: 3 (L-T-P 3-0-0)  
-> **Course Syllabus & Guide**: [syllabus.md](syllabus.md) | **Knowledge Base**: [knowledge/README.md](knowledge/README.md) | **Audit Report**: [Syllabus_Gap_Analysis.md](Syllabus_Gap_Analysis.md)
+> **Course Syllabus & Guide**: [`syllabus.md`](syllabus.md) | **Knowledge Base**: [`knowledge/README.md`](knowledge/README.md) | **Audit Report**: [`Syllabus_Gap_Analysis.md`](Syllabus_Gap_Analysis.md) | **Auto-Correction Log**: [`Correction_Log.md`](Correction_Log.md)
 
 ---
 
 ## 📚 Subject Overview & Learning Path
 
-This study workspace provides comprehensive, professor-grade notes and rapid revision guides for **CS306 Computer Networks**. The material is organized into modular subdirectories (`module-1/` through `module-6/`), containing topic-wise detailed study notes and last-minute revision summaries.
+This study workspace provides comprehensive, professor-grade notes, converted reference textbook knowledge, and rapid revision guides for **CS306 Computer Networks**. The material is organized into modular subdirectories (`module-1/` through `module-6/`), containing topic-wise detailed study notes and last-minute revision summaries.
 
 ---
 
@@ -30,7 +30,7 @@ This study workspace provides comprehensive, professor-grade notes and rapid rev
 
 ### [Module 3: Network Layer & Routing Algorithms](module-3/detailed-notes.md)
 - **[Topic 1: Network Layer Design & Shortest Path Routing](module-3/network-layer-design-and-shortest-path-routing.md)**
-- **[Topic 2: Distance Vector vs Link State Routing (RIP & OSPF)](module-3/distance-vector-vs-link-state-routing-rip-ospf.md)**
+- **[Topic 2: Distance Vector vs Link State Routing (RIP & OSPF) & Mobile IP](module-3/distance-vector-vs-link-state-routing-rip-ospf.md)**
 
 ---
 
@@ -42,13 +42,13 @@ This study workspace provides comprehensive, professor-grade notes and rapid rev
 
 ### [Module 5: Internet Control Protocols, Multicasting & IPv6](module-5/detailed-notes.md)
 - **[Topic 1: Internet Control Protocols (ICMP, ARP, RARP, BOOTP)](module-5/internet-control-protocols-icmp-arp-rarp-bootp.md)**
-- **[Topic 2: BGP, Internet Multicasting & IPv6 Transition](module-5/bgp-multicasting-and-ipv6-transition.md)**
+- **[Topic 2: BGP, Internet Multicasting (IGMP) & IPv6 Protocol Suite](module-5/bgp-multicasting-and-ipv6-transition.md)**
 
 ---
 
 ### [Module 6: Transport Layer & Application Layer Protocols](module-6/detailed-notes.md)
-- **[Topic 1: Transport Layer (TCP, UDP & TCP Congestion Control)](module-6/transport-layer-tcp-udp-and-congestion-control.md)**
-- **[Topic 2: Application Layer Protocols (DNS, FTP, SMTP, HTTP & WWW)](module-6/application-layer-protocols-dns-ftp-smtp-http.md)**
+- **[Topic 1: Transport Layer: TCP Segment Header, Connection Management, Sliding Window & Congestion Control](module-6/transport-layer-tcp-udp-and-congestion-control.md)**
+- **[Topic 2: Application Layer Protocols: FTP, DNS, Electronic Mail (SMTP), MIME & SNMP](module-6/application-layer-protocols-dns-ftp-smtp-http.md)**
 
 ---
 

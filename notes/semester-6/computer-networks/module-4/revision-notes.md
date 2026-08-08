@@ -4,24 +4,53 @@
 
 ---
 
-## 🚀 Submodule 1: Congestion Control & Traffic Shaping
+## 🚀 Submodule 1: Congestion Control & QoS
 
-- **Leaky Bucket**: Smooths bursty traffic to a strictly uniform, constant output rate. Drops packets when bucket overflows.
-- **Token Bucket**: Accumulates tokens up to capacity $b$. Allows bursts at maximum speed $M$ for time $S = \frac{b}{M - r}$.
-- **RED (Random Early Detection)**: Proactively drops packets with probability $P$ when queue exceeds threshold, preventing TCP global synchronization.
+- **Traffic Shaping**:
+  - *Leaky Bucket*: Converts variable bursty traffic into a smooth, constant bit-rate output stream using a fixed-rate queue. Drops overflowing packets.
+  - *Token Bucket*: Accumulates tokens at rate $r$ up to capacity $B$. Allows short bursts at full link speed $S$ for duration $t = \frac{B}{S - r}$.
+- **Congestion Prevention**:
+  - *Choke Packets*: Router sends explicit warning packet back to traffic source.
+  - *RED (Random Early Detection)*: Router drops/marks incoming packets randomly before buffer becomes completely full to trigger TCP slow-down.
+- **Quality of Service (QoS)**:
+  - *IntServ (RSVP)*: Per-flow resource reservation; hard guarantees but poor scalability.
+  - *DiffServ (DSCP)*: Per-hop class-based traffic prioritization; 6-bit DSCP field in IP header; highly scalable.
+  - *WFQ (Weighted Fair Queueing)*: Allocates bandwidth proportional to queue weights.
 
 ---
 
-## 🚀 Submodule 2: IPv4 Subnetting & CIDR
+## 🚀 Submodule 2: IPv4 Header & Classful Addressing
 
-- **Subnet Mask**: Mask with $n$ prefix 1s and $h = 32 - n$ host 0s. Usable hosts per subnet $= 2^h - 2$.
-- **Class Ranges**: Class A (`/8`), Class B (`/16`), Class C (`/24`), Class D (Multicast `224.0.0.0/4`).
-- **CIDR Supernetting**: Aggregates $2^k$ contiguous networks into a single route by matching prefix bits.
+- **IPv4 Header Fields (20B Base)**: Version (4b), IHL (4b), Type of Service/DSCP (8b), Total Length (16b), Identification (16b), Flags (3b - DF, MF), Fragment Offset (13b), TTL (8b), Protocol (8b), Header Checksum (16b), Source IP (32b), Destination IP (32b).
+- **Classful IP Addressing Table**:
+  - *Class A*: `0.0.0.0` to `127.255.255.255` (`/8` mask `255.0.0.0`). 128 networks, 16M hosts/net.
+  - *Class B*: `128.0.0.0` to `191.255.255.255` (`/16` mask `255.255.0.0`). 16k networks, 65k hosts/net.
+  - *Class C*: `192.0.0.0` to `223.255.255.255` (`/24` mask `255.255.255.0`). 2M networks, 254 hosts/net.
+  - *Class D*: `224.0.0.0` to `239.255.255.255` (Multicast).
+  - *Class E*: `240.0.0.0` to `255.255.255.255` (Experimental).
+- **RFC 1918 Private Address Ranges**: `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`.
+
+---
+
+## 🚀 Submodule 3: CIDR, Subnetting & VLSM
+
+- **Subnet Mask Math**: Borrowing $b$ host bits creates $2^b$ subnets, leaving $32 - (N + b)$ host bits, providing $2^{\text{host bits}} - 2$ usable hosts per subnet.
+- **CIDR (Classless Inter-Domain Routing)**: Replaces classful masks with prefix length notation (e.g. `/26`).
+- **Supernetting (Route Aggregation)**: Combines multiple contiguous smaller subnets into a single routing table entry (e.g. four `/24` subnets combined into one `/22` supernet).
 
 ---
 
 ## 🔢 3 Solved Numerical Micro-Examples
 
-1. **Token Burst Duration**: $b = 40 \text{ Mb}$, $M = 50 \text{ Mbps}$, $r = 10 \text{ Mbps}$. Burst duration $S = \frac{40}{50 - 10} = 1.0 \text{ second}$.
-2. **Subnet Host Count**: For `/26` prefix, host bits $h = 32 - 26 = 6$. Usable hosts $= 2^6 - 2 = 62$. Subnet mask $= 255.255.255.192$.
-3. **Supernetting**: `202.10.0.0/24` and `202.10.1.0/24` aggregate into `202.10.0.0/23`.
+1. **Token Bucket Burst Math**: Capacity $B = 1 \text{ MB}$, Token Rate $r = 2 \text{ MB/s}$, Maximum Transmission Speed $S = 10 \text{ MB/s}$.
+   $$\text{Max Burst Duration } t = \frac{1 \text{ MB}}{10 - 2} = \frac{1}{8} \text{ s} = \mathbf{125 \text{ ms}}$$
+2. **Subnet Math (`/26`)**: IP `192.168.1.130/26`.
+   - Subnet Mask: `255.255.255.192`.
+   - Block Size $= 256 - 192 = 64$.
+   - Network Address $= \mathbf{192.168.1.128}$.
+   - Broadcast Address $= \mathbf{192.168.1.191}$.
+   - Usable Host Range $= \mathbf{192.168.1.129 \text{ to } 192.168.1.190}$ (62 hosts).
+3. **Fragment Math**: Data $= 3000 \text{ B}$, MTU $= 1000 \text{ B}$.
+   - Frag 1: Payload $976 \text{ B}$ (divisible by 8) + 20B Header. Offset $= 0$, `MF = 1`.
+   - Frag 2: Payload $976 \text{ B}$ + 20B Header. Offset $= 976 / 8 = \mathbf{122}$, `MF = 1`.
+   - Frag 3: Payload $1048 \text{ B}$ + 20B Header. Offset $= 1952 / 8 = \mathbf{244}$, `MF = 0`.
