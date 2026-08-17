@@ -8,11 +8,11 @@
 ## 1. Core Intuition & Fundamental Concepts
 
 ### Explanation
-When total network traffic exceeds the processing or forwarding capacity of intermediate routers, queues build up and **congestion** occurs. 
+When total network traffic exceeds the processing or forwarding capacity of intermediate routers, queues build up and **congestion** occurs. This results in packet delays, buffer overflows, dropped packets, and ultimately retransmissions that can lead to *congestion collapse*.
 
 #### Congestion Control vs Flow Control
-- **Flow Control**: Point-to-point rate matching between a single fast sender and a single slow receiver (e.g., sliding window).
-- **Congestion Control**: Global network-wide traffic management to prevent intermediate routers and shared links from becoming overwhelmed.
+- **Flow Control**: Point-to-point rate matching. It prevents a single fast sender from overrunning a single slow receiver's buffer capacity (e.g., using a sliding window).
+- **Congestion Control**: Global network-wide traffic management. It prevents a set of senders from overloading the intermediate routers and shared links in the network.
 
 ---
 
@@ -21,16 +21,41 @@ When total network traffic exceeds the processing or forwarding capacity of inte
 1. **Leaky Bucket Algorithm**:
    - Converts bursty incoming traffic into a **smooth, constant-rate outgoing stream**.
    - Modeled as a bucket with a small hole at the bottom. If input arrives faster than the leak rate, data accumulates in the bucket buffer. If the bucket overflows, incoming packets are dropped.
+   - Used for strict traffic shaping where output rate must not exceed a set threshold.
 
 2. **Token Bucket Algorithm**:
    - Tokens arrive into the bucket at a constant rate $r$. The bucket can hold up to $b$ tokens.
-   - To transmit a packet, the sender must consume tokens corresponding to packet size. Allows **controlled burstiness** up to bucket capacity $b$.
+   - To transmit a packet, the sender must consume tokens corresponding to the packet size. This allows **controlled burstiness** up to the bucket capacity $b$.
 
 3. **Choke Packets**:
    - When a router's queue utilization exceeds a threshold, it generates a control packet (choke packet) sent directly back to the source host commanding it to reduce its transmission rate.
 
 4. **Random Early Detection (RED)**:
    - Proactive router queue management. The router monitors average queue length. When queue size exceeds a minimum threshold $Min_{th}$, the router randomly drops incoming packets *before* the buffer fills completely, forcing TCP senders to slow down gracefully via Fast Retransmit.
+
+### TCP Congestion Control
+TCP uses a **Congestion Window (cwnd)** to limit the amount of unacknowledged data in transit, making the effective window the minimum of the receiver's advertised window and the congestion window. It employs a self-clocking mechanism driven by ACKs.
+
+1. **Additive Increase / Multiplicative Decrease (AIMD)**:
+   - *Multiplicative Decrease*: TCP interprets packet loss (usually indicated by a timeout or triple duplicate ACKs) as a sign of congestion. When congestion occurs, TCP aggressively reduces its sending rate by halving the Congestion Window (e.g., if cwnd is 16 packets, it drops to 8).
+   - *Additive Increase*: When the network is healthy and ACKs are arriving, TCP conservatively increases the Congestion Window by exactly 1 Maximum Segment Size (MSS) per Round Trip Time (RTT), resulting in a linear increase.
+   - This creates a characteristic **"sawtooth"** pattern of bandwidth usage over time.
+
+2. **Slow Start**:
+   - Used when a connection initially starts or restarts after a severe timeout. Since AIMD's linear growth takes too long to reach network capacity from zero, TCP starts with a cwnd of 1 packet.
+   - For every ACK received, cwnd increases by 1, effectively **doubling** the window size every RTT (exponential growth).
+   - Once a threshold is reached or a packet is lost, it switches back to AIMD.
+
+### Example
+- **Flow Control vs Congestion Control Analogy**: 
+  - *Flow Control* is like drinking from a firehose; you ask the person holding the hose to turn the pressure down so you don't choke. 
+  - *Congestion Control* is like a freeway metering light; it restricts how many cars (packets) enter the highway to prevent a massive traffic jam (network collapse).
+- **Leaky Bucket Analogy**: Pouring water into a funnel. You can dump a bucket of water in quickly (bursty traffic), but it only drips out the bottom at a steady, fixed rate (shaped traffic).
+
+### Applications & Use Cases
+- **Leaky/Token Bucket**: Used in ISP bandwidth throttling, API rate limiting, and policing Quality of Service (QoS) Service Level Agreements (SLAs).
+- **TCP Congestion Control (AIMD/Slow Start)**: Used universally by web browsers, file transfers, and streaming services to dynamically share the global Internet bandwidth without causing congestive collapse.
+- **Random Early Detection (RED)**: Configured on high-speed internet backbone routers to prevent "global synchronization" (where all TCP streams back off simultaneously when a router buffer overflows).
 
 ---
 

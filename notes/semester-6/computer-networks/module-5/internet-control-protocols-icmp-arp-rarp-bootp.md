@@ -13,42 +13,60 @@ The Network Layer relies on auxiliary control protocols to handle IP error repor
 ---
 
 ### 1. ICMP (Internet Control Message Protocol)
-- Operates directly over IP (Protocol number 1) to provide feedback about IP packet delivery failures.
+- **Role**: Operates directly over IP (Protocol number 1) as a companion protocol to provide feedback about IP packet delivery failures and assist in network diagnostics. Although it runs *over* IP, it is considered a core part of the Network Layer.
+- **Error Reporting Mechanics**: IP itself fails silently (e.g., if a router drops a packet due to an unknown route or failed reassembly). ICMP solves this by sending an error message back to the original sender.
 - **ICMP Packet Header**:
   - `Type (8 bits)`: Specifies ICMP message category.
   - `Code (8 bits)`: Gives specific sub-reason for message.
   - `Checksum (16 bits)`: Error detection over ICMP header and payload.
-  - `Payload`: Contains the IP header + first 64 bits (8 Bytes) of the original datagram that caused the error.
-
-#### Key ICMP Message Types:
-- **Type 0 (Echo Reply)** / **Type 8 (Echo Request)**: Used by `ping` utility to test end-to-end reachability.
-- **Type 3 (Destination Unreachable)**:
-  - Code 0: Network Unreachable.
-  - Code 1: Host Unreachable.
-  - Code 3: Port Unreachable (sent by transport layer when receiving packet for an unopened UDP port).
-  - Code 4: Fragmentation Needed and DF Set.
-- **Type 5 (Redirect)**: Sent by a router to inform a host of a better first-hop router.
-- **Type 11 (Time Exceeded)**: Sent by a router when a packet's `TTL` reaches 0. Used by `traceroute` to map network paths hop-by-hop.
+  - `Payload`: Contains the IP header + first 64 bits (8 Bytes) of the original datagram that caused the error, allowing the sender to match the error to a specific process/socket.
+- **Key ICMP Message Types**:
+  - **Type 0 (Echo Reply)** / **Type 8 (Echo Request)**: Used by `ping` to test node reachability and liveness.
+  - **Type 3 (Destination Unreachable)**: 
+    - Code 0: Network Unreachable.
+    - Code 1: Host Unreachable (e.g., link failure).
+    - Code 3: Port Unreachable (sent by the destination's transport layer when receiving a packet for an unopened UDP port).
+    - Code 4: Fragmentation Needed and DF (Don't Fragment) Set.
+  - **Type 5 (Redirect)**: Sent by a router to a source host indicating that a better first-hop router exists for the specific destination. The host then updates its local routing table.
+  - **Type 11 (Time Exceeded)**: Sent by a router when a packet's `TTL` reaches 0 to prevent routing loops. Heavily exploited by `traceroute` to map the network hop-by-hop.
 
 ---
 
 ### 2. ARP (Address Resolution Protocol) & RARP
 - **ARP (Address Resolution Protocol)**:
-  - Maps a known 32-bit IP address to an unknown 48-bit Layer 2 MAC address within a local link.
-  - *Operation*: Sender broadcasts an **ARP Request** (`"Who has IP 192.168.1.5?"`). Target host replies with a unicast **ARP Reply** (`"192.168.1.5 is at AA:BB:CC:DD:EE:FF"`). Results stored in **ARP Cache**.
-  - **Proxy ARP**: A router responds to ARP requests for off-subnet hosts, acting as a gateway representative.
+  - **Purpose**: Maps a known 32-bit IP address to an unknown 48-bit Layer 2 physical MAC address within a single broadcast domain or local link.
+  - **Operation**: 
+    1. A host broadcasts an **ARP Request** containing the target IP to all nodes on the Ethernet segment (`FF:FF:FF:FF:FF:FF`).
+    2. Every host receives it, but only the target host matching the IP replies. The target sends a unicast **ARP Reply** containing its MAC address back to the sender.
+    3. The sender stores this mapping in its **ARP Cache** (which typically times out after ~15 minutes to handle hardware replacements).
+  - **Packet Format**: Contains Hardware Type (e.g., Ethernet), Protocol Type (e.g., IP), Lengths for both, Operation (Request/Reply), and the Sender/Target MAC and IP addresses.
+  - **Proxy ARP**: A router responds to ARP requests on behalf of off-subnet hosts, acting as a transparent gateway.
 - **RARP (Reverse Address Resolution Protocol)**:
-  - Used by diskless workstations to discover their own IP address given their hardcoded MAC address. (Obsoleted by BOOTP and DHCP).
+  - **Purpose**: Allows a diskless workstation to discover its own IP address by broadcasting its hardcoded MAC address at boot. It requires a dedicated RARP server to maintain a static MAC-to-IP table. (Largely obsoleted by BOOTP and DHCP).
 
 ---
 
-### 3. BOOTP (Bootstrap Protocol)
-- Client-server protocol operating over UDP (Ports 67/68) used by diskless workstations during bootup to request:
+### 3. BOOTP (Bootstrap Protocol) & DHCP
+- **BOOTP**: A client-server protocol operating over UDP (Ports 67 for Server / 68 for Client) used by diskless workstations during bootup. It extends RARP by providing more than just an IP address. It supplies:
   1. Assigned IP Address.
   2. Subnet Mask.
   3. Default Gateway IP.
   4. TFTP Server IP and Boot Image Filename.
-- Uses **BOOTP Relay Agents** to forward bootstrap requests across router boundaries to central BOOTP/DHCP servers.
+- **Relay Agents**: To avoid needing a server on every subnet, **BOOTP Relay Agents** (usually routers configured with the server's IP) listen for broadcast requests and unicast them to central servers.
+- **DHCP (Dynamic Host Configuration Protocol)**:
+  - Built upon BOOTP, DHCP heavily automates network management.
+  - **Address Pools & Leasing**: Instead of static MAC-to-IP mappings, the DHCP server maintains a pool of available IP addresses and dynamically "leases" them to hosts for a specific duration. Hosts must periodically renew their leases.
+  - **Discovery**: A new host broadcasts a `DHCPDISCOVER` message to `255.255.255.255`. A relay agent intercepts it and forwards it to the DHCP server, which responds with a `DHCPOFFER`.
+
+---
+
+### Example
+- **ARP Cache in Action**: When you type `ping 192.168.1.100`, your computer first checks its ARP cache (viewable via `arp -a` in Windows/Linux). If the MAC address isn't there, it pauses the `ping`, broadcasts an ARP request, waits for the MAC address reply, stores it in the cache, and *then* finally constructs and sends the ICMP Echo Request frame.
+
+### Applications & Use Cases
+- **ICMP**: Network diagnostics. Tools like `ping` (testing latency and packet loss) and `traceroute` (identifying network bottlenecks or routing loops) rely entirely on ICMP.
+- **ARP**: Fundamental to every local network communication. Without ARP, an IP packet cannot be encapsulated into an Ethernet frame because the destination MAC address would be unknown.
+- **DHCP**: Used universally in home routers, enterprise networks, and coffee shop Wi-Fi to automatically provision connecting laptops and smartphones with valid IP configurations, avoiding catastrophic IP conflicts.
 
 ---
 
