@@ -27,6 +27,9 @@ Stage 5: Modular Note Generation & Auto-Correction Loop (generate-module-notes)
        │
        ▼
 Stage 6: Syllabus Gap Analysis Audit & Quality Verification (audit-syllabus-gaps)
+       │
+       ▼
+Stage 7: Detail & Depth Verification Audit (audit-note-detail)
 ```
 
 ---
@@ -36,9 +39,10 @@ Stage 6: Syllabus Gap Analysis Audit & Quality Verification (audit-syllabus-gaps
 ### Stage 1: Directory Architecture Alignment (Rule 5)
 1. Convert the raw subject name into standard **kebab-case** (e.g. `computer-networks`, `design-and-analysis-of-algorithms`).
 2. Derive the target semester using the KTU formula (`base = 2*H - 1`, `+1` if last digit is even).
-3. Ensure identical, standardized directory naming across all 4 root categories:
+3. Ensure identical, standardized directory naming across all 5 root categories:
    - `syllabus/semester-<number>/<subject-name>/`
    - `previous-question-papers/semester-<number>/<subject-name>/`
+   - `sample-question-papers/semester-<number>/<subject-name>/`
    - `textbooks/semester-<number>/<subject-name>/`
    - `notes/semester-<number>/<subject-name>/`
 
@@ -56,7 +60,7 @@ Stage 6: Syllabus Gap Analysis Audit & Quality Verification (audit-syllabus-gaps
 2. Apply **Primary Verification (Link/Metadata)**: Confirm source is KTU, subject code matches, and course title matches.
 3. Apply **Secondary Verification (Header Inspection)**: Inspect header block for `APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY` or `KTU`, subject code, and course title. Fails any non-matching paper.
 4. Save verified papers in `previous-question-papers/semester-<number>/<subject-name>/` with standardized names (`Month_Year.txt`).
-5. Synthesize and write `previous-question-papers/semester-<number>/<subject-name>/Sample_Question_Paper.txt` following the official KTU Part A, B, C, D, E examination pattern.
+5. Execute `generate-sample-papers` skill to synthesize and write 3 sample question papers in Markdown format (`.md`) in `sample-question-papers/semester-<number>/<subject-name>/` following the official KTU Part A, B, C, D, E examination pattern.
 6. Clean up temporary staging directories.
 
 ### Stage 5: Modular Note Generation & Auto-Correction Loop (`generate-module-notes`)
@@ -73,3 +77,8 @@ Stage 6: Syllabus Gap Analysis Audit & Quality Verification (audit-syllabus-gaps
 ### Stage 6: Syllabus Gap Analysis Audit (`audit-syllabus-gaps`)
 1. Cross-reference all generated module notes against mapped syllabus requirements.
 2. Generate `notes/semester-<number>/<subject-name>/Syllabus_Gap_Analysis.md` confirming **100% completion**.
+
+### Stage 7: Detail & Depth Verification Audit (`audit-note-detail`)
+1. Scan all generated module notes.
+2. Evaluate content for explicit depth, "Senior CS Professor" intuition, technical rigor, and step-by-step example quality.
+3. Generate `notes/semester-<number>/<subject-name>/Detail_Audit_Report.md`.

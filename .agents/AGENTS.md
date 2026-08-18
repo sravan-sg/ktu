@@ -65,7 +65,11 @@ The repository contains three custom skills in `.agents/skills/` to automate cou
 - **Trigger**: When user requests verifying, auditing, or performing a gap analysis on course notes.
 - **Function**: Scans `notes/`, extracts syllabus topics, audits `module-<number>/` notes against the 5-part template and self-contained PYQ solution rule, and generates `notes/<semester>/<subject>/Syllabus_Gap_Analysis.md`.
 
-### 6. `onboard-subject` (`.agents/skills/onboard-subject/SKILL.md`)
+### 6. `audit-note-detail` (`.agents/skills/audit-note-detail/SKILL.md`)
+- **Trigger**: When user requests verifying that the notes generated for each subject are highly detailed.
+- **Function**: Scans all generated study notes for a subject, evaluating their academic depth, technical rigor, step-by-step example quality, and "Senior CS Professor" level intuition. Generates a `Detail_Audit_Report.md` highlighting specific topics that need expansion.
+
+### 7. `onboard-subject` (`.agents/skills/onboard-subject/SKILL.md`)
 - **Trigger**: When a new syllabus file is added to `syllabus/` or when user requests onboarding a new course.
 - **Function**: Autonomous master pipeline executing Directory Alignment (Rule 5), Syllabus Processing (`review-syllabus`), Textbook Indexing (`download-references`), PYQ 2-Stage Verification & Sample Paper Generation (`pyq_scraper_pipeline.py`), 5-Part Note Generation with Self-Contained PYQ Solutions (`generate-module-notes`), and Gap Analysis Audit (`audit-syllabus-gaps`).
 
@@ -77,9 +81,10 @@ The repository contains three custom skills in `.agents/skills/` to automate cou
 2. **Syllabus Parsing**: Scraped raw syllabi contain run-together words and collapsed formatting from PDF extraction. Reconstruct intended structure carefully.
 3. **Note Location**: Place new notes under `notes/<semester>/<subject>/`, mirroring existing naming conventions.
 4. **No Build/Test Commands**: Do not create or invent build, test, or lint commands.
-5. **Strict Unified Directory Architecture**: Always enforce identical, standardized directory naming across all 4 root categories when creating or updating any subject:
+5. **Strict Unified Directory Architecture**: Always enforce identical, standardized directory naming across all 5 root categories when creating or updating any subject:
    - `syllabus/semester-<number>/<subject-name>/`
    - `previous-question-papers/semester-<number>/<subject-name>/`
+   - `sample-question-papers/semester-<number>/<subject-name>/`
    - `textbooks/semester-<number>/<subject-name>/`
    - `notes/semester-<number>/<subject-name>/`
    *NEVER use shortcut folder names (e.g. `notes/s6/`) or unaligned paths.*
