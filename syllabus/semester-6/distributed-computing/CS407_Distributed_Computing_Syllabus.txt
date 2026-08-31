@@ -1,0 +1,79 @@
+CS407: DISTRIBUTED COMPUTING
+
+Course Code: CS407
+Course Name: DISTRIBUTED COMPUTING
+L-T-P-Credits: 3-0-0-3
+Year of Introduction: 2016
+
+Course Objectives:
+• To introduce fundamental principles of distributed systems, technical challenges and key design issues.
+• To impart knowledge of the distributed computing models, algorithms and the design of distributed system.
+
+Syllabus:
+Introduction to distributed computing, Design issues, Distributed Computing Models, System models, Inter-process communication, Distributed file system, Name Service, Distributed mutual exclusion, Distributed system design.
+
+Expected Outcome:
+The Students will be able to:
+i. Distinguish distributed computing paradigm from other computing paradigms
+ii. Identify the core concepts of distributed systems
+iii. Illustrate the mechanisms of inter process communication in distributed system
+iv. Apply appropriate distributed system principles in ensuring transparency, consistency and fault-tolerance in distributed file system
+v. Compare the concurrency control mechanisms in distributed transactional environment
+vi. Outline the need for mutual exclusion and election algorithms in distributed systems
+
+Text Books:
+1. George Coulouris, Jean Dollimore and Tim Kindberg, Distributed Systems: Concepts and Design, Fifth Edition, Pearson Education, 2011
+2. Pradeep K Sinha, Distributed Operating Systems: Concepts and Design, Prentice Hall of India
+
+References:
+1. A S Tanenbaum and M V Steen, Distributed Systems: Principles and paradigms, Pearson Education, 2007
+2. M Solomon and J Krammer, Distributed Systems and Computer Networks, PHI
+
+Course Plan:
+
+Module I (Hours: 7, End Sem. Exam Marks: 15%)
+Evolution of Distributed Computing - Issues in designing a distributed system - Challenges - Minicomputer model - Workstation model - Workstation-Server model - Processor-pool model - Trends in distributed systems
+
+Module II (Hours: 6, End Sem. Exam Marks: 15%)
+System models: Physical models - Architectural models - Fundamental models
+
+--- FIRST INTERNAL EXAM ---
+
+Module III (Hours: 7, End Sem. Exam Marks: 15%)
+Interprocess communication: characteristics - group communication - Multicast Communication - Remote Procedure call - Network virtualization. Case study: Skype
+
+Module IV (Hours: 7, End Sem. Exam Marks: 15%)
+Distributed file system: File service architecture - Network file system - Andrew file system - Name Service
+
+--- SECOND INTERNAL EXAM ---
+
+Module V (Hours: 7, End Sem. Exam Marks: 20%)
+Transactional concurrency control: Transactions, Nested transactions - Locks - Optimistic concurrency control
+
+Module VI (Hours: 7, End Sem. Exam Marks: 20%)
+Distributed mutual exclusion - central server algorithm - ring based algorithm - Maekawa's voting algorithm. Election: Ring-based election algorithm - Bully algorithm
+
+--- END SEMESTER EXAM ---
+
+Question Paper Pattern:
+1. There will be FOUR parts in the question paper - A, B, C, D
+2. Part A
+   a. Total marks: 40
+   b. TEN questions, each have 4 marks, covering all the SIX modules (THREE questions from modules I & II; THREE questions from modules III & IV; FOUR questions from modules V & VI).
+   c. All the TEN questions have to be answered.
+3. Part B
+   a. Total marks: 18
+   b. THREE questions, each having 9 marks. One question is from module I; one question is from module II; one question uniformly covers modules I & II.
+   c. Any TWO questions have to be answered.
+   d. Each question can have maximum THREE subparts.
+4. Part C
+   a. Total marks: 18
+   b. THREE questions, each having 9 marks. One question is from module III; one question is from module IV; one question uniformly covers modules III & IV.
+   c. Any TWO questions have to be answered.
+   d. Each question can have maximum THREE subparts.
+5. Part D
+   a. Total marks: 24
+   b. THREE questions, each having 12 marks. One question is from module V; one question is from module VI; one question uniformly covers modules V & VI.
+   c. Any TWO questions have to be answered.
+   d. Each question can have maximum THREE subparts.
+6. There will be AT LEAST 50% analytical/numerical questions in all possible combinations of question choices.

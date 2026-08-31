@@ -1,0 +1,46 @@
+APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY
+Sixth Semester B.Tech Degree Examination, April 2018
+Course Code: CS407
+Course Name: DISTRIBUTED COMPUTING
+Max. Marks: 100
+Duration: 3 Hours
+
+PART A
+Answer all questions, each carries 4 marks.
+1. Distinguish between tightly coupled and loosely coupled multiprocessor systems. (Module I)
+2. Explain the workstation-server model of distributed computing. (Module I)
+3. What is an architectural model? (Module II)
+4. Define Remote Procedure Call (RPC). (Module III)
+5. How is a multicast communication different from a broadcast? (Module III)
+6. What is the role of a Name Service in a distributed system? (Module IV)
+7. What are nested transactions? (Module V)
+8. State the conditions for conflict serializability. (Module V)
+9. Explain the bully algorithm for election. (Module VI)
+10. Describe the ring-based algorithm for mutual exclusion. (Module VI)
+
+PART B
+Answer any two full questions, each carries 9 marks.
+11. a) Explain the various issues in designing a distributed system. (5)
+    b) Discuss the trends in distributed systems. (4)
+12. a) Describe the physical models of distributed systems. (5)
+    b) What are the fundamental models? Explain in detail. (4)
+13. a) Compare Minicomputer model and Workstation model. (5)
+    b) Discuss the processor-pool model. (4)
+
+PART C
+Answer any two full questions, each carries 9 marks.
+14. a) Explain the architecture of Network File System (NFS). (6)
+    b) What are the characteristics of interprocess communication? (3)
+15. a) Discuss Skype as a case study for network virtualization. (5)
+    b) Explain Andrew file system. (4)
+16. a) Explain group communication and its types. (5)
+    b) What is file service architecture? (4)
+
+PART D
+Answer any two full questions, each carries 12 marks.
+17. a) Explain optimistic concurrency control in detail. (6)
+    b) What are locks? Explain two phase locking protocol. (6)
+18. a) Describe Maekawa's voting algorithm. Calculate its message complexity. (8)
+    b) Explain the central server algorithm for mutual exclusion. (4)
+19. a) Explain the concept of transactions in a distributed environment. (6)
+    b) Compare Ring-based election algorithm and Bully algorithm with examples. (6)
