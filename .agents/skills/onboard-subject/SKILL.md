@@ -5,7 +5,7 @@ description: Autonomous end-to-end subject onboarding pipeline triggered wheneve
 
 # Master Subject Onboarding & Scaffolding Pipeline
 
-Whenever a new raw syllabus file is added to `syllabus/` or when requested by the user, execute this complete 6-stage autonomous workflow for the target course subject:
+Whenever a new raw syllabus file is added to `syllabus/` or when requested by the user, execute this complete 8-stage autonomous workflow for the target course subject:
 
 ```
 [Raw Syllabus File in syllabus/]
@@ -30,6 +30,9 @@ Stage 6: Syllabus Gap Analysis Audit & Quality Verification (audit-syllabus-gaps
        │
        ▼
 Stage 7: Detail & Depth Verification Audit (audit-note-detail)
+       │
+       ▼
+Stage 8: Knowledge Integrity Audit (audit-knowledge-integrity)
 ```
 
 ---
@@ -82,3 +85,8 @@ Stage 7: Detail & Depth Verification Audit (audit-note-detail)
 1. Scan all generated module notes.
 2. Evaluate content for explicit depth, "Senior CS Professor" intuition, technical rigor, and step-by-step example quality.
 3. Generate `notes/semester-<number>/<subject-name>/Detail_Audit_Report.md`.
+
+### Stage 8: Knowledge Integrity Audit (`audit-knowledge-integrity`)
+1. Scan all generated module notes.
+2. Cross-reference generated content against the prescribed textbook markdown files in `knowledge/`.
+3. Generate `notes/semester-<number>/<subject-name>/Knowledge_Integrity_Audit.md` detailing grounded topics, ungrounded/hallucinated topics, and missing topics.

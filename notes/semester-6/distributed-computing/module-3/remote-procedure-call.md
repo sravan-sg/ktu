@@ -2,73 +2,83 @@
 
 ## Explanation
 
-Remote Procedure Call (RPC) is a powerful distributed computing paradigm that allows a program to execute a subroutine (procedure) on a different, remote node as if it were a local subroutine call. The goal of RPC is to provide **location transparency**, hiding the complex details of network communication, message serialization, and operating system boundaries from the programmer.
+Remote Procedure Call (RPC) is a distributed computing paradigm that allows a program to execute a subroutine on a remote node as if it were a local subroutine call. According to **Tanenbaum (Chapter 4.2)**, the ultimate goal of RPC is **access transparency**—hiding the intricacies of message passing and network boundaries from the developer.
 
-### The RPC Architecture
-RPC relies on generated "stubs" on both the client and server sides to mask the network interaction:
-1. **Client**: The application calls a local function. This is actually a dummy function called the **Client Stub**.
-2. **Client Stub**: Packs (marshals) the function name and parameters into a network message and calls the OS to send it to the server.
-3. **Network OS**: Transmits the message over TCP/UDP to the remote machine.
-4. **Server OS**: Receives the message and passes it to the **Server Stub** (or skeleton).
-5. **Server Stub**: Unpacks (unmarshals) the message and calls the actual implementation of the function on the server.
-6. **Server Implementation**: Executes the logic and returns the result to the Server Stub, which marshals it and sends it back through the reverse path.
+### The RPC Architecture (Stubs and Marshaling)
+RPC relies on generated **stubs** to mask network interactions:
+1. **Client**: The application calls a local dummy function called the **Client Stub**.
+2. **Client Stub**: Packs the parameters into a neutral, machine-independent format—a process called **Marshaling**—and asks the OS to send the message.
+3. **Network OS**: Transmits the message over the network.
+4. **Server OS**: Receives the message and passes it to the **Server Stub**.
+5. **Server Stub**: **Unmarshals** the parameters and calls the actual server implementation.
+6. **Return**: The server implementation executes, returns the result to the server stub, which marshals it and sends it back to the client stub.
 
-### Challenges in RPC
-- **Parameter Passing**: Since processes don't share memory, pointers (call-by-reference) cannot be sent over the network directly. They must be resolved into actual values (call-by-copy/restore) or handled via special distributed memory handlers.
-- **Data Representation**: Different machines may have different endianness or data type sizes. RPC frameworks use standard wire formats (like XDR or Protocol Buffers) to ensure correct decoding.
-- **Failure Semantics**: Unlike a local call, an RPC can fail due to network partitions or server crashes. RPC systems provide different semantics: *At-least-once*, *At-most-once*, or *Exactly-once*.
+### Parameter Passing and Data Representation
+A major challenge identified by Tanenbaum is parameter passing. Since processes do not share memory:
+- **Pass-by-Value**: Easy. The data is copied, marshaled, and sent.
+- **Pass-by-Reference**: Complex. Pointers cannot simply be sent over the network. Solutions include **Copy/Restore** (copying the array to the server, and copying the modified array back to the client) or using **Distributed Object References** (where a remote reference acts as a proxy).
+Additionally, machines may use different data representations (e.g., Big-Endian vs. Little-Endian). RPC frameworks solve this by marshaling data into a neutral wire format before transmission.
+
+### Variations of RPC (Tanenbaum's Classifications)
+Standard RPC is inherently **synchronous** (the client blocks waiting for the reply). Tanenbaum highlights several variations to improve performance:
+- **Asynchronous RPC**: The client sends the request and immediately continues execution. The server does not send a reply (used for one-way events).
+- **Deferred Synchronous RPC**: The client sends the request, continues execution, and later polls or waits for the server's reply when it actually needs the result.
+- **Multicast RPC**: A client sends an asynchronous RPC request to a group of servers (via multicast). Each server processes the request in parallel, and the client receives multiple callbacks with the results.
 
 ## Example
 
-Consider a client calculating the tax for an item, but the tax engine resides on a remote server.
+Consider a client calculating tax via a remote server using a Python-like RPC syntax (similar to Tanenbaum's RPyC examples).
 
-**Client Code (Python-like):**
+**Client Code:**
 ```python
 # The programmer writes this exactly like a local call.
-# They don't write any HTTP or socket code.
 total_price = rpc_client.calculate_tax(item_value=100.00, state="CA")
 ```
 
-**Under the Hood (Stubs):**
-The `calculate_tax` function in `rpc_client` serializes `[100.00, "CA"]` into JSON or Protobuf, opens a socket to the tax server, waits for the reply, deserializes it, and returns it to `total_price`.
+**Under the Hood:**
+1. The `rpc_client` (Client Stub) marshals `100.00` and `"CA"` into a byte array (handling any Endianness conversions).
+2. It sends the byte array over a TCP socket.
+3. The server stub receives it, unmarshals the string and float, and invokes the real `calculate_tax` function.
+4. The float result is marshaled and sent back.
 
 ## Applications & Use Cases
 
-- **Microservices Internal Communication**: High-performance internal communications between microservices often use gRPC (Google's RPC framework based on HTTP/2 and Protobuf) instead of REST because it is strongly typed and significantly faster.
-- **Distributed File Systems**: Systems like NFS (Network File System) are built heavily on ONC RPC (Sun RPC) to allow clients to issue read/write commands to remote disks.
-- **Distributed Operating Systems**: Components across different machines coordinating OS-level tasks.
+- **Distributed Computing Environment (DCE)**: Developed by the OSF, DCE RPC is the classic framework that formed the basis for Microsoft's DCOM and the Samba file server.
+- **Microservices**: Modern systems use gRPC (based on HTTP/2 and Protocol Buffers) for extremely fast, strongly-typed internal communications between microservices.
+- **Network File Systems (NFS)**: Tanenbaum notes that NFS clients implement file system operations as remote procedure calls to the NFS server.
 
 ## 3 Solved Numerical/Analytical Examples
 
-**Example 1: Endianness Conversion Overhead**
-A client is Little-Endian and a server is Big-Endian. The client sends an array of 1,000 32-bit integers via RPC. The network uses Big-Endian (Network Byte Order). If converting a single 32-bit integer takes 5 CPU cycles on a 2 GHz processor, what is the marshalling overhead on the client?
+**Example 1: Endianness Conversion (Marshaling) Overhead**
+*Problem:* A Little-Endian client sends an array of 1,000 32-bit integers via RPC to a Big-Endian server. The RPC framework mandates a Big-Endian wire format. If converting a single integer takes 5 CPU cycles on a 2 GHz processor, what is the marshaling overhead on the client?
 *Solution:*
-1. The client must convert 1,000 integers from Little-Endian to Big-Endian.
+1. The client must convert 1,000 integers to the wire format.
 2. Total cycles = $1,000 \times 5 = 5,000$ cycles.
 3. Time taken = $5,000 \text{ cycles} / (2 \times 10^9 \text{ cycles/second}) = 2.5 \mu\text{s}$.
-*Note:* The server incurs zero overhead because it is already Big-Endian (matches network order).
+*Conclusion:* The client incurs $2.5 \mu\text{s}$ of overhead. The server incurs zero overhead because its native format matches the wire format.
 
-**Example 2: Analyzing Call-by-Copy/Restore vs. Call-by-Reference**
-A local procedure `increment(&x)` takes 1 ns. `x` is a 4-byte integer. In an RPC system, network latency is 5 ms one-way. How much slower is the RPC call compared to the local call?
+**Example 2: Analyzing Call-by-Copy/Restore vs. Local Call**
+*Problem:* A local procedure `increment(&x)` takes 1 ns. `x` is a 4-byte integer. In an RPC system, network latency is 5 ms one-way. How much slower is the RPC call compared to the local call?
 *Solution:*
 1. Since pointers can't be passed, the RPC uses Call-by-Copy/Restore.
-2. The Client Stub copies the value of `x` (4 bytes) into a message, sends it (5 ms), Server increments it, Server Stub copies the new value, and sends it back (5 ms).
-3. The Client Stub then overwrites the local `x` with the returned value.
+2. Client Stub copies `x`, sends it (5 ms), Server increments it (1 ns), Server Stub copies the new value, and sends it back (5 ms).
+3. Client Stub overwrites the local `x`.
 4. Total RPC Time = $5 \text{ ms (out)} + \text{execution} + 5 \text{ ms (back)} \approx 10 \text{ ms} = 10,000,000 \text{ ns}$.
-*Conclusion:* The RPC is $10,000,000$ times slower than the local call, highlighting that network latency dominates RPC performance.
+*Conclusion:* The RPC is $10,000,000$ times slower, highlighting that network latency, not execution time, dominates RPC performance.
 
-**Example 3: RPC Failure Semantics**
-A client executes an RPC `withdraw_funds(account=123, amount=50)`. The client's OS times out waiting for the server's reply. If the RPC system uses "At-least-once" semantics, what is the risk if the client retries?
+**Example 3: Asynchronous RPC Performance Gain**
+*Problem:* A client needs to log 5 events to a remote server. A synchronous RPC takes 20 ms round-trip. How long does it take using Synchronous RPC vs. Asynchronous RPC (assuming network transmission takes 1 ms and server processing takes 19 ms)?
 *Solution:*
-- **At-least-once** guarantees the call executes *one or more* times. If the timeout was caused by a dropped reply (the server actually processed the withdrawal), retrying will execute the withdrawal a second time, resulting in a $100 deduction. 
-- To fix this, financial operations require **At-most-once** semantics (or idempotent operations), where the server filters duplicate requests based on request IDs.
+1. **Synchronous**: Client blocks for each call. Total time = $5 \times 20 \text{ ms} = 100 \text{ ms}$.
+2. **Asynchronous**: Client sends a request (1 ms) and immediately sends the next without waiting. Total time on client = $5 \times 1 \text{ ms} = 5 \text{ ms}$.
+*Conclusion:* Asynchronous RPC reduces client-side blocking time from 100 ms to 5 ms, massively increasing client throughput for one-way operations.
 
 ## Previous Year Questions & Solutions
 
 **[April 2018] PART A - Q4) Define Remote Procedure Call (RPC). (4 marks)**
 *Solution:*
-Remote Procedure Call (RPC) is a distributed computing protocol that allows a program executing on one machine to seamlessly invoke a procedure or function located in a different address space on a remote machine. 
-Its primary defining features are:
-1. **Transparency:** It hides the complexity of network communication from the developer; the remote call looks and behaves syntactically identically to a local function call.
-2. **Stub-based Architecture:** It uses compiler-generated "stubs" on the client and server. The client stub marshals (serializes) parameters into a network message, and the server stub unmarshals the request, executes the code, and marshals the return value back.
-3. **Overcoming Address Space Differences:** Since processes don't share memory, RPC handles parameter passing by value (copying data) and manages data format conversions (like endianness) automatically.
+Remote Procedure Call (RPC) is a distributed communication mechanism that allows a program executing on one machine to seamlessly invoke a procedure located in a different address space on a remote machine. 
+According to Tanenbaum, its primary defining features are:
+1. **Access Transparency:** It hides the complexity of message passing from the developer; the remote call behaves syntactically identically to a local function call.
+2. **Stub-based Architecture:** It relies on compiler-generated "stubs". The client stub marshals parameters into a network message, and the server stub unmarshals the request, executes the code, and marshals the return value back.
+3. **Handling Address Space Differences:** Since processes don't share memory, RPC handles parameter passing by value (or copy/restore) and manages data format conversions (like endianness) automatically through neutral wire formats.

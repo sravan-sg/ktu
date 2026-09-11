@@ -2,24 +2,19 @@
 
 ## Explanation
 
-The **Ring-Based Algorithm** is a distributed mutual exclusion protocol that relies on a logical ring topology to coordinate access to a Critical Section (CS). Unlike centralized approaches where a single coordinator manages requests, this algorithm distributes control evenly across all participating nodes.
+The **Ring-Based Algorithm** is a token-based distributed mutual exclusion protocol. According to **Tanenbaum (Chapter 6)**, this approach constructs an overlay network in the form of a logical ring, deterministically coordinating access to a Critical Section (CS) without relying on a centralized coordinator.
 
 **Core Intuition:**
-Imagine a single "talking stick" (the **token**) in a circle of people. Only the person holding the stick is allowed to speak (enter the Critical Section). Once they finish, they pass the stick to the person on their immediate right. If the person who receives the stick has nothing to say, they simply pass it along immediately. Because there is only one stick and it travels in a strict, unalterable order, we inherently guarantee that no two people can speak at the same time (mutual exclusion) and that everyone will eventually get a turn (fairness without starvation).
+Imagine a single "talking stick" (the **token**) in a circle of people. Only the person holding the stick is allowed to speak (enter the CS). Once they finish, they pass the stick to the person on their immediate right. If the person who receives the stick has nothing to say, they simply pass it along immediately. Because there is strictly only one stick and it travels in an unalterable sequential order, we inherently guarantee that no two people can speak at the same time (Safety/Mutual Exclusion) and that everyone will eventually get a turn (Liveness/No Starvation).
 
 **Technical Mechanism:**
-1.  **Logical Ring Construction:** The $N$ processes in the system, denoted as $P_0, P_1, \dots, P_{N-1}$, are arranged in a logical ring. The physical network topology is irrelevant; process $P_i$ simply needs to maintain an open communication channel (e.g., a socket connection) to its logical successor, $P_{(i+1) \mod N}$.
-2.  **The Token:** A unique control message known as the "token" continuously circulates around the logical ring. 
-3.  **States of a Process:**
-    -   **Non-critical:** The process does not need to enter the CS. When it receives the token, it immediately forwards it to its successor.
-    -   **Waiting:** The process wants to enter the CS but does not possess the token. It must block and wait.
-    -   **Critical:** The process has received the token, holds it, and executes its critical section. The token is *not* forwarded while the process is in this state.
-4.  **Exiting the CS:** Upon exiting the CS, the process transitions back to the non-critical state and sends the token to its successor.
-
-**Key Properties Guaranteed:**
--   **Mutual Exclusion (Safety):** Guaranteed because there is strictly only one token in the entire system.
--   **No Starvation (Liveness):** Guaranteed because the token travels in a strict, unidirectional order. If a process wants to enter the CS, the token will reach it after at most $N-1$ other processes have taken their turn.
--   **Bounded Wait Time:** The time a process waits is strictly bounded by the time it takes for the token to make one full rotation.
+1. **Logical Ring Construction:** The $N$ processes in the system, denoted as $P_0, P_1, \dots, P_{N-1}$, are assigned a position in a logical ring. The physical network topology is irrelevant; process $P_i$ simply needs to know the network address of its logical successor, $P_{(i+1) \mod N}$.
+2. **The Token:** A unique control message known as the "token" continuously circulates around the logical ring. 
+3. **States of a Process:**
+   - **Non-critical:** The process does not need to enter the CS. When it receives the token, it immediately forwards it to its successor.
+   - **Waiting:** The process wants to enter the CS but does not possess the token. It must block and wait.
+   - **Critical:** The process has received the token, holds it, and executes its critical section. The token is *not* forwarded while the process is in this state.
+4. **Exiting the CS:** Upon exiting the CS, the process transitions back to the non-critical state and strictly passes the token to its successor.
 
 ## Example
 
@@ -40,63 +35,64 @@ This deterministic, round-robin passing ensures that despite concurrent requests
 
 ## Applications & Use Cases
 
-1.  **Industrial Process Control (e.g., PROFIBUS):** In manufacturing floors, Programmable Logic Controllers (PLCs) often communicate over a token-passing fieldbus network. Hard real-time guarantees are essential; an assembly line robot *must* be guaranteed network access within a strictly bounded time frame (e.g., 5 milliseconds) to avoid physical collisions. The ring algorithm provides this deterministic upper bound.
-2.  **Legacy Token Ring LANs (IEEE 802.5):** Originally designed by IBM, this LAN technology physically or logically arranged workstations in a ring. A workstation could only transmit data frames on the shared cable if it captured the circulating 3-byte token frame, naturally avoiding the data collisions seen in early Ethernet (CSMA/CD).
-3.  **Distributed File Systems:** Used in some cluster file systems where metadata servers need to acquire a global lock to update directory structures without causing race conditions.
+1. **Industrial Process Control (e.g., PROFIBUS):** In manufacturing floors, Programmable Logic Controllers (PLCs) often communicate over a token-passing fieldbus network. Hard real-time guarantees are essential; an assembly line robot *must* be guaranteed network access within a strictly bounded time frame (e.g., 5 milliseconds) to avoid physical collisions. The ring algorithm provides this deterministic upper bound.
+2. **Legacy Token Ring LANs (IEEE 802.5):** Originally designed by IBM, this LAN technology physically or logically arranged workstations in a ring. A workstation could only transmit data frames on the shared cable if it captured the circulating 3-byte token frame, naturally avoiding data collisions.
 
 ## 3 Solved Numerical/Analytical Examples
 
 **Example 1: Mathematical Analysis of Message Complexity**
-*Problem:* Derive the message complexity for a process to enter and exit the Critical Section in a logical ring of $N$ processes under both heavy load and light load conditions.
+*Problem:* Derive the message complexity for a process to enter and exit the Critical Section in a logical ring of $N$ processes under heavy load.
 *Solution:*
-*   **Heavy Load (Every process wants the CS):** When a process $P_i$ releases the token, it sends 1 message to its successor $P_{i+1}$. Because the load is heavy, $P_{i+1}$ is already waiting and immediately enters the CS.
-    *   Messages to exit CS = 1.
-    *   Messages to enter CS = 0 (token just arrived).
-    *   *Total Message Complexity:* **1 message per CS execution**. This is highly efficient under heavy load.
-*   **Light Load (Only one process wants the CS occasionally):** If $P_i$ wants the CS, it must wait for the token to arrive. Once it exits, it sends the token away. If no other process wants the CS, the token must circulate continuously. To reach $P_i$ again for its next request, the token might have to travel through all other $N-1$ nodes, requiring $N-1$ messages.
-    *   *Total Message Complexity:* **Between 1 and $N$ messages per CS execution**, averaging at $N/2$. Furthermore, the algorithm consumes infinite messages over time if the token continuously circulates while no processes are requesting the CS.
+1. **Heavy Load (Every process wants the CS):** When a process $P_i$ releases the token, it sends 1 message to its successor $P_{i+1}$. 
+2. Because the load is heavy, $P_{i+1}$ is already waiting and immediately enters the CS.
+3. Messages to exit CS = 1. Messages to enter CS = 0 (token just arrived).
+*Conclusion:* **1 message per CS execution**. This makes the ring extremely efficient under heavy load (unlike permission-based algorithms that thrash under heavy load).
 
-**Example 2: Calculating Synchronization Delay and Client Delay**
-*Problem:* In a ring of 10 nodes ($N=10$), assume the message transmission time between any two adjacent nodes is exactly $T_{msg} = 5$ ms. Calculate the worst-case Synchronization Delay and the worst-case Client Delay.
+**Example 2: Calculating Synchronization Delay**
+*Problem:* In a ring of 10 nodes ($N=10$), assume the message transmission time between any two adjacent nodes is exactly $T_{msg} = 5$ ms. Calculate the worst-case Synchronization Delay.
 *Solution:*
-*   **Synchronization Delay:** This is the time between one process leaving the CS and the next waiting process entering it.
-    *   *Worst Case:* The process that just released the token immediately wants to enter the CS again. The token must travel all the way around the ring through $N-1$ other nodes before returning.
-    *   *Calculation:* $(N-1) \times T_{msg} = (10 - 1) \times 5 \text{ ms} = 9 \times 5 = \mathbf{45 \text{ ms}}$.
-*   **Client Delay:** This is the total time a process waits from the moment it requests the CS until it successfully enters it.
-    *   *Worst Case:* A process $P_i$ requests the CS exactly a microsecond after it just forwarded the token to its successor. It must wait for the token to traverse the entire ring. Furthermore, every single one of the other $N-1$ processes also wants to enter the CS and holds the token for an execution time of $E$.
-    *   *Calculation:* $(N-1) \times T_{msg} + (N-1) \times E$. If $E = 10$ ms, Client Delay = $45 + 90 = \mathbf{135 \text{ ms}}$.
+1. **Synchronization Delay:** This is the time between one process leaving the CS and the next waiting process entering it.
+2. *Worst Case:* The process that just released the token immediately wants to enter the CS again. The token must travel all the way around the ring through $N-1$ other nodes before returning.
+3. *Calculation:* $(N-1) \times T_{msg} = (10 - 1) \times 5 \text{ ms} = 9 \times 5 = 45 \text{ ms}$.
+*Conclusion:* The worst-case synchronization delay is exactly 45 ms.
 
 **Example 3: Fault Tolerance and Token Loss Recovery**
-*Problem:* What happens if the process holding the token crashes? How can the ring algorithm recover? Walk through a recovery mechanism.
+*Problem:* What happens if the process holding the token crashes? How can the ring algorithm recover?
 *Solution:*
-If the token holder crashes, the token is lost. The system halts because no other process can enter the CS.
-*   **Detection:** Processes must implement a timeout mechanism. If a process does not see the token after a specified maximum time (e.g., $N \times (T_{msg} + E)$), it suspects token loss.
-*   **Recovery Algorithm:**
-    1.  The process that times out initiates an **Election** (e.g., using the Bully Algorithm or Ring Election Algorithm).
-    2.  The newly elected coordinator is responsible for generating a *new* single token and injecting it into the ring.
-    3.  *Edge Case Mitigation:* The coordinator must ensure the old token is truly lost (and not just delayed due to network partition) to prevent the catastrophic failure of having two tokens simultaneously, which would violate mutual exclusion.
+1. If the token holder crashes, the token is permanently lost. The system halts (violating Liveness) because no other process can enter the CS.
+2. **Detection:** Processes must implement a timeout mechanism. If a process does not see the token after a specified maximum time (e.g., $N \times (T_{msg} + E)$), it suspects token loss.
+3. **Recovery Algorithm:**
+   - The process that times out initiates an **Election** (e.g., using the Bully Algorithm).
+   - The newly elected coordinator is responsible for generating a *new* single token and injecting it into the ring.
+*Conclusion:* The coordinator must ensure the old token is truly lost to prevent the catastrophic failure of having two tokens simultaneously (which violates Safety).
 
 ## Previous Year Questions & Solutions
 
 **[April 2018] Describe the ring-based algorithm for mutual exclusion. (4 marks)**
 
 *Solution:*
-The ring-based algorithm provides a decentralized mechanism to achieve mutual exclusion by organizing all participating distributed processes into a logical ring topology. 
+Based on Tanenbaum's principles, the ring-based algorithm provides a decentralized mechanism to achieve mutual exclusion by organizing all participating distributed processes into a logical ring topology. 
 
 **Algorithm Steps:**
-1.  **Logical Ring Initialization:** Let there be $N$ processes, $P_0, P_1, \dots, P_{N-1}$. Each process $P_i$ is configured to only know the network address of its immediate successor, $P_{(i+1) \mod N}$.
-2.  **Token Generation:** A single, unique control message called a "token" is generated and injected into the ring.
-3.  **Continuous Circulation:** The token continuously circulates from process to process in one direction (e.g., clockwise).
-4.  **CS Entry Protocol:** 
-    *   If a process $P_i$ wishes to enter the Critical Section, it enters a `WAITING` state.
-    *   It cannot proceed until it receives the token from its predecessor.
-    *   Once it receives the token, it transitions to the `CRITICAL` state, retains the token, and executes the shared resource code.
-5.  **CS Exit Protocol:**
-    *   When $P_i$ completes its execution in the CS, it immediately forwards the token to its successor $P_{(i+1) \mod N}$.
-    *   If a process receives the token but does not need to enter the CS, it acts as a simple relay, forwarding the token to its successor immediately.
+1. **Logical Ring Initialization:** Let there be $N$ processes, $P_0, P_1, \dots, P_{N-1}$. Each process $P_i$ is configured to only know the network address of its immediate successor, $P_{(i+1) \mod N}$.
+2. **Token Generation:** A single, unique control message called a "token" is generated and injected into the ring.
+3. **Continuous Circulation:** The token continuously circulates from process to process in one direction.
+4. **CS Entry Protocol:** 
+   - If a process $P_i$ wishes to enter the Critical Section, it enters a `WAITING` state.
+   - It cannot proceed until it receives the token from its predecessor.
+   - Once it receives the token, it transitions to the `CRITICAL` state, retains the token, and executes the shared resource code.
+5. **CS Exit Protocol:**
+   - When $P_i$ completes its execution in the CS, it immediately forwards the token to its successor $P_{(i+1) \mod N}$.
 
-**Performance Characteristics:**
--   **Mutual Exclusion:** Strictly guaranteed because only one token exists in the entire system.
--   **Fairness:** Guaranteed; no starvation is possible because the token follows a strict sequential order.
--   **Message Complexity:** 1 to $N$ messages per CS entry (highly efficient under heavy load, inefficient under light load).
--   **Synchronization Delay:** $O(N)$ because the token may need to travel across the entire ring to reach the next waiting process.
+**[April 2018] Compare Ring-based election algorithm and Bully algorithm with examples. (6 marks)**
+*Solution:*
+Note: This question asks to compare the **Ring Election Algorithm** (used to elect a coordinator) against the Bully algorithm, *not* the Ring Mutual Exclusion algorithm.
+1. **Topology:** The Bully algorithm requires a fully connected network where every node knows every other node. The Ring algorithm only requires a logical ring topology where each node only knows its successor.
+2. **Election Initiation:** In Bully, the initiator sends messages to all higher ID nodes. In Ring, the initiator sends an ELECTION message (containing its own ID) to its successor.
+3. **Voting Process:** 
+   - Bully: Higher ID nodes immediately reply and take over the election, bullying lower IDs into submission.
+   - Ring: The ELECTION message circulates the ring. Each node appends its own ID to the message if its ID is higher than the ones currently in the message (or simply replaces it). 
+4. **Resolution:** 
+   - Bully: The node that receives no responses from higher IDs declares itself the winner and broadcasts a COORDINATOR message.
+   - Ring: When the original ELECTION message completes a full lap and returns to the initiator, the initiator examines the list of IDs, selects the highest one, and circulates a COORDINATOR message around the ring to announce the winner.
+*Example comparison:* Bully is faster (fewer message hops) but requires $O(N^2)$ messages in the worst case. Ring is slower (requires exactly 2 full laps around the ring) but is strictly bounded to $O(N)$ messages.
