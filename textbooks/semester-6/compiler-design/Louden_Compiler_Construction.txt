@@ -1,0 +1,15 @@
+Title: Compiler Construction - Principles and Practice
+Author: Kenneth C. Louden
+Edition: Cengage Learning Indian Edition, 2006
+
+Chapter 1: Introduction to Compilers
+Compilers translate from a high-level source language to a low-level target language. The main phases include Lexical Analysis, Syntax Analysis, Semantic Analysis, Optimization, and Code Generation.
+
+Chapter 2: Lexical Analysis
+The scanner reads characters and groups them into tokens. Regular expressions are used to specify these tokens.
+
+Chapter 3: Context-Free Grammars and Top-Down Parsing
+Syntax is specified using CFGs. Top-down parsing includes recursive descent and LL(1) parsing techniques.
+
+Chapter 4: Bottom-Up Parsing
+LR parsing is more powerful than LL parsing. Types include SLR, LALR, and Canonical LR parsing.

@@ -1,0 +1,18 @@
+Title: The Theory and Practice of Compiler Writing
+Author: Jean-Paul Tremblay and Paul G. Sorenson
+Edition: Tata McGraw-Hill, 1984
+
+Chapter 1: Compiler Overview
+Discusses the compilation process and fundamental translator concepts.
+
+Chapter 2: Finite State Machines
+Introduction to NFAs and DFAs for token recognition and lexical analysis.
+
+Chapter 3: Grammar and Language Theory
+Formal languages and syntax-directed definitions.
+
+Chapter 4: Parsing Techniques
+In-depth look at LR(k) parsing and precedence parsing strategies.
+
+Chapter 5: Code Optimization and Generation
+Storage allocation, basic block identification, and register allocation.

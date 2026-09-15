@@ -1,0 +1,98 @@
+Course Code: CS304
+Course Name: COMPILER DESIGN
+L-T-P: 3-0-0-3
+Credits: 3
+Year of Introduction: 2016
+Prerequisite: Nil
+
+Course Objectives:
+To provide a thorough understanding of the internals of Compiler Design.
+
+Syllabus:
+Phases of compilation, Lexical analysis, Token Recognition, Syntax analysis, Bottom Up and Top Down Parsers, Syntax directed translation schemes, Intermediate Code Generation, Triples and Quadruples, Code Optimization, Code Generation.
+
+Expected Outcome:
+The students will be able to:
+i. Explain the concepts and different phases of compilation with compile time error handling.
+ii. Represent language tokens using regular expressions, context free grammar and finite automata and design lexical analyzer for a language.
+iii. Compare top down with bottom up parsers, and develop appropriate parser to produce parse tree representation of the input.
+iv. Generate intermediate code for statements in high level language.
+v. Design syntax directed translation schemes for a given context free grammar.
+vi. Apply optimization techniques to intermediate code and generate machine code for high level language program.
+
+Text Books:
+1. Aho A., Ravi Sethi, and D. Ullman, "Compilers - Principles, Techniques, and Tools", Addison-Wesley, 2006.
+2. D. M. Dhamdhere, "Systems Programming and Operating Systems", Tata McGraw-Hill, 1996.
+
+References:
+1. Kenneth C. Louden, "Compiler Construction - Principles and Practice", Cengage Learning Indian Edition, 2006.
+2. Tremblay and Sorenson, "The Theory and Practice of Compiler Writing", Tata McGraw-Hill, 1984.
+
+================================================================================
+COURSE PLAN
+================================================================================
+
+Module I: (07 Hours | 15% Marks)
+- Introduction to compilers: Analysis of the source program, Phases of a compiler, Grouping of phases, Compiler writing tools - bootstrapping.
+- Lexical Analysis: The role of Lexical Analyzer, Input Buffering, Specification of Tokens using Regular Expressions, Review of Finite Automata, Recognition of Tokens.
+
+Module II: (06 Hours | 15% Marks)
+- Syntax Analysis: Review of Context-Free Grammars, Derivation trees and Parse Trees, Ambiguity.
+- Top-Down Parsing: Recursive Descent parsing, Predictive parsing, LL(1) Grammars.
+
+[FIRST INTERNAL EXAM]
+
+Module III: (07 Hours | 15% Marks)
+- Bottom-Up Parsing: Shift Reduce parsing, Operator precedence parsing (Concepts only).
+- LR parsing: Constructing SLR parsing tables, Constructing Canonical LR parsing tables, and Constructing LALR parsing tables.
+
+Module IV: (08 Hours | 15% Marks)
+- Syntax directed translation: Syntax directed definitions, Bottom-up evaluation of S-attributed definitions, L-attributed definitions, Top-down translation, Bottom-up evaluation of inherited attributes.
+- Type Checking: Type systems, Specification of a simple type checker.
+
+[SECOND INTERNAL EXAM]
+
+Module V: (07 Hours | 20% Marks)
+- Run-Time Environments: Source Language issues, Storage organization, Storage-allocation strategies.
+- Intermediate Code Generation (ICG): Intermediate languages, Graphical representations, Three-Address code, Quadruples, Triples, Assignment statements, Boolean expressions.
+
+Module VI: (07 Hours | 20% Marks)
+- Code Optimization: Principal sources of optimization, Optimization of Basic blocks.
+- Code Generation: Issues in the design of a code generator, The target machine, A simple code generator.
+
+[END SEMESTER EXAM]
+
+================================================================================
+QUESTION PAPER PATTERN
+================================================================================
+1. There will be five parts in the question paper: Part A, B, C, D, E.
+
+2. Part A:
+   - Total Marks: 12
+   - Four questions each having 3 marks, uniformly covering Modules I and II.
+   - All four questions have to be answered.
+
+3. Part B:
+   - Total Marks: 18
+   - Three questions each having 9 marks, uniformly covering Modules I and II.
+   - Two questions have to be answered.
+   - Each question can have a maximum of three subparts.
+
+4. Part C:
+   - Total Marks: 12
+   - Four questions each having 3 marks, uniformly covering Modules III and IV.
+   - All four questions have to be answered.
+
+5. Part D:
+   - Total Marks: 18
+   - Three questions each having 9 marks, uniformly covering Modules III and IV.
+   - Two questions have to be answered.
+   - Each question can have a maximum of three subparts.
+
+6. Part E:
+   - Total Marks: 40
+   - Six questions each carrying 10 marks, uniformly covering Modules V and VI.
+   - Four questions have to be answered.
+   - A question can have a maximum of three subparts.
+
+7. There should be at least 60% analytical/numerical questions.
