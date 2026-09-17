@@ -1,0 +1,16 @@
+APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY
+CS407
+DISTRIBUTED COMPUTING
+MAY 2022
+Max Marks: 100
+Duration: 3 Hours
+
+PART A
+Answer all questions.
+1. Explain the first concept of Distributed Computing.
+2. Describe the second concept.
+
+PART B
+Answer any one full question from each module.
+3. a) Detailed question here.
+   b) Another detailed question here.
