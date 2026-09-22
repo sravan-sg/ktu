@@ -1,79 +1,48 @@
-# Sample Question Paper 1
-**Course Code:** CS304
-**Course Name:** COMPILER DESIGN
-**Max. Marks:** 100
-**Duration:** 3 Hours
+# CS304 - COMPILER DESIGN
+## Sample Question Paper 1
+**Max. Marks: 100 | Duration: 3 Hours**
 
----
+### PART A
+**Answer all questions, each carries 3 marks.**
+1. What is the role of the lexical analyzer in a compiler? (3)
+2. Define bootstrapping with an example. (3)
+3. What is an ambiguous grammar? Explain with an example. (3)
+4. State the problems faced when designing a recursive descent parser. (3)
 
-## PART A
-**Answer all questions. Each question carries 3 marks.**
-1. Explain the different phases of a compiler with a neat diagram. (3 marks)
-2. What is the role of an input buffering scheme in lexical analysis? (3 marks)
-3. Write a regular expression for identifying floating-point numbers. (3 marks)
-4. Differentiate between parse trees and derivation trees. (3 marks)
+### PART B
+**Answer any two full questions, each carries 9 marks.**
+5. a) Explain the different phases of a compiler with a neat diagram. (5)
+   b) Differentiate between compiler and interpreter. (4)
+6. a) Construct a regular expression for a language over ∑= {a, b} containing strings that end with 'abb'. (4)
+   b) Compute FIRST and FOLLOW sets for the following grammar: `S -> A B c`, `A -> a | €`, `B -> b | €`. (5)
+7. a) What is left recursion? Eliminate left recursion from the grammar: `E -> E + T | T`, `T -> T * F | F`, `F -> ( E ) | id`. (5)
+   b) Briefly explain any two compiler writing tools. (4)
 
----
+### PART C
+**Answer all questions, each carries 3 marks.**
+8. Explain the main actions performed by a shift-reduce parser. (3)
+9. Define a Syntax-Directed Definition (SDD). What are synthesized attributes? (3)
+10. What are the conflicts that occur in LR parsing? (3)
+11. Give an overview of how type checking works for a simple assignment statement. (3)
 
-## PART B
-**Answer any two full questions. Each question carries 9 marks.**
-5. (a) Explain compiler writing tools and bootstrapping in detail. (5 marks)
-   (b) Construct a DFA for the regular expression `(a|b)*abb`. (4 marks)
+### PART D
+**Answer any two full questions, each carries 9 marks.**
+12. a) Differentiate between S-attributed and L-attributed definitions. (5)
+    b) Write a syntax-directed definition for a simple desk calculator. (4)
+13. a) Construct the LR(0) items for the grammar: `S -> C C`, `C -> c C | d`. (5)
+    b) Explain operator precedence parsing with an example. (4)
+14. a) Construct the SLR parsing table for the grammar: `E -> E + T | T`, `T -> T * F | F`, `F -> ( E ) | id`. (9)
 
-6. (a) Consider the grammar `E -> E + E | E * E | (E) | id`. Show that this grammar is ambiguous for the string `id * id + id`. (5 marks)
-   (b) What are the problems with Top-Down parsing? Explain recursive descent parsing. (4 marks)
-
-7. (a) Compute FIRST and FOLLOW for the following grammar:
-   `S -> ACB | Cbb | Ba`
-   `A -> da | BC`
-   `B -> g | ε`
-   `C -> h | ε` (6 marks)
-   (b) Explain the role of a Lexical Analyzer. (3 marks)
-
----
-
-## PART C
-**Answer all questions. Each question carries 3 marks.**
-8. What are the advantages of LR parsing over LL parsing? (3 marks)
-9. Define S-attributed and L-attributed definitions. (3 marks)
-10. Explain operator precedence parsing briefly. (3 marks)
-11. What is the purpose of type checking? (3 marks)
-
----
-
-## PART D
-**Answer any two full questions. Each question carries 9 marks.**
-12. (a) Construct the SLR parsing table for the grammar:
-    `S -> E`
-    `E -> E + T | T`
-    `T -> T * F | F`
-    `F -> (E) | id` (6 marks)
-    (b) Briefly explain bottom-up evaluation of inherited attributes. (3 marks)
-
-13. (a) Design a syntax-directed translation scheme to evaluate arithmetic expressions. (5 marks)
-    (b) Construct the Canonical LR parsing table for the grammar `S -> CC`, `C -> cC | d`. (4 marks)
-
-14. (a) Explain shift-reduce parsing with an example. What are the conflicts that can occur? (5 marks)
-    (b) Write the specification of a simple type checker. (4 marks)
-
----
-
-## PART E
-**Answer any four full questions. Each question carries 10 marks.**
-15. (a) Discuss the various issues in the design of a code generator. (6 marks)
-    (b) What is an activation record? Explain its components. (4 marks)
-
-16. Translate the following expression `a = b * -c + b * -c` into:
-    (a) Syntax tree (3 marks)
-    (b) Three-address code (3 marks)
-    (c) Quadruples (4 marks)
-
-17. Explain the principal sources of code optimization with examples for each. (10 marks)
-
-18. (a) Discuss the different storage allocation strategies. (6 marks)
-    (b) Write short notes on optimization of basic blocks. (4 marks)
-
-19. Explain a simple code generator algorithm. How are registers allocated? (10 marks)
-
-20. (a) Represent the Boolean expression `A < B OR (C < D AND E < F)` in three-address code. (5 marks)
-    (b) Explain intermediate languages and graphical representations. (5 marks)
+### PART E
+**Answer any four full questions, each carries 10 marks.**
+15. Explain in detail the various storage allocation strategies used in run-time environments. (10)
+16. Discuss the issues in the design of a code generator. (10)
+17. a) What are the principal sources of code optimization? Explain. (5)
+    b) Explain the optimization of basic blocks using DAGs. (5)
+18. Translate the expression `a = b * -c + b * -c` into:
+    a) Three-address code (4)
+    b) Quadruples (3)
+    c) Triples (3)
+19. a) Explain the intermediate code generation for Boolean expressions. (5)
+    b) What is an activation record? Explain its components. (5)
+20. Write a simple code generation algorithm and explain it with a suitable example. (10)

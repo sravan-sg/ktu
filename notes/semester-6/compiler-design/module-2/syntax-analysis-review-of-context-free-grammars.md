@@ -1,78 +1,102 @@
-# Syntax Analysis: Review of Context-Free Grammars
+# Syntax analysis: Review of Context-Free Grammars
 
 ## 1. Explanation
-Syntax analysis (or parsing) is the second core phase of the compilation process, immediately following lexical analysis. While the lexical analyzer is responsible for grouping characters into basic tokens (words), the **syntax analyzer** groups those tokens into hierarchical structures (sentences) to verify that they form a valid program according to the language's grammatical rules. 
+Syntax analysis (parsing) is the second phase of a compiler, responsible for verifying that the stream of tokens provided by the lexical analyzer conforms to the grammatical rules of the source language. To define these rules formally, we use **Context-Free Grammars (CFGs)**.
 
-From a mathematical and theoretical computer science perspective, the tool we use to specify these rules is the **Context-Free Grammar (CFG)**. Regular Expressions (Type-3 languages in the Chomsky Hierarchy) are insufficient for programming languages because they cannot "count" or remember arbitrarily deep nesting (such as matching an arbitrary number of opening and closing parentheses `((...))`). Context-Free Grammars (Type-2 languages) solve this by introducing recursive rules.
+A CFG is a mathematical system for describing languages, defined by a 4-tuple `(V, T, P, S)`:
+- **V (Variables/Non-terminals):** Syntactic variables that denote sets of strings (e.g., `stmt`, `expr`).
+- **T (Terminals):** The basic symbols from which strings are formed. These correspond to tokens (e.g., `id`, `+`, `while`).
+- **P (Productions):** Rules specifying how non-terminals can be replaced by terminals and non-terminals. The general form is `A -> α`, where `A` is a non-terminal and `α` is a sequence of terminals and/or non-terminals.
+- **S (Start Symbol):** A special non-terminal that represents the entire program or language.
 
-A CFG is formally defined as a 4-tuple $G = (V, \Sigma, P, S)$:
-*   **$V$ (Variables or Non-terminals):** Syntactic variables that denote sets of strings. They help impose a hierarchical structure on the language (e.g., `stmt`, `expr`).
-*   **$\Sigma$ (Terminals):** The basic symbols from which strings are formed. In a compiler, these are the tokens produced by the lexical analyzer (e.g., `id`, `+`, `if`).
-*   **$P$ (Productions):** The rules that define how non-terminals can be expanded into sequences of terminals and non-terminals. The general form is $A \rightarrow \alpha$, where $A \in V$ and $\alpha \in (V \cup \Sigma)^*$. It is "context-free" because the non-terminal $A$ can be replaced by $\alpha$ regardless of the context surrounding $A$.
-*   **$S$ (Start Symbol):** A special non-terminal in $V$ that represents the entire language or program being parsed.
+**Derivations:** The process of generating a string from the start symbol by repeatedly replacing non-terminals using productions.
+- **Leftmost Derivation:** At each step, the leftmost non-terminal is replaced.
+- **Rightmost Derivation:** At each step, the rightmost non-terminal is replaced.
+
+**Parse Tree:** A graphical representation of a derivation. The root is the start symbol, interior nodes are non-terminals, and leaves are terminals.
+
+**Ambiguity:** A grammar is ambiguous if it can produce more than one valid parse tree (or leftmost/rightmost derivation) for the same string. Ambiguous grammars are problematic for compilers because they imply multiple valid syntactic interpretations of the same code.
 
 ## 2. Example
-Consider a simple grammar for arithmetic expressions involving addition and multiplication over identifiers (`id`).
+Consider a grammar for simple expressions:
+`E -> E + E | E * E | ( E ) | id`
 
-Let $G = (V, \Sigma, P, E)$ where:
-*   $V = \{E\}$
-*   $\Sigma = \{\text{id}, +, *, (, )\}$
-*   $S = E$
+Let's derive the string `id + id * id` using a leftmost derivation:
+1. `E => E + E`
+2. `E => id + E`
+3. `E => id + E * E`
+4. `E => id + id * E`
+5. `E => id + id * id`
 
-The Productions $P$ are:
-1.  $E \rightarrow E + E$
-2.  $E \rightarrow E * E$
-3.  $E \rightarrow ( E )$
-4.  $E \rightarrow \text{id}$
-
-If the input token stream is `id + id * id`, the parser uses this CFG to verify its validity. It intuitively understands that an expression can be made of two smaller expressions added together, multiplied, nested in parentheses, or reduced to a single identifier.
+This sequence of replacements builds a parse tree from the top down.
 
 ## 3. Applications & Use Cases
-*   **Compiler Front-Ends (AST Construction):** CFGs are the blueprint for generating the Abstract Syntax Tree (AST). Tools like **Yacc (Yet Another Compiler-Compiler)**, **Bison**, and **ANTLR** take a CFG as input and automatically generate the C/C++/Java code for the syntax analyzer.
-*   **Domain-Specific Languages (DSLs):** When engineers build configuration languages (like Terraform HCL or SQL parsers), they define the language structure using a CFG to ensure strict syntactic enforcement.
-*   **Document Markup:** HTML and XML parsers rely heavily on CFG principles to ensure tags are properly nested and closed.
+- **Language Specification:** CFGs provide a precise, unambiguous standard for how a programming language must be structured.
+- **Parser Generators:** Tools like YACC, Bison, and ANTLR take a CFG as input and automatically generate C/C++/Java code for the parser.
+- **Syntax Highlighting & IDEs:** IDEs use lightweight parsing based on CFGs to provide real-time syntax checking and code folding.
 
 ## 4. 3 Solved Numerical/Analytical Examples
 
-**Example 1: Demonstrating the limitations of Regular Expressions vs. CFGs**
-*Problem:* Prove conceptually why a Regular Expression cannot represent the language $L = \{ a^n b^n \mid n \ge 1 \}$, but a CFG can.
-*Solution:*
-1.  **Regular Expressions:** A finite automaton has a finite, fixed number of states. To accept $a^n b^n$, the machine must "count" the number of $a$'s to ensure exactly the same number of $b$'s follow. For an arbitrarily large $n$, the machine would require an infinite number of states.
-2.  **CFG:** A CFG allows recursion. We write $S \rightarrow aSb \mid ab$. Each time an $a$ is generated on the left, a $b$ is guaranteed on the right.
+**Example 1: Leftmost and Rightmost Derivations**
+Grammar: `S -> aABe`, `A -> Abc | b`, `B -> d`
+String: `abbcde`
+**Leftmost:** `S => aABe => aAbcBe => abbcBe => abbcde`
+**Rightmost:** `S => aABe => aAde => aAbcde => abbcde`
 
-**Example 2: Constructing a CFG for Palindromes**
-*Problem:* Write a CFG for palindromes over the alphabet $\{0, 1\}$.
-*Solution:*
-1.  Base cases (length 0 or 1): $P \rightarrow \epsilon \mid 0 \mid 1$
-2.  Recursive step (wrapping): $P \rightarrow 0P0 \mid 1P1$
-Complete grammar: $P \rightarrow 0P0 \mid 1P1 \mid 0 \mid 1 \mid \epsilon$
+**Example 2: Constructing a Parse Tree**
+Grammar: `S -> ( L ) | a`, `L -> L , S | S`
+String: `( a , a )`
+Parse Tree Structure:
+```text
+      S
+   /  |  \
+  (   L   )
+    / | \
+   L  ,  S
+   |     |
+   S     a
+   |
+   a
+```
 
-**Example 3: Constructing a CFG for an `if-else` statement**
-*Problem:* Construct a CFG that represents a standard `if-then-else` control flow structure.
-*Solution:*
-*   `stmt` $\rightarrow$ `if ( expr ) stmt`
-*   `stmt` $\rightarrow$ `if ( expr ) stmt else stmt`
-*   `stmt` $\rightarrow$ `other_statement`
+**Example 3: Removing Ambiguity (Operator Precedence)**
+The grammar `E -> E + E | E * E | id` is ambiguous for `id + id * id`.
+We fix it by introducing precedence levels (Factors and Terms):
+`E -> E + T | T` (Lower precedence)
+`T -> T * F | F` (Higher precedence)
+`F -> id` (Atomic)
+This forces `*` to be evaluated deeper in the tree, resolving the ambiguity.
 
 ## 5. Previous Year Questions & Solutions
 
-### [April 2018]
-**Question:** Define Context Free Grammar. Why are regular expressions not powerful enough to describe the syntax of programming languages?
+### [May 2019] Consider the context free grammar S->aSbS | bSaS | €. Check whether the grammar is ambiguous or not. (3 marks)
 **Solution:**
-**Context-Free Grammar (CFG)** is a formal grammatical system defined by the 4-tuple $G = (V, \Sigma, P, S)$ where:
-*   $V$ is a finite set of non-terminals.
-*   $\Sigma$ is a finite set of terminals.
-*   $P$ is a finite set of production rules $A \rightarrow \alpha$.
-*   $S \in V$ is the start symbol.
+A grammar is ambiguous if we can find at least one string in the language that has more than one distinct leftmost derivation (or parse tree).
+Let's consider the string `abab`.
+Since `€` represents epsilon (empty string), we can derive `abab` in multiple ways.
 
-**Why Regular Expressions are insufficient:**
-Regular expressions lack an unbounded memory mechanism. They can only remember a finite amount of state information. Programming languages require the representation of nested structures (e.g., nested `if-else` statements, matching braces `{}`). To parse perfectly balanced brackets, the parser must "count" opening brackets. A finite automaton cannot count to an arbitrary depth. A CFG overcomes this by using recursion (e.g., $S \rightarrow ( S ) \mid \epsilon$), acting as a Pushdown Automaton.
+**Derivation 1 (Leftmost):**
+1. `S => aSbS`
+2. `S => a(bSaS)bS` (using `S -> bSaS` on the first `S`)
+3. `S => a(b(€)aS)bS` (using `S -> €`)
+4. `S => abaaS` (simplifying epsilon)
+Wait, let's derive exactly `abab`.
+String: `abab`
+Derivation 1:
+`S => aSbS`
+`S => a(bSaS)bS` (Replace first `S`)
+`S => ab(€)aSbS` (Replace next `S` with `€`)
+`S => aba(€)bS` (Replace next `S` with `€`)
+`S => abab(€)` (Replace final `S` with `€`)
+Yields: `abab`
 
-### [December 2019]
-**Question:** Construct a Context Free Grammar for the language $L = \{ a^m b^n \mid m \ge n \ge 0 \}$.
-**Solution:**
-Every 'b' must be matched with an 'a', but we can have any number of extra 'a's.
-1.  Matched pairs of 'a' and 'b': $S \rightarrow aSb$
-2.  Extra 'a's: $S \rightarrow aS$
-3.  Stop generation: $S \rightarrow \epsilon$
-The complete CFG is: $S \rightarrow aSb \mid aS \mid \epsilon$
+Derivation 2:
+`S => aSbS`
+`S => a(€)bS` (Replace first `S` with `€`)
+`S => abS`
+`S => ab(aSbS)` (Replace `S` with `aSbS`)
+`S => aba(€)bS` (Replace `S` with `€`)
+`S => abab(€)` (Replace `S` with `€`)
+Yields: `abab`
+
+Since we have found two completely different leftmost derivations for the same string `abab`, **the grammar is ambiguous**.

@@ -59,7 +59,7 @@ The repository contains three custom skills in `.agents/skills/` to automate cou
 
 ### 4. `generate-module-notes` (`.agents/skills/generate-module-notes/SKILL.md`)
 - **Trigger**: When user requests generating or scaffolding study notes for course modules.
-- **Function**: Performs pre-check syllabus mapping, cross-referencing audit (missing, underdeveloped, misplaced topics), and autonomous self-correction (Auto-Add missing topics, Auto-Expand underdeveloped topics, Auto-Relocate misplaced topics). Generates 5-part topic notes (`<topic>.md`), `detailed-notes.md`, `revision-notes.md`, subject `README.md`, `Correction_Log.md`, and `Syllabus_Gap_Analysis.md`.
+- **Function**: Performs pre-check syllabus mapping. **Crucially, it generates notes ONLY by analyzing the converted textbook files in the `knowledge/` folder**—strictly filtering the content to just the necessary topics required by the syllabus—rather than relying on pre-trained web knowledge. It performs cross-referencing audits (missing, underdeveloped, misplaced topics), and autonomous self-correction. Generates 5-part topic notes (`<topic>.md`), `detailed-notes.md`, `revision-notes.md`, subject `README.md`, `Correction_Log.md`, and `Syllabus_Gap_Analysis.md`.
 
 ### 5. `audit-syllabus-gaps` (`.agents/skills/audit-syllabus-gaps/SKILL.md`)
 - **Trigger**: When user requests verifying, auditing, or performing a gap analysis on course notes.
@@ -71,7 +71,7 @@ The repository contains three custom skills in `.agents/skills/` to automate cou
 
 ### 7. `onboard-subject` (`.agents/skills/onboard-subject/SKILL.md`)
 - **Trigger**: When a new syllabus file is added to `syllabus/` or when user requests onboarding a new course.
-- **Function**: Autonomous master pipeline executing Directory Alignment (Rule 5), Syllabus Processing (`review-syllabus`), Textbook Indexing (`download-references`), PYQ 2-Stage Verification & Sample Paper Generation (`pyq_scraper_pipeline.py`), 5-Part Note Generation with Self-Contained PYQ Solutions (`generate-module-notes`), Gap Analysis Audit (`audit-syllabus-gaps`), and Knowledge Integrity Audit (`audit-knowledge-integrity`).
+- **Function**: Autonomous master pipeline executing Directory Alignment, Syllabus Processing, Textbook Indexing (`download-references`), Knowledge Extraction (`prepare-knowledge`), PYQ Verification (`pyq_scraper_pipeline.py`), Strict Local Note Generation (`generate-module-notes`), Gap Analysis (`audit-syllabus-gaps`), and Knowledge Integrity Audit (`audit-knowledge-integrity`).
 
 ### 8. `audit-knowledge-integrity` (`.agents/skills/audit-knowledge-integrity/SKILL.md`)
 - **Trigger**: When user requests verifying textbook alignment or cross-referencing knowledge bases.
@@ -102,6 +102,7 @@ The repository contains three custom skills in `.agents/skills/` to automate cou
    - **Applications & Use Cases**: Real-world software engineering scenarios where this algorithm or concept is applied.
    - **3 Solved Numerical/Analytical Examples**: Step-by-step mathematical or algorithmic walkthroughs (e.g. solving recurrence relations, stepping through a tree rotation, or tracing a graph traversal). Use actual PYQ problems whenever possible and tag them (e.g. `[April 2018]`).
    - **Previous Year Questions & Solutions**: Dedicated sub-section listing raw past questions paired immediately with 100% complete, self-contained solutions.
+   - **Strict Local Knowledge Grounding**: All explanations, code, and derivations must be extracted **exclusively** from the textbooks in the `knowledge/` folder mapped to the syllabus, forbidding external hallucinations.
 8. **Mandatory Syllabus Gap Analysis Audit**: Upon completing note generation for any subject, run the `audit-syllabus-gaps` skill to generate `notes/<semester>/<subject>/Syllabus_Gap_Analysis.md` documenting missing topics, underdeveloped topics, misplaced topics, and the completion percentage.
 9. **Automated PYQ Pipeline & 2-Stage Verification Checkpoints**: When fetching previous year question papers (`python3 scripts/pyq_scraper_pipeline.py`), every file MUST pass Primary Verification (Metadata/URL: University, Subject Code, Subject Title) and Secondary Verification (Header Inspection: University Name, Subject Code, Subject Title) before being converted into `.txt` and saved with standardized names (`Month_Year.txt`) in `previous-question-papers/<semester>/<subject>/`. Temporary staging files must be cleaned up immediately.
 10. **Autonomous End-to-End Subject Onboarding**: Whenever a new raw syllabus file is added to `syllabus/`, automatically trigger the complete 7-stage `onboard-subject` pipeline to ensure directory alignment, PYQ 2-stage verification, sample question paper generation, 5-part topic notes with self-contained PYQ solutions, 100% gap analysis verification, and knowledge integrity auditing without requiring manual intervention.
