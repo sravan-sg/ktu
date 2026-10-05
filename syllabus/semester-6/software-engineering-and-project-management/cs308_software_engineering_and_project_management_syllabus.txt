@@ -1,0 +1,86 @@
+Course Code: CS308
+Course Name: Software Engineering and Project Management
+L-T-P-Credits: 3-0-0-3
+Year of Introduction: 2016
+Pre-requisite: Nil
+
+Course Objectives:
+- To introduce the fundamental concepts of software engineering.
+- To build an understanding on various phases of software development.
+- To introduce various software process models.
+
+Syllabus:
+Introduction to software engineering, Software process models, Software development phases, Requirement analysis, Planning, Design, Coding, Testing, Maintenance.
+
+Expected Outcome:
+The students will be able to:
+i. Identify suitable life cycle models to be used.
+ii. Analyze a problem and identify and define the computing requirements to the problem.
+iii. Translate a requirement specification to a design using an appropriate software engineering methodology.
+iv. Formulate appropriate testing strategy for the given software system.
+v. Develop software projects based on current technology, by managing resources economically and keeping ethical values.
+
+References:
+1. Ian Sommerville, Software Engineering, University of Lancaster, Pearson Education, Seventh edition, 2004.
+2. K. K. Aggarwal and Yogesh Singh, Software Engineering, New Age International Publishers, Second edition, 2005.
+3. Roger S. Pressman, Software Engineering: A Practitioner's Approach, McGraw Hill publication, Eighth edition, 2014.
+4. S. A. Kelkar, Software Project Management: A Concise Study, PHI, Third edition, 2012.
+5. Walker Royce, Software Project Management: A Unified Framework, Pearson Education, 1998.
+
+COURSE PLAN
+
+Module I:
+- Contents: Introduction to software engineering - scope of software engineering historical aspects, economic aspects, maintenance aspects, specification and design aspects, team programming aspects. Software engineering a layered technology - processes, methods and tools. Software process models - prototyping models, incremental models, spiral model, waterfall model.
+- Hours: 07
+- End Sem. Exam Marks: 15%
+
+Module II:
+- Contents: Process Framework Models: Capability maturity model (CMM), ISO 9000. Phases in Software development requirement analysis - requirements elicitation for software, analysis principles, software prototyping, specification.
+- Hours: 06
+- End Sem. Exam Marks: 15%
+
+[FIRST INTERNAL EXAM]
+
+Module III:
+- Contents: Planning phase - project planning objective, software scope, empirical estimation models - COCOMO, single variable model, staffing and personal planning. Design phase - design process, principles, concepts, effective modular design, top down, bottom up strategies, stepwise refinement.
+- Hours: 07
+- End Sem. Exam Marks: 15%
+
+Module IV:
+- Contents: Coding - programming practice, verification, size measures, complexity analysis, coding standards. Testing - fundamentals, white box testing, control structure testing, black box testing, basis path testing, code walk-throughs and inspection, testing strategies - Issues, Unit testing, integration testing, Validation testing, System testing.
+- Hours: 07
+- End Sem. Exam Marks: 15%
+
+[SECOND INTERNAL EXAM]
+
+Module V:
+- Contents: Maintenance - Overview of maintenance process, types of maintenance. Risk management: software risks, risk identification, risk monitoring and management. Project Management concept: People - Product - Process - Project.
+- Hours: 07
+- End Sem. Exam Marks: 20%
+
+Module VI:
+- Contents: Project scheduling and tracking: Basic concepts - relation between people and effort - defining task set for the software project - selecting software engineering task. Software configuration management: Basics and standards. User interface design rules. Computer aided software engineering tools: CASE building blocks, taxonomy of CASE tools, integrated CASE environment.
+- Hours: 08
+- End Sem. Exam Marks: 20%
+
+[END SEMESTER EXAM]
+
+Question Paper Pattern:
+1. There will be five parts in the question paper - A, B, C, D, E.
+2. Part A:
+   a. Total marks: 12
+   b. Four questions each having 3 marks, uniformly covering modules I and II; All four questions have to be answered.
+3. Part B:
+   a. Total marks: 18
+   b. Three questions each having 9 marks, uniformly covering modules I and II; Two questions have to be answered. Each question can have a maximum of three subparts.
+4. Part C:
+   a. Total marks: 12
+   b. Four questions each having 3 marks, uniformly covering modules III and IV; All four questions have to be answered.
+5. Part D:
+   a. Total marks: 18
+   b. Three questions each having 9 marks, uniformly covering modules III and IV; Two questions have to be answered. Each question can have a maximum of three subparts.
+6. Part E:
+   a. Total Marks: 40
+   b. Six questions each carrying 10 marks, uniformly covering modules V and VI; four questions have to be answered.
+   c. A question can have a maximum of three sub-parts.
+7. There should be at least 60% analytical/numerical questions.

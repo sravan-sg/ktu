@@ -1,0 +1,114 @@
+D
+RegNo.:
+03000cs308052301
+APJ ABDUL KALAM TECHNOLOGICAL UN
+B.Tech Degree 56 (S, FE) / 54 (PT) (S, FE) Examination January
+Course Code: CS308
+course Name: SOFTWARE ENGINEERTNG AND PRoJEcr MANAGEMENT
+Max. Marks: 100
+Duration:3 Hours
+PART A
+Answer all questions, each carries 3 rnarks. 
+Marks
+I 
+Explain the major differences between software engineering and other traditional (3)
+engineering disciplines.
+2 
+Compare spiral model and incremental model for software development.
+3 
+List out the characteristics of a good SRS document.
+4 
+Explain the stages of ISO 9000 registration process.
+PART B
+Answer any twofull questions, each carries 9 marks.
+a) Illustrate the layered architecture of software engineering with a neat sketch.
+b) Describe Boehm's spiral model for software development with aneatdiagram.
+a) Compare ISO and SEI-CMM models.
+b) Explain any two techniques used in requirement elicitation and analysis.
+a) An organization is given a software project on behalf of certain customer who is
+unsure of their requirements and likely to change their requirements. Identift the
+suitable life cycle model to be used in this scenario and explain that model in detail.
+b) An organization advertises that it is at SEI CMM level 3. Inferthe quality practices
+followed in the company. Explain how the company can reach sEI cMM level 5.
+PARTT
+Answer all qaestions, each carries 3 marlts.
+8 
+List out the project planning objectives.
+- 
+-- 
+\ 
+t 
+r
+9 
+List out the important properties of a modular system.
+l0 
+Explain with an example how equivalence class partitioning helps in testing.
+I I 
+Differentiate between Top-down and Bottom-up Integration testing methods.
+PART D
+Answer ony twofull qaestions, each canies 9 marks.
+12 a) Define Coupling. Explain different types of coupling.
+(3)
+(3)
+(3)
+(4)
+(5)
+(4)
+(5)
+(5)
+(4)
+(3)
+a.
+(3)
+(3)
+(3)
+Page 1 of 2
+(5)
+l5
+l6
+l3
+l4
+t7
+l8
+l9
+20
+03o(Xrcs308052301
+b) Differentiate between function oriented and object-oriented design approaches (4)
+with a suitable example. I
+a) ' Explain System testing and its variants.
+b) Explain basic path coverage testing with example.
+a) Explain cyclomatic complexity analysis with suitable example.
+b) Explain all the levels of COCOMO model.
+PART E
+Answer anyfourfull questions, each carriesl0 marks.
+a) Identi$ the various types of risks in software project development
+'b) Explain the Software Risk management process with the help of neat diagram.
+a) Explain the role of people, product, process and project in Software engineering.
+b) What is risk identification? How risks are monitored and managed by project
+Managers?
+a) What is software maintenance? Describe in brief various categories of (4)
+maintenance.
+b) Explain the various software maintenance models with the help of diagram. 
+(6)
+a) Explain the term software configuration management? Explain different activities (5)
+involved in configuration management.
+b) Briefly explain how to define a task set for the software project.
+a) Explain the building blocks of CASE.
+b) Write a short note on taxonomy of CASE tools.
+a) Write the different acfivities of software project management.
+b) Describe the golden rules for User Interface Design.
+(4)
+(5)
+(4)
+(s)
+(4)
+(6)
+(4)
+(6)
+(s)
+(s)
+(s)
+(4)
+(6)
+!t***
+Page2of 2

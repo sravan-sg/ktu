@@ -1,0 +1,129 @@
+D
+Reg No.:
+03000cs3080s2302
+Name:
+APJ ABDUL KALAM TECHNOLOGICAL UNIVERSI
+Sixth Semester B.Tech Degreer(S, FE) Examination May 2024 (2015
+Course Code: CS308
+Course Name: SOFTWARE ENGINEERING AND PROJECT MANAGEMENT
+Max. Marks: 100
+I
+2
+3
+4
+Duration:3 Hours
+PART A
+Answer all questions, each carries3 marks.
+Outline the benefits of using a Prototyping model for Software development (3)
+Elaborate on the maintenance aspect of software engineering. 
+(3)
+What is QFD ? Explain. 
+(3)
+How is the Capability Maturity Model (CMM) used to evaluate and improve (3)
+the mattuity of software development processes within an organization?
+PART B
+Answer any twofull questions, each carries9 mark.
+Describe the spiral model with the help of a neat sketch.
+As you move outward along the process flow path of the spiral model, what
+can you say about the software that is being developed or maintained?
+What are the main steps involved in the reqgigement engineering process, and
+how do they contribute to the development of high-quality software products?
+(6)
+(3)
+fa)
+b)
+(e)
+6'
+',/e
+-'o/,
+Page 1 of 4
+030qrcs3080s2302
+7 
+A hospital has decided to implement a new electronic health record (EHR) (9)
+system to improve patienj care. Develop the following documents that will
+provide a comprehensive overview of the EHR system:
+i. Problem statement
+ii. Context diagram
+iii. Use case diagram
+iv. Entity-relationship diagram (ERD)
+PART C
+Answer all questions, each carries3 marks.
+8 
+What is the difference between the basic COCOMO model and the interme- (3)
+diate COCOMO model?
+9 
+What are the fundamental design principles that software developers should (3)
+follow to create effective and maintainable software products?
+10 
+What are coding standards and why are they important? 
+(3)
+I I 
+How does white box testing differ from other types of software testing? (3)
+PART D
+,2 a) Anair "":::::;:,:;:::':::;:1":::#:*ed 
+Software (4)
+r 
+project team has very little experience on similar projects and the project .
+schedule is also tight. Calculate the efrrt, development time, average staff
+size and productivity of the project.
+b) What is the importance of cohesion and coupling in software design, and how (5)
+can these principles be applied to create more modular and flexible software
+systems?
+13 a) Explain the concept of abstraction in design? 
+(3)
+Page 2 of 4
+03m0cs3080s2302
+b) Consider the program given below, construct the flow graph and calculate the (6)
+cyclomatic 
+. 
+complexity
+{ int i, j, k;
+for (i=0 ; i<:\ ; i+r)
+plil: l;
+for (i:2 ; i<:|rl ; i#)
+{
+k: p[i]; j=l;
+- ufiile (atptj-lll > alkl {
+plil:pli-ll;
+'r 
+j-;
+)
+p[i]:k;
+)
+14 
+Explain any three types of Black box testing.
+PART E
+t 
+/nstoer anyfoarfbll questions, each carriesT0 narles.
+15 a) ExplaintheprocessofMaintenance. 
+(6)
+b) Describe Boehm's model for Maintenance. 
+(4)
+16 ' a) What is risk projection? What are the risk orojection activities performed by (5)
+the project planner along with other rnanagers and technical statr?
+b) Explain different categories of risk. 
+(5)
+17 a) Whatare the 4 P's of project man4gement, and how can they be leveraged to (8)
+, 
+ensure project success?
+b) Explain Democratic Decentralised team organization and Controlled Decen- (2)
+tralised team organi zatton
+(e)
+Page 3 of4
+-,1
+qlgGsmt2302
+18 4 Whd ale fu basic principles of project scheduling? 
+(6)
+b) E platn nrrarn-l@leigh @NR) curve with a neat graph sho#ng (4)
+effo* versus &t*Enent time.
+lg 
+Dcactibe Sofrinare Curfiguration Management (SCM) ad ditrcrd SCan (10)
+ta$rs perfornr€d
+20 a) Expilain tbe architecure of CASE environment. 
+(5)
+? T"are 
+the ditr€r€ftttypes of CASE tools? 
+(5)
+rl*rt*
+Pgr4of 4
+-t

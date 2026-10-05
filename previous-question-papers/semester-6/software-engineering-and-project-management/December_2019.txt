@@ -1,0 +1,129 @@
+F192070
+APJ ABDUL KALAM TECHNOLOGICAL T]NTVERS
+SIXTH SEMESTER B.TECH DEGREE EXAMTNATION(S), DECE
+Course Code: CS308
+course Name: SOFTWARE ENGINEERING AND pRoJEcr MANAGEMENT
+Max. Marks: 100
+Duration:3 Hours
+PART A
+Answer oll questions, each carries3 marks.
+Explain software engineering as a layered technology
+write characteristics of waterfall model for software development
+How prototyping helps in software development
+write the significance of Requirement analysis in software engineering
+PART B
+Answer any twofall questions, each carriesg marks.
+a) Explain spiral Model for software development with a neat diagram.
+b) Describe any three methods of Requirement elicitation process
+c) Describe the different levels of Capability Maturity Model
+a) Write the elements of requirements engineering process
+b) Discuss the prototyping model. what is the effect of designing a prototype on the
+D
+RegNo.:
+I
+2
+3
+4
+possible ?
+c) Differentiate between waterfall model and incremental model
+development?
+PART C
+Answer oII questions, each carries3 marks.
+8 
+Describe any two software size estimation techniques.
+9 
+Explain all the levels of COCOMO model.
+l0 
+Differentiate between code walk through and codeinspection
+l1 
+Draw the Rayleigh manpower loading curve and state pNR
+model for staffing
+Marks
+(3)
+(3)
+(3)
+(3)
+(3)
+(3)
+(3)
+(2)
+(4)
+c)
+7a)
+b)
+overall cost ofthe project?
+What is the scope of software engineering 
+(3)
+Discuss the maintenance aspects of software engineering. 
+(3)
+Explain the importance of requirements. How many types of requirements are (3)
+for software (3)
+(3)
+(3)
+(3)
+(3)
+Page 1 of 2
+D
+F192A70
+PART D
+Answer any twofull quertions, each carriesg marks.
+Pages:2
+Er<plain two types of Black box testing strategies. 
+(3)
+Differentiate befween top down and bottom up design strategies. 
+(3)
+A simple stand - alone software utility is to be developed in 'c' programming by (3)
+a team of software experts for a computer running Linux and the overall size of
+this software is estimated to be 20,000 lines of code. considering (a, b) : (2.4,
+1.05) as multiplicative and exponential factor for the basic cocoMo effort
+estimation equation and (c, d) : (2.5, 0.38) as multiplicative and exponential
+factor for the basic cocoMo development time estimation equation,
+approximately how long does the software project take to complete ?
+a) Define any four types of System testing
+b) Differentiate between stamp coupling and content coupling.
+c) Explain basis path testing with example
+a) Define Cohesion. Explain different types of cohesion
+b) Explain stepwise refinement
+c) How Black box testing differ from White box testing
+(5)
+(s)
+(s)
+(s)
+(5)
+(s)
+(s)
+(s)
+(s)
+(s)
+(s)
+r2 a)
+b)
+c)
+l3
+t4
+(4)
+(2)
+(3)
+(s)
+(2)
+(2)
+l6
+t7
+l8
+l9
+PART E
+Answer anyfourfull questions, each corriesl| marks.
+15 a) Write the need for software maintenance. Explain different categories of (5)
+maintenance
+b) Discuss the building blocks of CASE.
+a) Discuss Risk management activities in detail.
+b) Write any four rules for user interface design.
+a) Describe the need for software configuration management.
+b) Discuss 4 p's of software management concepts.
+a) Describe different categories of risk.
+b) Explain different project scheduling techniques
+a) Write the different activities of software project management.
+b) Explain architecture of CASE environment.
+a) Discuss how to define a task set for the software project.
+b) Explain software configuration management activities.
+Page2 of 2

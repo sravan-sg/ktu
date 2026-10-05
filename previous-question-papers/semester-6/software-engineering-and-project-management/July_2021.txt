@@ -1,0 +1,127 @@
+03000cs30805210r
+Name:
+APJ ABDUL KALAM TECHNOLOGICAL UNIV
+Sixth Semester B.Tech Degree Regular and Supplementary Exam
+Course Code: CS308
+Course Name: SOFTWARE ENGINEERING AND PROJECT
+MANAGEMENT
+Mbx. Marks: 100
+D
+RegNo.:
+I
+2
+aJ
+4
+7a)
+b)
+\
+PART A
+Answer all questions, each carries 3 marks.
+What is a software process? Why it is important?
+Explain the layered technology used in software engineering process.
+List out the characteristics of a good SRS document.
+Write the significance of requirement analysis in software engineering.
+PART B
+Answer any two full questions, each curries 9 marks.
+Describe any three methods of requirement elicitation process.
+Describe the different levels of Capability Maturity Model.
+What are the crucial steps of requirement engineering? Explain with the
+diagram.
+Duration: 3 Hours
+Marks
+(3)
+(3)
+(3)
+(3)
+(4)
+(s)
+help of a 
+(4)
+a)
+b)
+a)
+b)
+Suppose you were to plan to undertake the development of a product with a large (5)
+number of technical as well as customer related risks, which life cycle model
+would you adopt? Justi$ your answer.
+Compare spiral model and incremental model for software development. 
+(4)
+Discuss the specification and design aspects of software engineering. 
+(5)
+PART C
+Answer all questions, each carries 3 marks.
+Compare top-down and bottom-up design strategieq. 
+(3)
+Explain basic path coverage testing. 
+(3)
+Assume that the size of an organic type software product has been estimated to 
+(3)
+be 32000 lines of code. Assume that the average salary of software engineers is
+Rs.15,000 per month. Determine the effort required to develop the software
+product, the nominal development time and the cost required to develop the
+product.
+8
+9
+l0
+Page 1 of 2
+(3)
+1l
+03000cs308052101
+Explain all the levels of COCOMO model.
+PART D
+Answer any twofull questions, each carries 9 marks.
+a) Define Cohesion. Explain different types of cohesion.
+b) Define any four types of System testing.
+a) What is modularity? List out the important properties of a modular system.
+b) What is the significance of adopting programming practices and coding
+, 
+standards?
+a) Explain code walk-through and code inspection.
+b) Explain cyclomatic complexity analysis with suitable example.
+PART E
+Answer any four full questions, each caties 10 marks.
+a) Describe different categories of risk. 
+(4)
+b) Discuss Risk management activities in detail. 
+(6)
+a) Write the need for software maintenance. Explain different categories of 
+(6)
+maintenance.
+b) Discuss 4 p's of software management concepts.
+a) Explain different project scheduling techniques.
+b) Differentiate between product metrics and process metrics.
+a) Describe the need for software configuration management.
+b) Explain software configuration management activities.
+a) What do you understand by the terms CASE tool and CASE environment? With
+a neat schematic architecture explain CASE environment.
+b) Explain the User interface design rules. 
+(3)
+20 a) Annual Change Traffic for a software system is l5%o per year. The development (6)
+effort is 600 PMs. Compute estimate for Annual Maintenance Effort. If life time
+ofthe project is 10 years, what is the total effort of the project?
+b) Write the different activities of software project manalgement.
+(4)
+t2
+l3
+(4)
+(s)
+t4
+\
+15
+l6
+(s)
+(4)
+(4)
+(5)
+-:f
+(4)
+(7)
+(3)
+(6)
+(4)
+(7)
+t7
+l8
+t9
+*****
+Page 2 of 2

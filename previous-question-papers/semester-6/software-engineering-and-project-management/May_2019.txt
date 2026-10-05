@@ -1,0 +1,188 @@
+F1077
+Reg No.:
+APJ ABDT'L KALAM TECHNOLOGICAL UNIVERSITY
+sxTH SEMESTER B.TECH DEGREE EXAMINATION(R&S), MAy 2019
+Course Code: CS308
+course Name: SOFTWARE ENGII\-EERTNG AI\D pRoJEcr MANAGEMENT
+Max. Marks: 100
+Duration: 3 Hours
+PART A
+Answer all questions, each canies3 marks. 
+Marks
+I 
+Briefly explain the role of management in software development. 
+(3)
+2 
+List the advantages of using waterfall model instead of adhoc build and 
+(3)
+fix model.
+3 
+Explain quality function deployment technique of requirement elicitation. (3)
+Why a value factor is always associated with every requirement?
+4 
+List out the characteristics of a good SRS document. 
+(3)
+PART B
+Answer any twofull questions, each carries9 marks.
+5 
+a) Explain with suitable examples, the types of software development for 
+(4)
+which the spiral'model is suitable. Is the number of loops of the spiral.,
+fixed for different development process? If not, explain how the number
+of loops in the spiral is determined.
+b) Suppose you were to plan to undertake the development of a product with 
+(5)
+a large number of technical as well as customer related risks, which life
+cycle model would you adopt? Justiff your answer.
+6 
+a) What are the major phases in the waterfall model of software (5)
+development? Which phase consumes the maximum effort for developing
+a typical software product?
+b) What are the crucial steps of requirement engineering? Explain with the 
+(4)
+. help of a diagram.
+7 
+a) Explain Capability Maturity Model(CMM). Why is
+CMM is the better choice than ISO-9001?
+b) A university has decided to engage a software company for the 
+(6)
+automation of sfudent result management system of its Mtech
+Programme_. Develop the following documents which may provide
+holistic viefr of the system.
+i. Problem Statement iii. Use case diagram
+ii. Context diagrbm iv. ER diagram 
+!
+PART C
+Answer all questions, each carries3 marks.
+8 
+Assume that the size of an organic type software product has been 
+(3)
+estimated to be 32000 lines of code. Assume that the average salary of
+software engineers is Rs.15,000 per month. Determine the effort required
+thssoftwareprodtre+and ttre nominaffiopmenfti
+9 
+Explain the design guidelines that can be used to produce "good quality" (3)
+classes or reusable classes.
+D
+it s.rgg"rt"d that 
+(3)
+Page 1 of 3
+F1077 
+Pages:3
+10 
+Distinguish between:
+i.Structural testing and Functional testing
+ii .Cohesion and CouPling
+(3)
+iii. Alpha testing and Beta testing
+11 
+Defrne cyclomJic complexity. Explain different properties of cyclomatic (3)
+complexity.
+12 a) What is
+sYstem.
+PART D
+Answer any twofull questions, each carries9 marks'
+modularityf List out the important properties of a modular (3)
+b) What do you understand
+different kinds of system
+software products?
+c) Explain different code review techniques
+13 ui Consider the program given below, construct the flow graph and calculate
+the cyclomatic comPlexitY .
+i:0;
+n=4; //N-Number of nodes present in the graph
+while (icn-l)do
+j=i+1;
+while (jcn)do
+if Alil<AUl then
+swaP(Alil, AUI);
+end do;
+i=i+1;
+end do
+b) Consider a progftrm to classiff a triangle .It's input is a triangle of 
+(6)
+positive integers(say x,y,z) and the data type for input parameters ensures
+that these witt Ue integers greater than 0 and less than or equal to lO0.The
+. 
+program output may be one of the following words: (Scalene, Isosceles,
+- 
+Equilateral, Not a triangle)-
+". Eiplain decision table for triangle problem and identiff the test cases
+using the decision table.
+14 a) Consider a project to develop a full screen editor. The major components (5)
+identified ui. f.S".""n Edit 2.Command Language Interpreter 3.File input
+and output 4.Cursor movement 5.Screen movement. The sizes of these
+are estimated to be 4K, 2K, lK, 2K, and 3K delivered source code
+nesllse-COCOMO rnodel-to-determina-overall--cost and-schedule
+estimates (Assume that i) required software reliability is high ie
+1.l5,ii)product complexity is high ie 1.l5,iii)Analyst capability is high ie
+0.86,iv) Programming language experience is low ie 1.07,a11 other cost
+drivers are assumed to be nominal .
+D
+by the term system testing? What are the 
+(3)
+testing that are usually performed on large
+(3)
+(3)
+Page 2 of 3
+D
+F1077
+b) Consider a project with the following functional units:
+Number of user inputs:50
+Number of user outputs:40
+Number of user enquiries=35
+Number of user files:6
+Number of extemal interfaces:4
+Assume all complexity adjustment factors and weighting factors are
+average. Compute the function point for the project.
+Functional units with weighting factors
+(External input:4, External output:5, Extemal inquiries :4, Internal logic
+file:10, External interface fie:l)
+PART E
+Answer anyfourfull questions, each carriesl0 marks.
+a) What is software maintenance? Describe various categories of
+maintenance. Which category consumes maximum effort and why?
+b) Explain the steps of software maintenance with the help of a diagram.
+a) What is meant by software configuration management? Explain different
+activities involved in configuration management.
+b) What do you'understand by the terms CASE togl and CASE
+environment. With a neat schematic architecture explain CASE
+environment. 
+'.
+a) Explain different characteristics which are desired for a good user
+interface.
+b) Explain different types of user interface.
+a) What is risk? Explain different types of software risk.
+b) What are risk management activities? Is it possible to prioritize risk?
+a) Explain the Taute maintenance model. What are the various phases of
+these model.
+b) Annual change traffic for a software system is l5o/o per year.The
+development effort is 600 PMs. Compute an estimate for annual
+maintenance effortCAME).If life time of the project is l0 years,what is the
+total effort of the project?
+a) Explain the following CASE tools:
+(i) SCM tools
+(ii) Documentation tools
+(iii) Integration & Testing tools.
+(iv) Static Analysis tools
+(v) Reengineering tools
+Pages: 3
+(4)
+(6)
+(4)
+(s)
+15
+t6
+t7
+18
+19
+(s)
+(6)
+(4)
+(4)
+(6)
+(6)
+(4)
+(10)
+20
+Page 3 of 3

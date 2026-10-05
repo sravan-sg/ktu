@@ -1,0 +1,142 @@
+D
+Reg No.:
+APJ ABDUL KALAM TECHNOLOGICAL UNI
+B.Tech Degree 56 (S, FE) / 34 (PT) (S, FE) Examination May 2023 (20
+Course Code: CS308
+Course Name: SOFTWARE ENGINEERING AND PROJECT MANAGEMENT
+Max. Marks: 100 
+Duration:3 Hours
+PART A
+Answer all questions, each carries3 morks.
+Define the term software crisis. List out the causes of software crisis.
+Which software process model allows risk management? Justif, your answer.
+Explain any three techniques used for requirement elicitation.
+What are the umbrella activities of generic soltware process framework?
+PART B
+Answer any twofull questions, eoch carries9 marks.
+a) Explain classic waterfall model with a neat diagram? Discuss about its features,
+phases, advantages and disadvantages.
+b) Discuss the term phase containment of errors.
+6 a) What is software requirements specification (SRS)? Explain any four desirable
+characteristics of a good SRS document. List the important issues, which an SRS
+must address.
+b) Define the term software prototyping.
+7 a) What is incremental process mode? What does it focus on and when it is useful?
+Explain with neat diagram.
+b) An organization advertises that it is at SEI CMM level 3. Infer the quality
+practices followed in the company. Explain how the company can reach SEI
+CMM level 5.
+PART C
+Answer all questions, eoch carries3 marks.
+Consider a project to develop a full screen editor. The major components (3)
+identified are (l) Screen edit, (2) Command Language Interpreter, (3) File input
+and output, (4) Cursor movement and (5) Screen movement. The sizes for these
+are estimated to be 4K,2K,lK,2K and 3K delivered source code lines. Let us
+assume that significant cost drivers are
+03000cs308052103
+Name:
+I
+2
+aJ
+4
+Marks
+(3)
+(3)
+(3)
+(3)
+(7)
+(2)
+(7)
+(2)
+(4.5)
+(4.s)
+Page 1 of 3
+03000cs3080s2103
+(a) Required software reliability is high i.e. I .15
+(b) Product complexity is high i.e. I .15
+(c) Analyst capability is high i.e. 0.86
+(d) Programming language experience is low i.e 1.07
+All other drivers are nominal. Use COCOMO model to determine the following.
+1. Initial Effort
+2. Totaleffort
+3. Duration of the project.
+alv 
+Compare top-down and bottom-up design strategies. 
+(3)
+l0 
+Explain the following terms. 
+(3)
+a. Coding Standards
+b. Code Walk through
+c. Code Inspection
+I I 
+what is cyclomatic complexity? Explain with the help of an example. 
+(3)
+PART D
+Answer any twofall questions, eoch carriesg mnrks.
+l2 a) Distinguish between Cohesion and Coupling. 
+(4)
+b) Assume that the size of a software product has been estimated to be 40,000 lines (5)
+of source code. Assume that the average salary of software engineers be 25,00 $
+per month. Determine the following:
+. Effort required to develop the software product
+. The nominal development time
+n 
+' 
+Average staffsize
+. productivity 
+j
+. Cost required to develop the product
+13 a) Explain about Unit testing in detail. 
+(5)
+b) What do you understand by the term system testing? What are the different kinds (4)
+ofsystem testing that are usually performed on large software products?
+14 a) Discuss the importance of project planning. What are the activities carried out (4.5)
+during project planning?
+b) What is the purpose of integration testing? How is it done? 
+(4.5)
+Page 2 of 3
+15 a)
+b)
+l6 a)
+.b)
+17 a)
+b)
+l8 a)
+b)
+19 a)
+b)
+20 a)
+b)
+03000cs3080s2103
+PART E
+Answer anyfoufull questions, each curriesl0 marks.
+What is software maintenance? Describe various categories of maintenance.
+Which category consumes maximum effort and why?
+Discuss 4P's of Software Project Management concept
+What are risk management activities? Is it possible to prioritize risk?
+What is ripple effect? How does it affect the stability of a program?
+What are CASE Tools? Explain building blocks for CASE.
+What do you understand by software configuration?
+Explain scM (Software configuration Management) activities in detail.
+List the basic principles guide software project scheduling.
+List out and explain any five case tools.
+Annual change traffic for a software system is l2Yo per year. The development
+effort is 800 PMs. Compute an estimate for annual maintenance effort (AME). If
+life time of the project is l5 years, what is the total effort of the project?
+Explain the steps of software maintenance with help of a diagram.
+Discuss the rules for user interface design.
++***
+(6)
+(4)
+(7)
+(3)
+(8)
+(2)
+(7)
+(3)
+(5)
+(5)
+(5)
+(5)
+Page 3 of 3
