@@ -1,19 +1,37 @@
 # Analysis Principles
 
 ## 1. Explanation
-Over the past decades, several different modeling methods (like Structured Analysis and Object-Oriented Analysis) have been developed. Regardless of the specific method used, Roger Pressman defines a set of fundamental **Analysis Principles** that every software engineer must follow when modeling requirements:
+Over the past decades, several different modeling methods (like Structured Analysis and Object-Oriented Analysis) have been developed to tackle the complexities of software requirements. Regardless of the specific method or notation used, Roger S. Pressman defines a set of four fundamental **Analysis Principles** that every software engineer must strictly adhere to when modeling requirements. Failing to follow these principles results in brittle designs and misunderstood requirements.
 
-1. **The Information Domain must be represented and understood:** Software fundamentally transforms data. The analysis must define the data coming in, the data going out, and the data stored inside the system.
-2. **Models that depict software function and behavior must be developed:** The analysis must show what the software *does* (its functions) and how it *reacts* to external events (its behavior/state).
-3. **The models must be partitioned:** Complex problems must be divided hierarchically. The analysis should start at a high-level overview and systematically drill down into detailed, granular sub-functions (top-down refinement).
-4. **The analysis process should move from essential information toward implementation detail:** Analysis should focus on *what* the system needs to do, deliberately ignoring *how* it will be coded (which is reserved for the design phase).
+**Principle 1: The Information Domain must be represented and understood.**
+Software is fundamentally an engine that transforms data. The analysis must rigorously define the data coming into the system, the data going out, and the data stored internally. To truly understand the Information Domain, an analyst must examine it from three distinct views:
+- **Information Content & Relationships:** What are the actual entities the software cares about? (e.g., A `Customer` entity, an `Order` entity, and the relationship that a Customer can have multiple Orders).
+- **Information Flow:** How does data enter the system, get transformed by processes, and exit the system? (e.g., A raw credit card number flows in, is encrypted, and an approval token flows out).
+- **Information Structure:** How is the data internally organized? Is it a hierarchical tree, a flat array, or a relational table?
+
+**Principle 2: Models that depict software function and behavior must be developed.**
+Data alone doesn't execute; functions act upon data. The analysis must show what the software *does* (its functions) and how it *reacts* to external events (its behavior).
+- **Function:** The discrete transformations that convert input data to output data (e.g., a function `calculateTax()`).
+- **Behavior (State):** Software systems often exist in different "states." The software behaves differently depending on its current state. For example, a vending machine behaves differently when its state is `WaitingForCoin` versus `DispensingItem`. Modeling behavior via State Transition Diagrams is critical for reactive systems.
+
+**Principle 3: The models must be partitioned.**
+Human cognition is limited; we cannot comprehend a complex, 1-million-line system all at once. The analysis must employ a "divide and conquer" strategy. Problems must be partitioned hierarchically. The analysis should start at a macroscopic, high-level overview (the whole system) and systematically drill down into detailed, granular sub-functions (top-down refinement). This partitioning can be done functionally (breaking a big function into smaller ones) or behaviorally (breaking a complex state into sub-states).
+
+**Principle 4: The analysis process should move from essential information toward implementation detail.**
+A core rule of analysis is to focus strictly on the **"What"**, deliberately ignoring the **"How"**. The analysis model describes *what* the system needs to do to satisfy the customer's requirements. It must remain entirely implementation-independent. Decisions about *how* it will be coded—such as choosing a programming language (Java vs. Python), a database vendor (Oracle vs. MongoDB), or a specific sorting algorithm (QuickSort vs. MergeSort)—must be explicitly deferred to the Design phase. Including "how" in the analysis phase prematurely limits the architecture and destroys flexibility.
 
 ## 2. Example
 Applying the principles to a Smart Home Thermostat:
-- **Principle 1 (Information Domain):** Inputs = Room temperature, Target temperature. Outputs = HVAC control signal.
-- **Principle 2 (Behavior):** Model the states. If current temp < target temp, transition to "Heating" state.
-- **Principle 3 (Partitioning):** Don't analyze the whole house at once. Partition it into "Temperature Sensing", "User UI", and "HVAC Actuator" modules.
-- **Principle 4 (Essential vs Implementation):** State "The system must communicate with the user's phone over a network." Do *not* state "The system will use a Node.js WebSocket server" (that is a design choice).
+- **Principle 1 (Information Domain):** 
+  - *Content:* `TemperatureReadings`, `UserSchedules`.
+  - *Flow:* Analog heat sensor input -> A/D conversion -> logical temp value -> HVAC control signal output.
+- **Principle 2 (Behavior & Function):** 
+  - *Function:* A function to calculate the difference between current and target temperatures.
+  - *Behavior:* A state machine with states: `Idle`, `Heating`, `Cooling`. If the system is in `Idle` state and an external event occurs (`Temp drops below Target`), it transitions to `Heating` state.
+- **Principle 3 (Partitioning):** Don't analyze the whole house at once. Draw a Level 0 diagram of the whole system, then partition it downward into independent sub-modules: "Temperature Sensing Module", "User UI Module", and "HVAC Actuator Module".
+- **Principle 4 (Essential vs Implementation):** 
+  - *Correct Analysis:* "The system must communicate with the user's mobile device over a secure wireless network." 
+  - *Incorrect Analysis (Violates Principle 4):* "The system will use a Node.js WebSocket server running over 802.11ac Wi-Fi with AES-256 encryption." (These are design and implementation choices, not functional requirements).
 
 ## 3. Applications & Use Cases
 - **Structured Analysis:** Uses these principles to build Data Flow Diagrams (DFDs). Principle 1 is handled by the data dictionaries, Principle 2 by the processes, and Principle 3 by leveling the DFDs from Level 0 to Level 2.
