@@ -13,6 +13,12 @@ Real-world software engineering/systems scenarios where this algorithm/concept i
 Step-by-step mathematical or algorithmic walkthroughs.
 
 ## 5. Previous Year Questions & Solutions
+
+### Actual University Questions:
+**[May 2019]** (10)  18 a) Explain the principal sources of optimization  (10)  19 a) Explain optimization of basic blocks  (5)    b) With suitable examples explain loop optimization.
+
+*(Note: Solutions to be generated/verified by agent)*
+
 [April 2018]
 **Question:** Explain the concept of Optimization of Basic blocks.
 **Solution:** Complete, self-contained solution here.

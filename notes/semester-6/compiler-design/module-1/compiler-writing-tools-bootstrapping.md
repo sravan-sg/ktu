@@ -84,6 +84,13 @@ A `.l` file is structured as:
 
 ## 5. Previous Year Questions & Solutions
 
+### Actual University Questions:
+**[May 2019]** (5)    b) Explain any four compiler writing tools  (4)    http://www.ktuonline.com B  F1031  Pages: 2  Page 2 of 2    PART C  Answer all questions, each carries3 marks.
+**[May 2019]** 5  a)  Explain the different phases in the design of a compiler.
+
+*(Note: Solutions to be generated/verified by agent)*
+
+
 **[Sample Question Paper]**
 **Question:** (a) Explain compiler writing tools and bootstrapping in detail. (5 marks)
 

@@ -69,6 +69,13 @@ S -> if E then S1 {
 
 ## 5. Previous Year Questions & Solutions
 
+### Actual University Questions:
+**[May 2019]** (5)  20 a)  Explain issues in design of a code generator    (5)    b) Explain simple code generation algorithm  (5)  ********        http://www.ktuonline.com
+**[May 2019]** (3)  14 a) Explain the syntax directed definition of a simple desk calculator.
+
+*(Note: Solutions to be generated/verified by agent)*
+
+
 ### [May 2019] Design a type checker for simple arithmetic operations. (3 marks)
 **Solution:**
 To design a simple type checker for arithmetic operations, we can write a Syntax-Directed Definition (SDD) assuming basic types like `integer` and `real`. We use an attribute `type` for each expression node.

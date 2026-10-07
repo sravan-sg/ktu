@@ -13,6 +13,13 @@ Real-world software engineering/systems scenarios where this algorithm/concept i
 Step-by-step mathematical or algorithmic walkthroughs.
 
 ## 5. Previous Year Questions & Solutions
+
+### Actual University Questions:
+**[May 2019]** 15 a) Explain storage organization and storage allocation strategies  (10)  16 a) Explain intermediate code generation of an assignment statement  (10)  17 a) Explain quadruples, triples and dags with an example each.
+**[May 2019]** (5)  20 a)  Explain issues in design of a code generator    (5)    b) Explain simple code generation algorithm  (5)  ********        http://www.ktuonline.com
+
+*(Note: Solutions to be generated/verified by agent)*
+
 [April 2018]
 **Question:** Explain the concept of Three-Address code.
 **Solution:** Complete, self-contained solution here.

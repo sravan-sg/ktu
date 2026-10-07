@@ -37,6 +37,13 @@ Before code is sent to the formal testing phase, it must be verified.
 
 ## 5. Previous Year Questions & Solutions
 
+### Actual University Questions:
+**[July 2021]** b) What is the significance of adopting programming practices and coding ,  standards?
+**[May 2024]** 10  What are coding standards and why are they important?
+
+*(Note: Solutions to be generated/verified by agent)*
+
+
 **[Sample Question] What are coding standards and why are they important? (3 Marks)**
 **Solution:**
 Coding standards are documented sets of rules and guidelines that dictate how source code should be written and formatted within an organization. They cover naming conventions, indentation, commenting practices, and file structures. 

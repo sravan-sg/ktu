@@ -44,6 +44,30 @@ Imagine scheduling the development of a Login Page.
 
 ## 5. Previous Year Questions & Solutions
 
+### Actual University Questions:
+**[May 2024]** b) Explain Democratic Decentralised team organization and Controlled Decen- (2) tralised team organi zatton (e) Page 3 of4 -,1 qlgGsmt2302 18 4 Whd ale fu basic principles of project scheduling?
+**[December 2019]** considering (a, b) : (2.4, 1.05) as multiplicative and exponential factor for the basic cocoMo effort estimation equation and (c, d) : (2.5, 0.38) as multiplicative and exponential factor for the basic cocoMo development time estimation equation, approximately how long does the software project take to complete ?
+**[July 2021]** If life time ofthe project is 10 years, what is the total effort of the project?
+**[May 2023]** What are the activities carried out (4.5) during project planning?
+**[January 2024]** How risks are monitored and managed by project Managers?
+**[May 2019]** Compute an estimate for annual maintenance effortCAME).If life time of the project is l0 years,what is the total effort of the project?
+**[May 2023]** 14 a) Discuss the importance of project planning.
+**[December 2019]** b) Explain different project scheduling techniques a) Write the different activities of software project management.
+**[May 2024]** (4) 16 ' a) What is risk projection?
+**[May 2023]** Discuss 4P's of Software Project Management concept What are risk management activities?
+**[December 2019]** l0  Differentiate between code walk through and codeinspection l1  Draw the Rayleigh manpower loading curve and state pNR model for staffing Marks (3) (3) (3) (3) (3) (3) (3) (2) (4) c) 7a) b) overall cost ofthe project?
+**[December 2019]** a) Discuss how to define a task set for the software project.
+**[May 2023]** If life time of the project is l5 years, what is the total effort of the project?
+**[July 2021]** a) Explain different project scheduling techniques.
+**[May 2024]** What are the risk orojection activities performed by (5) the project planner along with other rnanagers and technical statr?
+**[May 2024]** (5) 17 a) Whatare the 4 P's of project man4gement, and how can they be leveraged to (8) ,  ensure project success?
+**[May 2019]** What are the  (3) testing that are usually performed on large (3) (3) Page 2 of 3 D F1077 b) Consider a project with the following functional units: Number of user inputs:50 Number of user outputs:40 Number of user enquiries=35 Number of user files:6 Number of extemal interfaces:4 Assume all complexity adjustment factors and weighting factors are average.
+**[January 2024]** a) Explain the role of people, product, process and project in Software engineering.
+**[January 2024]** a) Identi$ the various types of risks in software project development 'b) Explain the Software Risk management process with the help of neat diagram.
+
+*(Note: Solutions to be generated/verified by agent)*
+
+
 **[Sample Question] What is the relationship between people and effort in software scheduling? (3 Marks)**
 **Solution:**
 In software engineering, people and effort (time) are not perfectly interchangeable variables. While physical tasks (like digging a ditch) scale linearly with more people, software is an intellectual and highly interdependent process. According to Brooks' Law, adding more people to a project exponentially increases the communication paths and training overhead required to keep the team synchronized. Therefore, when scheduling, project managers cannot assume that doubling the staff will cut the project duration in half.

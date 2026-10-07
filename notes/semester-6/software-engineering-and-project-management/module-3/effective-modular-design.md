@@ -38,6 +38,21 @@ Coupling is a measure of the interdependence among modules. It indicates how tig
 
 ## 5. Previous Year Questions & Solutions
 
+### Actual University Questions:
+**[May 2024]** 13 a) Explain the concept of abstraction in design?
+**[December 2019]** what is the effect of designing a prototype on the D RegNo.: I 2 3 4 possible ?
+**[May 2023]** Discuss the rules for user interface design.
+**[May 2024]** 9  What are the fundamental design principles that software developers should (3) follow to create effective and maintainable software products?
+**[July 2021]** a) What is modularity?
+**[May 2019]** PART D Answer any twofull questions, each carries9 marks' modularityf List out the important properties of a modular (3) b) What do you understand different kinds of system software products?
+**[July 2021]** b) Explain the User interface design rules.
+**[July 2021]** (4) Discuss the specification and design aspects of software engineering.
+**[May 2024]** b) What is the importance of cohesion and coupling in software design, and how (5) can these principles be applied to create more modular and flexible software systems?
+**[May 2019]** Determine the effort required thssoftwareprodtre+and ttre nominaffiopmenfti 9  Explain the design guidelines that can be used to produce "good quality" (3) classes or reusable classes.
+
+*(Note: Solutions to be generated/verified by agent)*
+
+
 **[December 2019] Differentiate between cohesion and coupling in software design. (5 Marks)**
 **Solution:**
 | Feature | Cohesion | Coupling |

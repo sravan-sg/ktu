@@ -36,6 +36,35 @@ Imagine maintaining a web-based Payroll System:
 
 ## 5. Previous Year Questions & Solutions
 
+### Actual University Questions:
+**[January 2024]** b) Explain the various software maintenance models with the help of diagram.
+**[December 2019]** What is the scope of software engineering  (3) Discuss the maintenance aspects of software engineering.
+**[December 2019]** a) Define any four types of System testing b) Differentiate between stamp coupling and content coupling.
+**[July 2021]** Explain different categories of  (6) maintenance.
+**[May 2024]** T"are  the ditr€r€ftttypes of CASE tools?
+**[May 2024]** complexity { int i, j, k; for (i=0 ; i<:\ ; i+r) plil: l; for (i:2 ; i<:|rl ; i#) { k: p[i]; j=l; - ufiile (atptj-lll > alkl { plil:pli-ll; 'r  j-; ) p[i]:k; ) 14  Explain any three types of Black box testing.
+**[May 2019]** Compute an estimate for annual maintenance effortCAME).If life time of the project is l0 years,what is the total effort of the project?
+**[May 2019]** b) Explain the steps of software maintenance with the help of a diagram.
+**[December 2019]** Explain different types of cohesion b) Explain stepwise refinement c) How Black box testing differ from White box testing (5) (s) (s) (s) (5) (s) (s) (s) (s) (s) (s) r2 a) b) c) l3 t4 (4) (2) (3) (s) (2) (2) l6 t7 l8 l9 PART E Answer anyfourfull questions, each corriesl| marks.
+**[May 2023]** What is software maintenance?
+**[December 2019]** Explain different categories of (5) maintenance b) Discuss the building blocks of CASE.
+**[January 2024]** a) What is software maintenance?
+**[May 2024]** (3) I I  How does white box testing differ from other types of software testing?
+**[May 2024]** 15 a) ExplaintheprocessofMaintenance.
+**[May 2019]** b) Explain different types of user interface.
+**[May 2019]** a) What is software maintenance?
+**[July 2021]** Explain different types of cohesion.
+**[July 2021]** b) Define any four types of System testing.
+**[May 2019]** Explain different types of software risk.
+**[May 2023]** Explain the steps of software maintenance with help of a diagram.
+**[May 2019]** a) Explain the Taute maintenance model.
+**[January 2024]** Explain different types of coupling.
+**[January 2024]** a) Identi$ the various types of risks in software project development 'b) Explain the Software Risk management process with the help of neat diagram.
+**[May 2019]** 5  a) Explain with suitable examples, the types of software development for  (4) which the spiral'model is suitable.
+
+*(Note: Solutions to be generated/verified by agent)*
+
+
 **[Sample Question] What are the different types of software maintenance? (4 Marks)**
 **Solution:**
 Software maintenance is broadly categorized into four types:

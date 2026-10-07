@@ -69,6 +69,14 @@ This forces `*` to be evaluated deeper in the tree, resolving the ambiguity.
 
 ## 5. Previous Year Questions & Solutions
 
+### Actual University Questions:
+**[May 2019]** (3)  11   What are L-attributed definitions and S-attributed definitions in a syntax directed  translation scheme?
+**[May 2019]** (3)  14 a) Explain the syntax directed definition of a simple desk calculator.
+**[May 2019]** (3)  2    Construct a regular expression to denote a language L over ∑= {0,1} accepting  all strings of 0’s and 1’s that do not contain substring 011  (3)  3    Consider the context free grammar S->aSbS | bSaS | €  Check whether the grammar is ambiguous or not  (3)  4    What is Recursive Descent parsing?
+
+*(Note: Solutions to be generated/verified by agent)*
+
+
 ### [May 2019] Consider the context free grammar S->aSbS | bSaS | €. Check whether the grammar is ambiguous or not. (3 marks)
 **Solution:**
 A grammar is ambiguous if we can find at least one string in the language that has more than one distinct leftmost derivation (or parse tree).

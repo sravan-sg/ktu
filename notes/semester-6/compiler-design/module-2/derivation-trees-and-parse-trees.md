@@ -54,6 +54,13 @@ Notice how the parse tree visually captures the `+` operation joining two `id` l
 
 ## 5. Previous Year Questions & Solutions
 
+### Actual University Questions:
+**[May 2019]** (3)  10    What are annotated parse trees?
+**[May 2019]** 8     Explain the main actions in a shift reduce parser  (3)  9     What are different parsing conflicts in SLR parsing table?
+
+*(Note: Solutions to be generated/verified by agent)*
+
+
 ### [July 2021]
 **Question:** Explain Leftmost and Rightmost derivations with an example.
 **Solution:**

@@ -15,4 +15,11 @@
 [Content Pending Textbook Ingestion]
 
 ## 5. Previous Year Questions & Solutions
+
+### Actual University Questions:
+**[July 2021]** b) What is the significance of adopting programming practices and coding ,  standards?
+**[May 2024]** 10  What are coding standards and why are they important?
+
+*(Note: Solutions to be generated/verified by agent)*
+
 [Content Pending Textbook Ingestion]

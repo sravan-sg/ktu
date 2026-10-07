@@ -62,6 +62,12 @@ Total: 7 tokens.
 *Solution:* The syntax is perfectly valid (Type Identifier = Literal). However, the semantic analyzer detects a type mismatch: attempting to assign a `string` type to an `int` type variable. This violates the type rules of strongly typed languages like C or Java.
 
 ## 5. Previous Year Questions & Solutions
+
+### Actual University Questions:
+**[May 2019]** (10)  18 a) Explain the principal sources of optimization  (10)  19 a) Explain optimization of basic blocks  (5)    b) With suitable examples explain loop optimization.
+
+*(Note: Solutions to be generated/verified by agent)*
+
 [April 2018]
 **Question:** Explain the concept of analysis of the source program in a compiler.
 **Solution:**

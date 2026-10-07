@@ -43,6 +43,13 @@ If it's an **Organic** project:
 
 ## 5. Previous Year Questions & Solutions
 
+### Actual University Questions:
+**[January 2024]** b) Explain the various software maintenance models with the help of diagram.
+**[December 2019]** considering (a, b) : (2.4, 1.05) as multiplicative and exponential factor for the basic cocoMo effort estimation equation and (c, d) : (2.5, 0.38) as multiplicative and exponential factor for the basic cocoMo development time estimation equation, approximately how long does the software project take to complete ?
+
+*(Note: Solutions to be generated/verified by agent)*
+
+
 **[December 2019] Explain the three development modes in COCOMO. (5 Marks)**
 **Solution:**
 Barry Boehm's COCOMO model classifies software projects into three distinct modes of development to apply the correct estimation formulas:

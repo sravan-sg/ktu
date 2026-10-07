@@ -39,6 +39,12 @@ Building a Chess Engine:
 
 ## 5. Previous Year Questions & Solutions
 
+### Actual University Questions:
+**[December 2019]** Explain different types of cohesion b) Explain stepwise refinement c) How Black box testing differ from White box testing (5) (s) (s) (s) (5) (s) (s) (s) (s) (s) (s) r2 a) b) c) l3 t4 (4) (2) (3) (s) (2) (2) l6 t7 l8 l9 PART E Answer anyfourfull questions, each corriesl| marks.
+
+*(Note: Solutions to be generated/verified by agent)*
+
+
 **[Sample Question] Differentiate between Top-Down and Bottom-Up design strategies. (4 Marks)**
 **Solution:**
 | Feature | Top-Down Design | Bottom-Up Design |

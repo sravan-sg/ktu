@@ -52,6 +52,12 @@ Because the phases are grouped into Front and Back ends communicating via a comm
 *Solution:* A cross-compiler runs on Machine A but targets Machine B. Because the Back-End is modular, we can compile the source code using the Front-End on Machine A, and then instruct the Back-End module configured for Machine B to generate the target binary, all within the same compiler binary on Machine A.
 
 ## 5. Previous Year Questions & Solutions
+
+### Actual University Questions:
+**[May 2019]** 5  a)  Explain the different phases in the design of a compiler.
+
+*(Note: Solutions to be generated/verified by agent)*
+
 [April 2018]
 **Question:** Discuss the grouping of phases in a compiler. (5 marks)
 **Solution:**

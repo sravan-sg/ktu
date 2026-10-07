@@ -75,6 +75,13 @@ x = t3           // Final assignment
 
 ## 5. Previous Year Questions & Solutions
 
+### Actual University Questions:
+**[May 2019]** (5)    b) Explain any four compiler writing tools  (4)    http://www.ktuonline.com B  F1031  Pages: 2  Page 2 of 2    PART C  Answer all questions, each carries3 marks.
+**[May 2019]** 5  a)  Explain the different phases in the design of a compiler.
+
+*(Note: Solutions to be generated/verified by agent)*
+
+
 ### [April 2018]
 **Question:** Explain the different phases of a compiler with a neat diagram. Trace the translation of the statement `a = b + c * 50` through all phases.
 **Solution:**

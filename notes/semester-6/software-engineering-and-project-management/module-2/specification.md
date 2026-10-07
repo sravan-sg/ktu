@@ -32,6 +32,13 @@ A high-quality specification must be:
 
 ## 5. Previous Year Questions & Solutions
 
+### Actual University Questions:
+**[July 2021]** (4) Discuss the specification and design aspects of software engineering.
+**[May 2023]** 6 a) What is software requirements specification (SRS)?
+
+*(Note: Solutions to be generated/verified by agent)*
+
+
 **[Sample Question] What is a specification document? (3 Marks)**
 **Solution:**
 A specification document, typically referred to as the Software Requirements Specification (SRS), is the formal, written output of the requirement analysis phase. It completely and comprehensively details all functional requirements, non-functional constraints, and behavioral models of the proposed system. It serves as a strict blueprint for designers, a baseline for testers to write test cases, and often acts as a legally binding contract between the software development team and the client.

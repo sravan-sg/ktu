@@ -53,6 +53,18 @@ Applying the principles to a Smart Home Thermostat:
 
 ## 5. Previous Year Questions & Solutions
 
+### Actual University Questions:
+**[January 2024]** b) Explain any two techniques used in requirement elicitation and analysis.
+**[May 2024]** b) Explain Democratic Decentralised team organization and Controlled Decen- (2) tralised team organi zatton (e) Page 3 of4 -,1 qlgGsmt2302 18 4 Whd ale fu basic principles of project scheduling?
+**[May 2024]** 9  What are the fundamental design principles that software developers should (3) follow to create effective and maintainable software products?
+**[December 2019]** Explain software engineering as a layered technology write characteristics of waterfall model for software development How prototyping helps in software development write the significance of Requirement analysis in software engineering PART B Answer any twofall questions, each carriesg marks.
+**[July 2021]** b) Explain cyclomatic complexity analysis with suitable example.
+**[January 2024]** a) Explain cyclomatic complexity analysis with suitable example.
+**[May 2024]** b) What is the importance of cohesion and coupling in software design, and how (5) can these principles be applied to create more modular and flexible software systems?
+
+*(Note: Solutions to be generated/verified by agent)*
+
+
 **[Sample Question] Discuss the core analysis principles in software engineering. (5 Marks)**
 **Solution:**
 Regardless of the specific modeling methodology used (structured or object-oriented), software requirement analysis is guided by four fundamental principles:

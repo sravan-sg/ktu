@@ -47,6 +47,14 @@ We must pass the type from `T` down to `L`.
 
 ## 5. Previous Year Questions & Solutions
 
+### Actual University Questions:
+**[May 2019]** (3)  11   What are L-attributed definitions and S-attributed definitions in a syntax directed  translation scheme?
+**[May 2019]** (4)    b)  Explain bottom- up evaluation of s-attributed definitions.
+**[May 2019]** (3)  14 a) Explain the syntax directed definition of a simple desk calculator.
+
+*(Note: Solutions to be generated/verified by agent)*
+
+
 ### [May 2019] What are L-attributed definitions and S-attributed definitions in a syntax directed translation scheme? (3 marks)
 **Solution:**
 1. **S-attributed definitions:** A syntax-directed definition that uses only synthesized attributes is called an S-attributed definition. The value of an attribute at a parse tree node is determined entirely by the attributes of its children. They can be evaluated during a simple bottom-up parsing process.

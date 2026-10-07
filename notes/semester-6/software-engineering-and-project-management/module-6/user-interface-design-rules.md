@@ -45,6 +45,22 @@ Consistency allows a user to learn the interface once and apply that knowledge e
 
 ## 5. Previous Year Questions & Solutions
 
+### Actual University Questions:
+**[May 2024]** 13 a) Explain the concept of abstraction in design?
+**[May 2019]** What are the  (3) testing that are usually performed on large (3) (3) Page 2 of 3 D F1077 b) Consider a project with the following functional units: Number of user inputs:50 Number of user outputs:40 Number of user enquiries=35 Number of user files:6 Number of extemal interfaces:4 Assume all complexity adjustment factors and weighting factors are average.
+**[December 2019]** what is the effect of designing a prototype on the D RegNo.: I 2 3 4 possible ?
+**[May 2023]** Discuss the rules for user interface design.
+**[May 2024]** 9  What are the fundamental design principles that software developers should (3) follow to create effective and maintainable software products?
+**[May 2019]** b) Explain different types of user interface.
+**[July 2021]** b) Explain the User interface design rules.
+**[July 2021]** (4) Discuss the specification and design aspects of software engineering.
+**[May 2024]** b) What is the importance of cohesion and coupling in software design, and how (5) can these principles be applied to create more modular and flexible software systems?
+**[May 2019]** Determine the effort required thssoftwareprodtre+and ttre nominaffiopmenfti 9  Explain the design guidelines that can be used to produce "good quality" (3) classes or reusable classes.
+**[May 2019]** a) Explain different characteristics which are desired for a good user interface.
+
+*(Note: Solutions to be generated/verified by agent)*
+
+
 **[Sample Question] What are the three golden rules of User Interface design? (6 Marks)**
 **Solution:**
 According to Theo Mandel, the three golden rules that form the foundation of user interface design are:

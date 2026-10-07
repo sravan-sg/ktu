@@ -33,6 +33,26 @@ A process framework establishes the foundation for a complete software engineeri
 
 ## 5. Previous Year Questions & Solutions
 
+### Actual University Questions:
+**[May 2024]** 15 a) ExplaintheprocessofMaintenance.
+**[January 2024]** b) Explain the various software maintenance models with the help of diagram.
+**[May 2024]** (3) How is the Capability Maturity Model (CMM) used to evaluate and improve (3) the mattuity of software development processes within an organization?
+**[December 2019]** b) Describe any three methods of Requirement elicitation process c) Describe the different levels of Capability Maturity Model a) Write the elements of requirements engineering process b) Discuss the prototyping model.
+**[May 2024]** What are the main steps involved in the reqgigement engineering process, and how do they contribute to the development of high-quality software products?
+**[May 2019]** Is the number of loops of the spiral., fixed for different development process?
+**[January 2024]** 4  Explain the stages of ISO 9000 registration process.
+**[July 2021]** What is a software process?
+**[May 2023]** Which software process model allows risk management?
+**[May 2024]** As you move outward along the process flow path of the spiral model, what can you say about the software that is being developed or maintained?
+**[July 2021]** Explain the layered technology used in software engineering process.
+**[May 2023]** What are the umbrella activities of generic soltware process framework?
+**[January 2024]** a) Explain the role of people, product, process and project in Software engineering.
+**[May 2023]** 7 a) What is incremental process mode?
+**[January 2024]** a) Identi$ the various types of risks in software project development 'b) Explain the Software Risk management process with the help of neat diagram.
+
+*(Note: Solutions to be generated/verified by agent)*
+
+
 **[December 2019] Describe the different levels of Capability Maturity Model (CMM). (5 Marks)**
 **Solution:**
 The Capability Maturity Model (CMM) evaluates an organization's software process maturity across 5 levels:

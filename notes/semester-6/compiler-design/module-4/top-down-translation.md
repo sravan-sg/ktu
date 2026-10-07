@@ -13,6 +13,12 @@ Real-world software engineering/systems scenarios where this algorithm/concept i
 Step-by-step mathematical or algorithmic walkthroughs.
 
 ## 5. Previous Year Questions & Solutions
+
+### Actual University Questions:
+**[May 2019]** (3)  11   What are L-attributed definitions and S-attributed definitions in a syntax directed  translation scheme?
+
+*(Note: Solutions to be generated/verified by agent)*
+
 [April 2018]
 **Question:** Explain the concept of Top-down translation.
 **Solution:** Complete, self-contained solution here.

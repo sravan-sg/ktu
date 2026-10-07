@@ -13,6 +13,12 @@ Real-world software engineering/systems scenarios where this algorithm/concept i
 Step-by-step mathematical or algorithmic walkthroughs.
 
 ## 5. Previous Year Questions & Solutions
+
+### Actual University Questions:
+**[May 2019]** (4)    b)  Explain bottom- up evaluation of s-attributed definitions.
+
+*(Note: Solutions to be generated/verified by agent)*
+
 [April 2018]
 **Question:** Explain the concept of Bottom-up evaluation of inherited attributes.
 **Solution:** Complete, self-contained solution here.

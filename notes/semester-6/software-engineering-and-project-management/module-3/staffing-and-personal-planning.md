@@ -39,6 +39,14 @@ The overhead of communicating changes across 1,225 paths vastly consumes the pro
 
 ## 5. Previous Year Questions & Solutions
 
+### Actual University Questions:
+**[December 2019]** l0  Differentiate between code walk through and codeinspection l1  Draw the Rayleigh manpower loading curve and state pNR model for staffing Marks (3) (3) (3) (3) (3) (3) (3) (2) (4) c) 7a) b) overall cost ofthe project?
+**[May 2023]** What are the activities carried out (4.5) during project planning?
+**[May 2023]** 14 a) Discuss the importance of project planning.
+
+*(Note: Solutions to be generated/verified by agent)*
+
+
 **[Sample Question] State Brooks' Law and explain its significance in staffing a software project. (3 Marks)**
 **Solution:**
 **Brooks' Law** states: *"Adding manpower to a late software project makes it later."*
