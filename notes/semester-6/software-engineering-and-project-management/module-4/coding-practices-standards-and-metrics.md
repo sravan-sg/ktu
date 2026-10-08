@@ -3,7 +3,23 @@
 ## 1. Explanation
 Coding (or construction) is the translation of design blueprints into a machine-readable programming language. While writing code seems straightforward, undisciplined coding creates unmaintainable legacy systems. Therefore, organizations impose rigorous standards, measure the code using quantitative metrics, and verify it through structured reviews.
 
-### Coding Practices and Standards
+### Coding Practices (Principles)
+According to Pressman, coding practices and principles guide the actual construction of software and are strictly divided into three sequential stages:
+1. **Preparation Principles:** Before writing a single line of code, the developer must:
+   - Understand the problem to be solved and the underlying design model.
+   - Select the most appropriate programming language and IDE/environment.
+   - Create a set of unit tests *before* coding (adopting a Test-Driven Development mindset).
+2. **Programming Principles:** While writing the code, the developer must:
+   - Constrain algorithms using structured programming (avoiding spaghetti code).
+   - Keep conditional logic (`if/else`) as simple as possible.
+   - Write code that is "self-documenting" by selecting meaningful variable names.
+   - Create a clean visual layout (indentation and spacing) that aids human understanding.
+3. **Validation Principles:** After the first pass of code is written, the developer must:
+   - Conduct code walk-throughs with peers.
+   - Perform unit tests and fix uncovered errors.
+   - Refactor the code to improve its internal structure without changing its external behavior.
+
+### Coding Standards
 Coding standards (or style guides) are formalized organizational rules that dictate exactly how source code should be written. 
 - **The Core Goal:** Code written by 50 different developers across different timezones must look exactly as if it were written by a single, highly disciplined engineer. 
 - **Key Elements of Standards:**
