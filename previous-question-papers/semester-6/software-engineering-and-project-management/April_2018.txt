@@ -1,0 +1,148 @@
+D 
+D6810 
+Pages: 2 
+Page 1 of 2 
+ 
+Reg No.:_______________ 
+ 
+Name:__________________________ 
+APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY 
+SIXTH SEMESTER B.TECH DEGREE EXAMINATION, APRIL 2018 
+Course Code: CS308 
+Course Name: SOFTWARE ENGINEERING AND PROJECT MANAGEMENT (CS) 
+Max. Marks: 100 
+ 
+Duration: 3 Hours 
+ 
+PART A 
+ 
+ 
+Answer all questions, each carries 3 marks. 
+Marks 
+1 
+ 
+What is a software process? Why it is important? 
+(3) 
+2 
+ 
+Compare waterfall model and incremental model for software development 
+(3) 
+3 
+ 
+How does software prototyping help to increase the overall quality of the 
+software? 
+(3) 
+4 
+ 
+How ISO 9000 helps in software process improvement?  
+(3) 
+ 
+PART B 
+Answer any two full questions, each carries 9 marks. 
+5 
+a) Describe software engineering as a layered technology. 
+(4) 
+ 
+b) Describe Boehm’s spiral model for software development. 
+(5) 
+6 
+a) Explain the different levels in Capability Maturity Model. 
+(5) 
+ 
+b) Discuss the specification and design aspects of software engineering. 
+(4) 
+7 
+a) Why requirements elicitation is considered as a critical task in requirements 
+engineering? Explain any two methods for requirements elicitation. 
+(5) 
+ 
+b) Describe the elements of analysis model. 
+(4) 
+ 
+PART C 
+Answer all questions, each carries 3 marks. 
+8 
+ 
+What is the importance of software project planning? 
+(3) 
+9 
+ 
+Compare top-down and bottom-up design strategies. 
+(3) 
+10  
+What is software testing? Write any four fundamental testing principles. 
+(3) 
+11  
+What is the significance of adopting programming practices and coding 
+standards?  
+(3) 
+ 
+PART D 
+Answer any two full questions, each carries 9 marks. 
+12 a) What is the need of a modular system? Describe the effects of cohesion and 
+coupling in modular design. 
+(5) 
+D 
+D6810 
+Pages: 2 
+Page 2 of 2 
+ 
+ 
+b) An air traffic control project of size 500 KLOC is to be developed. Software 
+project team has very little experience on similar projects and the project 
+schedule is also tight. Calculate the effort, development time, average staff size 
+and productivity of the project. 
+(4) 
+13 a) Describe basis path testing. Illustrate with an example. 
+(5) 
+ 
+b) Explain code walk-through and code inspection. 
+(4) 
+14 a) Describe the different levels of COCOMO. 
+(5) 
+ 
+b) Discuss any two types of system test for software-based systems. 
+(4) 
+ 
+PART E 
+Answer any four full questions, each carries 10 marks. 
+15 a) What is a task set? Write the various steps in selecting appropriate task set for a 
+project. 
+(6) 
+ 
+b) Explain Putnam-Norden-Rayleigh (PNR) curve with a neat graph showing 
+effort versus development time. 
+(4) 
+16 a) What is software maintenance? Explain various categories of software 
+maintenance. 
+(6) 
+ 
+b) Differentiate between product and process. 
+(4) 
+17 a) What is risk identification? How risks are monitored and managed by project 
+managers? 
+(6) 
+ 
+b) What are the various types of risks in software projects? 
+(4) 
+18 a) Describe software configuration management process. 
+(6) 
+ 
+b) Discuss the rules for user interface design. 
+(4) 
+19 a) Explain the basic building blocks of CASE tools. 
+(6) 
+ 
+b) Write a note on integrated CASE environment. 
+(4) 
+20 a) What are the signs that a software project is in jeopardy? What are the steps to 
+be taken by a project manager to tackle this situation? 
+(6) 
+ 
+b) How various stakeholders are organized to perform effective software 
+engineering? 
+(4) 
+**** 
+ 
+ 
+ 

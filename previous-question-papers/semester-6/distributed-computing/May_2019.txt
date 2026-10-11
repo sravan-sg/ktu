@@ -1,0 +1,150 @@
+D 
+G1079 
+Pages: 2 
+Page 1of 2 
+ 
+ 
+ 
+ 
+Reg No.:_______________ 
+ 
+Name:__________________________ 
+APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY 
+SEVENTH SEMESTER B.TECH DEGREE EXAMINATION(S), MAY 2019 
+Course Code: CS407 
+Course Name: DISTRIBUTED COMPUTING 
+Max. Marks: 100 
+ 
+Duration: 3 Hours 
+ 
+PART A  
+ 
+ 
+Answer all questions, each carries 4 marks. 
+Marks 
+1 
+ 
+List and explain the three generations of distributed systems. 
+(4) 
+2 
+ 
+Differentiate 
+between 
+synchronous 
+and 
+asynchronous 
+Inter 
+Process 
+Communication. 
+(4) 
+3 
+ 
+What are the different placement strategies followed in a distributed system.  
+(4) 
+4 
+ 
+Explain briefly any four transparency requirement for distributed file system. 
+(4) 
+5 
+ 
+Differentiate between forward and backward validation. Which is better? 
+(4) 
+6 
+ 
+Mention the factors that evaluate the performance of communication channels. 
+(4) 
+7 
+ 
+How does Andrew File System ensure that the cached copies of files are up-to-
+date? 
+(4) 
+8 
+ 
+With an example describe the working of ring based election algorithm. 
+(4) 
+9 
+ 
+Why are hierarchic locks required? Explain with example. 
+(4) 
+10  
+In Maekawa’s Voting algorithm for all i,j=1,2,....,N ; Pi belongs to set Vi, what 
+problems can arise if the sets Vi are chosen so that Vi ˄ Vj = ϕ. 
+(4) 
+PART B  
+Answer any two full questions, each carries 9 marks. 
+11 a) How can the security of a distributed system be achieved? How can processes 
+and their interactions be secured? 
+(5) 
+ 
+b) Distinguish between mini computer model and work station model. 
+(4) 
+12 a) Consider two communication services for use in asynchronous distributed 
+system. In service A, messages may be lost, duplicated or delayed and check 
+sums apply only to headers. In service B, messages may be lost, delayed or 
+delivered too fast for the recipient to handle them, but those that are delivered 
+arrive with the correct contents. 
+(9) 
+http://www.ktuonline.com
+D 
+G1079 
+Pages: 2 
+Page 2of 2 
+Describe the classes of failure exhibited by each service. Classify their failures 
+according to their effects on the properties of validity and integrity. Can service 
+B, be described as a reliable communication service? 
+13 a) Explain how multimedia services are supported in distributed systems. 
+(4) 
+ 
+b) Summarize the challenges in designing a distributed system. 
+(5) 
+ 
+ 
+ 
+ 
+PART C  
+Answer any two full questions, each carries 9 marks. 
+14 a) Explain request reply protocol with an example. 
+(5) 
+ 
+b) Describe the major design issues for RPC 
+(4) 
+15 a) What are the different failures mentioned in the failure model for UDP 
+datagrams? 
+(4) 
+ 
+b) Briefly explain different types of navigations used for name resolution. 
+(5) 
+16 a) With appropriate diagram explain the distribution of processes in the Andrew 
+File System 
+(5) 
+ 
+b) Describe the caching mechanism used in NFS 
+(4) 
+PART D  
+Answer any two full questions, each carries 12 marks. 
+17 a) Implement the two methods of locking, namely lock class and lock manager 
+class 
+(6) 
+ 
+b) How the optimistic concurrency control to the serialization of transactions 
+avoids drawbacks of locking 
+(6) 
+18 a) Why do we make any pair of transactions serially equivalent? Explain serial 
+equivalence with the help of an example. 
+(6) 
+ 
+b) Compare the central server algorithm and ring based algorithm. Which is better 
+and why? 
+(6) 
+19 a) Explain Ricart and Agrawala’s multicast based mutual exclusion algorithm. 
+(6) 
+ 
+b) In a ring topology 7 processes are connected with different ID’s as shown:  
+P20->P5->P10->P18->P3->P16->P9 
+If process P10 initiates election after how many message passes will the 
+coordinator be elected and known to all the processes. What modification will 
+take place to the election message as it passes through all the processes? 
+(6) 
+**** 
+ 
+http://www.ktuonline.com

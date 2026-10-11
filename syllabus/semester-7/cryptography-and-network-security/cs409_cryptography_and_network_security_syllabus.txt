@@ -1,0 +1,140 @@
+================================================================================
+COURSE: CS409 CRYPTOGRAPHY AND NETWORK SECURITY
+Course Code: CS409
+Course Name: Cryptography and Network Security
+L-T-P-Credits: 3-0-0-3
+Year of Introduction: 2016
+================================================================================
+
+COURSE OBJECTIVES:
+------------------
+- To introduce fundamental concepts of symmetric and asymmetric cipher models.
+- To introduce fundamental concepts of authentication.
+- To introduce network security and web security protocols.
+
+SYLLABUS:
+---------
+Symmetric Cipher Models, Differential and linear Cryptanalysis, Block Cipher 
+Design principles, Primitive operations, Key expansions, Inverse Cipher, 
+Principles of Public key Cryptography Systems, Authentication functions, 
+Message authentication codes, Hash functions, Digital signatures, 
+Authentication protocols, Network security, Web Security, Secure Socket Layer 
+and Transport Layer Security, Secure electronic transaction, Firewalls.
+
+EXPECTED OUTCOME:
+-----------------
+The students will be able to:
+i.   Summarize different classical encryption techniques.
+ii.  Identify mathematical concepts for different cryptographic algorithms.
+iii. Demonstrate cryptographic algorithms for encryption/key exchange.
+iv.  Summarize different authentication and digital signature schemes.
+v.   Identify security issues in network, transport, and application layers and 
+     outline appropriate security protocols.
+
+TEXT BOOKS:
+-----------
+1. Behrouz A. Forouzan, Cryptography and Network Security, Tata McGraw-Hill, 2010.
+2. William Stallings, Cryptography and Network Security, Pearson Education, 2014.
+
+REFERENCES:
+-----------
+1. B. Schneier, Applied Cryptography, Protocols, Algorithms, and Source Code in C, 
+   2nd Edn, Wiley, 1995.
+2. Charlie Kaufman, Radia Perlman, Mike Speciner, Network Security, PHI, 2002.
+
+================================================================================
+COURSE PLAN
+================================================================================
+
+MODULE I (7 Hours | End Sem Exam Marks: 15%)
+--------------------------------------------
+Symmetric Cipher Models - Substitution techniques - Transposition techniques - 
+Rotor machines - Steganography. 
+Simplified DES - Block Cipher principles - The Data Encryption Standard, 
+Strength of DES - Differential and linear Cryptanalysis. 
+Block Cipher Design principles - Block Cipher modes of operations.
+
+MODULE II (7 Hours | End Sem Exam Marks: 15%)
+---------------------------------------------
+IDEA: Primitive operations - Key expansions - One round, Odd round, Even round - 
+Inverse keys for decryption. 
+AES: Basic Structure - Primitive operation - Inverse Cipher - Key Expansion, 
+Rounds, Inverse Rounds. 
+Stream Cipher - RC4.
+
+[ FIRST INTERNAL EXAM ]
+
+MODULE III (7 Hours | End Sem Exam Marks: 15%)
+----------------------------------------------
+Public key Cryptography: Principles of Public key Cryptography Systems, 
+Number theory - Fundamental Theorem of arithmetic, Fermat's Theorem, Euler's 
+Theorem, Euler's Totient Function, Extended Euclid's Algorithm, Modular arithmetic. 
+RSA algorithm - Key Management Diffie-Hellman Key Exchange, Elliptic curve 
+cryptography.
+
+MODULE IV (7 Hours | End Sem Exam Marks: 15%)
+---------------------------------------------
+Authentication requirements - Authentication functions - Message authentication 
+codes - Hash functions - SHA-1, MD5, Security of Hash functions and MACs - 
+Authentication protocols - Digital signatures - Digital signature standards.
+
+[ SECOND INTERNAL EXAM ]
+
+MODULE V (7 Hours | End Sem Exam Marks: 20%)
+--------------------------------------------
+Network security: 
+Electronic Mail Security: Pretty Good Privacy (PGP) - S/MIME. 
+IP Security: Architecture - Authentication Header - Encapsulating Security 
+Payload - Combining Security associations - Key management.
+
+MODULE VI (7 Hours | End Sem Exam Marks: 20%)
+---------------------------------------------
+Web Security: Web Security considerations - Secure Socket Layer (SSL) and 
+Transport Layer Security (TLS) - Secure Electronic Transaction (SET). 
+Firewalls - Packet filters - Application Level Gateway - Encrypted tunnels.
+
+[ END SEMESTER EXAM ]
+
+================================================================================
+QUESTION PAPER PATTERN (END SEMESTER EXAM)
+================================================================================
+1. There will be FOUR parts in the question paper - Part A, Part B, Part C, Part D.
+
+2. Part A:
+   a. Total marks: 40
+   b. TEN questions, each carrying 4 marks, covering all the SIX modules:
+      - THREE questions from modules I & II
+      - THREE questions from modules III & IV
+      - FOUR questions from modules V & VI
+   c. All questions have to be answered.
+
+3. Part B:
+   a. Total marks: 18
+   b. THREE questions, each having 9 marks:
+      - One question is from module I
+      - One question is from module II
+      - One question uniformly covers modules I & II
+   c. Any TWO questions have to be answered.
+   d. Each question can have a maximum of THREE subparts.
+
+4. Part C:
+   a. Total marks: 18
+   b. THREE questions, each having 9 marks:
+      - One question is from module III
+      - One question is from module IV
+      - One question uniformly covers modules III & IV
+   c. Any TWO questions have to be answered.
+   d. Each question can have a maximum of THREE subparts.
+
+5. Part D:
+   a. Total marks: 24
+   b. THREE questions, each having 12 marks:
+      - One question is from module V
+      - One question is from module VI
+      - One question uniformly covers modules V & VI
+   c. Any TWO questions have to be answered.
+   d. Each question can have a maximum of THREE subparts.
+
+6. There will be AT LEAST 60% analytical/numerical questions in all possible 
+   combinations of question choices.
+================================================================================

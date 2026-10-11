@@ -1,0 +1,143 @@
+D 
+R7986 
+Pages: 2 
+Page 1of 2 
+Reg No.:_______________ 
+ 
+Name:__________________________ 
+APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY 
+SEVENTH SEMESTER B.TECH DEGREE EXAMINATION, DECEMBER 2018 
+Course Code: CS407 
+Course Name: DISTRIBUTED COMPUTING 
+Max. Marks: 100 
+ 
+Duration: 3 Hours 
+ 
+PART A  
+ 
+ 
+Answer all questions, each carries 4 marks. 
+Marks 
+1 
+ 
+List any 4 issues in the design of a distributed system. 
+(4) 
+2 
+ 
+What is the need of safety and liveness as requirements in an Election 
+algorithm? 
+(4) 
+3 
+ 
+Explain the key techniques used for indirect communication. 
+(4) 
+4 
+ 
+Why Skype is called an Overlay network? 
+(4) 
+5 
+ 
+Evaluate the performance of Maekawa’s voting  algorithm with respect to fault 
+tolerance 
+(4) 
+6 
+ 
+Why is “send_group” group communication primitive preferred over “send” 
+primitive? 
+(4) 
+7 
+ 
+What is the difference between two-phase locking and strict two-phase locking 
+in transactions? 
+(4) 
+8 
+ 
+What do you mean by Vice and  Venus in AFS?. What are their roles? 
+(4) 
+9 
+ 
+State the rules for committing of nested transactions. 
+(4) 
+10  
+Define mobile agents. How can they be potential security threats? 
+(4) 
+PART B  
+Answer any two full questions, each carries 9 marks. 
+11 a) What are the two variants of the interaction model in distributed systems? On 
+what points do they differ? 
+(4) 
+ 
+b) Describe any 4 key architectural patterns used in distributed systems. 
+(5) 
+12 a) List and explain the different types of communication paradigms used within 
+distributed systems. 
+(6) 
+ 
+b) A distributed system is defined as one in which hardware or software 
+components located at networked computers communicate and coordinate their 
+actions only by passing messages, What are the consequences of defining a 
+distributed system in this manner? 
+(3) 
+13 a) Write notes on mobile and ubiquitous computing. 
+(4) 
+For More Visit : KtuQbank.com
+D 
+R7986 
+Pages: 2 
+Page 2of 2 
+ 
+b) Compare work station server model with processor pool model. 
+(5) 
+ 
+ 
+ 
+ 
+PART C  
+Answer any two full questions, each carries 9 marks. 
+14 a) Describe IP multicast in detail 
+(6) 
+ 
+b) Give notes on failure model for multicast datagrams. 
+(3) 
+15 a) Explain the implementation of RPC mechanism with a neat diagram. 
+(4) 
+ 
+b) Summarize any five Distributed File System requirements. 
+(5) 
+16 a) Explain NFS  Architecture with  diagram   
+(5) 
+ 
+b) Differentiate Andrew file system and NFS 
+(4) 
+PART D 
+Answer any two full questions, each carries 12 marks. 
+17 a) Explain the lost update and inconsistent retrievals problems in concurrent 
+transactions with the help of examples. 
+(6) 
+ 
+b) Why serial equivalence requires that once a transaction has released a lock on an 
+object, it is not allowed to obtain any more locks. A server manages the objects 
+a1, a2, ..., an. The server provides two operations for its 
+clients:read (i)returns the value of ai; 
+write(i, Value)assigns Value to ai. 
+The transactions T and U are defined as follows: 
+T: x = read(j); y = read (i); write(j, 44); write(i, 33); 
+U: x = read(k); write(i, 55); y = read (j); write(k, 66). 
+Describe an interleaving of the transactions T and U in which locks are released 
+earlywith the effect that the interleaving is not serially equivalent. 
+(6) 
+18 a) Describe a deadlock detection scheme for a single server with an example. 
+(6) 
+ 
+b) Write an algorithm to implement mutual exclusion between N processes that is 
+based upon multicast and logical clocks. Illustrate the algorithm using the 
+situation involving three processes p1,p2, p3. 
+(6) 
+19  
+With an example and suitable figure describe the operation of bully algorithm. 
+Justify whether it meets the requirements of election, during run of the 
+algorithm. Also evaluate the performance of the above algorithm. 
+(12) 
+**** 
+ 
+For More Visit : KtuQbank.com

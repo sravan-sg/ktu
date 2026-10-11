@@ -1,0 +1,101 @@
+.J
+Reg No.:
+Name:
+03000cs306062203
+APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY
+Sixth Semester B.Tech Degree (S, FE) Examination May 2024 (2015
+Ma:<. Marks: 100
+Course Code: CS306
+Course Name: COMPUTER IYETWORKS
+PART A
+Answer all questions, eoch carries3 morhs.
+Duration: 3 Hours
+I 
+Differentiate broadcast networks and point-to-point networks. 
+(3)
+2 
+List two ways in which OSI reference model and TCPflP reference model are the (3)
+same. List two ways in which they differ.
+3 
+A bit string 0l I I l0l I I I l0l I I I I l0 needs to be transmitted at the data link layer. (3)
+What is the string actually transmitted after bit stuffing?
+4 
+Write the basic Unrestricted Simplex protocol. 
+(3)
+PART B
+Answer ony twofull questions, eoch carries9 marks.
+5 a) Explain ISO/OSI reference model and its layers with a suitable diagram.
+b) List the different service primitives used for implementing a simple connection-
+oriented service. Mention the use of each.
+6 a) Explain Go-Back N and Selective repeat ARQ techniques in detail.
+b) Explain the working of CSMA with collision detection protocol.
+7 a) Draw the Ethernet frame formats and write the use of each field.
+t b) How are computer networks classified based on size?
+c) How does Logical Link Control help the data link layer?
+PART C
+Answer oll questions, eoch carries3 mnrks.
+8 n Briefly describe the three variants of Flooding based routing.
+9 
+Briefly describe any one Interior Gateway Routing Protocol.
+l0 
+Describe the format of IPv4 datagram with the help of a diagram.
+I I 
+How does admission control technique achieve good Quality of Service?
+PART D
+Answer any twofull questions, each carries9 marks.
+12 a) Illustrate Link state routing algorithm with suitable example.
+(6)
+(3)
+(5)
+(4)
+(3)
+(4)
+(2\
+(3)'
+(3)
+(3)
+(3)
+Page 1 of 3
+(6)
+l3
+03000cs306062203
+b) Why is it required that the leaky bucket algorithm should allow just one packet (3)
+per ticlg independent of how large the packet is?
+a) Give any four congestion prevention policies in the Network layer? 
+(4)
+b) The following figure shows a network with nodes A, B, C, D, E, F, G and the (5)
+distance along each path. Find the path through which a packet from Router A is
+transmitted to Router G if the network uses shortest path routing using Dijkstra's
+algorithm.
+.I
+t4 a) Differentiate Datagram subnets and Virtual circuit subnets. 
+(4)
+b) Suppose you have sub-netted your class C network 200.138.1.0 with a subnet (5)
+mask of 255.255.255.252. List the following: number of networks, number of
+hosts per network, the full range of the first three networks, and the usable
+address range from those first three networks. Additionally, identiff the
+broadcast addresses for each network.
+PART E
+Answer onyfourfull questions, each con'iesl0 mtrks.
+a) ARP and RARP both map addresses from one space to another. In this aspect (6)
+they are similar. However, their implementations are fundamentally different. In
+what majorway do they differ?
+Differentiate between partially qualified and fully qualified domain spaces.
+Explain File Transfer Protocol and its features.
+Compare the header of IPv4 with that of IPv6.
+Explain the working of e-mail.
+Explain how IGMP supports multicasting.
+l5
+b)
+a)
+b)
+a)
+b)
+l6
+l7
+(4)
+(6)
+(4)
+(6)
+(4)
+Page 2 of 3

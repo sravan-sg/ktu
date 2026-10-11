@@ -1,0 +1,94 @@
+E
+Reg No.:
+10000cs409L22201
+APJ ABDUL KALAM TECHNOLOGICAL UN
+Seventh Semester B.Tech Degree (S, FE) Examination January 2023 (2015
+Course Code: CS409
+Course Name: CRYPTOGRAPHY AND NETWORIGECURITY
+Max. Marks: 100 
+Duration:3 Hours
+PART A
+Answer all questions, each carries 4 marks.
+I 
+Using Caeser cipher apply brute force attack on the ciphertext "xjhwjybwnynsl"
+and recover the plaintext and the key
+2 
+Apply the key generation of SDES on the initial 10bit key "ll000llll0" and (4)
+computethesubkeyskl andk2. (Hint: PlO - 3 527 410 l9 8 6 andP8 -637
+48s109)
+3 
+Describe the initialization, initial permutation and key stream generation of RC4 (4)
+4 
+Define Euler's Theorem. Give examples 
+(4)
+5 
+Differentiate Conventional and Public Key Cryptosystem 
+(4)
+6 
+Explain the different message authentication functions 
+(a)
+7 
+List and explain the five header fields supported by MIME 
+(4)
+8 
+Describe the services offered by IPSEC 
+(4)
+9 
+Discuss the various Web security threats 
+(4)
+10 
+Describe the limitations of Firewalls 
+(4)
+PART B
+')nswur any twofutt questions, each carries 9 marks.
+11 
+Explain the working of DES with relevant figures 
+(9)
+12 a) Using Playfair cipher encrypt the data*tbnfidential" with keyword "security" ' 
+(5)
+b) Discuss the primitive operations used in IDEA 
+(4)
+13 
+With neat sketch describe the AES encryption and decryption process 
+(9)
+PART C
+Answer any twofull questions, each curries 9 marks.
+14 
+Discuss the Diffie Hellman Key exchange Algorithm. Explain with an example (9)
+how it is vulnerable to man-in middle attack.
+Marks
+(4)
+7.!
+Page I of 2
+
+'a
+l*ffiSB{1nzvr
+15 s)' Ury RSA algorit*rn fid,tbplaintcxt ifthe ciphertext is 58 . Assumethe values {5)
+. 
+'frrpr7q='ll ande=l? i[
+b) Direuss the b,asic us of tv{essage Authentication Codes 
+(4)
+16 
+-Explain the Digital Sign$ure Algorithm. With figure describe the signing and (9)
+veri$ing process in DSS
+PART D
+Anffirer tay 6pslull q 
+ioas, each ee*ries 12 mar*s.
+17 a) Lis* and explain the services offered by PGP 
+(6)
+b) With relovant figures earplain fhe €qyptogrryhic fu*ctions used in Pretty Gd 
+(6)
+hivuey
+18 a) tilith neat:sketch describe the working of IPSEC fuI *re n€twork lqruf, 
+(6)
+b) Discusstk differenttypes of Firew*lls? 
+(6)
+19 a) Discuss the'services offcred by SSL Record Protocol. With figwe @in thc (6)
+operation of SSL Record Protocol
+b) hmrfue*re workingof Secure Eledroaic Transaction 
+(6)
+ttf**
+! 
+r9
+Page ?of 2
+

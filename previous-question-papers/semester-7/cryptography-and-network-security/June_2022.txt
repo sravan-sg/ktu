@@ -1,0 +1,94 @@
+Reg No.:
+APr ABDUL KAllfl,fqffiffiruB6$IcAr, uN
+Seventh Semester B.Tech Degree {upplementary Examination Jwe2022 (
+Course Code: CS409
+Course Naine: CRYPTOGRAPIIY AI\D I\ETWORK SECIruTY
+Max. Marks: 100 
+Duration: 3 Hours
+PART A
+Ans:wer oll questions, each caties 4 marks. 
+Marks
+I 
+Differentiate cryptography and steganography. Explain any two techniques (4)
+used in steganography.
+2 
+List and define any four types of attacks based on what is known to the (4)
+attacker.
+3 
+Explain the key expansion procedure of IDEA.
+4 
+Find t'ea mod 73 using Fermat's Theorem.
+5 
+What are the requirements of a good hash function?
+6 
+Find gcd (2740,1760) using Euclidean algorithm.
+7 
+List out any four benefits of IPSec.
+8 
+Describe how authentication service is provided in PGP.
+, 9 
+Explain encrypted tunnels.
+l0 
+Differentiate between SSL and TLS.
+PART B
+Answer ony twofull questions, each carries 9 marks.
+*11 a) Use the Vigenere Cipher with keyword "HEALTH" to encrypt the message (Sl
+"Life is full of surprises".
+b) Explain single round of DES algorithm.
+12 a) Encrypt the message "SECURITY" using play fair cipher method with the
+keyword *ATTACKS". List out the rules also.
+b) Explain the primitive operations of RC4 algorithm.
+13 
+Illustrate the single round transformations of AES.
+(4)
+(4)
+(4)
+(4)
+(4)
+(4)
+(4)
+(4)
+(4)
+(5)
+(4)
+(e)
+Page 1 of 2
+
+rfil(Xres40lrt22t0l
+l.
+PART C
+, 4 a) Exp'ain ": ^:::::::'::#::,:::,:::::::^ 
+;and q:,,, is (6)
+implemented for data security. what is the varue of decryption key if
+encryption key is27?
+b) Differentiate between pubric key and private key cryptosystem.
+l5 
+illustrate theworking of SHA_I algorithm.
+16 a) Explain how MAC can be used to provide authentication onry and
+authentication and confidentialitv.
+b) Define Euler Totient Function. prove that, {(pq):(p-lxq-l) where p and q are (5)
+prime numbem.
+PART D
+Answer any twofall questions, eoch corries 12 marhs.
+l7 a) Explain the sequence of steps invorved in the message generation and
+reception in pGp.
+b) compare transport mode and tunner mode functionarities in lpse
+a) Compare the features of any two types of firewalls
+b) what are the steps invorved in the SSL record protocor transmission?
+a) List and explain different S/MIME nressage conrent types
+b) Explain the sequence ofoperations required for Secure Electronic Transaction.
+:*,i**
+(3)
+(e)
+(4)
+,II
+t8
+l9
+(8)
+(4)
+(6)
+(6)
+(6)
+(6)
+Page2of2
+

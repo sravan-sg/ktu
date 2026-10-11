@@ -77,7 +77,6 @@ removing left recursion?
 b) Explain any four compiler writing tools 
 (4) 
  
-http://www.ktuonline.com
 B 
 F1031 
 Pages: 2 
@@ -117,8 +116,8 @@ b)  Explain bottom- up evaluation of s-attributed definitions.
  
  
    
-S→AS/b 
-A→SA/a 
+SàAS/b 
+AàSA/a 
 (6) 
  
 b) Design a type checker for simple arithmetic operations. 
@@ -154,4 +153,3 @@ b) Explain simple code generation algorithm
  
  
  
-http://www.ktuonline.com
