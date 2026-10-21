@@ -1,0 +1,148 @@
+E 
+C1155 
+Pages: 2 
+Page 1 of 2 
+ 
+ 
+ 
+ 
+ 
+Reg No.:_______________ 
+ 
+Name:__________________________ 
+APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY 
+THIRD SEMESTER B.TECH DEGREE EXAMINATION, MAY 2019 
+Course Code: CS207 
+Course Name: ELECTRONIC DEVICES AND CIRCUITS 
+Max. Marks: 100 
+ 
+Duration: 3 Hours 
+PART A 
+ 
+ 
+Answer all questions, each carries 3 marks. 
+Marks 
+1 
+ 
+Derive the input- output relationship of an RC integrator circuit. 
+(3) 
+2 
+ 
+Draw and explain the circuit of a 78XX IC based voltage regulator. 
+(3) 
+3 
+ 
+Design a loaded 5.1 V zener diode voltage regulator for a load current of 20 mA. 
+Input voltage is 12 V dc. Assume that zener knee current is 5 mA. 
+(3) 
+4 
+ 
+Distinguish between 
+                    (i)   Series and Shunt Clippers 
+                    (ii)  Positive and Negative Clippers 
+(3) 
+PART B 
+Answer any two full questions, each carries 9 marks. 
+5 
+a) Draw and explain the circuit of a voltage doubler. 
+(3) 
+ 
+b) With the help of characteristic curves, explain the principle of operation of a 
+Junction Field Effect Transistor. Mark its regions of operation on the curve. 
+(6) 
+6 
+a) Draw and explain the transistorised sweep circuit using a normally off transistor 
+switch. 
+(4) 
+ 
+b) Draw and explain the circuit of a series voltage regulator. 
+(5) 
+7 
+a) Design circuits using passive components to perform the following waveform 
+conversions:  
+                            (i)    2 KHz triangular wave to square wave 
+                            (ii)   0.5 KHz square wave to triangular wave 
+(4) 
+ 
+b) Draw and explain the block diagram of SMPS. 
+(5) 
+PART C 
+Answer all questions, each carries 3 marks. 
+8 
+ 
+Explain thermal runaway in transistors. 
+(3) 
+9 
+ 
+Draw the circuit of a monostable multivibrator using transistors.  
+(3) 
+10  
+Compare BJT and FET. 
+(3) 
+11  
+State and explain Barkhausen Criteria. 
+(3) 
+E 
+C1155 
+Pages: 2 
+Page 2 of 2 
+ 
+PART D 
+Answer any two full questions, each carries 9 marks. 
+12  
+Design an RC Coupled Amplifier using transistors with the following 
+specifications : 
+Vcc =  12 V dc, Ic = 2 mA, hfe = 125, Lower cut off frequency = 100 Hz, Upper 
+cut off frequency = 100 KHz.  
+(9) 
+13 a) What are the effects of cascading on the gain and bandwidth of transistor 
+amplifier circuits. 
+(3) 
+ 
+b) Sketch and explain a Wein Bridge Oscillator using transistors. Explain how 
+conditions for sustained oscillations are satisfied in this circuit. 
+(6) 
+14  
+With neat sketches and waveforms, explain the working of an Astable 
+Multivibrator using transistors.  
+(9) 
+PART E 
+Answer any four full questions, each carries 10 marks. 
+15 a) Draw and explain the circuit of a differential amplifier.  
+(5) 
+ 
+b) Realise an active first order high pass filters using OPAMPS for a lower cut off 
+frequency of 1 KHz and a pass band gain of 2. 
+(5) 
+16 a) Derive an expression for voltage gain of an inverting and non-inverting 
+operational amplifier. 
+(6) 
+ 
+b) Compare active and passive filters. 
+(4) 
+17 a) Draw and explain a sample and hold circuit. Quote a few of its applications. 
+(6) 
+ 
+b) Explain the terms CMRR and Slew Rate of an OPAMP. Also specify the  typical 
+values for IC 741. 
+(4) 
+18 a) Draw and explain the circuit of a Schmitt Trigger using OPAMPS. Explain the 
+terms UTP and LTP of a Schmitt Trigger. 
+(6) 
+ 
+b) Compare binary weighted and R-2R ladder D/A Converters. 
+(4) 
+19 a) Draw and explain the circuit of a summing amplifier using OPAMP. Realise  
+Y(t) = 5 V1+ 2 V2 – 4V3 where V1, V2 and V3 are input magnitudes. 
+(5) 
+ 
+b) Sketch and explain the circuit of a monostable multivibrator using IC 555. 
+(5) 
+20 a) Explain the circuit of a Wein Bridge Oscillator using OPAMPS 
+(5) 
+ 
+b) Design an Astable Multivibrator using IC 555 for a frequency of operation  
+2 KHz and a duty cycle 60%. 
+(5) 
+**** 
+ 
