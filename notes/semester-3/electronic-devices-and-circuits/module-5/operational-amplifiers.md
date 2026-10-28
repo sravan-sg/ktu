@@ -10,6 +10,37 @@ The key insight is that when **negative feedback** is applied around an op-amp w
 
 ---
 
+### IC 741 — Internal Architecture and Pin Configuration
+
+The 741 is the industry-standard op-amp. Its 8-pin DIP package:
+
+```
+         ┌───────────┐
+Offset N1 ─ 1  │741│  8 ─ NC (No Connect)
+Inv Input (−) ─ 2  │   │  7 ─ V+ (Positive Supply, +15V)
+Non-Inv (+) ─ 3  │   │  6 ─ Output
+         V− ─ 4  │   │  5 ─ Offset N2
+                 └───────────┘
+
+Pin 2: Inverting input (−)
+Pin 3: Non-inverting input (+)
+Pin 4: V− (Negative supply, e.g. −15V)
+Pin 6: Output
+Pin 7: V+ (Positive supply, e.g. +15V)
+Pins 1 & 5: Offset null (connect 10kΩ pot between them, wiper to V−)
+Pin 8: No connection
+```
+
+**Internal stages of IC 741:**
+
+1. **Input differential stage:** Long-tailed pair (Q1, Q2) + active load (current mirror). This stage provides the high CMRR and sets the input impedance.
+2. **Intermediate gain stage:** Common-emitter amplifier (Q16, Q17) with active load. Provides the bulk of the open-loop voltage gain.
+3. **Level-shifting stage:** Shifts DC operating point so output can swing around 0V with split supply.
+4. **Output stage:** Class AB complementary (NPN + PNP emitter followers). Provides low output impedance and drives the load.
+5. **Compensation capacitor:** 30pF internal (between base and collector of Q16). This is what causes the single-pole rolloff (GBW = 1MHz) and sets the slew rate (SR = 0.5 V/μs).
+
+---
+
 ### Differential Amplifier — The Core Building Block
 
 The first stage of every op-amp is a **differential amplifier** that amplifies the *difference* between two input signals while rejecting signals common to both inputs (noise).
@@ -18,1038 +49,1177 @@ The first stage of every op-amp is a **differential amplifier** that amplifies t
 ```
                VCC (+12V)
                 │
-           [RC] [RC]   ← Equal, matched collector resistors
+           [RC] [RC]   ← Equal, matched collector resistors (typically 10kΩ)
             │     │
-            ├─────┤ ← Differential output Vo = Ad(V₁ - V₂)
+            ├─────┤ ← Differential output Vod = Ad(V₁ − V₂)
        Q1-C     Q2-C
 V1──B──Q1       Q2──B──V2
        Q1-E   Q2-E
             └──┬──┘ ← Emitters tied together at a common node
              [Iee] or [RE]   ← Constant current source (or RE)
                │
-              VEE (-12V)
+              VEE (−12V)
 ```
 
 **Working — Differential Mode (V1 ≠ V2):**
 
-Let V1 = +Vd/2 and V2 = -Vd/2 (pure differential signal):
-- Q1 base is more positive → Q1 draws more IC → VCE1 drops → VC1 drops
-- Q2 base is less positive → Q2 draws less IC → VCE2 rises → VC2 rises
-- Differential output: Vod = VC2 - VC1 = Ad × (V1 - V2)
-- Gain: Ad = gm × RC (differential mode voltage gain)
+Let V1 = +Vd/2 and V2 = −Vd/2 (pure differential signal, Vd = V1 − V2):
+
+- Q1 base is more positive → Q1 draws more collector current (ΔIC1 = +gm × Vd/2)
+- Q2 base is less positive → Q2 draws less collector current (ΔIC2 = −gm × Vd/2)
+- Q1 collector voltage drops: ΔVC1 = −RC × ΔIC1 = −gm × RC × Vd/2
+- Q2 collector voltage rises: ΔVC2 = −RC × ΔIC2 = +gm × RC × Vd/2
+- Differential output: Vod = VC2 − VC1 = gm × RC × Vd
+
+```
+Differential voltage gain (double-ended):
+Ad = Vod/(V1−V2) = gm × RC
+
+Single-ended gain (output from one collector to GND):
+Ad(single) = gm × RC / 2   [only half the differential swing]
+```
 
 **Working — Common Mode (V1 = V2 = Vcm):**
 
-Let V1 = V2 = Vcm (noise or interference signal, same on both):
-- Both Q1 and Q2 receive identical signals → symmetric currents
-- By matched symmetry: ΔVC1 = ΔVC2 (both change identically)
-- Differential output: Vod = VC2 - VC1 = 0 (ideally, common signal cancels!)
-- Common-mode gain: Ac → 0 for ideal matching
-- With large RE (or constant current source): RE acts as a very high impedance to common-mode signals → forces even tighter rejection
+Let V1 = V2 = Vcm (noise or interference, appears identically on both inputs):
 
-**Why constant current source replaces RE?**
+- Both Q1 and Q2 bases rise by Vcm → both try to increase IC
+- But emitter current source Iee is **fixed** → total emitter current cannot increase
+- The current cannot redistribute → both IC1 and IC2 stay approximately constant
+- Both VC1 and VC2 change by the same amount → differential output Vod = VC2 − VC1 ≈ 0
 
-A resistor RE provides some common-mode rejection but its rejection ratio is limited by its finite impedance. A **constant current source** has near-infinite impedance — it forces Iee = constant regardless of common-mode voltage changes — giving maximum CMRR.
+**Why common-mode gain is not zero (finite CMRR in practice):**
 
-**Differential gain (Ad):**
+If the emitter element is a resistor RE (not an ideal current source):
 ```
-Ad = gm × RC   (for differential output taken between both collectors)
-Ad = gm × RC/2  (for single-ended output from one collector)
-
-Where gm = IC/VT = IC/26mV at room temperature
+Ac = −RC / (2RE + 1/gm) ≈ −RC/(2RE)   for RE >> 1/gm
 ```
 
-**CMRR (Common Mode Rejection Ratio):**
+For a practical constant current source with output impedance Ro:
 ```
-CMRR = Ad/Ac
+Ac ≈ −RC / (2Ro)   [Ro can be 1MΩ+ → very low Ac]
+```
 
-In dB: CMRR(dB) = 20 log₁₀(Ad/Ac)
+**CMRR derivation:**
+```
+CMRR = |Ad/Ac|
 
-For ideal op-amp: CMRR = ∞
+For resistor RE:
+Ad = gm × RC
+Ac = RC/(2RE) → CMRR = 2 × gm × RE
+
+For current source (Ro replaces RE):
+CMRR = 2 × gm × Ro   → CMRR → ∞ as Ro → ∞
+
+In dB: CMRR(dB) = 20 log₁₀(CMRR)
+
 For IC 741: CMRR(min) = 70dB, CMRR(typ) = 90dB
 ```
 
-**CMRR depends on:**
-1. Matching of Q1 and Q2 (hfe, VBE must be identical)
-2. Matching of collector resistors RC
-3. Quality of emitter current source (higher impedance → higher CMRR)
-4. Layout symmetry (temperature matching)
+**What CMRR means practically:**
 
-**Application of high CMRR:**
+In an ECG machine, the heart signal is ≈1mV differential. Mains interference (50Hz) appears as ≈100mV common-mode on both electrodes. With a differential amplifier with Ad = 1000 and CMRR = 90dB (CMRR = 31,623):
+```
+Ac = Ad/CMRR = 1000/31623 = 0.032
 
-In an ECG machine, the heart signal is ~1mV differential. The 50Hz mains hum appears equally on both leads (common-mode, ~50mV). A differential amplifier with 90dB CMRR:
+Output signal from ECG: 1mV × 1000 = 1V
+Output from mains hum: 100mV × 0.032 = 3.2mV   ← easily filtered out
+Signal-to-noise ratio: 1V / 3.2mV = 312 (about 50dB)
 ```
-Differential signal amplified: 1mV × 1000 = 1V (with Ad = 1000)
-Common-mode hum at output: 50mV × Ac = 50mV × Ad/CMRR = 50mV × 1000/31623 = 1.58mV
-SNR: 1V / 1.58mV = 633 → easily separable
-```
+
+Without CMRR (simple single-ended amplifier): mains hum at output = 100mV × 1000 = 100V — completely overwhelming the signal.
 
 ---
 
 ### Op-Amp Characteristics — Ideal vs Practical (IC 741)
 
-| Parameter | Ideal Op-Amp | IC 741 (Practical) | What it limits |
-|-----------|-------------|---------------------|---------------|
-| Open-loop gain AOL | ∞ | 200,000 (106dB) | Closed-loop accuracy |
-| Input impedance Zin | ∞ Ω | 2 MΩ (differential) | Input loading |
-| Output impedance Zout | 0 Ω | 75 Ω | Output current/loading |
-| Bandwidth (GBW) | ∞ Hz | 1 MHz | High-frequency operation |
-| CMRR | ∞ | 90 dB (typ), 70dB (min) | Noise rejection |
-| Slew rate | ∞ V/μs | 0.5 V/μs | Large-signal speed |
-| Input offset voltage Vio | 0 V | ±2 mV (max ±6mV) | DC accuracy |
-| Input bias current IB | 0 A | 80 nA (typ), 500nA (max) | DC offset at output |
-| Input offset current Iio | 0 A | 20 nA (typ), 200nA (max) | DC offset balance |
-| Supply voltage range | Any | ±5V to ±18V | System voltage |
-| Output voltage swing | ±∞ | ±(VCC - 1.5V) ≈ ±13V for ±15V supply | Dynamic range |
-| Short-circuit protection | N/A | Yes (internal) | Fault protection |
+| Parameter | Symbol | Ideal | IC 741 Practical | What it limits |
+|-----------|--------|-------|-----------------|----------------|
+| Open-loop voltage gain | AOL | ∞ | 200,000 (106dB) | Closed-loop accuracy |
+| Input impedance | Zin | ∞ Ω | 2 MΩ | Input loading |
+| Output impedance | Zout | 0 Ω | 75 Ω | Output current drive |
+| Gain-bandwidth product | GBW | ∞ | 1 MHz | High-frequency gain |
+| CMRR | — | ∞ | 90dB (typ), 70dB (min) | Noise rejection |
+| Slew rate | SR | ∞ V/μs | 0.5 V/μs | Large-signal speed |
+| Input offset voltage | Vio | 0 V | ±2mV (typ), ±6mV (max) | DC accuracy |
+| Input bias current | IB | 0 A | 80nA (typ), 500nA (max) | DC offset |
+| Input offset current | Iio | 0 A | 20nA (typ), 200nA (max) | Residual DC error |
+| Output swing | — | ±∞ | ±(VCC − 1.5V) ≈ ±13.5V (at ±15V) | Dynamic range |
+| Supply voltage range | — | Any | ±5V to ±18V | System design |
+| Short-circuit protection | — | N/A | Yes (built-in 25mA) | Device safety |
 
-**Open-Loop Gain (AOL):**
+---
 
-The gain without any feedback. For IC 741: AOL = 200,000 (at DC, 0Hz). This gain rolls off with frequency:
+#### Open-Loop Gain (AOL) and Frequency Response
+
+The gain without feedback. For IC 741, the open-loop gain is **not flat** — it rolls off rapidly:
+
 ```
-AOL(f) = AOL(0) / (1 + f/f3dB)
+AOL(f) = AOL(DC) / (1 + jf/f1)   [first-order roll-off due to compensation capacitor]
 
-For 741: f3dB ≈ 5Hz (open-loop -3dB frequency)
-AOL(0) = 200,000
+For 741:
+AOL(DC) = 200,000
+f1 = 5Hz   (open-loop −3dB frequency — surprisingly low!)
 
-The gain starts rolling off at just 5Hz! At 1MHz, gain = 1 (unity gain bandwidth).
-```
-
-**Gain-Bandwidth Product (GBW = fT = 1MHz for 741):**
-```
-GBW = AOL × f3dB = 200,000 × 5Hz = 1MHz = constant
-
-Closed-loop bandwidth at a given gain:
-f-3dB(closed-loop) = GBW / Af = 1MHz / Af
-
-At Af = 1 (voltage follower): BW = 1MHz
-At Af = 10: BW = 100kHz
-At Af = 100: BW = 10kHz
-At Af = 1000: BW = 1kHz
+At f = 5Hz:   AOL = 141,421 (−3dB point)
+At f = 1kHz:  AOL = 200,000/200 = 1,000
+At f = 10kHz: AOL = 200,000/2000 = 100
+At f = 1MHz:  AOL = 1 (unity gain bandwidth)
 ```
 
-**Slew Rate (SR):**
+**Gain-Bandwidth Product (GBW):**
 
-The maximum rate at which the **output voltage can change**, regardless of input signal:
+```
+GBW = AOL(DC) × f1 = 200,000 × 5Hz = 1 MHz
+
+This is constant across all frequencies (for the single-pole model):
+GBW = AOL(f) × f = 1 MHz always
+
+For a closed-loop non-inverting amplifier with gain Af:
+Closed-loop bandwidth = GBW / Af = 1MHz / Af
+
+Af = 1 (voltage follower):  BW = 1MHz
+Af = 10:                     BW = 100kHz
+Af = 100:                    BW = 10kHz
+Af = 1000:                   BW = 1kHz
+```
+
+**Physical insight:** The compensation capacitor (30pF in 741) intentionally creates this slow rolloff — it prevents oscillation by ensuring only one dominant pole controls the phase. Without it, multiple transistor poles would combine to create 180° phase shift within the feedback loop → spontaneous oscillation.
+
+---
+
+#### Slew Rate (SR)
+
+The maximum rate at which the **output voltage can change**, regardless of input:
+
 ```
 SR = |dVout/dt|_max
 
-For IC 741: SR = 0.5 V/μs
-
-Physical cause: The internal compensation capacitor (30pF in 741) can only be charged at a finite rate limited by the bias current of the input stage.
+For IC 741: SR = 0.5 V/μs = 500,000 V/s
 ```
 
-**Why slew rate limits large signals:**
+**Physical origin of SR:** The internal compensation capacitor (30pF) must be charged or discharged by the input stage bias current (≈19μA for 741):
 
-The output of an op-amp slews when the input voltage change demands a rate of change that exceeds SR. For a sinusoidal output Vm×sin(ωt):
 ```
-Maximum rate of change = dVout/dt|_max = ω × Vm (at zero crossing)
+SR = I_bias / C_comp = 19μA / 30pF = 0.63 V/μs   ≈ 0.5 V/μs (matches datasheet)
+```
 
-For no slew-rate distortion: ω × Vm ≤ SR
-→ f ≤ SR / (2π × Vm)
+**When does SR limit the output?**
 
+For a sinusoidal output Vm sin(2πft), the maximum slope (at zero crossing) is:
+```
+(dVout/dt)_max = 2π × f × Vm
+
+For no slewing: 2π × f × Vm ≤ SR
 Full-power bandwidth: fFP = SR / (2π × Vm)
-
-For IC 741 with Vm = 10V:
-fFP = 0.5×10⁶ / (2π × 10) = 7.96kHz
-
-For Vm = 1V:
-fFP = 0.5×10⁶ / (2π × 1) = 79.6kHz
-
-Note: SR limits large-signal bandwidth; GBW limits small-signal bandwidth
 ```
 
-**Slew rate vs GBW:**
-- **GBW (small-signal bandwidth):** Applies for small amplitude signals where the output stays in the linear region. Determined by frequency compensation.
-- **SR (large-signal rate):** Applies when the output voltage must change rapidly over a large voltage swing. Determined by available charging current for the compensation capacitor.
+| Output amplitude Vm | IC 741 fFP |
+|--------------------|-----------:|
+| 10V (peak) | 7.96 kHz |
+| 5V | 15.9 kHz |
+| 1V | 79.6 kHz |
+| 0.1V | 796 kHz |
 
-For IC 741 at Av = 1 (voltage follower, BW = 1MHz):
-- A 1V peak sine wave at 1MHz: Required slope = 2π × 1MHz × 1 = 6.28 V/μs > 0.5 V/μs → **slew-rate limited even at 1MHz!**
-- A 1mV peak sine wave at 1MHz: Required slope = 2π × 1MHz × 0.001 = 0.00628 V/μs < 0.5 V/μs → **not slew-rate limited (GBW is the limit)**
+**SR vs GBW — the critical distinction:**
 
-**Input Offset Voltage (Vio):**
+- **GBW** is a *small-signal* limit — at what frequency does the op-amp fail to amplify a tiny signal?
+- **SR** is a *large-signal* limit — at what frequency does the output fail to follow a large swing?
 
-The small differential voltage that must be applied between the inputs to make the output exactly zero. Caused by inherent mismatches in the differential pair transistors (unequal VBE, hfe, RC).
+**Example:** IC 741 as voltage follower (GBW limit = 1MHz, SR = 0.5V/μs):
+- A 1mV sine wave at 900kHz: slope = 2π × 900k × 0.001 = 5.65 V/μs > 0.5 V/μs? NO: 2π × 900kHz × 0.001V = 5.65mV/μs = 0.00565 V/μs << SR. Fine.
+- A 5V sine wave at 15kHz: slope = 2π × 15k × 5 = 471 kV/s = 0.471 V/μs < 0.5 V/μs. Just fine.
+- A 5V sine wave at 20kHz: slope = 2π × 20k × 5 = 628 kV/s = 0.628 V/μs > 0.5 V/μs. **Slewing!** Output becomes triangular.
+
+**Slew-rate distortion waveform:**
+```
+Desired output (sine, Vm=5V, f=50kHz):       ∿∿∿∿∿∿∿∿
+                                                Slope > SR!
+Actual output (slewing, rate = 0.5V/μs): /\/\/\/\/  ← triangular wave
+```
+
+---
+
+#### Input Offset Voltage (Vio)
+
+The small differential voltage that must be applied between the input terminals to make the output exactly zero. Caused by manufacturing mismatch in the differential pair (unequal VBE, unequal β, mismatched RC resistors).
 
 ```
 For IC 741: Vio = ±2mV (typ), ±6mV (max)
 
-Effect on output: Vout(error) = Vio × (1 + Rf/R1)
-For gain = 100: Vout(error) = ±2mV × 100 = ±200mV DC error!
+Effect on inverting amplifier output:
+Vout(error) = Vio × (1 + Rf/Rin)   [offset appears amplified by closed-loop gain]
+
+For Rf/Rin = 100 (gain = −100):
+Vout(error) = ±2mV × 101 = ±202mV DC error at output
 ```
 
-**Correction:** Apply small voltage at offset-null pins (pins 1 and 5 of 741 with a 10kΩ potentiometer connected to the negative supply pin).
+**Correction (Offset Null):**
 
-**Input Bias Current (IB):**
+A 10kΩ potentiometer connected between pins 1 and 5, with the wiper going to V− (pin 4). Adjusting the pot trims the internal current imbalance until Vout = 0 with Vin = 0. This must be redone if temperature changes significantly (Vio drifts with temperature at ≈5μV/°C for 741).
 
-The average of the two input terminal currents (base currents of input differential pair BJTs):
+---
+
+#### Input Bias Current (IB)
+
+The average DC current that flows into both input terminals. In BJT op-amps, this is the base current of the differential pair transistors.
+
 ```
-IB = (IB+ + IB-) / 2
+IB = (IB+ + IB−) / 2
 
 For IC 741: IB = 80nA (typ), 500nA (max)
-
-Effect: Even with Vin = 0, bias current flows through feedback resistors → creates voltage offsets.
-Error output: Vout(error) = IB × Rf (approximately, for inverting amp)
 ```
 
-**Correction:** Add a compensation resistor Rcomp = R1 || Rf at the non-inverting (+) input. The equal bias current through Rcomp creates a compensating offset voltage that cancels the error from IB in the inverting path.
+**Why this causes output error:**
 
-**Input Offset Current (Iio):**
-
-The *difference* between the two input bias currents (caused by BJT mismatch):
+Even with Vin = 0, IB flows through the feedback resistors, creating a voltage:
 ```
-Iio = |IB+ - IB-|
+For inverting amplifier: V−(error) = IB × (Rin || Rf) ≈ IB × Rf/2   [approximately]
+This error is amplified:
+Vout(error) ≈ IB × Rf   (for Rf >> Rin, approximately)
 
-For IC 741: Iio = 20nA (typ), 200nA (max)
-
-Note: Iio << IB typically. If compensation resistor is used, only Iio causes residual error.
-Residual output error: Vout(error) = Iio × Rf
+For IB = 80nA and Rf = 100kΩ: Vout(error) = 80nA × 100k = 8mV
 ```
+
+**Compensation:** Add resistor Rcomp = Rin || Rf at the non-inverting (+) input. Now IB flows through Rcomp and creates a voltage that cancels the error from IB− flowing through Rin||Rf:
+
+```
+Rcomp = Rin || Rf   ← This is the standard bias current compensation resistor
+
+With Rcomp: only the *difference* (Iio = IB+ − IB−) causes error
+Residual error: Vout(error) = Iio × Rf   [much smaller since Iio << IB]
+```
+
+---
+
+#### Input Offset Current (Iio)
+
+The difference between the two input bias currents, caused by transistor mismatch:
+
+```
+Iio = |IB+ − IB−|
+
+For IC 741: Iio = 20nA (typ), 200nA (max)   [about 1/4 of IB]
+
+After adding Rcomp: residual error = Iio × Rf
+For Iio = 20nA, Rf = 100kΩ: residual error = 20nA × 100k = 2mV
+```
+
+**Note on CMOS op-amps:** Modern CMOS op-amps (e.g., TL071, LMC6482) have MOSFET input stages with IB in the femtoampere range (10⁻¹⁵ A) — bias current compensation resistors are not needed.
 
 ---
 
 ### The "Virtual Short" Principle — Complete Derivation
 
-When negative feedback is applied to an op-amp with finite (very high) AOL:
+When an op-amp with gain AOL is connected in a negative feedback loop:
 
 ```
-Vout = AOL × (V+ - V-)   [open-loop equation]
-Vout = AOL × Vd            [Vd = differential input]
+Error voltage: Vε = V+ − V−   [differential input]
+Output: Vout = AOL × Vε
 
-Since AOL = 200,000 and Vout is bounded (±13V for ±15V supply):
-|Vd| = |Vout|/AOL = 13/200,000 = 65μV ≈ 0
+The output drives the feedback network, which forces V− toward V+:
+Vε = Vout / AOL = (finite voltage) / 200,000 = extremely small
 
-So: V+ ≈ V-  (the two inputs are essentially at the same potential)
+For Vout = 10V: Vε = 10/200,000 = 50μV ≈ 0
 ```
 
-This is called **"virtual short"** — the inputs appear shorted to each other in potential, but NOT in current (no current flows between them because the input impedance is still 2MΩ or higher).
+Therefore: V+ ≈ V− (inputs appear at the same potential) — this is the **virtual short**.
 
-**The Two Golden Rules of Op-Amp Analysis (for negative feedback circuits):**
+**Important: it is virtual, not real:**
+- Virtual: The potentials are equal, but there is no low-resistance connection between them
+- NOT real: No current flows between V+ and V− (input impedance is 2MΩ)
 
-1. **V+ = V-** (virtual short — the differential input voltage is driven to nearly zero by the feedback)
-2. **I+ = I- = 0** (no current flows into either input terminal — ideal op-amp assumption)
+**The Two Golden Rules of Ideal Op-Amp Analysis:**
 
-These two rules are all you need to analyze any op-amp circuit with negative feedback.
+> 1. **V+ = V−** (virtual short — differential input ≈ 0 for negative feedback circuits)
+> 2. **I+ = I− = 0** (no current into either input terminal)
+
+Apply these two rules mechanically to derive the behavior of any op-amp circuit with negative feedback.
 
 ---
 
-### Op-Amp Applications
+### Op-Amp Applications — Complete Analysis
 
-#### 1. Inverting Amplifier (Scale Changer)
+#### Application 1: Inverting Amplifier (Scale Changer)
 
 **Circuit:**
 ```
-         Rf
-    ┌────┤├────────────────────── Vout
-    │                │
-Vin─┤ Rin ──── (−) ─┘
+              Rf
+    ┌─────────┤├──────────── Vout
+    │                  │
+Vin ─┤ Rin ──── (−) ────┘
                 (+)
                  │
                 GND
 
-Note: (+) input is grounded.
-Resistor Rcomp = Rin || Rf at (+) input reduces offset error from IB.
+Optional: Rcomp = Rin||Rf connected from (+) to GND (bias compensation)
 ```
 
-**Derivation using virtual short:**
+**Step-by-step derivation:**
 
-Step 1: V+ = GND = 0V. By virtual short: V- = V+ = 0V (V- is at "virtual ground").
+1. V+ = 0V (grounded). By virtual short: **V− = 0V** ("virtual ground")
+2. Current through Rin: since V− = 0, I₁ = (Vin − 0)/Rin = **Vin/Rin**
+3. KCL at the V− node: I_into_op-amp = 0 → I_Rin = I_Rf = **Vin/Rin**
+4. Voltage at Vout from V−: Vout = V− − I_Rf × Rf = 0 − (Vin/Rin) × Rf
 
-Step 2: Current through Rin (into virtual ground):
 ```
-I = Vin / Rin
-```
+┌───────────────────────────────┐
+│  Av = Vout/Vin = −Rf/Rin     │
+└───────────────────────────────┘
 
-Step 3: Since no current enters the op-amp (-) input, the entire current I flows through Rf:
-```
-Vout = V- - I × Rf = 0 - (Vin/Rin) × Rf = -(Rf/Rin) × Vin
-```
-
-**Result:**
-```
-Av = Vout/Vin = -Rf/Rin
-
-Input impedance: Zin = Rin (input sees Rin to virtual ground)
-Output impedance: Zout ≈ 0 (op-amp output)
-Phase: 180° inversion
+Input impedance:  Zin = Rin   (input "sees" Rin to virtual ground)
+Output impedance: Zout ≈ 75Ω / (1 + AOL × β) ≈ 0 Ω (very low)
+Phase:            180° (inverting)
 ```
 
-**Design:** Choose Rf and Rin to set gain magnitude. For gain = -10: Rf/Rin = 10, e.g., Rf = 100kΩ, Rin = 10kΩ.
+**Design example:** Gain = −47:
+- Choose Rin = 1kΩ → Rf = 47kΩ
+- Bandwidth = GBW/|Av| = 1MHz/47 = 21.3kHz
+- Rcomp = 1kΩ || 47kΩ = 979Ω ≈ 1kΩ
 
 ---
 
-#### 2. Sign Changer (Unity-Gain Inverter)
+#### Application 2: Sign Changer (Unity-Gain Inverter)
 
-Special case of inverting amplifier with Rf = Rin:
+Special case of the inverting amplifier with Rf = Rin:
 ```
-Av = -Rf/Rin = -1
+Av = −Rf/Rin = −1
 
-Vout = -Vin   (same amplitude, opposite polarity, 180° phase shift)
+Vout = −Vin   (identical amplitude, 180° phase shift)
 ```
 
-Use: Invert a signal's polarity without changing its amplitude. Common in analog computing, analog signal processing.
+**Use:** Negate a signal in analog computation. In audio, invert phase to cancel standing waves in a room.
 
 ---
 
-#### 3. Non-Inverting Amplifier
+#### Application 3: Non-Inverting Amplifier
 
 **Circuit:**
 ```
-              Rf
-    Vout ─────┤├──────── (−)
-                    │
-                   R1
-                    │
-                   GND
+                        Rf
+Vout ─────────────────┤├──── (−)
+                              │
+                             R1
+                              │
+                             GND
 
-Vin ────────────── (+)
+Vin ──────────────────────── (+)
+```
+
+**Step-by-step derivation:**
+
+1. V+ = Vin (input connected directly to +)
+2. By virtual short: **V− = V+ = Vin**
+3. V− is the midpoint of a voltage divider (R1 from GND, Rf from Vout):
+   ```
+   V− = Vout × R1/(R1 + Rf)
+   ```
+4. Set V− = Vin and solve for Vout:
+   ```
+   Vin = Vout × R1/(R1 + Rf)
+   Vout/Vin = (R1 + Rf)/R1 = 1 + Rf/R1
+   ```
+
+```
+┌───────────────────────────────────────┐
+│  Av = 1 + Rf/R1   (always ≥ 1)       │
+└───────────────────────────────────────┘
+
+Input impedance:  Zin >> Rin of op-amp (Zin = AOL × Rin × β ≈ GΩ)
+Output impedance: Zout ≈ 0 Ω
+Phase:            0° (non-inverting)
+Minimum gain:     1 (when Rf = 0, R1 = ∞ → voltage follower)
+```
+
+**Comparison: Inverting vs Non-Inverting:**
+
+| Property | Inverting | Non-Inverting |
+|----------|-----------|---------------|
+| Gain formula | −Rf/Rin | 1 + Rf/R1 |
+| Gain sign | Negative (≤ −1 possible) | Always positive (≥ 1) |
+| Input impedance | Rin (moderate) | Very high (GΩ range) |
+| Output impedance | ≈ 0 | ≈ 0 |
+| Phase shift | 180° | 0° |
+| Min gain magnitude | Any | 1 |
+
+---
+
+#### Application 4: Voltage Follower (Unity-Gain Buffer)
+
+Special case: Rf = 0 (short circuit), R1 = ∞ (open circuit):
+
+```
+         ┌───────────────── Vout
+         │          (−)
+Vin ──── (+)
+```
+
+Derivation: V+ = Vin. V− = Vout (direct feedback). Virtual short → Vout = Vin.
+
+```
+Av = 1
+Zin = AOL × Zin(open) ≈ several GΩ
+Zout ≈ 0 Ω (< 1Ω in practice)
+```
+
+**Critical use case:** Prevents source loading. A pH electrode (source impedance = 10⁹ Ω) connected to a 10kΩ input amplifier without a buffer:
+```
+Signal attenuation = Zload/(Zsource + Zload) = 10k/(10⁹ + 10k) ≈ 10⁻⁵   (99.999% loss!)
+With voltage follower buffer: signal transfers at ≈ 100% → no loss.
+```
+
+---
+
+#### Application 5: Summing Amplifier (Inverting Adder)
+
+**Circuit (3-input):**
+```
+V1 ─┤ R1 ─┐
+V2 ─┤ R2 ─┤── (−) ──┬── [Op-Amp] ── Vout
+V3 ─┤ R3 ─┘         └── Rf ──── (back to −)
+              (+) ── GND
 ```
 
 **Derivation:**
 
-Step 1: V+ = Vin (input connects directly to + terminal).
-Step 2: By virtual short: V- = V+ = Vin.
-Step 3: V- is the junction of Rf and R1, forming a voltage divider from Vout to GND:
+Virtual ground: V− = 0. All input currents flow into the virtual ground node independently:
 ```
-V- = Vout × R1/(R1 + Rf)
-```
+I1 = V1/R1,   I2 = V2/R2,   I3 = V3/R3
 
-Step 4: Set V- = Vin:
-```
-Vin = Vout × R1/(R1 + Rf)
-Vout/Vin = (R1 + Rf)/R1 = 1 + Rf/R1
+KCL at V−: I1 + I2 + I3 = I_Rf   (since I into op-amp = 0)
+
+Vout = −I_Rf × Rf = −(V1/R1 + V2/R2 + V3/R3) × Rf
+
+= −(V1 × Rf/R1 + V2 × Rf/R2 + V3 × Rf/R3)
 ```
 
-**Result:**
+**Key insight:** Each input contributes independently (superposition principle), because the virtual ground node holds each input's effect isolated from the others.
+
+**Equal resistors (R1 = R2 = R3 = R):**
 ```
-Av = 1 + Rf/R1
+Vout = −(Rf/R) × (V1 + V2 + V3)
 
-Input impedance: Zin = AOL × (Rin of op-amp) → very large (100MΩ to GΩ)
-Output impedance: Zout ≈ 0
-Phase: 0° (non-inverting)
-Minimum gain: 1 (when Rf = 0, R1 = ∞ → voltage follower)
-```
-
----
-
-#### 4. Voltage Follower (Buffer)
-
-Special case of non-inverting amplifier with Rf = 0 (short), R1 = ∞ (open):
-```
-Av = 1 + 0/∞ = 1
-Vout = Vin
-
-Input impedance: Maximum (several GΩ with feedback)
-Output impedance: Very low (< 1Ω)
+For Rf = R: Vout = −(V1 + V2 + V3)   [unity-gain inverting adder]
+For Rf = R/3: Vout = −(V1 + V2 + V3)/3   [averaging amplifier!]
 ```
 
-**Use case:** Impedance buffer — connect a high-impedance source (e.g., pH electrode at 100MΩ) to a low-impedance load (amplifier at 10kΩ) without signal loss.
-
----
-
-#### 5. Summing Amplifier (Inverting Adder)
-
-**Circuit:**
+**Scaling to different gains (Rf = 10kΩ):**
 ```
-              Rf
-    ┌─────────┤├──────────────── Vout
-    │                    │
-V1 ─┤ R1 ─── (−) ────────┘
-V2 ─┤ R2 ─── (+) = GND
-V3 ─┤ R3
-    │
-   GND
-```
+For gain on V1 = −5: R1 = Rf/5 = 2kΩ
+For gain on V2 = −3: R2 = Rf/3 = 3.3kΩ
+For gain on V3 = −2: R3 = Rf/2 = 5kΩ
 
-**Derivation:**
-
-V- is virtual ground (= 0V). Currents from all inputs flow into virtual ground:
-```
-I1 = V1/R1,  I2 = V2/R2,  I3 = V3/R3
-
-Total current into V- node: I_total = I1 + I2 + I3
-
-This total current flows through Rf:
-Vout = -(I1 + I2 + I3) × Rf = -(V1×Rf/R1 + V2×Rf/R2 + V3×Rf/R3)
-```
-
-**Special case (R1 = R2 = R3 = Rf = R):**
-```
-Vout = -(V1 + V2 + V3)
-```
-
-**Equal gain, different gains:**
-```
-For V1 gain = -5, V2 gain = -3, V3 gain = -2 (with Rf = 10kΩ):
-R1 = Rf/5 = 2kΩ
-R2 = Rf/3 = 3.33kΩ ≈ 3.3kΩ
-R3 = Rf/2 = 5kΩ
-
-Vout = -(5V1 + 3V2 + 2V3)
+Vout = −(5V1 + 3V2 + 2V3)
 ```
 
 ---
 
-#### 6. Subtractor (Difference Amplifier)
+#### Application 6: Subtractor (Difference Amplifier)
 
 **Circuit:**
 ```
          R2
-    ┌────┤├────────────────────── Vout
-    │             │
-V1 ─┤ R1 ──── (−)─┘
+    ┌────┤├──────────── Vout
+    │          │
+V1 ─┤ R1 ──(−)┘
               (+)
                │
-V2 ─┤ R3 ────┤├─── GND
+V2 ─┤ R3 ─ ─┤├─── GND
               R4
 ```
 
-**Derivation:**
+**Complete derivation using superposition:**
 
-Apply superposition. Use voltage divider for V+ and virtual short for V-:
-
-**V+ (due to V2 through R3-R4 divider):**
+**Step 1 — V+ (non-inverting input voltage, due to V2 only):**
 ```
+V2 drives (+) through a voltage divider R3 and R4:
 V+ = V2 × R4/(R3 + R4)
 ```
 
-**V- = V+ (virtual short):**
+**Step 2 — Virtual short:** V− = V+ = V2 × R4/(R3 + R4)
+
+**Step 3 — KCL at V− (inverting input node):**
 ```
-V- = V2 × R4/(R3 + R4)
+(V1 − V−)/R1 = (V− − Vout)/R2
+
+Cross-multiplying:
+(V1 − V−) × R2 = (V− − Vout) × R1
+V1R2 − V−R2 = V−R1 − VoutR1
+VoutR1 = V−R1 + V−R2 − V1R2
+Vout = V−(R1 + R2)/R1 − V1(R2/R1)
 ```
 
-**KCL at V- node:**
+**Step 4 — Substitute V−:**
 ```
-(V1 - V-)/R1 = (V- - Vout)/R2
-
-Vout = V- × (1 + R2/R1) - V1 × (R2/R1)
-     = V2 × [R4/(R3+R4)] × (1 + R2/R1) - V1 × (R2/R1)
+Vout = [V2 × R4/(R3+R4)] × (1 + R2/R1) − V1 × (R2/R1)
 ```
 
 **For equal resistors R1 = R2 = R3 = R4 = R:**
 ```
-V+ = V2/2
-Vout = (V2/2)(1 + 1) - V1 × 1 = V2 - V1
+V+ = V2 × R/(R+R) = V2/2
+Vout = (V2/2)(1 + R/R) − V1 × (R/R)
+     = (V2/2)(2) − V1
+     = V2 − V1
 
-Av = Vout/(V2-V1) = 1   (unity gain differential)
+∴ Vout = V2 − V1   [unity-gain subtractor]
 ```
 
-**For R2/R1 = R4/R3 = K (general case):**
+**General case (R2/R1 = R4/R3 = K):**
 ```
-Vout = K × (V2 - V1)
+Vout = K × (V2 − V1)
 ```
 
-**CMRR of subtractor:** Depends critically on resistor matching. If R2/R1 ≠ R4/R3, common-mode rejection degrades. Use precision (0.1%) resistors for good CMRR.
+**Resistor matching is critical:** If R2/R1 ≠ R4/R3, the common-mode rejection degrades badly. For a subtractor with 60dB CMRR, resistors must match to better than 0.1%.
 
 ---
 
-#### 7. Integrator (Miller Integrator)
+#### Application 7: Integrator (Miller Integrator)
 
 **Circuit:**
 ```
-              C
-    ┌─────────||───────────────── Vout
-    │                     │
-Vin ─┤ R ──── (−) ─────────┘
-              (+)
+              C  (feedback capacitor)
+    ┌─────────||──────────────── Vout
+    │                    │
+Vin ─┤ R ──── (−) ────────┘
+               (+)
+                │
+               GND
+```
+
+**Step-by-step derivation:**
+
+1. V− = virtual ground = 0V
+2. Current through R: I = (Vin − 0)/R = Vin/R
+3. This current charges capacitor C (no current into op-amp):
+   ```
+   IC = C × d(VC)/dt = C × d(Vout − V−)/dt = C × d(Vout)/dt
+   ```
+   But IC = −I (current flows FROM V− INTO Rf direction, so into the capacitor from the left):
+   ```
+   Vin/R = −C × d(Vout)/dt
+   d(Vout)/dt = −Vin/(RC)
+   ```
+4. Integrate:
+   ```
+   Vout(t) = −(1/RC) × ∫₀ᵗ Vin(τ) dτ + Vout(0)
+   ```
+
+**Transfer function (frequency domain):**
+```
+H(jω) = Vout/Vin = −1/(jωRC) = −Xc/R
+
+|H(ω)| = 1/(ωRC)   [gain decreases with frequency — low-pass nature]
+
+At ω = 1/RC: |H| = 1 (0dB) — the integration time constant frequency
+At ω → 0 (DC): |H| → ∞ — infinite DC gain → DC offset saturates output!
+```
+
+**Waveform analysis for square wave input (amplitude ±V, period T):**
+
+```
+During Vin = +V (positive half, 0 < t < T/2):
+Vout(t) = −(+V)/(RC) × t = −Vt/RC   [linearly falling ramp]
+
+During Vin = −V (negative half, T/2 < t < T):
+Vout(t) = −(−V)/(RC) × (t−T/2) + Vout(T/2)   [linearly rising ramp]
+
+Peak-to-peak triangular wave amplitude:
+ΔVpeak = V × (T/2) / RC   [amplitude of triangle per half-cycle]
+```
+
+**Input → Output for common waveforms:**
+
+| Input waveform | Output waveform | Formula |
+|---------------|----------------|---------|
+| Square wave ±V | Triangular wave | ΔV = V×T/(2RC) p-p |
+| Sine Vm sin(ωt) | Cosine: −Vm/(ωRC) × cos(ωt) | Gain = −1/(ωRC), 90° phase lead |
+| Triangle wave | Parabola | Quadratic |
+| DC step V | Linear ramp | dVout/dt = −V/RC |
+| Impulse | Step | Discontinuous jump in Vout |
+
+**Practical integrator — the DC saturation problem and fix:**
+
+An ideal integrator saturates due to any DC offset (Vio × 1/jωRC → ∞ as ω → 0). **Fix:** Add large resistor RF in parallel with C:
+
+```
+New transfer function:
+H(jω) = −RF/R × 1/(1 + jωRFC)   [low-pass filter with DC gain = −RF/R]
+
+For f >> fL = 1/(2πRFC): acts as ideal integrator (C dominates)
+For f << fL: DC gain = −RF/R (finite, prevents saturation)
+
+Choose RF = 10R minimum, typically RF = 100R:
+- RF = 10R: integrates correctly for f > 10×fL
+- RF = 100R: integrates correctly for f > 100×fL (wider integration range)
+```
+
+---
+
+#### Application 8: Differentiator
+
+**Circuit:**
+```
+              R  (feedback resistor)
+    ┌─────────┤├──────────────── Vout
+    │                    │
+Vin ─┤ C ──── (−) ────────┘
+     ||        (+)
                │
               GND
 ```
 
-**Derivation:**
+**Step-by-step derivation:**
 
-V- = virtual ground = 0V.
-Current through R: I = Vin/R
-This current flows into/through C (no current into op-amp):
+1. V− = virtual ground = 0V
+2. Current through C: IC = C × d(Vin − V−)/dt = C × d(Vin)/dt
+3. This current flows through R (no current into op-amp):
+   ```
+   Vout = 0 − IC × R = −RC × d(Vin)/dt
+   ```
+
 ```
-I = C × d(Vout)/dt
-
-But I = Vin/R, and from the circuit: V- = 0, Vout is at op-amp output,
-current direction: from V- through C to Vout → Vin/R = -C × d(Vout)/dt
-
-∴ d(Vout)/dt = -Vin/(RC)
-
-Integrating both sides:
-Vout(t) = -(1/RC) × ∫₀ᵗ Vin(τ) dτ + Vout(0)
+┌─────────────────────────────────┐
+│  Vout = −RC × d(Vin)/dt        │
+└─────────────────────────────────┘
 ```
 
-**Frequency domain (Laplace/jω):**
+**Transfer function:**
 ```
-H(jω) = Vout/Vin = -1/(jωRC) = -Xc/R
+H(jω) = −jωRC
 
-At low frequency (ω → 0): |H| → ∞ (infinite gain for DC!)
-At high frequency (ω → ∞): |H| → 0
-```
+|H(ω)| = ωRC   [gain increases linearly with frequency]
 
-**Input/output relationships:**
-
-| Input waveform | Output waveform | Explanation |
-|---------------|----------------|-------------|
-| Square wave (±V) | Triangular wave (±slopes) | Integral of constant = ramp |
-| Sine wave | Cosine wave (90° phase lead) | ∫sin = -cos |
-| Triangle wave | Parabola | Integral of ramp = quadratic |
-
-**Practical integrator (with RF across C):**
-
-The ideal integrator has infinite DC gain → any tiny DC offset causes output to saturate. Solution: Add large resistor RF (= 10×R or more) in parallel with C:
-```
-This creates a low-pass filter with corner frequency fL = 1/(2π×RF×C)
-For f >> fL: acts as ideal integrator
-For f << fL: DC gain = -RF/R (finite, prevents saturation)
-
-Choose RF ≥ 10R to maintain good integration over the desired frequency range.
+At ω = 1/RC: |H| = 1
+At high frequencies: |H| → ∞ → noise amplified without limit!
 ```
 
-**Integration formula:**
+**Waveform analysis for square wave input:**
+
 ```
-Vout = -(1/RC) × ∫Vin dt
+Vin: square wave (transitions between +V and −V with finite rise time Tr)
 
-Time constant: τ = RC
+At each transition:
+dVin/dt ≈ 2V/Tr   (average slope during transition)
 
-For square wave input ±V, period T:
-Output triangular wave amplitude = V × T/(4RC)   [peak-to-peak = V×T/(2RC)]
+Vout = −RC × 2V/Tr   [spike amplitude]
+Spike duration ≈ Tr
+
+For ideal (infinitely fast) transitions: output is impulse (δ function) spikes.
+```
+
+**Input → Output:**
+
+| Input | Output |
+|-------|--------|
+| Square wave | Positive/negative spikes at edges |
+| Triangle wave | Square wave (derivative of ramp = constant) |
+| Sine Vm sin(ωt) | ωRC × Vm × cos(ωt) (90° phase lag, amplitude increases with ω) |
+| Parabola | Triangle |
+
+**Practical differentiator — the noise problem and fix:**
+
+An ideal differentiator amplifies high-frequency noise (gain → ∞ with frequency). **Fix:** Add series resistor Rs with C:
+
+```
+Modified circuit: C in series with Rs, then to V−; R remains as feedback
+
+Transfer function:
+H(jω) = −jωRC / (1 + jωRsC)
+
+At low frequencies (ω << 1/(RsC)): H ≈ −jωRC   [ideal differentiation]
+At high frequencies (ω >> 1/(RsC)): H ≈ −R/Rs   [gain limited to R/Rs]
+
+Two design frequencies:
+fd = 1/(2πRC):   frequency above which integration would occur in ideal
+fs = 1/(2πRsC):  frequency where gain limiting kicks in
+
+For good differentiation: choose fd << signal frequencies << fs
+Rule of thumb: Rs = R/10, so fs = 10 × fd
 ```
 
 ---
 
-#### 8. Differentiator
+#### Application 9: Schmitt Trigger (Comparator with Hysteresis)
+
+**Core concept:** A comparator with **positive feedback** creates hysteresis — different threshold voltages for rising vs falling input. This creates a "dead zone" that prevents noise from causing false triggering.
+
+**Inverting Schmitt Trigger — Most common form:**
 
 **Circuit:**
 ```
-              R
-    ┌─────────┤├──────────────── Vout
-    │                    │
-Vin ─┤ C ─── (−) ─────────┘
-     ||       (+)
-              │
-             GND
+Vin ──────────────────── (−)
+                           [Op-Amp] ─────────── Vout
+                          (+)
+                           │
+            ┌──────────────┘
+            │
+           [R1]
+            │
+           GND
+
+Positive feedback: Vout ──[R2]──(+)──[R1]── GND
+                         V(+) = Vout × R1/(R1+R2)
 ```
 
-**Derivation:**
+**Threshold derivation:**
 
-V- = virtual ground = 0V.
-Current through C: I = C × d(Vin)/dt
-This current flows through R (no current into op-amp):
+**Case 1: Output at +Vsat (positive saturation, ≈+13V for ±15V supply):**
 ```
-Vout = 0 - I × R = -RC × d(Vin)/dt
-```
+V(+) = +Vsat × R1/(R1+R2)   ← this is the current threshold
 
-**Frequency domain:**
-```
-H(jω) = -jωRC
-
-At low frequency: |H| → 0
-At high frequency: |H| → ∞ (noise problem!)
+Output will switch LOW when Vin rises above V(+):
+UTP (Upper Threshold Point) = +Vsat × R1/(R1+R2)
 ```
 
-**Input/output relationships:**
-
-| Input waveform | Output waveform |
-|---------------|----------------|
-| Sine wave | Cosine wave (differentiation: d/dt sin = cos) |
-| Triangle wave | Square wave |
-| Square wave | Spikes/impulses at edges |
-
-**Problem with ideal differentiator:** High-frequency noise is amplified without limit (gain increases with frequency). This makes the circuit practically useless without modification.
-
-**Practical differentiator (with Rs in series with C):**
+**Case 2: Output at −Vsat:**
 ```
-Add small resistor Rs (= R/10 typically) in series with C:
+V(+) = −Vsat × R1/(R1+R2)   ← threshold drops to negative value
 
-Modified gain: H(jω) = -jωRC / (1 + jωRsC)
-
-This creates a pole at ωp = 1/(RsC), limiting the high-frequency gain to:
-|H(ω >> ωp)| = R/Rs  (constant, doesn't blow up)
-
-The circuit differentiates signals with frequency f < 1/(2πRsC)
-and acts as a limited amplifier for higher frequencies.
+Output will switch HIGH when Vin falls below V(+):
+LTP (Lower Threshold Point) = −Vsat × R1/(R1+R2)
 ```
 
----
+**Hysteresis window:**
+```
+Hysteresis = UTP − LTP = 2 × Vsat × R1/(R1+R2)
+```
 
-#### 9. Schmitt Trigger (Comparator with Hysteresis)
+**Operation step-by-step (for a rising then falling Vin):**
+
+```
+1. Start: Vout = +Vsat → V(+) = UTP (positive)
+2. Vin rises. While Vin < UTP: output stays at +Vsat
+3. Vin reaches UTP: Vin > V(+) → output snaps to −Vsat
+4. V(+) now drops to LTP (negative) — threshold jumps!
+5. Vin falls. While Vin > LTP: output stays at −Vsat
+6. Vin falls to LTP: Vin < V(+) → output snaps back to +Vsat
+7. V(+) returns to UTP — cycle restarts
+```
+
+**Transfer characteristic (hysteresis loop):**
+```
+Vout
+      ↑
++Vsat │     ─────────────────────────────────────────→ (stays HIGH until UTP)
+      │                                    ↑ (UTP, snaps LOW)
+      │                              ┌─────┘
+      │                              │
+      │           ┌──────────────────┘ (LTP, snaps HIGH)
+      │           ↓ (LTP)
+−Vsat │ ──────────────────────────────────────────────→ (stays LOW until LTP)
+      │
+      └────────────────────────────────────────────→ Vin
+            LTP                    UTP
+```
+
+**Design example:**
+
+Requirements: ±15V supply (Vsat = 13V), hysteresis = 3V (symmetric: UTP = +1.5V, LTP = −1.5V):
+```
+UTP = Vsat × R1/(R1+R2)
+1.5 = 13 × R1/(R1+R2)
+R1/(R1+R2) = 1.5/13 = 0.1154
+R2/R1 = (1 − 0.1154)/0.1154 = 7.67
+
+Choose R1 = 10kΩ → R2 = 76.7kΩ ≈ 75kΩ (standard)
+
+Verify: UTP = 13 × 10k/(10k+75k) = 13 × 0.118 = 1.53V ✓
+```
 
 **Non-Inverting Schmitt Trigger:**
 
-**Circuit:**
+Vin applied to (+) input; (−) input grounded; positive feedback through R1-R2 from Vout back to (+):
+
 ```
-Vin ──────────────── (+)
-                       [Op-Amp] ──── Vout
-                      (−) ─── GND
+V(+) = Vin × R2/(R1+R2) + Vout × R1/(R1+R2)   [superposition at + input]
 
-Positive feedback: Vout ──[Rf]── (+) input
-                   GND  ──[R1]── (+) input (voltage divider)
+Threshold (output switches):
+When Vout = +Vsat: UTP = −Vsat × R1/R2   [switches when Vin drops below LTP]
+When Vout = −Vsat: LTP = +Vsat × R1/R2   ← non-inverting has thresholds flipped!
 
-V(+) = Vout × R1/(R1+Rf)   [when Vin = 0, from feedback divider]
+Actually for non-inverting (Vin at +, GND at −, feedback from Vout to +):
+UTP = Vsat × R1/R2   [output switches when Vin rises above this]
+LTP = −Vsat × R1/R2
 ```
-
-Actually, the standard non-inverting Schmitt trigger:
-- Vin applied to (+) through nothing
-- Feedback: Vout divides through R1 and R2 back to (+)
-- (-) input = GND
-
-At any given moment:
-```
-V(+) = Vin × R2/(R1+R2) + Vout × R1/(R1+R2)   [superposition: Vin and Vout both drive (+)]
-```
-
-But in the simpler standard form (inverting Schmitt):
-
-**Inverting Schmitt Trigger Circuit:**
-```
-Vin ──────────── (−)
-                   [Op-Amp] ──── Vout
-                  (+)
-                   │
-          Vout ─[R2]─┤─[R1]─ GND   ← feedback from Vout to (+)
-                   V(+) = Vout × R1/(R1+R2)
-```
-
-**Threshold analysis:**
-
-**Upper Threshold (UTP) — output switches from +Vsat to -Vsat:**
-
-When output is at +Vsat:
-```
-V(+) = +Vsat × R1/(R1+R2)
-
-Output switches when Vin rises to equal V(+):
-UTP = +Vsat × R1/(R1+R2)
-```
-
-**Lower Threshold (LTP) — output switches from -Vsat to +Vsat:**
-
-When output is at -Vsat:
-```
-V(+) = -Vsat × R1/(R1+R2) = LTP
-
-Output switches when Vin falls to equal V(+):
-LTP = -Vsat × R1/(R1+R2)
-```
-
-**Hysteresis:**
-```
-H = UTP - LTP = 2 × Vsat × R1/(R1+R2)
-
-Design example: Vsat = 13V (for ±15V supply), desired H = 2V:
-2 = 2 × 13 × R1/(R1+R2)
-R1/(R1+R2) = 2/26 = 1/13
-R2/R1 = 12 → choose R1 = 10kΩ, R2 = 120kΩ
-```
-
-**Transfer characteristic (output vs input):**
-```
-Vout
-+Vsat ──────────────────────────────── (for Vin < UTP after being LOW)
-       ↑ snaps here (at UTP)
-       │
-       │   HYSTERESIS WINDOW
-       │
--Vsat ────────────────────────────────── (for Vin > LTP after being HIGH)
-       ↑ snaps here (at LTP)
-      LTP              UTP         Vin →
-```
-
-**Why hysteresis prevents noise chatter:**
-
-Without hysteresis (simple comparator with one threshold), a noisy signal near the threshold causes rapid back-and-forth switching (chatter). With hysteresis, once the output switches at UTP, the threshold moves down to LTP — the noise must now swing an entire hysteresis window before causing another transition.
 
 ---
 
-#### 10. Wien Bridge Oscillator using Op-Amp
+#### Application 10: Wien Bridge Oscillator using Op-Amp
 
 **Circuit:**
 ```
-                      Rf (= 2R1)
-         ┌─────────────┤├──────────────────────────────────┐
-         │                                                   │
-        (−)                                                  │
-    [Op-Amp] ── Vout ──── Series RC ──────────── (+) ──── Vout
-        (+)           └── Parallel RC ──── GND
-         │
-        R1 (from (−) to GND)
+                    Rf (= 2R1)
+       ┌────────────┤├──────────────────────────────────┐
+       │                                                  │
+      (−)                                                 │
+  [Op-Amp] ──── Vout ──────────────────────────── (+) ──┘
+      (+)               │             │
+                     [R]     [R parallel C]
+                         │             │
+                        [C]          GND
+                         │
+                        GND
+
+Wien feedback network between Vout and (+):
+Series arm: R + 1/(jωC)   → high-pass section
+Parallel arm: R || 1/(jωC) → low-pass section
 ```
 
-**Working:**
-- Wien bridge network (series R-C and parallel R-C between Vout and (+) input) provides positive feedback with 0° phase shift at f₀ = 1/(2πRC)
-- At f₀, the Wien network passes exactly 1/3 of the output voltage back to (+) with 0° phase
-- The negative feedback through Rf-R1 divider sets the closed-loop gain to exactly 3 (Rf = 2R1)
-- Barkhausen: |Aβ| = 3 × (1/3) = 1 ✓ and phase = 0° ✓
+**Transfer function of Wien network (β):**
 
-**Design equations:**
+At exactly ω₀ = 1/(RC):
 ```
-Oscillation frequency: f₀ = 1/(2πRC)
-Gain condition: Rf = 2R1   (for Av = 1 + Rf/R1 = 3)
+β = Z_parallel / (Z_series + Z_parallel)
 
-Example: f₀ = 1kHz
-Choose C = 0.01μF → R = 1/(2π × 1000 × 0.01×10⁻⁶) = 15.9kΩ ≈ 16kΩ
-Choose R1 = 10kΩ → Rf = 20kΩ (or Rf = 22kΩ with thermistor NTC for amplitude stabilization)
+Z_series = R + 1/(jω₀C) = R + R×j/(j²) ...
+
+Let x = ωRC. At x = 1 (ω = ω₀):
+β = (R||C) / (R + 1/jωC + R||C)
+
+After algebra (shown in Module 4 notes):
+β = 1/3  ∠ 0°   at ω = 1/(RC)
 ```
 
-**Amplitude stabilization:** Use a thermistor NTC in series with R1 (or in place of Rf). As oscillation amplitude grows → thermistor heats → resistance decreases (NTC) → gain decreases → amplitude stabilizes at a level where gain = 3 precisely.
+**Barkhausen condition:**
+
+- Non-inverting amp gain: Av = 1 + Rf/R1. For oscillation: Av × β = 1
+- Av × (1/3) = 1 → Av = 3 → Rf/R1 = 2 → **Rf = 2R1**
+
+**Oscillation frequency:** f₀ = 1/(2πRC)
+
+**Design (f₀ = 5kHz):**
+```
+Choose C = 0.01μF:
+R = 1/(2π × 5000 × 0.01×10⁻⁶) = 1/(3.14×10⁻⁴) = 3.18kΩ ≈ 3.3kΩ
+
+Choose R1 = 10kΩ → Rf = 20kΩ (or 22kΩ with thermistor for amplitude control)
+```
+
+**Amplitude stabilization (thermistor method):**
+
+Set Rf slightly > 2R1 (e.g., Rf = 22kΩ) so startup gain = 2.2. As amplitude builds, the thermistor NTC (in series with R1) warms due to power dissipation → resistance drops → effective R1 increases → gain drops → stabilizes at gain = 3.
 
 ---
 
-## 2. Example
+## 2. Example — Solved Design Problem
 
 ### Summing Amplifier Realization [May 2019, Q19a]
 
-**Problem:** Realize the function Y(t) = 5V1 + 2V2 – 4V3 using op-amps.
+**Problem:** Realize Y(t) = 5V1 + 2V2 – 4V3 using op-amps.
 
-**Solution:**
-
-This requires gains of 5 and 2 (positive) for V1, V2 and gain of 4 (negative) for V3. We need two inverting stages to realize all positive signs for V1 and V2:
+**Analysis:** All terms are positive for V1 and V2 but negative for V3. Since an inverting summer always inverts, we need two stages (double inversion gives positive sign for V1, V2):
 
 **Stage 1 — Inverting Summing Amplifier:**
 ```
-Vout1 = -(5V1 + 2V2)
+Vout1 = −(5V1 + 2V2)
 
-With Rf = 10kΩ:
-R_V1 = Rf/5 = 10kΩ/5 = 2kΩ
-R_V2 = Rf/2 = 10kΩ/2 = 5kΩ
+Choose Rf = 10kΩ:
+R(V1) = Rf/5 = 10k/5 = 2kΩ   [Vout1 gain on V1 = −Rf/R(V1) = −5]
+R(V2) = Rf/2 = 10k/2 = 5kΩ   [Vout1 gain on V2 = −Rf/R(V2) = −2]
 ```
 
-**Stage 2 — Second Inverting Summing Amplifier (inverts Stage 1 output, adds -V3 term):**
+**Stage 2 — Inverting Summing Amplifier (inverts Stage 1, scales V3):**
 ```
-Vout = -(Vout1 × gain1 + V3 × gain3)
-     = -(-(5V1+2V2) × 1 + V3 × 4)   [choose gain1 = 1, gain3 = 4]
-     = 5V1 + 2V2 - 4V3 ✓
+Vout = −(Vout1 × a + V3 × b)
+     = −(−(5V1+2V2) × 1 + V3 × 4)
+     = 5V1 + 2V2 − 4V3 ✓
 
-With Rf2 = 4kΩ:
-R_stage1 = Rf2/1 = 4kΩ   [for Stage 1 output with gain = 1]
-R_V3 = Rf2/4 = 1kΩ       [for V3 with gain = 4]
+Choose Rf2 = 4kΩ:
+R(Stage1) = Rf2/1 = 4kΩ   [gain on Stage 1 output = −1, cancels the inversion]
+R(V3) = Rf2/4 = 1kΩ       [gain on V3 = −4, gives −4V3 term]
 ```
 
-**Component summary:**
-- Stage 1: Rf = 10kΩ, R(V1) = 2kΩ, R(V2) = 5kΩ
-- Stage 2: Rf = 4kΩ, R(Stage1) = 4kΩ, R(V3) = 1kΩ
+**Final circuit values:**
+| Component | Value | Purpose |
+|-----------|-------|---------|
+| Stage 1 Rf | 10kΩ | Feedback |
+| Stage 1 R(V1) | 2kΩ | Gain 5 for V1 |
+| Stage 1 R(V2) | 5kΩ | Gain 2 for V2 |
+| Stage 2 Rf | 4kΩ | Feedback |
+| Stage 2 R(Vout1) | 4kΩ | Gain 1 for Stage 1 (re-invert) |
+| Stage 2 R(V3) | 1kΩ | Gain 4 for V3 |
 
 ---
 
 ## 3. Applications and Use Cases
 
-1. **Summing amplifier in audio mixers:** Mixing multiple audio channels (guitar, vocals, bass) into a mono output. Each channel gain is set by its input resistor — the mixing engineer's volume faders.
+1. **Summing amplifier in audio mixing consoles:** A 32-channel mixing console uses a 32-input summing amplifier to combine all mic/line channels into stereo outputs. Each fader changes its input resistor (gain), independently controlling that channel's contribution.
 
-2. **Integrator in analog computing and ADC:** Dual-slope ADC uses an op-amp integrator to convert analog voltage to a time interval (linear ramp), which is then digitized.
+2. **Integrator in dual-slope ADC:** The heart of a voltmeter. Charge a capacitor for a fixed time using the unknown voltage (Vx), then discharge with a known reference (Vref) and measure the discharge time — proportional to Vx. Accuracy depends only on timing and Vref, not on RC (self-calibrating).
 
-3. **Differentiator in signal edge detection:** Differentiators highlight sharp transitions — used in image processing (edge detection filters), motor control (detecting velocity from position sensors), and radar signal processing.
+3. **Differentiator in velocity measurement:** A tachometer measures angular velocity by differentiating shaft position (from an encoder). A differentiator circuit converts the position voltage to a velocity voltage in real-time.
 
-4. **Schmitt trigger in digital interfaces:** Every I²C, UART, USB receiver uses Schmitt trigger inputs to reject glitches and noise on the signal lines — specified by the logic threshold VIH and VIL with hysteresis.
+4. **Schmitt trigger in digital communication receivers:** UART/SPI/I²C receiver input pins have Schmitt trigger hysteresis (e.g., 74HC14 has VIH = 3.15V, VIL = 1.35V, hysteresis = 1.8V at VCC = 5V) to reject glitches on noisy PCB lines.
 
-5. **Differential amplifier in ECG/EEG machines:** Medical instrumentation amplifiers use cascaded differential stages (Instrumentation Amplifier = 3 op-amps) with CMRR > 100dB to extract μV-level bioelectric signals from the skin.
+5. **Differential amplifier in strain gauge (Wheatstone bridge):** A load cell uses a Wheatstone bridge that produces millivolt differential signals from a balanced bridge. A differential amplifier (or instrumentation amp) with 80dB+ CMRR extracts this tiny signal from the large common-mode offset.
 
-6. **Non-inverting amplifier in sensor signal conditioning:** Accelerometers, strain gauges, and temperature sensors output millivolt signals. A non-inverting amplifier with high input impedance buffers the sensor without loading it.
+6. **Non-inverting amplifier in sensor conditioning:** Thermistor or thermocouple signal conditioning chains use non-inverting amplifiers (high Zin = no loading on sensor) to scale mV signals to 0–5V ADC input range.
 
-7. **Wien bridge oscillator in signal generators:** The HP 200A (1939), designed by Bill Hewlett (co-founder of HP), was the first Wien bridge oscillator in a commercial product. Today's function generators all derive from this principle.
+7. **Wien bridge in function generator ICs:** The Maxim ICL8038 and XR2206 function generator ICs implement Wien-bridge-like oscillators internally to produce sine waves with < 1% THD, tunable from 0.001Hz to 300kHz.
 
 ---
 
 ## 4. Solved Numerical/Analytical Examples
 
-### Example 1: CMRR and Slew Rate [May 2019, Q17b]
+### Example 1: Slew Rate and Full-Power Bandwidth [May 2019, Q17b]
 
-**Problem:** Explain CMRR and Slew Rate. Give typical values for IC 741. [4 marks]
+**Problem:** Explain CMRR and Slew Rate with typical values for IC 741. [4 marks]
 
 **CMRR:**
 
-CMRR is the ability of the op-amp to reject signals common to both inputs (noise), while amplifying only the differential signal.
-
 ```
-CMRR = Ad / Ac
+CMRR = Ad/Ac   (dimensionless or in dB: 20 log(Ad/Ac))
 
-where: Ad = differential gain (output per unit differential input)
-       Ac = common-mode gain (output per unit common-mode input)
+For IC 741: CMRR(typ) = 90dB → Ac = Ad/31,623
 
-In dB: CMRR(dB) = 20 log(Ad/Ac)
+At closed-loop gain Af = 1000:
+Ad (closed-loop differential) ≈ 1000
+Ac = 1000/31,623 = 0.0316
 
-For IC 741:
-- Ad = 200,000 (open-loop DC)
-- CMRR(typ) = 90dB → Ac = Ad/10^(90/20) = 200,000/31,623 = 6.3
-
-Meaning: A common-mode signal is attenuated by 31,623× compared to a differential signal.
+A 10mV common-mode signal (noise) appears at output as:
+Vout(cm) = 0.0316 × 10mV = 0.316mV   (vs 1V output for 1mV differential signal)
+CMRR significance: the op-amp ignores noise 31,623× more than the desired signal.
 ```
-
-**Numerical significance:** A 1V common-mode hum appears as only 1/31,623 = 31.6μV at the output (referenced to input as common-mode error), while 1mV differential signal is fully amplified.
 
 **Slew Rate:**
 
-Maximum output voltage rate of change:
 ```
-SR = |dVout/dt|_max = 0.5 V/μs for IC 741
+SR = 0.5 V/μs for IC 741
 
-If input demands faster rate of change than SR: output "slews" (changes linearly at SR rate, ignoring the input)
+Full-power bandwidth:
+fFP = SR/(2π × Vm)
 
-Full-power bandwidth: fFP = SR/(2π × Vm)
+At Vm = 10V: fFP = 0.5×10⁶/(2π × 10) = 7.96kHz ≈ 8kHz
+At Vm = 1V:  fFP = 79.6kHz
 
-For Vm = 10V: fFP = 0.5×10⁶/(2π × 10) = 7.96kHz
-For Vm = 1V:  fFP = 0.5×10⁶/(2π × 1)  = 79.6kHz
+Slew test: If a 1V step is applied to the input of a unity-gain 741:
+Output risetime = ΔV/SR = 1/0.5×10⁶ = 2μs   (linear ramp, not exponential)
 ```
-
-**Slew-rate distortion:** A high-frequency large-amplitude sine wave becomes a triangle wave at the output because the op-amp output simply ramps at SR, unable to follow the demanded slope.
 
 ---
 
-### Example 2: Inverting and Non-Inverting Amplifier Design [May 2019, Q17a]
+### Example 2: Complete Inverting Amplifier Design
 
-**Problem:** Derive the voltage gain of inverting and non-inverting amplifier using op-amp. [6 marks]
+**Problem:** Design an inverting amplifier using IC 741 with gain = −20 and bandwidth = 50kHz. Find all resistor values and verify the design.
 
-**Inverting Amplifier:**
-
+**Step 1: Check GBW constraint:**
 ```
-Circuit: Vin → Rin → (−) → [Op-Amp] → Vout
-                             (+) → GND
-                Rf: from Vout back to (−)
+GBW = 1MHz → BW at gain = 1MHz/20 = 50kHz ✓ (exactly meets requirement)
+Note: gain ≥ 20 is needed; actual gain of 20 gives BW = 50kHz — just feasible.
 ```
 
-**Derivation:**
-1. V+ = 0V (grounded)
-2. Virtual short: V- = V+ = 0V ("virtual ground")
-3. Current through Rin: I = (Vin - 0)/Rin = Vin/Rin
-4. KCL at V- node: I_Rin = I_Rf (since I into op-amp = 0)
-5. Current through Rf: I = (0 - Vout)/Rf → Vout = -I × Rf
-
+**Step 2: Choose resistor values:**
 ```
-Vout = -(Vin/Rin) × Rf
+Av = −Rf/Rin = −20
 
-Av(inverting) = Vout/Vin = -Rf/Rin
+Choose Rin = 5kΩ:
+Rf = 20 × 5k = 100kΩ
+
+Bias compensation resistor: Rcomp = Rin || Rf = 5k || 100k = 4.76kΩ ≈ 4.7kΩ
 ```
 
-Negative sign = 180° phase inversion. Gain magnitude = Rf/Rin.
-
-**Non-Inverting Amplifier:**
-
+**Step 3: Check DC accuracy:**
 ```
-Circuit: Vin → (+) → [Op-Amp] → Vout
-                      (−) ← R1 to GND, Rf to Vout
+Output offset from Vio: ΔVout = Vio × (1 + Rf/Rin) = 2mV × 21 = 42mV
+Output offset from IB:  ΔVout = Iio × Rf = 20nA × 100k = 2mV (with Rcomp)
+Total DC error: ≈ 44mV   (acceptable for most applications)
 ```
 
-**Derivation:**
-1. V+ = Vin (directly connected)
-2. Virtual short: V- = V+ = Vin
-3. V- is a voltage divider point: V- = Vout × R1/(R1+Rf)
-4. Set V- = Vin:
-   ```
-   Vin = Vout × R1/(R1+Rf)
-   Vout/Vin = (R1+Rf)/R1 = 1 + Rf/R1
-   ```
-
-```
-Av(non-inverting) = 1 + Rf/R1
-```
-
-Always positive (0° phase). Minimum gain = 1 (voltage follower).
-
-**Summary table:**
-
-| Parameter | Inverting | Non-inverting |
-|-----------|-----------|--------------|
-| Gain | -Rf/Rin | 1 + Rf/R1 |
-| Gain sign | Negative (inverts) | Positive |
-| Min gain | No limit (< -1 for Rf > Rin) | 1 (always ≥ 1) |
-| Zin | Rin | Very high (op-amp Zin × AOL) |
-| Zout | ≈ 0 | ≈ 0 |
-| Phase | 180° | 0° |
+**Step 4: Summary:**
+- Rin = 5kΩ, Rf = 100kΩ, Rcomp = 4.7kΩ
+- Gain = −20, BW = 50kHz, Zin = 5kΩ
 
 ---
 
-### Example 3: Integrator and Differentiator Waveforms [May 2019, Q18b]
+### Example 3: Schmitt Trigger Design and Threshold Calculation [May 2019, Q18a]
 
-**Problem:** Explain the op-amp integrator and differentiator with waveforms. Give the output for square wave input for both. [6 marks]
+**Problem:** Design a Schmitt trigger using IC 741 to give UTP = +2V and LTP = −2V with ±15V supply. [6 marks]
 
-**Integrator:**
+**Solution:**
 
-Circuit: R in series with (−) input, C as feedback from output to (−). (+) input grounded.
-
+**Step 1: Find Vsat:**
 ```
-Transfer function: Vout = -(1/RC) × ∫Vin dt
-```
-
-**Square wave input → Triangular wave output:**
-
-For a square wave of amplitude ±V and period T:
-```
-During positive half (Vin = +V, from 0 to T/2):
-Vout(t) = Vout(0) - (V/RC) × t   [linearly decreasing ramp]
-
-During negative half (Vin = -V, from T/2 to T):
-Vout(t) = Vout(T/2) + (V/RC) × t   [linearly increasing ramp]
+IC 741 output swing ≈ ±(VCC − 1.5V) = ±(15 − 1.5) = ±13.5V
+Vsat ≈ 13.5V (use 13V as conservative estimate)
 ```
 
-This produces a triangular wave. The amplitude of the triangle:
+**Step 2: Calculate R1, R2:**
 ```
-ΔVout = V × (T/2) / RC   [change in output per half-cycle]
-```
+UTP = Vsat × R1/(R1+R2) = 2V
+R1/(R1+R2) = 2/13 = 0.1538
 
-**Waveforms:**
-```
-Vin (square):        +V ─────┐    ┌─────
-                              │    │
-                    -V        └────┘
-                                    →t
+R2/R1 = (1/0.1538) − 1 = 6.5 − 1 = 5.5
 
-Vout (triangular):
-                    ╱╲    ╱╲    ╱╲
-                   ╱  ╲  ╱  ╲  ╱  ╲
-                         ↑
-                    Amplitude = V×T/(4RC)
+Choose R1 = 10kΩ → R2 = 55kΩ ≈ 56kΩ (standard)
 ```
 
-**Differentiator:**
-
-Circuit: C in series with (−) input, R as feedback. (+) input grounded.
-
+**Step 3: Verify:**
 ```
-Vout = -RC × d(Vin)/dt
-```
-
-**Square wave input → Impulse/spike output:**
-
-The derivative of a square wave is zero everywhere except at the edges (transitions), where it is theoretically infinite (impulse). In practice, spikes occur at the transitions:
-
-```
-Vin (square):        +V ─────┐    ┌─────
-                              │    │
-                    -V        └────┘
-
-Vout (spikes):
-                    ↑         ↑         ↑
-                    │         │         │  (positive spikes at rising edges)
-                    ─────────         ──────
-                              ↓         ↓
-                              │         │  (negative spikes at falling edges)
+UTP = 13 × 10/(10+56) = 13 × 10/66 = 1.97V ≈ 2V ✓
+LTP = −1.97V ≈ −2V ✓
+Hysteresis = UTP − LTP = 3.94V ≈ 4V
 ```
 
-**Practical note:** In reality, the square wave has a finite rise time Tr, so the spikes have finite amplitude = 2V×RC/Tr and duration = Tr.
+**Step 4: Operation description:**
+- Vin rising: output stays at +13V until Vin reaches +1.97V → snaps to −13V
+- Vin falling: output stays at −13V until Vin falls to −1.97V → snaps to +13V
+- Any noise within the ±2V window causes NO false triggering
 
 ---
 
 ## 5. Previous Year Questions and Solutions
 
-### PYQ 1 [May 2019, Q15a]: Draw and explain differential amplifier. [5 marks]
+### PYQ 1 [May 2019, Q15a]: Draw and explain the circuit of a differential amplifier. [5 marks]
 
 **Complete Solution:**
 
 **Circuit:**
 ```
-           VCC (+12V)
-            │
-       [RC] [RC]   ← Matched precision resistors
-        │     │
-        │     │ ← Differential output taken between collectors
-   Q1-C     Q2-C
-V1 ─B─Q1   Q2─B─ V2
-   (NPN)   (NPN)
-    Q1-E   Q2-E
-       └──┬──┘   ← Emitters tied together
-        [Iee]    ← Constant current source (replaces simple RE)
-          │
-        VEE (-12V)
+            VCC (+12V)
+             │
+        [RC] [RC]   ← Matched (≈10kΩ each)
+         │     │
+    Q1-C─┴─────┴─Q2-C   ← Differential output taken here
+V1 ─B─Q1(NPN)   (NPN)Q2─B─ V2
+      Q1-E         Q2-E
+         └────┬────┘
+           [Iee = 2mA]   ← Constant current source
+              │
+            VEE (−12V)
 ```
 
 **Operation:**
 
-**Differential input (V1 ≠ V2):**
+*Differential mode (V1 ≠ V2):*
 
-Let V1 = +1mV, V2 = 0V (pure differential signal):
-- Q1 base more positive → Q1 IC increases → Q1 collector voltage (VC1) drops
-- Q2 base less positive → Q2 IC decreases → Q2 collector voltage (VC2) rises
-- Output Vo = VC2 - VC1 = Positive (large, amplified differential signal)
+Let V1 = +0.5mV, V2 = −0.5mV (Vd = 1mV):
+- Q1: ΔIC1 = gm × Vd/2 (increases)
+- Q2: ΔIC2 = −gm × Vd/2 (decreases)
+- VC1 drops, VC2 rises → differential output = Ad × Vd
 
-**Common-mode input (V1 = V2 = Vcm):**
+*Common-mode (V1 = V2 = Vcm):*
 
-Let V1 = V2 = 10mV (common-mode noise):
-- Both Q1 and Q2 bases rise equally
-- By perfect symmetry: ΔIC1 = ΔIC2 → ΔVC1 = ΔVC2
-- Differential output: VC2 - VC1 = 0 (noise cancelled!)
+- Both bases rise by Vcm → both IC try to increase
+- Iee = constant → cannot change → zero net change
+- ΔVC1 = ΔVC2 → differential output ≈ 0
 
-**Key parameters:**
+**Key equations:**
 ```
-Differential gain: Ad = gm × RC   [double-ended output]
-                 = gm × RC/2   [single-ended output]
+Ad = gm × RC   (double-ended)
+Ac = RC / (2Ro)   where Ro = impedance of current source
+CMRR = Ad/Ac = 2 × gm × Ro
 
-Common-mode gain: Ac ≈ RC/(2×RE_source)
-(smaller RE_source = constant current source → Ac → 0)
-
-CMRR = Ad/Ac = gm × RC × 2×RE_source / RC = 2×gm×RE_source
-
-For constant current source: RE_source → ∞ → CMRR → ∞ (ideal)
+For gm = 40mA/V (at IC = 1mA) and Ro = 1MΩ:
+CMRR = 2 × 0.04 × 10⁶ = 80,000 = 98dB
 ```
-
-**Significance:** The differential amplifier is the input stage of every op-amp, ECG machine, instrumentation amplifier, and analog-to-digital converter front end.
 
 ---
 
-### PYQ 2 [May 2019, Q16a]: Derive gain of inverting and non-inverting op-amp. [6 marks]
+### PYQ 2 [May 2019, Q16a]: Derive voltage gain of inverting and non-inverting op-amp. [6 marks]
 
 **Complete Solution:**
 
-*(Full derivation given in Solved Example 2 — restated self-contained here)*
+**Basis — Virtual short principle:**
 
-**Virtual short principle:** AOL = 200,000; Vout = AOL × (V+ - V-). For Vout bounded (±13V): V+ - V- = 13/200,000 = 65μV ≈ 0 → V+ ≈ V-.
+Since AOL = 200,000 and output is bounded:
+Vd = V+ − V− = Vout/AOL ≈ 0 → V+ = V−
 
 **Two golden rules:**
-1. V+ = V- (virtual short)
-2. I+ = I- = 0 (no current into inputs)
+1. V+ = V− (virtual short)
+2. I+, I− = 0 (no current into inputs)
 
-**Inverting Amplifier (Av = -Rf/Rin):**
-
+**Inverting Amplifier:**
 ```
-Step 1: V+ = 0 → V- = 0 (virtual ground)
-Step 2: I_Rin = Vin/Rin (current from Vin to virtual ground through Rin)
-Step 3: KCL: I_Rin = I_Rf (same current, since I_op-amp = 0)
-Step 4: Vout = 0 - I_Rf × Rf = -(Vin/Rin) × Rf
-
-→ Av = Vout/Vin = -Rf/Rin  ✓
+V+ = 0 → V− = 0 (virtual ground at − input)
+I = Vin/Rin flows from Vin through Rin to virtual ground
+Same I flows through Rf (no current into −): I = (0 − Vout)/Rf
+→ (Vin/Rin) = −Vout/Rf
+→ Av = Vout/Vin = −Rf/Rin
 ```
 
-**Non-Inverting Amplifier (Av = 1 + Rf/R1):**
-
+**Non-Inverting Amplifier:**
 ```
-Step 1: V+ = Vin (directly connected)
-Step 2: V- = V+ = Vin (virtual short)
-Step 3: V- = Vout × R1/(R1+Rf)  [voltage divider at output]
-Step 4: Vin = Vout × R1/(R1+Rf)
-→ Vout = Vin × (R1+Rf)/R1 = Vin × (1 + Rf/R1)
-
-→ Av = 1 + Rf/R1  ✓
+V+ = Vin → V− = Vin (virtual short)
+Voltage divider at output: V− = Vout × R1/(R1+Rf)
+Set V− = Vin: Vin = Vout × R1/(R1+Rf)
+→ Av = Vout/Vin = (R1+Rf)/R1 = 1 + Rf/R1
 ```
+
+**Comparison:**
+
+| | Inverting | Non-Inverting |
+|---|---|---|
+| Gain | −Rf/Rin | 1 + Rf/R1 |
+| Phase | 180° | 0° |
+| Min gain | < −1 | ≥ 1 |
+| Zin | Rin | Very high (GΩ) |
 
 ---
 
-### PYQ 3 [May 2019, Q19b]: Draw the circuit of an op-amp integrator and differentiator. Explain with waveforms the output when a square wave is applied. [6 marks]
+### PYQ 3 [May 2019, Q19b]: Integrator and Differentiator with square wave waveforms. [6 marks]
 
 **Complete Solution:**
 
-*(Full circuit, derivation, and waveforms given in Solved Example 3 — restated self-contained here)*
+**Integrator:**
 
-**Integrator Circuit:**
 ```
-         C (feedback capacitor)
-    ┌────||──────────────────── Vout
-    │                  │
-Vin ─┤ R ──── (−) ─────┘   ← RC is the integration time constant
-              (+)
+Circuit:
+Vin ─┤R├──(−)──┬── Vout
                │
-              GND
+              [C] (feedback)
+     GND─────(+)
 
-Output: Vout = -(1/RC) × ∫Vin dt
+Output: Vout = −(1/RC) × ∫Vin dt
 ```
 
-For square wave ±V input: output is triangular wave (ramps linearly up/down).
+*Square wave input (±V, period T) → Triangular wave output:*
 
-**Differentiator Circuit:**
+- During Vin = +V: Vout ramps DOWN at rate = V/RC (slope = −V/RC)
+- During Vin = −V: Vout ramps UP at rate = V/RC (slope = +V/RC)
+
 ```
-         R (feedback resistor)
-    ┌────┤├──────────────────── Vout
-    │                  │
-Vin ─┤ C ──── (−) ─────┘   ← RC is the differentiation time constant
-     ||       (+)
-              │
-             GND
+Waveforms:
+Vin:    +V  ─────┐        ┌─────
+                 │        │
+        −V       └────────┘
 
-Output: Vout = -RC × d(Vin)/dt
+Vout:   ╲      ╱╲      ╱╲
+         ╲    ╱  ╲    ╱  ╲
+          ╲  ╱    ╲  ╱
+           ╲╱      ╲╱
+
+Triangular wave amplitude (one slope) = V × (T/2)/RC
 ```
 
-For square wave input: output is positive spikes at rising edges, negative spikes at falling edges (derivative of step function = impulse).
+**Differentiator:**
 
-**Waveforms (see Solved Example 3 above for detailed waveform diagrams).**
+```
+Circuit:
+Vin ─┤C├──(−)──┬── Vout
+               │
+              [R] (feedback)
+     GND─────(+)
+
+Output: Vout = −RC × d(Vin)/dt
+```
+
+*Square wave input → spikes at transitions:*
+
+- At rising edge (Vin: −V → +V): d(Vin)/dt = +∞ (impulse) → Vout = −RC × ∞ → large positive spike
+- At falling edge (Vin: +V → −V): d(Vin)/dt = −∞ → large negative spike
+- Between edges: d(Vin)/dt = 0 → Vout = 0
+
+```
+Waveforms:
+Vin:    +V  ─────┐        ┌─────
+                 │        │
+        −V       └────────┘
+
+Vout:   ↑        ↓        ↑        ↓
+        │        │        │        │
+       (spike   (spike   (spike   (spike
+       +ve)     −ve)     +ve)     −ve)
+    0V ─────────────────────────────
+```
+
+Spike amplitude = −RC × (2V/Tr), where Tr = rise time of the input square wave.
