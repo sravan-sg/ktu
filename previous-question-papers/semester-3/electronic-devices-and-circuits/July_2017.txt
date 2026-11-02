@@ -1,0 +1,201 @@
+E 
+B3E039S 
+Pages:  2 
+Page 1 of 2 
+ 
+Reg. No.______________    
+ 
+ 
+ Name:_________________________ 
+APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY 
+THIRD SEMESTER B.TECH DEGREE EXAMINATION, JULY 2017 
+CS207: ELECTRONIC DEVICES AND CIRCUITS (CS) 
+Max. Marks: 100 
+ 
+ 
+ 
+ 
+ 
+ 
+  Duration : 3 Hours. 
+PART A 
+Answer All questions. 
+1. Explain the following waveforms: 
+ 
+ 
+ 
+ 
+ 
+ 
+(3) 
+a) Ramp 
+b) Step 
+c) Square 
+2. Draw and explain the circuit diagram for RC differentiator.  
+ 
+ 
+(3) 
+3. Compare BJT and FET. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(3) 
+4. Explain Zener voltage regulators. 
+ 
+ 
+ 
+ 
+ 
+ 
+(3) 
+PART B 
+Answer any 2 questions. 
+5. Explain the following with examples  
+ 
+ 
+ 
+ 
+ 
+(9) 
+a) clipper circuits. 
+b) clamper circuits. 
+6. With the neat sketches and waveforms explain Enhancement type N channel 
+MOSFET. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(9) 
+7. With the neat sketch explain  
+ 
+ 
+ 
+ 
+ 
+ 
+(9) 
+a) voltage doubler 
+b) voltage tripler 
+PART C 
+Answer All questions. 
+ 
+8. What is mean by operating point of a transistor? 
+ 
+ 
+ 
+ 
+(3) 
+9. Explain about the effect of negative feedback on Bandwidth. 
+ 
+ 
+(3) 
+10. What is the criterion for oscillation?  
+ 
+ 
+ 
+ 
+ 
+(3) 
+11. Draw the circuit diagram for bistable multivibrator and give a simple explanation?(3) 
+PART D 
+Answer any 2 questions. 
+ 
+12. Explain voltage divider bias?  
+ 
+ 
+ 
+ 
+ 
+ 
+(9) 
+13. With a neat circuit diagram and relevant waveforms and equations, Explain and 
+analyze Hartley Oscillators.  
+ 
+ 
+ 
+ 
+ 
+ 
+(9) 
+14. Explain Monostable multivibrators with circuit and waveforms and obtain design 
+Equations. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(9) 
+http://www.ktuonline.com
+E 
+B3E039S 
+Pages:  2 
+Page 2 of 2 
+ 
+PART E 
+Answer any 4 questions. 
+15. Explain any 3 applications of an opamp. 
+ 
+ 
+ 
+ 
+(10) 
+16. Explain Weinbridge oscillator using opamp.  
+ 
+ 
+ 
+(10) 
+17. Explain Sample and hold circuit. 
+ 
+ 
+ 
+ 
+ 
+(10) 
+18. Using 555 timer, Explain the operation of monostable multivibrator with necessary 
+waveforms. 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+(10) 
+19. Explain the following: 
+ 
+ 
+ 
+ 
+ 
+ 
+(10) 
+a) Flash type ADC 
+  
+b) Successive approximation type ADC 
+20. Explain the concept of Binary weighted resistor DAC. What are its drawbacks? In a 
+10 bit DAC, Reference voltage is given as 15v. Find analog output for digital input of 
+1011011001.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(10) 
+**** 
+http://www.ktuonline.com

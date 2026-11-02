@@ -1,0 +1,143 @@
+Course Code: CS401
+Course Name: COMPUTER GRAPHICS
+L-T-P Credits: 4-0-0-4
+Year of Introduction: 2016
+
+================================================================================
+COURSE OBJECTIVES
+================================================================================
+- To introduce concepts of graphics input and display devices.
+- To discuss line and circle drawing algorithms.
+- To introduce 2D and 3D transformations and projections.
+- To introduce fundamentals of image processing.
+
+================================================================================
+SYLLABUS
+================================================================================
+Basic Concepts in Computer Graphics. Input devices. Display devices. Line and circle 
+drawing Algorithms. Solid area scan-conversion. Polygon filling. Two dimensional 
+transformations. Windowing, clipping. 3D Graphics, 3D transformations. Projections 
+Parallel, Perspective. Hidden Line Elimination Algorithms. Image processing digital 
+image representation - edge detection Robert, Sobel, Canny edge detectors. Scene 
+segmentation and labeling - region-labeling algorithm - perimeter measurement.
+
+================================================================================
+EXPECTED OUTCOME
+================================================================================
+The Students will be able to:
+i.   Compare various graphics devices.
+ii.  Analyze and implement algorithms for line drawing, circle drawing and polygon filling.
+iii. Apply geometrical transformation on 2D and 3D objects.
+iv.  Analyze and implement algorithms for clipping.
+v.   Apply various projection techniques on 3D objects.
+vi.  Summarize visible surface detection methods.
+vii. Interpret various concepts and basic operations of image processing.
+
+================================================================================
+TEXT BOOKS
+================================================================================
+1. Donald Hearn and M. Pauline Baker, Computer Graphics, PHI, 2e, 1996.
+2. E. Gose, R. Johnsonbaugh and S. Jost., Pattern Recognition and Image Analysis, 
+   PHI PTR, 1996 (Module VI - Image Processing part).
+3. William M. Newman and Robert F. Sproull, Principles of Interactive Computer 
+   Graphics, McGraw Hill, 2e, 1979.
+4. Zhigang Xiang and Roy Plastock, Computer Graphics (Schaum's outline Series), 
+   McGraw Hill, 1986.
+
+================================================================================
+REFERENCES
+================================================================================
+1. David F. Rogers, Procedural Elements for Computer Graphics, Tata McGraw Hill, 2001.
+2. M. Sonka, V. Hlavac, and R. Boyle, Image Processing, Analysis, and Machine Vision, 
+   Thomson India Edition, 2007.
+3. Rafael C. Gonzalez and Richard E. Woods, Digital Image Processing, Pearson, 2017.
+
+================================================================================
+COURSE PLAN
+================================================================================
+
+Module I (7 Hours | End Sem. Exam Marks: 15%)
+--------------------------------------------------------------------------------
+Basic concepts in Computer Graphics - Types of Graphic Devices - Interactive 
+Graphic inputs - Raster Scan and Random Scan Displays.
+
+Module II (8 Hours | End Sem. Exam Marks: 15%)
+--------------------------------------------------------------------------------
+Line Drawing Algorithm - DDA, Bresenham's algorithm - Circle Generation Algorithms 
+- Mid point circle algorithm, Bresenham's algorithm - Scan Conversion - frame 
+buffers - solid area scan conversion - polygon filling algorithms.
+
+[ FIRST INTERNAL EXAM ]
+
+Module III (8 Hours | End Sem. Exam Marks: 15%)
+--------------------------------------------------------------------------------
+Two dimensional transformations - Homogeneous coordinate systems - matrix 
+formulation and concatenation of transformations. Windowing concepts - Window 
+to Viewport Transformation - Two dimensional clipping - Line clipping - Cohen 
+Sutherland, Midpoint Subdivision algorithm.
+
+Module IV (8 Hours | End Sem. Exam Marks: 15%)
+--------------------------------------------------------------------------------
+Polygon clipping - Sutherland Hodgeman algorithm, Weiler-Atherton algorithm. 
+Three dimensional object representation - Polygon surfaces, Quadric surfaces - 
+Basic 3D transformations.
+
+[ SECOND INTERNAL EXAM ]
+
+Module V (9 Hours | End Sem. Exam Marks: 20%)
+--------------------------------------------------------------------------------
+Projections - Parallel and perspective projections - vanishing points. Visible 
+surface detection methods - Back face removal - Z-Buffer algorithm, A-buffer 
+algorithm, Depth-sorting method, Scan line algorithm.
+
+Module VI (8 Hours | End Sem. Exam Marks: 20%)
+--------------------------------------------------------------------------------
+Image processing - Introduction - Fundamental steps in image processing - 
+digital image representations - relationship between pixels - gray level 
+histogram - spatial convolution and correlation - edge detection - Robert, 
+Prewitt, Sobel.
+
+[ END SEMESTER EXAM ]
+
+================================================================================
+QUESTION PAPER PATTERN (End Semester Exam)
+================================================================================
+1. There will be FOUR parts in the question paper - A, B, C, D.
+
+2. Part A
+   a. Total marks: 40
+   b. TEN questions, each having 4 marks, covering all the SIX modules:
+      - THREE questions from modules I & II
+      - THREE questions from modules III & IV
+      - FOUR questions from modules V & VI
+   c. All the TEN questions have to be answered.
+
+3. Part B
+   a. Total marks: 18
+   b. THREE questions, each having 9 marks:
+      - One question is from module I
+      - One question is from module II
+      - One question uniformly covers modules I & II
+   c. Any TWO questions have to be answered.
+   d. Each question can have a maximum of THREE subparts.
+
+4. Part C
+   a. Total marks: 18
+   b. THREE questions, each having 9 marks:
+      - One question is from module III
+      - One question is from module IV
+      - One question uniformly covers modules III & IV
+   c. Any TWO questions have to be answered.
+   d. Each question can have a maximum of THREE subparts.
+
+5. Part D
+   a. Total marks: 24
+   b. THREE questions, each having 12 marks:
+      - One question is from module V
+      - One question is from module VI
+      - One question uniformly covers modules V & VI
+   c. Any TWO questions have to be answered.
+   d. Each question can have a maximum of THREE subparts.
+
+6. There will be AT LEAST 50% analytical/numerical questions in all possible 
+   combinations of question choices.

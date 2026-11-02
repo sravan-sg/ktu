@@ -1,0 +1,156 @@
+A 
+G1010 
+Pages: 2 
+Page 1of 2 
+ 
+ 
+ 
+ 
+Reg No.:_______________ 
+ 
+Name:__________________________ 
+APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY 
+SEVENTH SEMESTER B.TECH DEGREE EXAMINATION(S), MAY 2019 
+Course Code: CS401 
+Course Name: COMPUTER GRAPHICS 
+Max. Marks: 100 
+ 
+Duration: 3 Hours 
+ 
+PART A  
+ 
+ 
+Answer all questions, each carries 4 marks. 
+Marks 
+1 
+ 
+Differentiate between raster scan and random scan display systems. 
+(4) 
+2 
+ 
+How 8-way symmetry of circle can be used for writing circle drawing 
+algorithms? Write the symmetric points if (x, y) is a point on the circle with 
+centre at origin. 
+(4) 
+3 
+ 
+Write the DDA line drawing algorithm. 
+(4) 
+4 
+ 
+What do you mean by homogeneous coordinate system? What is its 
+significance? 
+(4) 
+5 
+ 
+Define the terms window, viewport and windowing transformation in the context 
+of 2D viewing with suitable diagrams. 
+(4) 
+6 
+ 
+Describe the steps involved in scaling a 3D object with respect to a fixed point 
+(xf, yf, zf). Derive the composite transformation matrix. 
+(4) 
+7 
+ 
+Distinguish between parallel and perspective projections. 
+(4) 
+8 
+ 
+Explain the back face detection algorithm for hidden surface removal. 
+(4) 
+9 
+ 
+Consider the image segment shown. Let V= {1, 2} and compute the lengths of 
+the shortest 4-path, 8-path, and m-path between pixels p and q. 
+ 
+(4) 
+10  
+Define the following terms related to pixel of an image:  
+  i) pixel neighbourhood    ii) digital  path    iii) connected set 
+(4) 
+PART B  
+Answer any two full questions, each carries 9 marks. 
+11 a) Explain the architecture of raster graphics system with suitable diagrams. 
+(6) 
+ 
+b) Explain the working of Direct View Storage Tube (DVST). 
+(3) 
+12 a) Explain the boundary fill algorithm using 4-connected approach. 
+(4) 
+ 
+b) Rasterize the line segment from pixel coordinate (1, 1) to (8, 5) using 
+Bresenham’s line drawing algorithm. 
+(5) 
+A 
+G1010 
+Pages: 2 
+Page 2of 2 
+13 a) Consider a raster system with a resolution of 2560 x 2048. Determine the frame 
+buffer size (in bytes) needed for the system to store 12-bits per pixel. How much 
+storage is required if 24-bits per pixel are to be stored? 
+(2) 
+ 
+b) Explain the working of a delta-delta shadow mask CRT. 
+(4) 
+ 
+c) Explain the non-zero winding number rule to identify interior regions of a 
+polygon. 
+(3) 
+PART C  
+Answer any two full questions, each carries 9 marks. 
+14 a) Perform the following transformations on a point (6, 4). 
+i) Translate by tx = −2 and ty = 4 
+ii) then, Scale by sx = 2 and sy = 1 
+iii) and Rotate by 90ο in clockwise direction. Determine the final coordinates 
+of the transformed point. 
+(4) 
+ 
+b) Prove that the multiplication of 2D transformation matrices for two successive 
+rotations is commutative. 
+(3) 
+ 
+c) Explain the concept of point clipping in 2D. 
+(2) 
+15 a) Explain Weiler Atherton polygon clipping algorithm with illustrations. 
+(6) 
+ 
+b) A rectangular parallelepiped is unit distance on Z-axis, 2 units on X-axis and 3 
+units on Y-axis. Determine the new coordinates of the parallelepiped when it is 
+rotated counter clockwise about X-axis by an angle of 45ο.  
+(3) 
+16 a) What is a quadric surface? Explain about any one of the quadric surfaces. 
+(3) 
+ 
+b) Explain the Cohen Sutherland line clipping algorithm with suitable examples. 
+(6) 
+PART D 
+Answer any two full questions, each carries 12 marks. 
+17 a) List out the differences between z-buffer method and A-buffer method for 
+determining the visible surfaces. 
+(4) 
+ 
+b) Describe about the depth-sorting method to display the visible surfaces of any 
+given object with plane faces. Also explain the tests to identify overlapping 
+surfaces. 
+(8) 
+18 a) Explain the components of a general purpose digital image processing system 
+with a neat diagram. 
+(6) 
+ 
+b) How edge detection is performed in digital images using 
+( i) Sobel operator        (ii) Prewitt operator. 
+What are the advantages of Sobel operator over Prewitt operator?  
+(6) 
+19 a) Derive the transformation matrix for oblique parallel projection with the help of 
+a neat diagram. 
+(6) 
+ 
+b) Discuss the role of histogram equalization in a digital image. 
+(2) 
+ 
+c) What do you mean by histogram of a digital image? Discuss on the histogram of 
+four basic image types. 
+(4) 
+**** 
+ 
