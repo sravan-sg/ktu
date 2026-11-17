@@ -1,0 +1,102 @@
+A
+Reg No.:
+I
+2
+J
+4
+5
+10000cs401L22L02
+APJ ABDUL KA.LAM TECHNOLOGICAL UNIVERS
+Seventh Semester B.Tech Degree (S, FE) ExaminationJanuary 2023
+Course Code: CS401
+Course Name: COMPUTER GRAPHICS
+Max. Marks: 100
+PART A
+Answer all questions, each canies 4 marks-
+Differences between random scan displays and raster scan displays.
+Write the flood fill algorithm to fill a polygon.
+Describe the transformation Mr, that reflects an object about a line L
+6
+7
+8
+9
+10
+Duration: 3 Hours
+Marks
+(4)
+(4)
+(4)
+(5)
+(4)
+(5)
+a)
+b)
+a)
+11
+l2
+(4)
+(4)
+(s)
+b)
+13 a)
+b)
+Scale the triangle PQR with P (0, 0), Q (1, 1) and R (5,2)to twice its size while (4)
+keeping R (5, 2) fixed.
+How does Cohen Sutherland algorithm determine whether a line is visible, (4)
+invisible or a candidate for clipping based on the region codes assigned to the
+end points of the line?
+Describe the steps involved in general pivot point scaling in 2D object. 
+(4)
+Distinguish between parallel and perspective projections. 
+(4)
+Is there any point at which a set of projected parallel lines appears to converge? (4)
+Justifu your answer.
+Describe the basic concepts of sampling and quantization with a neat sketch in 
+(4)
+image prowssing..
+What is Robert edge detection technique in digital image processing? 
+(4)
+.PABT B 
+}
+Answer any twofull qui:flions, each catties 9 marks.
+Explain the working principle of refresh CRT with neat diagram.
+Explain the architecture of LCD.
+Draw the line segment from pixel coordinate (1, l) to (8, 5) using Bresenham's
+line drawing algorithm.
+Write the steps of midpoint circle drawing algorithm.
+Explain the working of Joysticks.
+Write the scan line algorithm for filling a polygon.
+Page lof2
+
+I
+100qrcs401L22LO2
+'t
+PART C
+Answer any twofull questions, each carries 9 marks.
+14 
+Use Cohen Sutherland algorithm to clip linePl(70,20) and P2(100,10) against a 
+(9)
+window lower left hand corner (50,10) and upper right hand corner(80,40).
+15 
+Explain the two different polygon clipping algorithm with illustrations. 
+(9)
+16 
+A clipping window ABCD is specified as A(0,0), 8(40,0), C(40,40) and (9)
+D(0,40).Using Midpoint Subdivision algorithm, find the visible portion, if any
+of the line segment joining the points P(-10,20) and Q(50,10).
+PART D
+Answer any twofull questions, each corries 12 morks.
+17 a) Derive the transformation matrix of Perspective projection. 
+(8)
+b) Describe in detail the depth buffer visible surface detection technique. 
+(4)
+18 a) Explain the fundamental steps in Digital Image Processing with a neat diagram? (8)
+b) Describe histogram equalization and discuss the role of histogram equalization (4)
+in adigital image.
+19 a) Explain the Sobel edge detector in detail. 
+(4)
+b) Describe about the depth-sorting method to display the visible surfaces of any (8)
+given object with plane faces. Also explain the tests to identifr overlapping
+surfaces.
+Page2of2
+

@@ -1,0 +1,124 @@
+A
+G192010
+RegNo.:
+Name:
+APJ ABDUL KALAM TECHNOLOGICAL T'NIVERSITY
+SEVENTH SEMESTER B.TECH DEGREE EXAMINATION(R&S), DECEMBER
+Course Code: CS401
+Course Name: COMPUTER GRAPHICS
+Max. Marks: 100
+6
+Duration:3 Hours
+PART A
+Answer all questions, each carries 4 marks. 
+Marks
+Suppose you have a raster system designed using an 8 inches x l0 inches screen (4)
+with a resolution of-100 pixels per inch in each direction. What frame buffer size
+is required if 6 bits are stored per pixel in the buffer?
+Write the midpoint circle drawing algorithm. 
+(4)
+a) List the advantages of using Bresenham's line drawing algorithm. 
+(2)
+b) wtrat is the purpose of a frame buffer in a display system? 
+(2)
+How does Cohen Sutherland algorithm determine whether a line is visible, (4)
+invisible or a candidate for clipping based on the region codes assigned to the
+end points oithe line?
+A triangle ABC with coordinates A(0,0), 8(6,5), C(6,0) is scaled with scaling (4)
+factors Sx:2 and S53 about the vertex C(6,0). Find the transformed coordinate
+points.
+Write the 3D translation matrix for moving an object by -2 units, -4 units and -6 (4)
+units respectively in x, y and z directions
+Describe Histogram and also the type of information which obtained from a gray (4)
+level histogram
+Briefly describe the various classification of the visible-surface detection (4)
+algorithms.
+Is there any point at which a set of projected parallel lines appears to converge? (4)
+Justiff your answer.
+What is edge detection? Explain any one edge detection technique in digital (4)
+image processing.
+PART B
+Answer any twofull questions, each carries 9 marks.
+Describe in detail about emissive and non-emissive flat panel displays. 
+(5)
+l0
+11 a)
+Page lof3
+
+G192010
+Pages:3
+b) Explain the working principle of a Refresh CRT monitor with suitable diagrams. (4)
+12 a) Write the boundary fill algorithm for filling a polygon using eight connected (4)
+approach.
+b) Use mid-point circle drawing algorithm to plot a circle whose radius :20 units (5)
+and centre at (50,30).
+13 a) Write a note on any two interactive graphics input devices. 
+(3)
+b) Scan convert the line segment with end points (30,20) and (15,10) using DDA line (4)
+drawing algorithm
+c) What are the advantages and disadvantages of DDA line drawing algorithm (2)
+PART C
+Answer ony two full questions, each caries 9 marks.
+14 a) Perform a 45 degree rotation of a triangle ABC having the vertices at A(0,0) (6)
+B(10,10) and C(50,20)
+i. About the origin
+ii. About an arbitrary point P(-10,-10)
+b) Describe the tables used to represent a polygon surface. 
+(3)
+15 a) Explain the window to viewport coordinate transformation and also derive the (5)
+scaling factors during the transformation.
+b) Show that the composition of two rotation is additive by concatenating the (4)
+matrix representation for R(el) and R(O2)
+16 a) Show that transformation matrix for a reflection about the line y:x is equivalent (4)
+to a reflection relative to the x axis followed by a counter clockwise rotation of
+90 degree.
+b) Write Weiler - Atherton polygon clipping algorithm with suitable example. 
+(5)
+PART D
+Answer any two full questions, each carries 12 marks.
+17 a) Compare object space and image space method of visible surface detection (3)
+technique.
+b) Describe in detail the depth buffer visible surface detection technique. Derive (9)
+the equation to find the depth values for a surface position (x, y).
+18 a) What is mean by convolution? Give applications of 2D convolution in the field (4)
+of image prbcessing.
+b) Distinguish between cavalier and cabinet projection. 
+(4)
+c) Explain scan line algorithm with suitable example. 
+(4)
+PageZof3
+
+A
+elt'
+p
+i
+f",
+Prgns:3
+19 a) nft!*t is pq*"ftI erq*@i? 
+wtugraphic and elb Fal&I (6)
+proje*ion in &ail.
+b) qoaii{etuir4r;qr --errffitehw 
+(6)
+3 I 
+21(O
+2202
+tztl
+(p)l 
+0 | 
+2
+i) comp*e €F *erqgfu of, fues 4, slpr€st g and skrtrt m pafu
+pixels p ad q u*rere V:{0,1}. If a prtie& pS docs nc
+, ', ', 
+exist ffi 
+fmc t$r poi#s, afrain wtry.
+:,.f
+I
+a
+r
+i
+I
+i
+...
+*ri**
+Page 3of3
+

@@ -1,0 +1,99 @@
+A
+RegNo.:
+aJ
+4
+5
+6
+10000cs401t22r0r
+APJ ABDUL KALAI\{ TECIINOLOGICAL
+Seventh Semester B.Tech Degree Supplementary Examination J
+Course Code: CS401
+Course Name: COMPUTER GRAPHICS
+Max. Marks: 100
+Duration: 3 Hours
+PART A
+Answer all qaestions, each canies 4 morks. 
+Marks
+I 
+Explain Raster Scan display with diagram. 
+(4)
+2 
+Find out the Aspect Ratio of the raster system using 8 * l0 inches screen and 100 (4)
+pixels/inch.
+Write the disadvantage of DDA Line drawing algorithm.
+Discuss about window to viewport coordinate transformation.
+Apply the shearing transformation to square with A(0,0), B(1,0), C(l,l) & D(0,1).
+Shear parameter value of 0.5 relative to the line Y..r: -l .
+What are the different tables used for representing polygon surfaces? Explain with
+example.
+7 
+State the concept of Vanishing point. 
+(4)
+8 
+Describe the different classification of the visible surface detection algorithms. (4)
+9 
+Describe Spatial Convolution. 
+(4)
+l0 
+Define the terms.with respect to pixels: (i)Adjacency (ii)Neighbours. 
+(4)
+PART B
+o 
+Answer ony twofull questions, each carries 9 marks.
+I I a) Explain the working of Refiesh Cathode--Rry Tubes with diagram. 
+(5)
+b) Explain Beam Penetration method. 
+(4)
+12 a) Write Bresenham's Line Drawing Algorithm. 
+(5)
+b) Consider the line from (5,6) to (13,9). Use Bresenham's Line Drawing Algorithm (4)
+, to rasterize this line.
+l3 a) Derive the expression for decision parameter used in Midpoint Circle Algorithm. (5)
+b) Define the terms: (i) Aspect Ratio (ii) Resolution 
+(4)
+(4)
+(4)
+(4)
+(4)
+'{,f;&
+wg
+Page I of2
+
+rfin0cs40tt22t0l
+t-
+.t
+14 a) Use Cohen-Sutherland Algorithm to clip the line Pl(70,20) and P2(100,10) (6)
+against a window A(50,10), B(80,10), C(50,40) & D(80,40).
+b)
+15 a)
+16 a)
+b)
+Explain the basic types of 2D transformations.
+Explain Sutherhnd Hodgeman Polygon Clipping algorithm with an example.
+Show that the composition oftwo successive translations are additive.
+T(tyalvz) . T(t'r$l) = T(t"1+ ty2, tyft tyz)
+Discuss about Polygon meshes
+(4)
+PART D
+Answer ony twofull questions, each corries 12 me*s.
+a) Differentiate between Parallel and Perspective Projections. 
+(6)
+b) Explain Z Buffer Algorithm for hidden surface elimination 
+(6)
+a) Write any two edge detection methods.
+(8)
+b) Write the advantages of Sobel operator over Prewitt operator. 
+(4)
+a) Explain depth sorting-method. 
+(6)
+b) What do you mean by histogram? Also explain histogram streching and histogram (6)
+equalization.
+(3)
+(e)
+(5)
+T7
+t8
+t9
+*:t**
+Page2 of2
+

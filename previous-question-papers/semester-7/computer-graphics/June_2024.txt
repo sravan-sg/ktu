@@ -1,0 +1,96 @@
+A
+Reg No.:
+03000cs401122302
+APJ ABDUL KALAM TECHNOLOGICAL UNIVE
+B.Tech Degree s7 (s, FE) Examination May 2024/s7 (pr) (s,FE) Examination
+Course Code: CS401
+Course Name: COMPUTER GRAPHICS
+Max. Marks: 100
+Duration: 3 Hours
+PART A
+Answer all qaestions, each carries 4 marks.
+I 
+Describe the working of Refresh cathode-Ray Tubes with diagram.
+2 
+Write the flood fill algorithm to fill a polygon.
+3 
+Write Bresenliam's Line drawing algorithm.
+4 
+Illustrate the rotation of 2D objects with proper equations.
+5 
+Explain window to viewport coordinate transformation.
+6 
+What are the diflerent tables used for representing polygon surfaces?
+7 
+Illustrate the concept of Vanishing point.
+8 
+Describe the relationship between pixels with suitable examples.
+9 
+Describe the various classifications of the visible-surface detection aleorithms.
+l0 
+Explain the Sobel edge detector in detail.
+PART B
+' 
+Answer ony twofull questions, eoch corries 9 marks.
+I I a) Explain Beam Penetration method.
+b) Explain the architecture of raster graphics system with suitable diagrams.
+12 a) Draw the line segment from pixel coordinate (5,5) to (13,9) using Bresenham's
+line drawing algorithm
+b) Write the boundary fill algorithm for filling a polygon using eight connected
+approach.
+13 a) Define the terms: (i) Aspect Ratio (ii) Resolution
+b) Write DDA line drawing algorithm.
+PART C
+Answer any twofull questions, each caties 9 marks.
+14 
+Use Cohen Sutherland algorithm to clip line Pl(10,30) and P2(80,90) against a
+window lower lefi-hand comer (20,20)and upper right-hand corner (90,70).
+Marks
+(4)
+(4)
+(4)
+(4)
+(4)
+(4)
+(4)
+(4)
+(4)
+(4)
+(4)
+(s)
+(5)
+(4)
+(4)
+(5)
+(e)
+ftriR
+Page 1of2
+
+(t
+03qxrcs401122302
+l5 a) Explain Sutherland Hodgernan polygon clipping algorithm with example.
+16 a) Show that the composition of two rotation is additive by concatenating the
+matix repre'sentation for R(el) and R(O2).
+b) Describe Weiler-Atherton polygon clipping algorithm with suitable example.
+PART D
+Answer any twofull queslions, each carries 12 narks.
+.17 a) Describe parallel and perspective projection.
+b) Illusfrate Back face removal in visible surface detection.
+l8 a) Give the digital image representation of an image.
+b) -Describe 
+the fundamental steps in image processing with a neat diagram.
+19 a) Explain Z Buffer Algorithm for hidden surface elimination.
+b) Explain the working of any two edge detection methods.
+(e)
+(4)
+(s)
+'I
+(8)
+(4)
+(2)
+(10)
+(4)
+(8)
+**rt*
+Page2of 2
+

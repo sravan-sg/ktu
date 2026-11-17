@@ -1,156 +1,115 @@
-A 
-G1010 
-Pages: 2 
-Page 1of 2 
- 
- 
- 
- 
-Reg No.:_______________ 
- 
-Name:__________________________ 
-APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY 
-SEVENTH SEMESTER B.TECH DEGREE EXAMINATION(S), MAY 2019 
-Course Code: CS401 
-Course Name: COMPUTER GRAPHICS 
-Max. Marks: 100 
- 
-Duration: 3 Hours 
- 
-PART A  
- 
- 
+A
+Gl010
+RegNo.:
+Max. Marks: 100
+Duration: 3 Hours
+PART A
 Answer all questions, each carries 4 marks. 
-Marks 
-1 
- 
+Marks
 Differentiate between raster scan and random scan display systems. 
-(4) 
-2 
- 
-How 8-way symmetry of circle can be used for writing circle drawing 
-algorithms? Write the symmetric points if (x, y) is a point on the circle with 
-centre at origin. 
-(4) 
+(4)
+How S-way symmetry of circle can be used for writing circle drawing (4)
+algorithms? Write the symmetric points if (x, y) is a point on the circle with
+centre at origin.
 3 
- 
-Write the DDA line drawing algorithm. 
-(4) 
+Write the DDA line drawing algorithm.
 4 
- 
-What do you mean by homogeneous coordinate system? What is its 
-significance? 
-(4) 
-5 
- 
-Define the terms window, viewport and windowing transformation in the context 
-of 2D viewing with suitable diagrams. 
-(4) 
-6 
- 
-Describe the steps involved in scaling a 3D object with respect to a fixed point 
-(xf, yf, zf). Derive the composite transformation matrix. 
-(4) 
-7 
- 
+What do you mean by homogeneous coordinate system? What is its
+significance?
+Define the terms window, viewport and windowing hansformation in the context (4)
+of 2D viewing with suitable diagrams.
+Describe the steps involved in scaling a 3D object with respect to a fixed point (4)
+(xf, yf, zf). Derive the composite transformation matrix.
 Distinguish between parallel and perspective projections. 
-(4) 
-8 
- 
+(4)
 Explain the back face detection algorithm for hidden surface removal. 
-(4) 
-9 
- 
-Consider the image segment shown. Let V= {1, 2} and compute the lengths of 
-the shortest 4-path, 8-path, and m-path between pixels p and q. 
- 
-(4) 
-10  
-Define the following terms related to pixel of an image:  
-  i) pixel neighbourhood    ii) digital  path    iii) connected set 
-(4) 
-PART B  
-Answer any two full questions, each carries 9 marks. 
-11 a) Explain the architecture of raster graphics system with suitable diagrams. 
-(6) 
- 
-b) Explain the working of Direct View Storage Tube (DVST). 
-(3) 
-12 a) Explain the boundary fill algorithm using 4-connected approach. 
-(4) 
- 
-b) Rasterize the line segment from pixel coordinate (1, 1) to (8, 5) using 
-Bresenham’s line drawing algorithm. 
-(5) 
+(4)
+Consider the image segment shown. Let V: {1,2} and compute the lengths of (4)
+the shortest 4-path, S-path, and m-path between pixels p and q.
+3 
+| 
+2 
+I{c}
+2
+I
+{p} r
+Define the following terrns related to pixel of an image:
+i) pixel neighbourhood ii) digital path iii) connected set
+PART B
+Answer any twofull questions, each carries 9 marks.
+a) Explain the architecture of raster graphics system with suitable diagrams.
+b) Explain the working of Direct View Storage Tube (DVST).
+a) Explain the boundary fill algorithm using 4-connected approach.
+b) Rasterize the line segment from pixel coordinate (1, l) to (8, 5)
+Bresenham's line drawing algorithm.
+(4)
+(6)
+(3)
+(4)
+using (5)
+(4)
+(4)
+6
+7
+8
+9
+202
+2tr
+ot2
+t0
+ll
+'^q
+t2
+Page lof2
+
 A 
 G1010 
-Pages: 2 
-Page 2of 2 
-13 a) Consider a raster system with a resolution of 2560 x 2048. Determine the frame 
-buffer size (in bytes) needed for the system to store 12-bits per pixel. How much 
-storage is required if 24-bits per pixel are to be stored? 
-(2) 
- 
+Pages:2
+13 a) Consider a raster system with a resolution of 2560 x2048. Determine the frame (2)
+buffer size (in bytes) needed for the system to store l2-bits per pixel. How much
+storage is required if 24-bits per pixel are to be stored?
 b) Explain the working of a delta-delta shadow mask CRT. 
-(4) 
- 
-c) Explain the non-zero winding number rule to identify interior regions of a 
-polygon. 
-(3) 
-PART C  
-Answer any two full questions, each carries 9 marks. 
-14 a) Perform the following transformations on a point (6, 4). 
-i) Translate by tx = −2 and ty = 4 
-ii) then, Scale by sx = 2 and sy = 1 
-iii) and Rotate by 90ο in clockwise direction. Determine the final coordinates 
-of the transformed point. 
-(4) 
- 
-b) Prove that the multiplication of 2D transformation matrices for two successive 
-rotations is commutative. 
-(3) 
- 
+(4)
+c) Explain the non-zero winding number rule to identifu interior regions of a (3)
+. 
+polygon.
+PART C
+Answer any twofull questions, each canies 9 marks.
+14 a) Perform the following transformations on a point (6,4). 
+(4)
+D Translate by tx : -2 and,V: 4
+ii) then, Scale by sx: 2 and sy: I
+iii) and Rotate by 90o in clockwise direction. Determine the final coordinates
+of the transformed point.
+b) Prove that the multiplication of 2D transformation matrices for two successive (3)
+rotations is commutative.
 c) Explain the concept of point clipping in 2D. 
-(2) 
-15 a) Explain Weiler Atherton polygon clipping algorithm with illustrations. 
-(6) 
- 
-b) A rectangular parallelepiped is unit distance on Z-axis, 2 units on X-axis and 3 
-units on Y-axis. Determine the new coordinates of the parallelepiped when it is 
-rotated counter clockwise about X-axis by an angle of 45ο.  
-(3) 
+(2)
+l5 a) Explain Weiler Atherton polygon clipping algorithm with illustrations. 
+(6)
+b) A rectangular parallelepiped is unit distance on Z-axis, 2 units on X-axis and 3 (3)
+units on Y-axis. Determine the new coordinates of the parallelepiped when it is
+rotated counter clockwise about X-axis by an angle of 45o.
 16 a) What is a quadric surface? Explain about any one of the quadric surfaces. 
-(3) 
- 
-b) Explain the Cohen Sutherland line clipping algorithm with suitable examples. 
-(6) 
-PART D 
-Answer any two full questions, each carries 12 marks. 
-17 a) List out the differences between z-buffer method and A-buffer method for 
-determining the visible surfaces. 
-(4) 
- 
-b) Describe about the depth-sorting method to display the visible surfaces of any 
-given object with plane faces. Also explain the tests to identify overlapping 
-surfaces. 
-(8) 
-18 a) Explain the components of a general purpose digital image processing system 
-with a neat diagram. 
-(6) 
- 
+(3)
+b) Explain the Cohen Sutherland line clipping algorithm with suitable examples. (6)
+PART I)
+Answer any twofull questions, each carries 12 marks.
+17 a) List out the differences between z-buffer method and A-buffer method for (4)
+determining the visible surfaces.
+b) Describe about the depth-sorting method to display the visible surfaces of any (S)
+given object with plane faces. Also explain the tests to identifu overlapping
+surfaces.
+18 a) Explain the components of a general purpose digital image processing system (6)
+with a neat diagram.
 b) How edge detection is performed in digital images using 
-( i) Sobel operator        (ii) Prewitt operator. 
-What are the advantages of Sobel operator over Prewitt operator?  
-(6) 
-19 a) Derive the transformation matrix for oblique parallel projection with the help of 
-a neat diagram. 
-(6) 
- 
+(6)
+( i) Sobel operator (ii) Prewitt operator.
+What are the advantages of Sobel operator over Prewitt operator?
+19 a) Derive the transformation matrix for oblique parallel projection with the help of (6)
+a neat diagram.
 b) Discuss the role of histogram equalization in a digital image. 
-(2) 
- 
-c) What do you mean by histogram of a digital image? Discuss on the histogram of 
-four basic image types. 
-(4) 
-**** 
- 
+(2)
+c) What do you mean by histogram of a digital image? Discuss on the histogram of (4)
+four basic image types.
+Page2of2

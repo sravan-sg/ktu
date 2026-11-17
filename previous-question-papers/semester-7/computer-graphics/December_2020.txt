@@ -1,0 +1,107 @@
+Reg No.:
+Seventh
+Course Code: CS40l
+Course Name: COMPLITER GRAPHICS
+',.,, Max. Marks: 100
+PART A
+Answer all questions, each carries 4 marks
+q 
+I 
+Describe simple raster scan system and draw its architecture.
+2 
+Generate 4 pixel positions of a circle in the first quadrant with
+centered on the origin, using the midpoint circle algorithm.
+13 a)
+b)
+5
+6
+3 (a) Which algorithm is better for line drawing - DDA or Bresenham's? Defend (2)
+your view.
+(b) Write a note on any'two interactive graphics input devices. 
+(2)
+4 
+Write 2D transformation matrix for reflection and rotation of an object about x- 
+(4)
+axis.
+Write the A-buffer algorithm for visible surface detection. 
+(4)
+Describe the various classifications of the visible-surface detection algorithms (4)
+with example.
+Describe the concept of vanishing point with relevant figures. 
+(4)
+Distinguish-between one point perspective projection and two point perspective (4)
+projection with suitable diagram.
+Illustrate scaling with respect to a selected fixed position (xr, yr, zr) 
+(4)
+Describe the concept of spatial convolution. 
+(4)
+ll 
+a)
+PART B
+Ansper any twofall questions, each carries 9 mnrks.
+Consider three different raster systems with resolutions of 640 by 480, 1280 by
+1024 and 2560 by 2048. What size frame buffer (in bytes) is needed for each of
+these systems to store 12 bits per pixel? How much storage is required for each
+system if 24 bits per pixel are to be stored?
+Compare Boundary and flood fill algorithm.
+Explain the components and working of colour CRT with suitable diagtams.
+Indicate what raster locations would be chosen by Bresenham's algorithm while
+scan converting a line from (5, 5) to (13, 9).
+Mention the steps involved in the rotation of a 2D object about a selected pivot
+point.
+Cohen Sutherland algorithm can totally reject a line in the first step itself.Justi$i
+Duration: 3 Hours
+Marks
+(4)
+radius r:10 (4)
+(4)
+(6)
+(3)
+(s)
+(4)
+7
+8
+9
+l0
+b)
+12 a)
+b)
+(s)
+Page lof2
+
+rI
+0000(rcs4011219v2
+- '' . Answer any twofull questions, euch conies 9 marks.
+; 
+14 a) Use Cofren Sutherland algorithm to clip the line segment joining the points (6)
+P(40,80) and Q(120,30) against a clipping window with comers at A(20,20),
+8(60,20), C(60,40) and D(20,40).
+b) Draw and explain the two dimensional viewing pipeline. 
+(3)
+- 
+15 a) A.point (4,3) is rotated counter clockwise by an angle of 450. Find the rotation (4)
+mafrix and resultant point.
+\ 
+b) Explain how polygon meshes are used for 3D modelling. 
+(5)
+16 a) Explain Weiler-Atherton polygon clipping with an example. 
+(5)
+K 
+' b) Describe the methods to model quadric surfaces in 3D. 
+(4)
+PART D
+Answet any twofull questions, each carrics 12 mtrhs.
+17 a) Derive the linear equation for a 3D object and test whether the coordinates are (4)
+inside or outside the plane.
+b) Derive the transformation matrix for perspective projection with suitable (8)
+diagram.
+18 a) Describe histogram equalisation and discuss the role of histogram equalisation (4)
+in a digital image.
+b) With a suitable example explain the depth buffer algorithm for hidden surface (8)
+elimination.
+19 a) Explain how edge detection is done using Robert, Prewit! Sobel operators. 
+(6)
+b) Explain any 3 visible surface detection methods. 
+(5)
++*++
+Page2of2

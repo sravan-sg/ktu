@@ -1,0 +1,122 @@
+f
+A
+RegNo.:
+R7909
+Name:
+APJABDT]L KALAM TECHNOLOGICAL TJN
+SEVENTH SEMESTER B.TECH DEGREE EXAMINATION.
+Course Code: CS401
+Course Name: COMPUTER GRAPHICS
+Max. Marks: 100
+Duration: 3 Hours
+PARTA
+Answer all questions, each canies 4 marks.
+I 
+What do you understand by the aspect ratio and resolution of a display (4)
+screen in a raster scan display?
+2 
+Write the flood filI algorithm for filling a polygon. 
+(4)
+3 
+Write the methods used to plot a dashed line segment. 
+(4)
+4 
+Given a triangle A(20,10) 8(80,20) C(50,70). Find the co-ordinates of 
+(4)
+vertices after each of the following transformation.
+(a) Reflection about the line x:y.
+(b) Rotation of the triangle ABC about vertex A in clockwise direction
+for an angle 90 degree.
+Write the different tables used for representing polygon surfaces. Illustrate (4)
+with an example.
+Describe the techniques that can be used to provide text clipping in a 
+(4)
+graphics package.
+Explain about different types of parallel projections.
+What do you understand by correlation and convolution operations
+image processing?
+Write the Z-buffer aleorithm for hidden surface removal.
+7
+8
+9
+10
+(4)
+in case of 
+(4)
+(4)
+(4)
+1l
+I2
+What do you understand by the following terms with respet to pixels.
+Neighbours, Adjacency, Connectivity.
+PART B
+Answer any two full questions, each carries 9 marks.
+a) Explain the working of a random scan display system with suitable diagram.
+b) Explain the working of a beam penetration CRT.
+a) Write the midpoint circle drawing algorithm.
+b) Use midpoint circle drawing algorithm to plot a circle whose radius :20
+units and center is (50, 30).
+a) A mouse is picked up and placed in another position. Whether the position of
+the mouse pointer change. Justiff your answer.
+i"l-Explain the working*ofa_light pen.
+c) Write the scan line algorithm for filling a polygon.
+(6)
+(3)
+(4)
+(s)
+(2)
+(3)
+(4)
+13
+Page 1of2
+
+A 
+R7909 
+Pages:2
+PART C
+'' 
+Ans.yver any two full qaestions, each carries 9 marks.
+14 a) Given a clipping window A(-20,-20), 8(40,-20), C(40,30) and D(-20,30). (6)
+: 
+Using Cohen Sutherland line clipping algorithm" find the visible portion of
+the line segment joining the points P(-30,20) and Q(60,-10).
+b),,, Derive an equation for window to viewport transformation by specifying the 
+(3)
+: seQubnce of basic transformations involved.
+15 a) What are the steps for general 3D rotation if the rotation axis is not parallel (9)
+to any one of the principal axis. The rotation axis is defined by the points
+Pl(x1,yl,21) and P2(x2,y2,22). Write down the composite matrix
+representation.
+16 a) Explain Sutherland .Hodgeman polygon clipping algorithm with 
+(5)
+illustreJions.
+b) Describe the transforrnation which reflects aZ-D object about a line L which (4)
+has a y-intercept(0,b) and an angle of intersection theta degree w.r.t. to the x-
+axis.
+PART D
+Answer any two full questions, each canies 72 marks.
+17 a) Explain in detail the scan line algorithm for visible surface detection by 
+(7)
+pointing out the data structures used in this algorithm..
+b) How the cyclic overlaps of surfaces are eliminated in scan line algorithm? (2)
+c) In case of anA-buffer algorithm, what information is stored in a linked list. 
+(3)
+18 a) Explain the fundamental steps in Digital Image Processing with a neat (8)
+diagram?
+- 
+b) The gray levels in an image gl(x,y) range from a to b. It is decided to 
+(4)
+change it into an image g2(x,y) in which the gray levels range from c to d
+using a linear transformation of its gray levels. Derive the equation for
+g2(x,y) as a function of gl(x,y) by specifuing the steps.
+19 a) Explain the Robert's, Prewitt's and Sobel's edge detectors. 
+(6)
+b) Derive the transformation matrix for perspective projection with the 
+(6)
+projection reference point at position Zprp along the Zv axis and the view
+" 
+plane at Zvp. Write the perspective transformation equations (i) if the view
+place is taken to be the uv plane (ii) if the projection reference point is taken
+to be at the viewing co-ordinate origin.
+**:1.*
+Page 2of2

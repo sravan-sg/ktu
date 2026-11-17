@@ -1,0 +1,100 @@
+>[
+-21
+l'lf
+I
+A
+Reg No.:
+03000cs40LL2230L
+APJ ABDUL KALAM TECHNOLOGICAL UNIVERS
+B.Tech Degree 57 (S, FE) / 57 (PT) (S,FE) Examination December 2023
+Course Code: CS401
+Course Name: COMPUTER GRAPHICS
+Max. Marks: 100
+Duration:3 Hours
+PART A
+Answer all questions, eoch carries 4 marks.
+write the differences between random scan displays and raster scan displays.
+Explain the working of any two graphics input devices.
+Write DDA Line drawing algorithm.
+Define the terms window, viewport and windowing transformation in the context
+of 2D viewing with suitable diagrams.
+Show that the composition of trvo successive rotations is additive.
+i.e., R(Ol). R(e2): R (el+ e2).
+6 
+Describe the steps involved in general pivot point scaling in 2D object.
+7 
+write the differences between parallel and perspective projections.
+8 
+Describe A buffer algorithm for detecting visible surfaces.
+9 
+Explain correlation and convolution operations in case of image processing?
+l0 
+what is Robert edge detection technique in digitar image processing?
+PART B
+Answer any twofull questions, each corries 9 morks.
+.l I a) Explain the working of Refresh cathode-Rgy Tubes with diagram.
+b) Explain the working of a random scan display system with suitable diagram.
+l2 a) Write the midpoint circle drawing algorithm.
+b) Use mid-point circle drawing algorithm to plot a circle whose radius =5 units
+. (4)
+(5)
+(4)
+(s)
+l
+2
+J
+4
+)
+Marks
+(4)
+(4)
+(4)
+(4)
+(4)
+(4)
+(4)
+(4)
+(4)
+(4)
+and centre at (5,10).
+l3 a) D6scribe aspect ratio and resolution of a display screen in a raster scan display . 
+(4)
+b) Digitize a line with end points (10,20) and (20,25) using Bresenham's line (5)
+drawing algorithm.
+;trye
+Page lof2
+
+0300(rc910LL2230L
+PART C
+Answer anylwofull questions, each carries 9 marks.
+14 
+Let ABCD be the rectangular window with A(20,20), B(90,20), C(90,70), (9)
+D(20,70).Use Cohen Sutherland algorithm to clip line Pl(10,30) and P2(80,90)
+against this window.
+15 a) Describe Weiler-Atherton polygon clipping algorithm with suitable example. (5)
+b) Explain the window to viewport coordinate transformation and also derive the 
+(4)
+scaling factors during the transformation.
+16 a) Describe the steps involved in scaling a 3D object with respect to a fixed point 
+(4)
+. 
+(xr, ytzr). Write the composite transformation matrix.
+b) What are the different tables used for representing polygon surfaces? Illustrate (5)
+with an example.
+PART D
+Answer any twofull questions, each corries 12 mar*s.
+(8)
+17 a) Explain Depth Sorting method.
+b) Compare object space and image space method of visible surface detection 
+(4)
+technique
+l8 a) Describe the fundamental steps in image processing. 
+(8)
+b) Explain the Sobel edge detector in detail. 
+(4)
+19 a) Describe Z buffer algorithm. 
+(6)
+b) Explain Gray levelhistogram. 
+(6)
+Page2of2
+

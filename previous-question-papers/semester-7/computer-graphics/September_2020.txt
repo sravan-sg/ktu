@@ -1,0 +1,105 @@
+A
+RegNo.:
+Pages: 2
+APJ ABDUL KALAM TECHNOLOGICAL
+Course Code: CS40l
+Course Name: COMPUTER GRAPHICS
+Max. Marks: 100
+Duration: 3 Hours
+PART A
+Answer oll questions, each corries 4 marks' 
+Marks
+I 
+Describe simple random scan display system and draw its architecture. 
+(4)
+2 
+Describe Flat Panel Display and explain its different categories' 
+g)
+3 
+Which are the steps involved in window to viewport coordinate transformation (4)
+in2D?
+4 
+Magnify the triangle ABC with A(0, 0), B(1, l) and C(5, 2) to twice its size (4)
+while keeping C(5,2) fixed.
+5 
+Show that the composition of two successive rotations are additive i-e. R(Ol)' (4)
+R(e2) : R(Ol+ O2).
+6 
+Derive the linear equation for a 3D object and test whether the coordinates are (4)
+inside or outside the Plane.
+7 
+Define the terms (i) Centre of projection (ii) Principal vanishing point 
+(4)
+g 
+Differentiate between the object space and image space method for the hidden (4)
+surface removal of an image.
+9 
+Describe the basic concepts of sampling and quantization with a neat sketch. 
+(4)
+l0 
+Write any six differences between perspective projection and parallel projection (4)
+PART B
+Answer any twofult questions, each corries 9 marks'
+I I a) Generate the points between itt" "no 
+points of a line viz.Q'2) and (9,6) by using (5)
+Bresenham' s line drawing algorithm'
+b) Scan convert the line segment with end points (30'20) and (15,10) using DDA (4)
+line drawing algorithm.
+lZ a) With a suitable figure, describe the shadow masking techniques in CRT. 
+(5)
+b) Write a note on any two interactive graphics input devices. 
+g)
+l3 a) Derive the Initial decision parameter of midpoint circle drawing algorithm. 
+(6)
+b) Describe the relevance and various methods of inside-outside test used in 
+(3)
+polygon filling.
+Name:
+!*sc)
+Page lof2
+
+00000cs401121903
+PART C
+Answer any twofull questions, each carries 9 marks.
+14 
+Explain the Sutherland Hodgeman algorithm for polygon clipping with an (9)
+example.
+15 
+Consider a triangle at (2,2), (10,2), (2,10). Perform the following 2D (9)
+transformations in succession and find the resultant vertices
+,/ 
+(i) Scale with respectto (2,2) by scaling factors (2,2) respectively along x
+and y directions.
+(ii) Rotate by 900 counter clockwise direction
+16 a) Briefly explain the steps involved in clipping a line using Mid point (5)
+Subdivision algorithm.
+b) Explain how polygon meshes are used for 3D modelling. 
+(4)
+PART D
+Answer ony twofull questions, eoch carries 12 marks.
+17 a) Differentiate between oblique and orthogonal projection. 
+(4)
+b) Explain histogram matching with an example. 
+(8)
+18 a) Describe in detail the depth buffer visible surface detection technique. Derive (9)
+the equation to find the depth values for a surface position (x, y).
+b) Explain the terms adjacency and connectivity in the context of digital images. (3)
+19 a) Explain the scan -line method used in visible surface detection with an (4)
+example. 
+.
+b) Consider the image segment and compute the length of the shortest 4- , 8- and (8)
+m-path between p and q by considering two set of values for V:
+(i)V={0,1,2}
+(ii)V:{1,2} .
+If a particular path does not exist explain the reason for the above two cases of
+v. 
+3 4 | 2 0
+010 
+42(q)
+22 
+314
+(q)3 042r
+r2034
+****
+Page2of2
+

@@ -1,0 +1,178 @@
+A
+RegNo.:
+10000cs401t22002
+APJ ABDI]L KALAM TECHNOLOGICAL UNIVEfISIT* ;-\
+-- - ----^- 
+-t\ tz-r
+Seventh Semester B.Tech Degree Regular and Supplementary Examination December
+Course Code: CS401
+Course Name: COMPUTER GRAPHICS
+PART A
+Answer all questions, each carries 4 morks.
+I 
+Describe the working of a simple random scan display system with suitable
+diagram.
+2 
+For what purpose we use the non-zero winding number rule? How is it used ?
+Illustrate with an example.
+3 
+Rasterize the line segment from pixel coordinate (10, 12) to (15, 15) using
+Bresenham's line drawing algorithm.
+4 
+What do you understand by homogeneous coordinate system? What is its
+significance ? 
+(4)
+5 
+Consider a line from Pl to P2 and an arbitrary point P on the line. prove that
+after perforrning some translation the translated P is on the line between the (4)
+hanslation'S of Pl and P2.
+show how plane equations are used to identiff the position of spatial points
+relative to the plane surface of an object. 
+i
+Distinguish between parallel and perspective projections.
+Explain about Orthogonal projections and its tlpes with examples.
+Given a simple rmage,,as shown
+histogram.
+above. Write its frequency table and draw the
+Max. Marks: 100
+t\
+Duration: 3 Hours
+Marks
+(4)
+(4)
+(4)
+(4)
+(4)
+(4)
+7
+8
+9
+(4)
+ffi
+!tr1t"7- & \q
+2
+1
+2
+3
+2
+3
+2
+2
+4
+3
+1
+3
+5
+4
+3
+3
+4
+5
+6
+7
+2
+2
+6
+7
+5
+Page I of3
+
+10000cs401122002
+l0 
+Explain the steps involved in bdge detection.
+PART B
+Answer any mofatl questions, euch carries 9 marks'
+With the help of a neat diagram explain the working of a Direct View Storage (5)
+Tube display.
+Write the difference between emissive and non-emissive flat panel displays with 
+@\
+suitable examples.
+Derive the initial decision parameter of midpoint circle drawing algorithm' 
+(5)
+Use mid-point circle drawing algorithm to plot a circle whose radius is l0 units
+and centre is at (20,10)
+a) Explain the working of (i) Digital glove (ii) Light pen
+b) Show how coherence property can be utilised in the calculation
+of edges with scan lines in scan line polygon filling algorithm?
+PART C
+Answer any twofull questions, each carries 9 marks.
+14 a) Perforrn the following transformations on a line with end points A(10, 20) and
+B(40, 30). Draw the result of each transformation. Apply the second
+transfonnation on the result of first and third on the result of second
+transformation
+(5)
+i) Scale the object two times in x-direction and three times in y-direction.
+ii) Rotate the object by 90" Anticlockwise about origin'
+iii) Translate one unit in x-direction and two units in ydirection.
+b) Explain how Mid-point subdivision algorithm is used for clipping
+segment.
+15 a)
+(4)
+l1 
+a)
+b)
+12 a)
+<. 
+b)
+13
+(5)
+of intersection
+(4)
+a line
+(4)
+Illustrate the clipping of the polygon shown
+clipping window using Sutherland Hodgeman
+results also.
+in frgure against the rectangular
+algorithm. Draw the intermediate
+,- ----,-;=a"]- --
+.l
+(6)
+*+-+qry
+: 'n.
+Page 2 of3
+
+\
+10000cs401122002
+b) Explain the boundary representation and space partitioning representation 
+i
+schemes used for solid o'bject representation. 
+(3)
+16 a) Describe the steps involved in scaling a 3D object with respect to a fixed point
+(xf, yf, zf). Write the composite transformation matrix 
+g) 
+I
+b) Given a clipping window A(10,-20), 8(80,-20), C(80,20) and D(10,20). 
+\
+Using Cohen Sutherland line clipping algorithm, clip the line segment joining (5) 
+r
+- 
+the points P(-20,10) and Q(70,-20). Find the end points of the visible portion.
+. 
+PARTD
+Answer any two full questions, each carries 12 marhs. 
+r
+l7 a) Explain in detail the scitn line algorithm for visible surface detection by pointing
+\ 
+out the data structures used in this algorithm. 
+- 
+(8)
+b) Distinguish between Cavalier and Cabinet projections. 
+(4)
+18 a) With a neat block diagram explain the fundamental steps in image processing. (7)
+b) Consider the image segment and compute the length of the shortest 4- , 8- and ' (5)
+m-path between p and q by considering two set of values for V:
+(i) V:{O,I } (iDV:{ 1,2}. If a particular path does. not exist explain the reason for
+the above two cases ofV.
+(q)l | 2 3
+022r
+1102
+.. 
+2r21(p)
+P a) Derive a transforrnation matrix for oblique parallel projection. 
+(6)
+b) What do you understand by histogram equalization of an image? Illustrate with
+suitable example show how equalization is done by dividing the list. 
+(6)
+*:F**
+Page 3 of3
