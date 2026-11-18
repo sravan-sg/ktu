@@ -1,0 +1,87 @@
+Course Code: CS305
+Course Name: Microprocessors and Microcontrollers
+L-T-P-Credits: 2-1-0-3
+Year of Introduction: 2016
+
+Prerequisite: CS202 Computer Organisation and Architecture
+
+Course Objectives:
+- To impart basic understanding of the internal organisation of 8086 Microprocessor and 8051 microcontroller.
+- To introduce the concepts of interfacing microprocessors with external devices.
+- To develop Assembly language programming skills.
+
+Syllabus:
+Introduction to 8086 Microprocessor; Architecture and signals, Instruction set of 8086, Timing Diagram, Assembly Language Programming, Memory and I/O interfacing, Interfacing with 8255, 8279, 8257, Interrupts and Interrupt handling, Microcontrollers - 8051 Architecture and its salient features, Instruction Set and Simple Programming Concepts.
+
+Expected Outcome:
+The Students will be able to:
+i. Describe different modes of operations of a typical microprocessor and microcontroller.
+ii. Design and develop 8086 assembly language programs using software interrupts and various assembler directives.
+iii. Interface microprocessors with various external devices.
+iv. Design and develop assembly language programs using 8051 microcontroller.
+v. Analyze and compare the features of microprocessors and microcontrollers.
+
+Text Books:
+1. Bhurchandi and Ray, Advanced Microprocessors and Peripherals, Third Edition McGraw Hill, 2012.
+2. Raj Kamal, Microcontrollers: Architecture, Programming, Interfacing and System Design, Pearson Education, 2011.
+3. Douglas V. Hall, SSSP Rao, Microprocessors and Interfacing, Third Edition, McGrawHill Education, 2012.
+
+References:
+1. Barry B. Brey, The Intel Microprocessors Architecture, Programming and Interfacing, Eighth Edition, Pearson Education, 2015.
+2. A. NagoorKani, Microprocessors and Microcontrollers, Second Edition, Tata McGraw Hill, 2012.
+
+--------------------------------------------------------------------------------
+COURSE PLAN
+--------------------------------------------------------------------------------
+
+Module I (07 Hours | 15% End Sem. Exam Marks)
+- Evolution of microprocessors, 8086 Microprocessor - Architecture and signals, Memory organisation, Minimum and maximum mode of operation, Minimum mode Timing Diagram. Comparison of 8086 and 8088.
+
+Module II (08 Hours | 15% End Sem. Exam Marks)
+- 8086 Addressing Modes, 8086 Instruction set and Assembler Directives.
+- Assembly Language Programming with Subroutines, Macros, Passing Parameters, Use of stack.
+
+[FIRST INTERNAL EXAM]
+
+Module III (07 Hours | 15% End Sem. Exam Marks)
+- Interrupts: Types of Interrupts and Interrupt Service Routine. Handling Interrupts in 8086, Interrupt programming.
+- Basic Peripherals and their Interfacing with 8086: Programmable Interrupt Controller - 8259 - Architecture.
+
+Module IV (07 Hours | 15% End Sem. Exam Marks)
+- Interfacing Memory, I/O, 8255 - Detailed study - Architecture, Control word format and modes of operation.
+- Architecture and modes of operation of 8279 and 8257 (Just mention the control word, no need to memorize the control word format).
+
+[SECOND INTERNAL EXAM]
+
+Module V (08 Hours | 20% End Sem. Exam Marks)
+- Microcontrollers: Types of Microcontrollers, Criteria for selecting a microcontroller - Example Applications.
+- Characteristics and Resources of a microcontroller. Organization and design of these resources in a typical microcontroller - 8051.
+- 8051 Architecture, Register Organization, Memory and I/O addressing, Interrupts and Stack.
+
+Module VI (08 Hours | 20% End Sem. Exam Marks)
+- 8051 Addressing Modes, Different types of instructions and Instruction Set, Simple programs.
+- Peripheral Chips for timing control - 8254/8253.
+
+[END SEMESTER EXAM]
+
+--------------------------------------------------------------------------------
+QUESTION PAPER PATTERN
+--------------------------------------------------------------------------------
+1. There will be five parts in the question paper - A, B, C, D, E.
+2. Part A:
+   a. Total marks: 12
+   b. Four questions each having 3 marks, uniformly covering modules I and II; All four questions have to be answered.
+3. Part B:
+   a. Total marks: 18
+   b. Three questions each having 9 marks, uniformly covering modules I and II; Two questions have to be answered. Each question can have a maximum of three subparts.
+4. Part C:
+   a. Total marks: 12
+   b. Four questions each having 3 marks, uniformly covering modules III and IV; All four questions have to be answered.
+5. Part D:
+   a. Total marks: 18
+   b. Three questions each having 9 marks, uniformly covering modules III and IV; Two questions have to be answered. Each question can have a maximum of three subparts.
+6. Part E:
+   a. Total Marks: 40
+   b. Six questions each carrying 10 marks, uniformly covering modules V and VI; four questions have to be answered.
+   c. A question can have a maximum of three sub-parts.
+7. There should be at least 60% analytical/numerical questions.
