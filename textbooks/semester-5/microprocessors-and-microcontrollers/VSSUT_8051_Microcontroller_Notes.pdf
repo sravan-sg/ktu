@@ -1,0 +1,2256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VSSUT::Veer Surendra Sai University of Technology</title>
+  <link rel="icon" type="image/x-icon" href="./assets/icons/logo.ico" />
+<link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="./assets/css/fancybox.css">
+<link rel="stylesheet" href="./assets/css/icons.css">
+<link rel="stylesheet" href="./assets/css/splide.min.css">
+<link rel="stylesheet" href="./assets/css/vssut.css?v=7.0.1">
+<link rel="stylesheet" href="./assets/css/responsive.css?v=6.8"></head>
+
+<body>
+       <div class="header-background ">
+    <div class="container">
+      <div class="flex-box-two">
+        <div class="flex-box-two-left">
+          <a href=""><i class="fa-solid fa-envelope"></i> registrar@vssut.ac.in </a>
+          <a href=""> <i class="fa-solid fa-phone-volume"></i> +91 8480441756 </a>
+          <!--<a href="https://www.facebook.com/VSSUTofficial/" title="facebook" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+          <a href="https://x.com/VSSUT_official/" title="twitter" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+          <a href="https://www.instagram.com/vssut_official/" title="instagram" target="_blank" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://in.linkedin.com/company/tnpvssut/" title="linkedin" target="_blank"><i class="fa-brands fa-linkedin"></i></a>-->
+          <a href="https://vssut.ac.in/public-self-disclosure.php" title="Mandatory Disclosure" target="_blank">Mandatory Disclosure</a>
+          <a href="https://www.vssut.ac.in/uhv-cell.php" title="UHV Cell" target="_blank">UHV Cell</a>
+        </div>
+        <div class="flex-box-two-right">
+          <a href="#navbarNavDropdown" title="Skip To Navigation Content"><i class="fa-solid fa-share"></i></a>
+          <ul class="text-size" title="Text Size"><i class="fa-solid fa-text-height"></i>
+            <ul class="text-size-dropdown">
+              <li><a href="" onclick="changeFontSize('+'); return false;">A+</a></li>
+              <li><a href="" onclick="changeFontSize('reset'); return false;">A </a></li>
+              <li><a href="" onclick="changeFontSize('-'); return false;">A-</a></li>
+            </ul>
+          </ul>
+          <a href="screen-reader-access.php" title="Screen Reader Access"><i class="fa-solid fa-volume-high"></i> </a>
+          <a href="" title="Sitemap"><i class="fa-solid fa-sitemap"></i></a>
+            <div id="google_translate_element"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sambalpuri-border2"></div>
+  <div class="container header-container">
+
+    <div class="header">
+      <div class="left-header">
+        <div class="logo">
+          <a href="https://www.vssut.ac.in/"><img src="/assets/icons/logo.png" alt=""></a>
+        </div>
+        <div class="university-name">
+          <h1 class="odia">ବୀର ସୁରେନ୍ଦ୍ର ସାଏ ବୈଷୟିକ ବିଶ୍ୱବିଦ୍ୟାଳୟ</h1>
+          <h1 class="hindi">वीर सुरेंद्र साई प्रौद्योगिकी विश्वविद्यालय</h1>
+          <h1 class="english">Veer Surendra Sai University of Technology</h1>
+        </div>
+      </div>
+      <div class="right-header">
+        <div class="header-image"><img src="images/platinum.png" alt=""></div>
+      </div>
+
+
+
+    </div>
+  </div>
+  <!-- <div class="sambalpuri-border"></div>
+  <img src="assets/icons/rb_53591.png" alt="" class="backgrund-img-png"> -->
+
+  <nav class="navbar navbar-expand-lg ">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+     MENU <i class="fa-solid fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+		<ul class="navbar-nav w-100 justify-content-around"><li class="nav-item"><a class="nav-link active" aria-current="page" href="https://www.vssut.ac.in/"><i class="fa-solid fa-house"></i></li><li class="nav-item  dropdown"><a class="nav-link dropdown-toggle" href="javascript: void(0)">The University</a><ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><li><a class="dropdown-item" href="https://www.vssut.ac.in/history.php">About the University</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/vision_mission.php">Vision/Mission</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/vice-chancellor-s-message.php">Vice Chancellor's Desk</a></li><li><a class="dropdown-item" href="images/documents/docs_1781509897.pdf" target="_blank">VSSUT Act</a></li><li><a class="dropdown-item" href="images/documents/docs_1781510125.pdf" target="_blank">VSSUT Statute</a></li><li><a class="dropdown-item" href="images/documents/docs_1781510342.pdf" target="_blank">Certification</a></li><li class=" nav-item dropdown-submenu"><a class="dropdown-item" href="javascript: void(0)">The Board<i class="fa-solid fa-caret-right subicon"></i></a><ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><li><a class="dropdown-item" href="https://www.vssut.ac.in/members.php">Members</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/proceedings.php">Proceedings</a></li></ul></li><li class=" nav-item dropdown-submenu"><a class="dropdown-item" href="javascript: void(0)">Academic Council<i class="fa-solid fa-caret-right subicon"></i></a><ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><li><a class="dropdown-item" href="https://www.vssut.ac.in/academic-council-members.php">Members</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/academic-council-proceeding.php">Proceeding</a></li></ul></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/information-brochure.php" target="_blank">Information Brochure</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/infrastructure.php">Infrastructure</a></li><li><a class="dropdown-item" href="http://vssut.ac.in/upload/Developments%20in%202015.pdf" target="_blank">Achievements</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/strategic-plan.php">Strategic Plan</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/reach-vssut.php">Reach VSSUT</a></li><li class=" nav-item dropdown-submenu"><a class="dropdown-item" href="javascript: void(0)">News Letter<i class="fa-solid fa-caret-right subicon"></i></a><ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><li><a class="dropdown-item" href="images/documents/NewsLetter-siddhi-vol-1.pdf" target="_blank">SIDDHI Volume-1 2025</a></li></ul></li></ul></li><li class="nav-item  dropdown"><a class="nav-link dropdown-toggle" href="javascript: void(0)">Administration</a><ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><li><a class="dropdown-item" href="https://www.vssut.ac.in/organisational-structure.php">Organizational Structure</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/list-of-office-bearers.php">List of Office Bearers</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/finance.php">Finance</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/supporting-staff.php">Officers & Supporting Staff</a></li></ul></li><li class="nav-item  dropdown"><a class="nav-link dropdown-toggle" href="javascript: void(0)">Academics</a><ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><li><a class="dropdown-item" href="https://www.vssut.ac.in/academic-courses.php">Courses</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/academic-council-proceeding.php">Academic Council Proceeding</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/admission.php">Admission</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/rules-regulations.php">Rules & Regulations</a></li><li class=" nav-item dropdown-submenu"><a class="dropdown-item" href="javascript: void(0)">Syllabus<i class="fa-solid fa-caret-right subicon"></i></a><ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><li><a class="dropdown-item" href="https://www.vssut.ac.in/ug-syllabus-2023-24-as-per-nep-2020.php">UG Syllabus (2023-24)</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/ug-syllabus-2019-20.php">UG Syllabus (2019-20)</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/pg-syllabus-2019-20-.php">PG Syllabus (2019-20)</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/pg-syllabus-2016-17.php">PG Syllabus (2016 - 17)</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/ug-syllabus-2015-16.php">UG Syllabus (2015-16)</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/syllabus-2010-2014.php">Syllabus (2010-2014)</a></li></ul></li><li class=" nav-item dropdown-submenu"><a class="dropdown-item" href="javascript: void(0)">Subjects Offered<i class="fa-solid fa-caret-right subicon"></i></a><ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><li><a class="dropdown-item" href="https://www.vssut.ac.in/list-of-subject-2021-22.php">List of subject 2021-22</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/list-of-subject-2022-2023.php">List of subject 2022-2023</a></li></ul></li><li><a class="dropdown-item" href="/images/documents/docs_1781528496.pdf" target="_blank">Holidays List</a></li><li><a class="dropdown-item" href="/doc/Revised-Fees-Structure.pdf" target="_blank">Fees Structure</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/convocation.php">Convocation</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/fees-structure-semester-wise-.php">Fees Structure (Semester Wise)</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/scholarship.php">Scholarship</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/training.php">Training</a></li><li class=" nav-item dropdown-submenu"><a class="dropdown-item" href="javascript: void(0)">Results<i class="fa-solid fa-caret-right subicon"></i></a><ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><li><a class="dropdown-item" href="https://examinationresults.vssut.ac.in/" target="_blank">2024-2025</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/results.php" target="_blank">2015-2024</a></li></ul></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/academic-calendar.php">Academic Calendar</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/time-table.php">Time Table</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/application-forms-for-different-purposes.php">Application forms for different purposes</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/trilingual-lab-manuals.php">Trilingual Lab Manuals</a></li></ul></li><li class="nav-item  dropdown"><a class="nav-link dropdown-toggle" href="javascript: void(0)">Research</a><ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><li class=" nav-item dropdown-submenu"><a class="dropdown-item" href="javascript: void(0)">Ph.D Award Notification<i class="fa-solid fa-caret-right subicon"></i></a><ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><li><a class="dropdown-item" href="https://www.vssut.ac.in/ph.d-award-notification-2025.php">2025</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/ph.d-award-notification-2024.php">2024</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/ph.d-award-notification-2023.php">2023</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/ph.d-award-notification-2022.php">2022</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/ph.d-award-notification-2021.php">2021</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/ph.d-award-notification-2020.php">2020</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/ph.d-award-notification-2019.php">2019</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/images/documents/docs_1747561813.pdf" target="_blank">3.4.3 - Number of Ph.Ds awarded during 2018-19 to 2022-23</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/images/documents/docs_1752063390.pdf" target="_blank">Recognize Supervisors</a></li></ul></li><li class=" nav-item dropdown-submenu"><a class="dropdown-item" href="javascript: void(0)">Journal Publications<i class="fa-solid fa-caret-right subicon"></i></a><ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><li><a class="dropdown-item" href="https://www.vssut.ac.in/images/documents/docs_1784281468.pdf" target="_blank">2024-25</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/doc/Journal-Publications--2024.pdf">2024</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/doc/Journal-Publications--2023.pdf">2023</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/doc/Journal-Publications--2022.pdf">2022</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/doc/Journal-Publications--2021.pdf">2021</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/doc/Journal-Publications--2020.pdf">2020</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/doc/Journal-Publications--2019.pdf">2019</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/images/documents/docs_1747562287.pdf" target="_blank">3.4.4 - Number of research papers per teacher in the journals</a></li></ul></li><li class=" nav-item dropdown-submenu"><a class="dropdown-item" href="javascript: void(0)">Conference Publications<i class="fa-solid fa-caret-right subicon"></i></a><ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><li><a class="dropdown-item" href="https://vssut.ac.in/doc/Conference-Publications--2024.pdf">2024</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/doc/Conference-Publications--2023.pdf">2023</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/doc/Conference-Publications--2022.pdf">2022</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/doc/Conference-Publications--2021.pdf">2021</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/doc/Conference-Publications--2020.pdf">2020</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/doc/Conference-Publications--2019.pdf">2019</a></li></ul></li><li class=" nav-item dropdown-submenu"><a class="dropdown-item" href="javascript: void(0)">Book/Book Chapters<i class="fa-solid fa-caret-right subicon"></i></a><ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><li><a class="dropdown-item" href="https://vssut.ac.in/doc/Book-Chapters--2024.pdf">2024</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/doc/Book-Chapters--2023.pdf">2023</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/doc/Book-Chapters--2022.pdf">2022</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/doc/Book-Chapter--2021.pdf">2021</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/doc/Book-Chapter--2020.pdf">2020</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/doc/Book-Chapter--2019.pdf">2019</a></li></ul></li><li class=" nav-item dropdown-submenu"><a class="dropdown-item" href="javascript: void(0)">Patents<i class="fa-solid fa-caret-right subicon"></i></a><ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><li><a class="dropdown-item" href="https://vssut.ac.in/doc/Patents-2019-2024.pdf">2019-2024</a></li></ul></li></ul></li><li class="nav-item  dropdown"><a class="nav-link dropdown-toggle" href="javascript: void(0)">Departments</a><ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><li><a class="dropdown-item" href="/department/architecture/">Architecture</a></li><li><a class="dropdown-item" href="#">Biomedical Engineering</a></li><li><a class="dropdown-item" href="/department/chemical-engineering/">Chemical Engineering</a></li><li><a class="dropdown-item" href="/department/chemistry/">Chemistry</a></li><li><a class="dropdown-item" href="/department/civil-engineering/">Civil Engineering</a></li><li><a class="dropdown-item" href="/department/computer-science-and-engineering/">Computer Science & Engineering</a></li><li><a class="dropdown-item" href="/department/electrical-engineering/">Electrical Engineering</a></li><li><a class="dropdown-item" href="/department/electrical-electronics-engineering/">Electrical & Electronics Engineering</a></li><li><a class="dropdown-item" href="/department/electronics-and-tele-communication/">Electronics & Telecomm. Engineering</a></li><li><a class="dropdown-item" href="/department/humanities/">Humanities</a></li><li><a class="dropdown-item" href="/department/mathematics/">Mathematics</a></li><li><a class="dropdown-item" href="/department/mechanical-engineering/">Mechanical Engineering</a></li><li><a class="dropdown-item" href="/department/metallurgical-materials-engineering/">Metallurgical & Materials Engineering</a></li><li><a class="dropdown-item" href="/department/physics/">Physics</a></li><li><a class="dropdown-item" href="/department/production-engineering/">Production Engineering</a></li><li><a class="dropdown-item" href="#">Safety & Fire Engineering</a></li></ul></li><li class="nav-item  dropdown"><a class="nav-link dropdown-toggle" href="javascript: void(0)">Placement</a><ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><li><a class="dropdown-item" href="https://www.vssut.ac.in/placement-cell.php">Placement Cell</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/why-vssut.php">Why VSSUT</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/our-products.php">Our Poducts</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/certification-value-added-courses.php">Certification/  Value added</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/placement-brochure.php">Brochure</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/reaching-vssut.php">Reaching VSSUT</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/placement-records.php">Placement Records</a></li><li><a class="dropdown-item" href="placement-gallery.php">Galeria</a></li><li><a class="dropdown-item" href="https://placement.vssut.ac.in/contact.php" target="_blank">Contact Us</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/placement-policy.php">Placement Policy</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/placement-train.php">We Train</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/training-internship-data.php">Training/Internship Data</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/state-national-international-examinations.php">State/National/International Examinations</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/images/documents/doc_1784551017.pdf">Internship</a></li></ul></li><li class="nav-item  dropdown"><a class="nav-link dropdown-toggle" href="javascript: void(0)">NIRF</a><ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><li><a class="dropdown-item" href="https://www.vssut.ac.in/nirf.php">DCS Report</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/faculty-list.php">Faculty List</a></li></ul></li><li class="nav-item  dropdown"><a class="nav-link dropdown-toggle" href="javascript: void(0)">Student Activities</a><ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><li><a class="dropdown-item" href="https://www.vssut.ac.in/dean-students-welfare.php">Dean Student's Welfare</a></li><li><a class="dropdown-item" href="http://vssut.ac.in/doc/Students_Achivements.pdf" target="_blank">National Recognition of Students</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/doc/Students-Orientation_Programme_2022_23.pdf" target="_blank">Orientation programmes Organised</a></li><li><a class="dropdown-item" href="http://vssut.ac.in/documents/Anti-ragging measures committee.pdf" target="_blank">Anti Ragging Committee</a></li><li class=" nav-item dropdown-submenu"><a class="dropdown-item" href="javascript: void(0)">News Letter<i class="fa-solid fa-caret-right subicon"></i></a><ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><li><a class="dropdown-item" href="https://www.vssut.ac.in/sport-society-newsletter.php">Sport Society Newsletter</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/cultural-society-newsletter.php">Cultural Society Newsletter</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/electoral-literacy-club.php">Electoral Literacy Club</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/technical-society.php">Technical Society</a></li><li><a class="dropdown-item" href="doc/Illumina_2024_25.pdf" target="_blank">Illumina 2024_25</a></li></ul></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/images/documents/doc_1786786412.pdf" target="_blank">Hall Administrator</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/campus-life.php">Campus Life</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/doc/STUDENT-DISCIPLINE-MANUAL.pdf" target="_blank">Students Disciplinary Manual</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/doc/Hall-of-Residences-Manual.pdf" target="_blank">Hall of Residences Manual</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/doc/Student-Achievement.pdf" target="_blank">Achievements</a></li><li class=" nav-item dropdown-submenu"><a class="dropdown-item" href="http://vssut.ac.in/doc/STUDENT-SOCIETIES-clubs.pdf" target="_blank">Societies & Clubs<i class="fa-solid fa-caret-right subicon"></i></a><ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><li><a class="dropdown-item" href="https://www.vssut.ac.in/art-photography-club.php">Art & Photography Club</a></li><li><a class="dropdown-item" href="http://vssut.ac.in/doc/athletic-club.pdf" target="_blank">Athletic Club</a></li><li><a class="dropdown-item" href="http://vssut.ac.in/doc/audeo-visual-club.pdf" target="_blank">Audio Visual Club</a></li><li><a class="dropdown-item" href="http://www.vssut.ac.in/doc/cultural-association.pdf" target="_blank">Cultural Association</a></li><li><a class="dropdown-item" href="http://vssut.ac.in/doc/DRAMATICS-CLUB.pdf" target="_blank">Dramatic Club</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/electoral-literacy-club.php">Electoral Literacy Club</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/idea-innovation-cell.php">Idea & Innovation Cell</a></li><li><a class="dropdown-item" href="http://vssut.ac.in/doc/EDP-Society.pdf" target="_blank">EDP Society</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/literary-society.php">Literary Society</a></li><li><a class="dropdown-item" href="http://vssut.ac.in/doc/IEEE-Website-Report.pdf" target="_blank">IEEE Student  Branch</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/music-club.php">Music Club</a></li><li><a class="dropdown-item" href="http://vssut.ac.in/doc/ISTE.pdf" target="_blank">ISTE Chapter</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/robotics.php">Robotics</a></li><li><a class="dropdown-item" href="http://vssut.ac.in/doc/Socieity-of-Automative-Engrs.pdf" target="_blank">Society of Automotive Engineers</a></li><li><a class="dropdown-item" href="http://vssut.ac.in/doc/Samavesh-Info.pdf" target="_blank">Tech Fest (Samavesh)</a></li><li><a class="dropdown-item" href="http://vssut.ac.in/doc/SSG-SOCIETY-VSSUT.pdf" target="_blank">SSG & Students Aid Fund</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/yoga-club.php" target="_blank">Yoga Club</a></li></ul></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/ncc.php">NCC</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/nss-annual-report.php" target="_blank">NSS</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/doc/STUDENT-GRIEVANCE-REDRESSAL.pdf" target="_blank">Students Grievance Redressal</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/photo-gallery.php?purl=national-science-day-2024" target="_blank">National Science Day 2024</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/awards-medals-won.php">Awards/medals won</a></li></ul></li><li class="nav-item  dropdown"><a class="nav-link dropdown-toggle" href="javascript: void(0)">Facilities</a><ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><li><a class="dropdown-item" href="https://centrallibrary.vssut.ac.in/">Central Library</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/central-workshop.php">Central Workshop</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/central-research-facility.php">Central Research Facility</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/central-computer.php">Central Computer</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/central-internet.php">Central Internet</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/central-transport-facility.php">Central Transport Facility</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/guest-houses.php">Guest Houses</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/student-council.php">Student Council</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/hall-of-residence.php">Hall of Residence</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/canteen.php">Canteen</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/medical.php">Medical</a></li></ul></li><li class="nav-item  dropdown"><a class="nav-link dropdown-toggle" href="IQAC" target="_blank">IQAC</a><ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><li><a class="dropdown-item" href="IQAC" target="_blank">IQAC Cell</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/IQAC/formats-for-co-po-pso-attainment-computation.php" target="_blank">OBE</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/IQAC/NBA-e-SAR.php" target="_blank">NBA</a></li><li><a class="dropdown-item" href="naac.php">NAAC</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/nirf.php">NIRF</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/IQAC/IQAC-AISHE-Certificates.php" target="_blank">AISHE</a></li><li><a class="dropdown-item" href="https://vssut.ac.in/IQAC/IQAC-approvals-and-accreditations.php">Approvals </a></li><li><a class="dropdown-item" href="https://vssut.ac.in/IQAC/IQAC-Meeting.php" target="_blank">Minutes </a></li></ul></li><li class="nav-item  dropdown"><a class="nav-link dropdown-toggle" href="sric">SRIC</a><ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><li><a class="dropdown-item" href="https://www.vssut.ac.in/institute-industry-cell-mou-signed.php">MoU Signed</a></li></ul></li><li class="nav-item  dropdown"><a class="nav-link dropdown-toggle" href="javascript: void(0)">Contact</a><ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><li><a class="dropdown-item" href="https://www.vssut.ac.in/contact-us.php">Contact Us</a></li><li><a class="dropdown-item" href="https://www.vssut.ac.in/vssut-security-guard-list.php">VSSUT Security Guard List</a></li></ul></li></ul>      
+    </div>
+  </div>
+</nav>  <div class="main-banner-header">
+    <div class="left-banner">
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+<div class="carousel-inner">
+
+<div class="carousel-item active " data-bs-interval="6500">
+	
+		<video id="bannerVideo" src="assets/video/VSSUT_LOGO_INTRO.webm" autoplay muted loop class="d-block w-100"></video>
+	  </div>
+
+
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/1791723695.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/1791636994.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/1791440853.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/1790245358.webp" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/1787046622.webp" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/1786961078.webp" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/1786860985.webp" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/1784539578.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/1784097003.webp" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/1784096081.webp" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/1783273004.webp" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/osGj0hP5R7At7OvY.png" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/AmhOKhI4tZUEaXqg.png" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/RYtG7Vk7loyVgi4M.png" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/EFk3f9dD72VcsrCE.png" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/P8RXA1iwgOTpbJqV.png" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/BiKMGUl4cyXjGe6d.png" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/17VgBKQAj6d8FJSe.png" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/JMW1bLqTwrEcwKWy.png" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/3IjkDKAPJ8xrOmJn.png" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/9qzQKgiWHn4zVB6a.png" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/nLa9fOZMoQbfXYe8.png" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/7gYfZ2dN7CVyGb6O.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/AmmHPdXHzVoQp7YC.png" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/L9J4Lx6NcCAnsRqD.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/xLrxAHjC8iDkJomM.png" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/U4yc2dSnEnKwlLfh.png" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/NSkLdVJVESgROo2E.png" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/NVLGEuj1ESFh38px.png" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/CUVJ2Y0b0XK6IyA2.png" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/bcEZcaf63gw0tCFk.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/UwJ8cfkswhpEbA5K.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/JbjVqDp06DHlGAhI.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/GzNhuD76i6IwljU1.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/uxbLVCmQmj7G6CCh.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/uSzctjFkTFPLu8s1.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/Z81o7wItN3ZTtuyP.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/MS194nXLD93NoNhw.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/OVAApA5NMm9VCNKj.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/W64MKNVA9gv3LLbw.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/nHTdEkVZy5FvFTZC.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/vssut.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/bf6f0a72d5f9ee4a4a4f975ac9770171_3.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/13264068d108c6901b3592ea654fcd57_2.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/2.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/1.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/vssut2 copy.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/bf6f0a72d5f9ee4a4a4f975ac9770171_2.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/vedanta copy.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/bf6f0a72d5f9ee4a4a4f975ac9770171_1.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/dravya copy.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/Untitled-1 copy.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/vssut banner  copy.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/eye check copy.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/2f0c80a5829bd778936522620f8dc240_1.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/13264068d108c6901b3592ea654fcd57_1.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/bd copy.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/Untitled-6.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/Untitled-5.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/Untitled-4.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/Untitled-3.jpg" alt="VSSUT-banner">
+	  </div>
+		
+	  <div class="carousel-item">
+		<img class="d-block w-100" src="images/slider/Untitled-1.jpg" alt="VSSUT-banner">
+	  </div>
+	</div>
+<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <span class="sr-only">Previous</span>
+</a>
+<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  <span class="sr-only">Next</span>
+</a>
+</div>    </div>
+    <div class="sambalpuri-border hidden-border"></div>
+    <div class="right-banner">
+      <img src="assets/icons/rb_16790.png" alt="" class="back-img">
+      <div class="profiles">
+        <!-- <div class="single-cards">
+          <div class="images-p"><img src="assets/images/220px-Surendra_Sai_1986_stamp_of_India.jpg" alt=""></div>
+          <h2>ବୀର ସୁରେନ୍ଦ୍ର ସାଏ</h2>
+          <p>1809 – 1884</p>
+          <a href="#">View Profile</a>
+        </div> -->
+        <div class="single-cards">
+          <div class="images-p"><img src="assets/images/Hon'ble-Governer-2026-vssut.jpg" alt=""></div>
+          <h2>Shri Brajmohan Ram</h2>
+          <p>Hon'ble Chancellor</p>
+          <p class="top-highlight-absolute" style="font-size: .6rem;">His Excellency, The Hon'ble Governor of Odisha</p>
+           <a href="https://lokbhavan.odisha.gov.in/menuInternalPage/aboutGovernor" target="_blank">View Profile</a> 
+        </div>
+        <!--<div class="single-cards">-->
+        <!--  <div class="images-p"><img src="https://www.vssut.ac.in/vip/mohan-majhi-cm_2.png" alt=""></div>-->
+        <!--  <h2>Shri Mohan Charan Majhi</h2>-->
+        <!--  <p>Hon'ble Chief Minister of Odisha</p>-->
+        <!--</div>-->
+
+
+        <!-- <div class="single-cards">
+          <div class="images-p"><img src="https://www.vssut.ac.in/vip/WhatsApp%20Image%202024-06-17%20at%2011.48.38%20AM.jpeg" alt=""></div>
+          <h2>Shri Sampad Chandra Swain</h2>
+          <p>Hon'ble Minister of State
+          Skill Development and Technical Education, Government of Odisha</p>
+        </div> -->
+        <!--<div class="single-cards">-->
+        <!--  <div class="images-p"><img src="https://www.vssut.ac.in/vip/WhatsApp%20Image%202024-06-17%20at%2011.48.38%20AM.jpeg" alt=""></div>-->
+        <!--  <h2>Shri Sampad Chandra Swain</h2>-->
+        <!--  <p>Hon'ble Minister of State SD&TE</p>-->
+        <!--</div>-->
+
+        <div class="single-cards">
+          <div class="images-p"><img src="assets/images/vc-2026-27.jpg" alt=""></div>
+          <h2>Prof. Dipak Kumar Sahoo
+          </h2>
+          <p>Vice-Chancellor</p>
+           <a href="vice-chancellor-s-message.php">View Message</a> 
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sambalpuri-border"></div>
+  <div class="news-and-buton">
+    <img src="assets/icons/Rounded Rectangle 3.jpg" alt="" class="news-and-button-img">
+    <div class="main-devider">
+      <div class="left-news">
+        <div class="left-news-box">
+          <div class="polygon"></div>
+          News Flash
+        </div>
+        <div class="news-box">
+          <div class="upside-down-scroll-wrapper">
+		              <ul class="upside-down-scroll">
+			              <li><a href="wide-dissemination-of-innovate-for-bharat-2027-challenges-under-viksit-bharat-young-leaders-dialogue-vbyld-2027.php" target="_blank">Wide dissemination of “Innovate for Bharat 2027” Challenges under Viksit Bharat Young Leaders’ Dialogue (VBYLD) 2027</a>  <img src="assets/icons/new_icon_red.gif" alt="new" class="new"></li>
+		              <li><a href="/images/documents/doc_1794402438.pdf" target="_blank"> Office order Regarding Revised Committee for 18th Convocation</a>  <img src="assets/icons/new_icon_red.gif" alt="new" class="new"></li>
+		              <li><a href="/images/documents/doc_1794312154.PDF" target="_blank">Important Information for 2026 Passed-Out Students Regarding 18th Convocation</a>  <img src="assets/icons/new_icon_red.gif" alt="new" class="new"></li>
+		              <li><a href="/images/documents/doc_1794296776.pdf" target="_blank">Office order Regrading List of Committees and Sub-committees for the 18th Annual Convocation-2026</a>  <img src="assets/icons/new_icon_red.gif" alt="new" class="new"></li>
+		              <li><a href="/images/documents/doc_1794210998.pdf" target="_blank">Expression of Interest for 18th Convocation of VSSUT BURLA</a>  <img src="assets/icons/new_icon_red.gif" alt="new" class="new"></li>
+		              <li><a href="/images/documents/doc_1794064690.pdf" target="_blank">Notice for online registration for 18th convocation 2026</a>  <img src="assets/icons/new_icon_red.gif" alt="new" class="new"></li>
+		              <li><a href="/images/documents/doc_1793346861.pdf" target="_blank">Notice regarding the Fourth Phase List of Selected Candidates Joining as Project Associates under the ANRF-PAIR Scheme</a>  <img src="assets/icons/new_icon_red.gif" alt="new" class="new"></li>
+		              <li><a href="/images/documents/doc_1793184456.pdf" target="_blank">ANRF Funded Training Programme on 29 and 30 October 2026 in Golden Jubilee Seminar Hall</a> </li>
+		              <li><a href="notification-regarding-odisha-skills-2026-27-registration-reopened-till-19th-oct-2026.php">Notification Regarding Odisha Skills 2026-27 registration reopened till 19th Oct 2026 and information of Skill Development Cell on VSSUT website</a> </li>
+		              <li><a href="https://drive.google.com/file/d/1kUqnGtnRaYLMWA9DSXvBlrGttKUjuxjq/view" target="_blank">Date extension for registration for India Skill Competition 26-28 upto Dt.19.10.26 </a> </li>
+		            </ul>
+		          </div>
+          <!-- Buttons -->
+          <div class="button-container">
+            <button class="scroll-btn" id="prevBtn"><i class="fa-solid fa-square-caret-up"></i></button>
+            <button class="scroll-btn" id="nextBtn"><i class="fa-solid fa-square-caret-down"></i></button>
+          </div>
+        </div>
+
+
+
+
+      </div>      <div class="right-btns">
+        <div class="splide">
+    <div class="splide__track">
+        <ul class="splide__list">
+            <li class="splide__slide">
+                <a target="_blank" href="https://vssutnt.samarth.edu.in/" class="slider-btns"> <img src="./assets/icons/rating.png" alt="">
+                    <h2>Recruitment Management System</h2>
+                </a></li>
+            <li class="splide__slide"><a target="_blank" href="https://examinationresults.vssut.ac.in/" class="slider-btns"> <img src="./assets/icons/paper.png"
+                        alt="">
+                    <h2>Examination Results
+                    </h2>
+                </a></li>
+            <li class="splide__slide"><a target="_blank" href="https://erp.vssut.ac.in/admission" class="slider-btns"> <img src="./assets/icons/school.png" alt="">
+                    <h2>Online Admission
+                        System</h2>
+                </a></li>
+            <li class="splide__slide"><a target="_blank" href="https://alumni.vssut.ac.in/" class="slider-btns"> <img src="./assets/icons/graduates.png" alt="">
+                    <h2>Alumni Management System</h2>
+                </a></li>
+            <li class="splide__slide"><a target="_blank" href="/all-tender.php" class="slider-btns"> <img src="./assets/icons/tender (1).png"
+                        alt="">
+                    <h2>Tender Management
+                        System</h2>
+                </a></li>
+            <li class="splide__slide"><a target="_blank" href="live-soon.html" class="slider-btns"> <img src="./assets/icons/register.png" alt="">
+                    <h2>Grievance Redressal System</h2>
+                </a></li>
+            <li class="splide__slide"><a target="_blank" href="https://centrallibrary.vssut.ac.in/" class="slider-btns"> <img src="./assets/icons/cloud-library.png"
+                        alt="">
+                    <h2>Central Library
+                    </h2>
+                </a></li>
+            <li class="splide__slide"><a target="_blank" href="https://placement.vssut.ac.in/" class="slider-btns"> <img src="./assets/icons/training.png"
+                        alt="">
+                    <h2>Training and Placement
+                    </h2>
+                </a></li>
+
+            <li class="splide__slide"><a target="_blank" href="https://studentclubs.vssut.ac.in/" class="slider-btns"> <img src="./assets/icons/extracurricular.png"
+                        alt="">
+                    <h2>Student Clubs and Societies
+                    </h2>
+                </a></li>
+
+
+
+
+
+
+
+
+
+
+
+        </ul>
+    </div>
+</div>      </div>
+    </div>
+  </div>
+
+  
+
+  <style>
+    .marquee a{
+ color:red;
+ font-size: 1rem;
+ font-weight: bolder;
+}
+</style>
+<p></p>
+<section>
+    <marquee class="marquee" onmouseover="this.stop()" onmouseout="this.start()" >
+        <a href="#" target="_blank"><img src="/documents/marquee-doc/new_icon_red.gif"
+                alt="new" class="new">Webcast  of the 18th convocation will be displayed in youtube, on 21.11.2026 at 10.00 A.M.. The web link will be provided here<img src="/documents/marquee-doc/new_icon_red.gif"
+                alt="new" class="new"></a> <span color="#FF0000"> || </span>
+        <a href="https://www.vssut.ac.in/images/documents/doc_1794312154.PDF" target="_blank"><img src="/documents/marquee-doc/new_icon_red.gif"
+                alt="new" class="new">Important Information for 2026 Passed-Out Students Regarding 18th Convocation<img src="/documents/marquee-doc/new_icon_red.gif"
+                alt="new" class="new"></a> <span color="#FF0000"> || </span>
+        <a href="https://www.vssut.ac.in/images/documents/doc_1794296776.pdf" target="_blank"><img src="/documents/marquee-doc/new_icon_red.gif"
+                alt="new" class="new">Office order Regrading List of Committees and Sub-committees for the 18th Annual Convocation-2026<img src="/documents/marquee-doc/new_icon_red.gif"
+                alt="new" class="new"></a> <span color="#FF0000"> || </span>
+        <a href="https://www.vssut.ac.in/images/documents/doc_1794226482.PDF" target="_blank"><img src="/documents/marquee-doc/new_icon_red.gif"
+                alt="new" class="new">Revised Notice for Award of University and Donors’ Gold Medals for 18th Convocation 2026<img src="/documents/marquee-doc/new_icon_red.gif"
+                alt="new" class="new"></a> <span color="#FF0000"> || </span>
+        
+        
+        
+        <a href="https://www.vssut.ac.in/images/documents/doc_1794210998.pdf" target="_blank"><img src="/documents/marquee-doc/new_icon_red.gif"
+                alt="new" class="new">Expression of Interest for 18th Convocation of VSSUT, Burla<img src="/documents/marquee-doc/new_icon_red.gif"
+                alt="new" class="new"></a> <span color="#FF0000"> || </span>
+        <a href="https://www.vssut.ac.in/images/documents/doc_1794064690.pdf" target="_blank"><img src="/documents/marquee-doc/new_icon_red.gif"
+                alt="new" class="new">Notice for online registration for 18th convocation 2026<img src="/documents/marquee-doc/new_icon_red.gif"
+                alt="new" class="new"></a> <span color="#FF0000"> || </span>
+                
+                
+        <a href="https://www.vssut.ac.in/images/documents/doc_1794029507.pdf" target="_blank"><img src="/documents/marquee-doc/new_icon_red.gif"
+                alt="new" class="new">Get Industry Ready with Zoho<img src="/documents/marquee-doc/new_icon_red.gif"
+                alt="new" class="new"></a><!--  <span color="#FF0000"> || </span>
+        <a href="https://www.vssut.ac.in/information-for-admission-into-b.tech-lateral-entry-%E2%80%93-all-branches-and-mca-programmes-%E2%80%93-2026.php" target="_blank"><img src="/documents/marquee-doc/new_icon_red.gif"
+                alt="new" class="new">Information for Admission into B.Tech (Lateral Entry – All Branches) and MCA Programmes – 2026 <img src="/documents/marquee-doc/new_icon_red.gif"
+                alt="new" class="new"></a> <span color="#FF0000"> || </span>
+        <a href="/information-for-admission-into-b.tech-regular-ssc-and-b.arch-programmes-2026.php" target="_blank"><img src="/documents/marquee-doc/new_icon_red.gif"
+                alt="new" class="new">Information for admission into B.Tech (Regular & SSC) and B.Arch Programmes - 2026 <img src="/documents/marquee-doc/new_icon_red.gif"
+                alt="new" class="new"></a> <span color="#FF0000"> || </span>
+        <a href="/documents/marquee-doc/aicte.jpg" target="_blank"><img src="/documents/marquee-doc/new_icon_red.gif"
+                alt="new" class="new">AICTE YASHASVI
+            Scholarship Scheme for Core branch of Engineering Students<img src="/documents/marquee-doc/new_icon_red.gif"
+                alt="new" class="new"></a> <span color="#FF0000"> || </span>
+        <a href="/documents/marquee-doc/YgersDNtqM3sCtil.pdf" target="_blank"><img
+                src="/documents/marquee-doc/new_icon_red.gif" alt="new" class="new">Procedure for
+            submission of printed copies for the non-teaching posts already submitted online.<img
+                src="/documents/marquee-doc/new_icon_red.gif" alt="new" class="new"></a> <span color="#FF0000"> ||
+        </span>
+        <a href="/documents/marquee-doc/CFSoqRZh0NMhtj3B.pdf" target="_blank"><img
+                src="/documents/marquee-doc/new_icon_red.gif" alt="new" class="new">Notice for Admission
+            into PhD Programmes Autumn -2026<img src="/documents/marquee-doc/new_icon_red.gif" alt="new"
+                class="new"></a> <span color="#FF0000"> || </span>
+        <a href="/documents/marquee-doc/fTVHa8aSZ998gVeq.pdf" target="_blank"><img
+                src="/documents/marquee-doc/new_icon_red.gif" alt="new" class="new">Third phase Project
+            Associate /JRF walk-in interview under the ANRF-PAIR Scheme<img
+                src="/documents/marquee-doc/new_icon_red.gif" alt="new" class="new"></a> <span color="#FF0000"> ||
+        </span>
+        <a href="https://vssutnt.samarth.edu.in/" target="_blank"><img src="/documents/marquee-doc/new_icon_red.gif"
+                alt="new" class="new">Advertisement for
+            Dean, Students Welfare online application<img src="/documents/marquee-doc/new_icon_red.gif" alt="new"
+                class="new"></a> <span color="#FF0000"> || </span>
+        <a href="https://vssutnt.samarth.edu.in/" target="_blank"><img src="/documents/marquee-doc/new_icon_red.gif"
+                alt="new" class="new">Advertisement for
+            Controller Of Examinations online application<img src="/documents/marquee-doc/new_icon_red.gif" alt="new"
+                class="new"></a> <span color="#FF0000"> || </span>
+        <a href="/documents/marquee-doc/eDR5YHrmVdSdXRwt.pdf" target="_blank"><img
+                src="/documents/marquee-doc/new_icon_red.gif" alt="new" class="new">Cabinet Approves
+            Redevelopment of VSSUT BURLA, Sambalpur, Odisha(Phase-I, Package-I) with a total outlay of 929.96 Crore<img
+                src="/documents/marquee-doc/new_icon_red.gif" alt="new" class="new"></a> <span color="#FF0000"> ||
+        </span>
+        <a href="https://www.vssut.ac.in/" target="_blank"><img src="/documents/marquee-doc/new_icon_red.gif" alt="new"
+                class="new">VSSUT Burla alumnus Dr
+            Ashok Kumar Panda, currently Director (Finance), selected as the Chairman and Managing Director of Steel
+            Authority of India Ltd (SAIL). HEARTY CONGRATULATIONS<img src="/documents/marquee-doc/new_icon_red.gif"
+                alt="new" class="new"></a> <span color="#FF0000"> || </span>
+        <a href="/documents/marquee-doc/l2uJkGxwM0jNIoFg.pdf" target="_blank"><img
+                src="/documents/marquee-doc/new_icon_red.gif" alt="new" class="new">VSSUT BURLA is
+            felicitated and nominated as the Potential Nodal centre for UHV by Prof Yogesh Singh,Hon'ble Chairman
+            AICTE.<img src="/documents/marquee-doc/new_icon_red.gif" alt="new" class="new"></a><span color="#FF0000">
+            || </span>
+        <a href="#" target="_blank"><img src="/documents/marquee-doc/new_icon_red.gif" alt="new" class="new">Celebrating
+            70 Years
+            of Glorious Legacy, Powering Innovation (70 ବର୍ଷର ଗୌରବମୟ ଐତିହ୍ୟ, ସଶକ୍ତ ନବସୃଜନ) [1956-2026]<img
+                src="/documents/marquee-doc/new_icon_red.gif" alt="new" class="new"></a> 
+                <span color="#FF0000"> ||  </span>
+        <a href="/documents/marquee-doc/50alABxwNhWgeGIb" target="_blank"><img
+                src="/documents/marquee-doc/new_icon_red.gif" alt="new" class="new">Second phase walk-in
+            interview under the ANRF-PAIR Scheme.<img src="/documents/marquee-doc/new_icon_red.gif" alt="new"
+                class="new"></a> <span color="#FF0000"> || </span>
+        <a href="/55th-national-safety-week-–-safety-well-being-crucial-for-viksit-bharat.php" target="_blank"><img
+                src="/documents/marquee-doc/new_icon_red.gif" alt="new" class="new">55th National
+            Safety
+            Week – “Safety &amp; Well-being: Crucial for Viksit Bharat<img src="/documents/marquee-doc/new_icon_red.gif"
+                alt="new" class="new"></a> <span color="#FF0000"> || </span>
+        <a href="/prevention-of-sexual-harassment-at-the-workplace-posh-awareness-and-sensitization-programme.php"
+            target="_blank"><img src="/documents/marquee-doc/new_icon_red.gif" alt="new" class="new">A programme was
+            held
+            on 31.01.2026 on ‘Prevention of Sexual Harassment at the Workplace (POSH) Awareness and Sensitization
+            Programme,’ organized by the Internal Committee (IC) of VSSUT.<img
+                src="/documents/marquee-doc/new_icon_red.gif" alt="new" class="new"></a> <span color="#FF0000"> ||
+        </span>
+        <a href="https://d2fg70os21r9ma.cloudfront.net/assets/video/17th%20Convocation.mp4" target="_blank"><img
+                src="/documents/marquee-doc/new_icon_red.gif" alt="new" class="new">17th convocation Short
+            Video<img src="/documents/marquee-doc/new_icon_red.gif" alt="new" class="new"></a> <span color="#FF0000"> ||
+        </span>
+        <a href="https://www.youtube.com/watch?v=5Z_P--BpCDE" target="_blank"><img
+                src="/documents/marquee-doc/new_icon_red.gif" alt="new" class="new">16th Convocation Short
+            Video<img src="/documents/marquee-doc/new_icon_red.gif" alt="new" class="new"></a> <span color="#FF0000"> ||
+        </span>
+        <a href="/international-conference-on-smart-sustainable-urbanism-2026-icssu-2026.php" target="_blank"><img
+                src="/documents/marquee-doc/new_icon_red.gif" alt="new" class="new">International
+            Conference on Smart &amp; Sustainable Urbanism – 2026 (ICSSU 2026)<img
+                src="/documents/marquee-doc/new_icon_red.gif" alt="new" class="new"></a> <span color="#FF0000"> ||
+        </span>
+        <a href="/one-day-awareness-programme-on-irins-and-inflibnet-services-on-20.3.2026.php" target="_blank"><img
+                src="/documents/marquee-doc/new_icon_red.gif" alt="new" class="new">One-Day Awareness
+            Programme on IRINS and INFLIBNET Services on 20.3.2026<img src="/documents/marquee-doc/new_icon_red.gif"
+                alt="new" class="new"></a> <span color="#FF0000"> || </span>
+        <a href="/icpam-ds-26-conference.php" target="_blank"><img src="/documents/marquee-doc/new_icon_red.gif"
+                alt="new" class="new">Notice regarding
+            International Conference on Pure and Applied Mathematics with Data Science (ICPAM-DS 26)<img
+                src="/documents/marquee-doc/new_icon_red.gif" alt="new" class="new"></a> <span color="#FF0000"> ||
+        </span>-->
+    </marquee>
+</section>  
+  
+
+
+<style>
+  :root {
+ 
+    --p900: #1e2c38;   
+    --p800: #2a3d4d;
+    --p700: black;   
+    --p500: #5d7c94;
+    --a600: #4E9BC9;   
+    --a700: #014692  ; 
+    --a400: #8ACDF2;   
+    --text1: black;
+    --text-muted1: black;
+    --card-bg1:    rgba(58, 81, 100, 0.05);
+    --stroke1:     rgba(58, 81, 100, 0.16);
+  }
+  .webcast-section {
+    position: relative;
+    background: transparent;  
+    padding: 20px 0;
+  }
+  .webcast-copy {
+    color: var(--text1);
+    animation: fadeUp .8s ease both;
+  }
+
+  .webcast-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    margin-bottom: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--p700);
+    background: rgba(138, 205, 242, 0.18);
+    border: 1px solid rgba(58, 81, 100, 0.22);
+    border-radius: 999px;
+  }
+  .webcast-eyebrow i { font-size: 13px; color: var(--a700); }
+
+  .webcast-title {
+    margin: 0 0 18px;
+    font-size: clamp(1.45rem, 2.4vw, 2rem);
+    font-weight: 700;
+    line-height: 1.32;
+    letter-spacing: -.01em;
+    color: var(--p700);
+  }
+  .webcast-title .accent { color: var(--a700); }
+
+  .webcast-text {
+    margin: 0 0 26px;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--text-muted1);
+  }
+
+  .webcast-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 0 0 26px;
+    padding: 0;
+    list-style: none;
+  }
+  .webcast-meta li {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px 16px;
+    font-size: .875rem;
+    font-weight: 600;
+    color: var(--p700);
+    background: var(--card-bg1);
+    border: 1px solid var(--stroke1);
+    border-radius: 12px;
+    transition: transform .25s ease, border-color .25s ease, background .25s ease;
+  }
+  .webcast-meta li:hover {
+    transform: translateY(-2px);
+    border-color: rgba(58, 81, 100, 0.38);
+    background: rgba(138, 205, 242, 0.20);
+  }
+  .webcast-meta i { color: var(--a700); font-size: .95rem; }
+  .webcast-link-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 18px;
+    border-radius: 14px;
+    background: rgba(138, 205, 242, 0.12);
+    border: 1px dashed rgba(58, 81, 100, 0.28);
+    border-left: 3px solid var(--p700);
+  }
+  .webcast-link-note i {
+    color: var(--a700);
+    font-size: 1.15rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+  .webcast-link-note p {
+    margin: 0;
+    font-size: .9rem;
+    line-height: 1.6;
+    color: var(--text-muted1);
+  }
+  .webcast-link-note strong { color: var(--p700); }
+  .webcast-media {
+    position: relative;
+    animation: fadeUp .8s .15s ease both;
+  }
+
+  .video-frame {
+    position: relative;
+    padding: 14px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid var(--stroke1);
+    box-shadow: 0 24px 50px -24px rgba(58, 81, 100, 0.38);
+    backdrop-filter: blur(10px);
+  }
+  .video-title-wrap {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 6px 6px 16px;
+  }
+  .video-title-icon {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    background: rgba(138, 205, 242, 0.22);
+    border: 1px solid rgba(58, 81, 100, 0.18);
+    color: var(--a700);
+    font-size: .95rem;
+  }
+  .video-title {
+    margin: 0;
+    font-size: .98rem;
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--p700);
+  }
+  .video-title span {
+    display: block;
+    margin-top: 4px;
+    font-size: .74rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--a700);
+  }
+
+  .video-ratio {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #1e2c38;
+  }
+  .video-ratio video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: #1e2c38;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(26px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 767.98px) {
+    .webcast-section { padding: 60px 0; }
+    .webcast-media   { margin-top: 8px; }
+    .video-title     { font-size: .92rem; }
+  }
+</style>
+<section class="webcast-section" id="convocation-webcast">
+  <div class="container">
+    <div class="row align-items-center g-5">
+        <div class="col-12 col-md-6">
+        <div class="webcast-media">
+          <div class="video-frame">
+          
+            <div class="video-ratio">
+              <video
+                controls
+                preload="metadata"
+                playsinline
+                poster="video/thumb.webp">
+                <source src="video/Honourable_VC_ Message.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+              <div class="video-title-wrap">
+              
+              <h3 class="video-title">
+                Message from the Hon’ble Vice-Chancellor on the Occasion of the
+                18th Annual Convocation, 2026
+              
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="webcast-copy">
+          <span class="webcast-eyebrow">
+            <i class="fa-solid fa-satellite-dish"></i> Live Webcast
+          </span>
+
+          <h2 class="webcast-title">
+            Webcast of the <span class="accent">18th Convocation</span> will be
+            streamed live on YouTube
+          </h2>
+
+          <p class="webcast-text">
+            The 18th Convocation ceremony will be broadcast live on YouTube.
+            Graduands, parents, faculty and well-wishers are cordially invited
+            to join the celebration online.
+          </p>
+          <ul class="webcast-meta">
+            <li>
+              <i class="fa-regular fa-calendar-days"></i>
+              21.11.2026
+            </li>
+            <li>
+              <i class="fa-regular fa-clock"></i>
+              10.00 A.M.
+            </li>
+            <li>
+              <i class="fa-brands fa-youtube"></i>
+              YouTube Live
+            </li>
+          </ul>
+
+          <!-- Link notice -->
+          <div class="webcast-link-note">
+            <i class="fa-solid fa-link"></i>
+            <p>
+              <strong>The web link will be provided here.</strong>
+             
+            </p>
+          </div>
+
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+  <section>
+    <div class="container">
+      <div class="row d-flex justify-content-between  ">
+        <div class="col-md-6 mx-auto mt-2 mb-3">
+          <div class="content">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a
+        class="nav-link active"
+        id="home-tab"
+        data-toggle="tab"
+        href="#home"
+        role="tab"
+        aria-controls="home"
+        aria-selected="true">Notices</a>
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        id="profile-tab"
+        data-toggle="tab"
+        href="#profile"
+        role="tab"
+        aria-controls="profile"
+        aria-selected="false">Tenders</a>
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        id="exam-tab"
+        data-toggle="tab"
+        href="#exam"
+        role="tab"
+        aria-controls="exam"
+        aria-selected="false">Exam Notices</a>
+    </li>
+	<li class="nav-item">
+      <a
+        class="nav-link"
+        id="student-tab"
+        data-toggle="tab"
+        href="#student"
+        role="tab"
+        aria-controls="student"
+        aria-selected="false">Student Notices</a>
+    </li>
+
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div
+      class="tab-pane fade show active"
+      id="home"
+      role="tabpanel"
+      aria-labelledby="home-tab">
+
+      <ul class="notices">
+	          <li>
+          <div class="date">
+            <div class="upper-date">
+              <p class="day">18</p>
+              <p class="month">Nov</p>
+            </div>
+            <div class="lower-date">
+              <p class="year-l">2026</p>
+            </div>
+          </div>
+          <div class="notice-content"><a href="/images/documents/doc_1795004838.pdf"  target="_blank">Repeat mid-semester examination schedule for  B.Tech. (3rd/5th/7th Sem)/ B.Arch. (3rd/5th/7th Sem), M.Tech (3rd Sem), MCA (3rd Sem), Int. M.Sc. (3rd Sem) and Ph.D. Course Work  2026-27 <img src="assets/icons/new_icon.gif" alt="NEW" class="new-blink"></a></div>
+          <div class="download-icon"><a href="/images/documents/doc_1795004838.pdf"  target="_blank"><i class="fa-solid fa-file-pdf"></i></a></div>
+        </li>
+               <li>
+          <div class="date">
+            <div class="upper-date">
+              <p class="day">17</p>
+              <p class="month">Nov</p>
+            </div>
+            <div class="lower-date">
+              <p class="year-l">2026</p>
+            </div>
+          </div>
+          <div class="notice-content"><a href="/images/documents/doc_1794904968.pdf"  target="_blank">Notice for AICTE Post Graduate (PG) Scholarship Scheme - 2026 <img src="assets/icons/new_icon.gif" alt="NEW" class="new-blink"></a></div>
+          <div class="download-icon"><a href="/images/documents/doc_1794904968.pdf"  target="_blank"><i class="fa-solid fa-file-pdf"></i></a></div>
+        </li>
+               <li>
+          <div class="date">
+            <div class="upper-date">
+              <p class="day">17</p>
+              <p class="month">Nov</p>
+            </div>
+            <div class="lower-date">
+              <p class="year-l">2026</p>
+            </div>
+          </div>
+          <div class="notice-content"><a href="/images/documents/doc_1794904815.pdf"  target="_blank">Revised End semester examination schedule for  B.Tech. (3rd/5th/7th Sem)/ B.Arch. (3rd/5th/7th Sem), M.Tech (3rd Sem), MCA (3rd Sem), M.Sc. (3rd Sem), Int. M.Sc. (3rd /5th/ 9th Sem) and Ph.D. Course Work; 2026-27 <img src="assets/icons/new_icon.gif" alt="NEW" class="new-blink"></a></div>
+          <div class="download-icon"><a href="/images/documents/doc_1794904815.pdf"  target="_blank"><i class="fa-solid fa-file-pdf"></i></a></div>
+        </li>
+               <li>
+          <div class="date">
+            <div class="upper-date">
+              <p class="day">17</p>
+              <p class="month">Nov</p>
+            </div>
+            <div class="lower-date">
+              <p class="year-l">2026</p>
+            </div>
+          </div>
+          <div class="notice-content"><a href="/images/documents/doc_1794904623.pdf"  target="_blank">Revised End semester examination schedule for  B.Tech. (1st Sem)/ B.Arch. (1st Sem), M.Tech (1st Sem), MCA (1st Sem), M.Sc. (1st Sem), Int. M.Sc. (1st /7th Sem) and Ph.D. Course Work;2026-27 <img src="assets/icons/new_icon.gif" alt="NEW" class="new-blink"></a></div>
+          <div class="download-icon"><a href="/images/documents/doc_1794904623.pdf"  target="_blank"><i class="fa-solid fa-file-pdf"></i></a></div>
+        </li>
+               <li>
+          <div class="date">
+            <div class="upper-date">
+              <p class="day">17</p>
+              <p class="month">Nov</p>
+            </div>
+            <div class="lower-date">
+              <p class="year-l">2026</p>
+            </div>
+          </div>
+          <div class="notice-content"><a href="/images/documents/doc_1794896485.pdf"  target="_blank">Notice for Shortage of Attendance for PG Programmes (Odd Semester-2026) <img src="assets/icons/new_icon.gif" alt="NEW" class="new-blink"></a></div>
+          <div class="download-icon"><a href="/images/documents/doc_1794896485.pdf"  target="_blank"><i class="fa-solid fa-file-pdf"></i></a></div>
+        </li>
+               <li>
+          <div class="date">
+            <div class="upper-date">
+              <p class="day">13</p>
+              <p class="month">Nov</p>
+            </div>
+            <div class="lower-date">
+              <p class="year-l">2026</p>
+            </div>
+          </div>
+          <div class="notice-content"><a href="https://www.vssut.ac.in/registration-and-student-participation-in-kashi-tamil-sangamam-kts-5.0-date-extended-to-18-november-2026.php" >Registration and Student Participation in Kashi Tamil Sangamam (KTS) 5.0 Date extended to 18 November 2026. <img src="assets/icons/new_icon.gif" alt="NEW" class="new-blink"></a></div>
+          <div class="download-icon"><a href="https://www.vssut.ac.in/registration-and-student-participation-in-kashi-tamil-sangamam-kts-5.0-date-extended-to-18-november-2026.php" ><i class="fa-solid fa-file-pdf"></i></a></div>
+        </li>
+             </ul>
+      <a href="all-notice.php" class="view-all-btn tabber-btns">View All</a>
+    </div>
+    <div
+      class="tab-pane fade"
+      id="profile"
+      role="tabpanel"
+      aria-labelledby="profile-tab">
+      <ul class="notices">
+                <li>
+          <div class="date">
+            <div class="upper-date">
+              <p class="day">10</p>
+              <p class="month">Nov</p>
+            </div>
+            <div class="lower-date">
+              <p class="year-l">2026</p>
+            </div>
+          </div>
+          <div class="notice-content"><a href="images/documents/Tender-Call-Notice-for-ARES-Lab-Equipment_EE_Phase-II.pdf"  target="_blank">Tender Call Notice for Equipment(Emulator, Sensor, DSO etc.) of ARES Lab, Electrical Engineering Department <img src="assets/icons/new_icon.gif" alt="NEW" class="new-blink"></a></div>
+          <div class="download-icon"><a href="images/documents/Tender-Call-Notice-for-ARES-Lab-Equipment_EE_Phase-II.pdf"  target="_blank"><i class="fa-solid fa-file-pdf"></i></a></div>
+        </li>
+               <li>
+          <div class="date">
+            <div class="upper-date">
+              <p class="day">09</p>
+              <p class="month">Nov</p>
+            </div>
+            <div class="lower-date">
+              <p class="year-l">2026</p>
+            </div>
+          </div>
+          <div class="notice-content"><a href="/images/documents/doc_1794210998.pdf"  target="_blank">Expression of Interest for 18th Convocation of VSSUT BURLA <img src="assets/icons/new_icon.gif" alt="NEW" class="new-blink"></a></div>
+          <div class="download-icon"><a href="/images/documents/doc_1794210998.pdf"  target="_blank"><i class="fa-solid fa-file-pdf"></i></a></div>
+        </li>
+               <li>
+          <div class="date">
+            <div class="upper-date">
+              <p class="day">06</p>
+              <p class="month">Nov</p>
+            </div>
+            <div class="lower-date">
+              <p class="year-l">2026</p>
+            </div>
+          </div>
+          <div class="notice-content"><a href="/images/documents/doc_1793966227.pdf"  target="_blank">Corrigendum to Tender Call Notice for ARES Lab Equipment for Dept. of EE <img src="assets/icons/new_icon.gif" alt="NEW" class="new-blink"></a></div>
+          <div class="download-icon"><a href="/images/documents/doc_1793966227.pdf"  target="_blank"><i class="fa-solid fa-file-pdf"></i></a></div>
+        </li>
+               <li>
+          <div class="date">
+            <div class="upper-date">
+              <p class="day">02</p>
+              <p class="month">Nov</p>
+            </div>
+            <div class="lower-date">
+              <p class="year-l">2026</p>
+            </div>
+          </div>
+          <div class="notice-content"><a href="/images/documents/doc_1793768710.pdf"  target="_blank">Tender call Notice and Supporting Documents for supply of Blank Answer Books  <img src="assets/icons/new_icon.gif" alt="NEW" class="new-blink"></a></div>
+          <div class="download-icon"><a href="/images/documents/doc_1793768710.pdf"  target="_blank"><i class="fa-solid fa-file-pdf"></i></a></div>
+        </li>
+               <li>
+          <div class="date">
+            <div class="upper-date">
+              <p class="day">30</p>
+              <p class="month">Oct</p>
+            </div>
+            <div class="lower-date">
+              <p class="year-l">2026</p>
+            </div>
+          </div>
+          <div class="notice-content"><a href="/images/documents/doc_1793342503.pdf"  target="_blank">EOI IPR Cell VSSUT Burla <img src="assets/icons/new_icon.gif" alt="NEW" class="new-blink"></a></div>
+          <div class="download-icon"><a href="/images/documents/doc_1793342503.pdf"  target="_blank"><i class="fa-solid fa-file-pdf"></i></a></div>
+        </li>
+               <li>
+          <div class="date">
+            <div class="upper-date">
+              <p class="day">29</p>
+              <p class="month">Oct</p>
+            </div>
+            <div class="lower-date">
+              <p class="year-l">2026</p>
+            </div>
+          </div>
+          <div class="notice-content"><a href="/images/documents/doc_1793212677.pdf"  target="_blank">Tender call for equipment for the AICTE RPS project <img src="assets/icons/new_icon.gif" alt="NEW" class="new-blink"></a></div>
+          <div class="download-icon"><a href="/images/documents/doc_1793212677.pdf"  target="_blank"><i class="fa-solid fa-file-pdf"></i></a></div>
+        </li>
+       
+      </ul>
+      <a href="https://www.vssut.ac.in/all-tender.php" target="_blank" class="view-all-btn tabber-btns">View All</a>
+    </div>
+    <div
+      class="tab-pane fade"
+      id="exam"
+      role="tabpanel"
+      aria-labelledby="exam-tab">
+      <ul class="notices">
+                <li>
+          <div class="date">
+            <div class="upper-date">
+              <p class="day">18</p>
+              <p class="month">Nov</p>
+            </div>
+            <div class="lower-date">
+              <p class="year-l">2026</p>
+            </div>
+          </div>
+          <div class="notice-content"><a href="/images/documents/doc_1795004838.pdf"  target="_blank">Repeat mid-semester examination schedule for  B.Tech. (3rd/5th/7th Sem)/ B.Arch. (3rd/5th/7th Sem), M.Tech (3rd Sem), MCA (3rd Sem), Int. M.Sc. (3rd Sem) and Ph.D. Course Work  2026-27 <img src="assets/icons/new_icon.gif" alt="NEW" class="new-blink"></a></div>
+          <div class="download-icon"><a href="/images/documents/doc_1795004838.pdf"  target="_blank"><i class="fa-solid fa-file-pdf"></i></a></div>
+        </li>
+               <li>
+          <div class="date">
+            <div class="upper-date">
+              <p class="day">17</p>
+              <p class="month">Nov</p>
+            </div>
+            <div class="lower-date">
+              <p class="year-l">2026</p>
+            </div>
+          </div>
+          <div class="notice-content"><a href="/images/documents/doc_1794904815.pdf"  target="_blank">Revised End semester examination schedule for  B.Tech. (3rd/5th/7th Sem)/ B.Arch. (3rd/5th/7th Sem), M.Tech (3rd Sem), MCA (3rd Sem), M.Sc. (3rd Sem), Int. M.Sc. (3rd /5th/ 9th Sem) and Ph.D. Course Work; 2026-27 <img src="assets/icons/new_icon.gif" alt="NEW" class="new-blink"></a></div>
+          <div class="download-icon"><a href="/images/documents/doc_1794904815.pdf"  target="_blank"><i class="fa-solid fa-file-pdf"></i></a></div>
+        </li>
+               <li>
+          <div class="date">
+            <div class="upper-date">
+              <p class="day">17</p>
+              <p class="month">Nov</p>
+            </div>
+            <div class="lower-date">
+              <p class="year-l">2026</p>
+            </div>
+          </div>
+          <div class="notice-content"><a href="/images/documents/doc_1794904623.pdf"  target="_blank">Revised End semester examination schedule for  B.Tech. (1st Sem)/ B.Arch. (1st Sem), M.Tech (1st Sem), MCA (1st Sem), M.Sc. (1st Sem), Int. M.Sc. (1st /7th Sem) and Ph.D. Course Work;2026-27 <img src="assets/icons/new_icon.gif" alt="NEW" class="new-blink"></a></div>
+          <div class="download-icon"><a href="/images/documents/doc_1794904623.pdf"  target="_blank"><i class="fa-solid fa-file-pdf"></i></a></div>
+        </li>
+               <li>
+          <div class="date">
+            <div class="upper-date">
+              <p class="day">12</p>
+              <p class="month">Nov</p>
+            </div>
+            <div class="lower-date">
+              <p class="year-l">2026</p>
+            </div>
+          </div>
+          <div class="notice-content"><a href="/images/documents/doc_1794486306.pdf"  target="_blank">Notice for Repeat Mid-Semester Examination of PG & PhD Students for AY-2026 <img src="assets/icons/new_icon.gif" alt="NEW" class="new-blink"></a></div>
+          <div class="download-icon"><a href="/images/documents/doc_1794486306.pdf"  target="_blank"><i class="fa-solid fa-file-pdf"></i></a></div>
+        </li>
+               <li>
+          <div class="date">
+            <div class="upper-date">
+              <p class="day">12</p>
+              <p class="month">Nov</p>
+            </div>
+            <div class="lower-date">
+              <p class="year-l">2026</p>
+            </div>
+          </div>
+          <div class="notice-content"><a href="/images/documents/doc_1794466155.PDF"  target="_blank">Notice for students allowed for Repeat Mid Semester Examination 2026-27 <img src="assets/icons/new_icon.gif" alt="NEW" class="new-blink"></a></div>
+          <div class="download-icon"><a href="/images/documents/doc_1794466155.PDF"  target="_blank"><i class="fa-solid fa-file-pdf"></i></a></div>
+        </li>
+               <li>
+          <div class="date">
+            <div class="upper-date">
+              <p class="day">10</p>
+              <p class="month">Nov</p>
+            </div>
+            <div class="lower-date">
+              <p class="year-l">2026</p>
+            </div>
+          </div>
+          <div class="notice-content"><a href="/images/documents/doc_1794309754.pdf"  target="_blank">End semester examination schedule for  B.Tech. (1st Sem)/ B.Arch. (1st Sem), M.Tech (1st Sem), MCA (1st Sem), M.Sc. (1st Sem), Int. M.Sc. (1st /7th Sem) and Ph.D. Course Work;2026-27 <img src="assets/icons/new_icon.gif" alt="NEW" class="new-blink"></a></div>
+          <div class="download-icon"><a href="/images/documents/doc_1794309754.pdf"  target="_blank"><i class="fa-solid fa-file-pdf"></i></a></div>
+        </li>
+             </ul>
+      <a href="all-exam-info.php" class="view-all-btn tabber-btns">View All</a>
+    </div>
+
+
+
+	<div
+      class="tab-pane fade"
+      id="student"
+      role="tabpanel"
+      aria-labelledby="student-tab">
+      <ul class="notices">
+                <li>
+          <div class="date">
+            <div class="upper-date">
+              <p class="day">17</p>
+              <p class="month">Nov</p>
+            </div>
+            <div class="lower-date">
+              <p class="year-l">2026</p>
+            </div>
+          </div>
+          <div class="notice-content"><a href="/images/documents/doc_1794896485.pdf"  target="_blank">Notice for Shortage of Attendance for PG Programmes (Odd Semester-2026) <img src="assets/icons/new_icon.gif" alt="NEW" class="new-blink"></a></div>
+          <div class="download-icon"><a href="/images/documents/doc_1794896485.pdf"  target="_blank"><i class="fa-solid fa-file-pdf"></i></a></div>
+        </li>
+               <li>
+          <div class="date">
+            <div class="upper-date">
+              <p class="day">13</p>
+              <p class="month">Nov</p>
+            </div>
+            <div class="lower-date">
+              <p class="year-l">2026</p>
+            </div>
+          </div>
+          <div class="notice-content"><a href="https://www.vssut.ac.in/registration-and-student-participation-in-kashi-tamil-sangamam-kts-5.0-date-extended-to-18-november-2026.php" >Registration and Student Participation in Kashi Tamil Sangamam (KTS) 5.0 Date extended to 18 November 2026. <img src="assets/icons/new_icon.gif" alt="NEW" class="new-blink"></a></div>
+          <div class="download-icon"><a href="https://www.vssut.ac.in/registration-and-student-participation-in-kashi-tamil-sangamam-kts-5.0-date-extended-to-18-november-2026.php" ><i class="fa-solid fa-file-pdf"></i></a></div>
+        </li>
+               <li>
+          <div class="date">
+            <div class="upper-date">
+              <p class="day">12</p>
+              <p class="month">Nov</p>
+            </div>
+            <div class="lower-date">
+              <p class="year-l">2026</p>
+            </div>
+          </div>
+          <div class="notice-content"><a href="/images/documents/doc_1794466690.PDF"  target="_blank">Notice for Shortage of Attendance for Odd Semester 2026-27 <img src="assets/icons/new_icon.gif" alt="NEW" class="new-blink"></a></div>
+          <div class="download-icon"><a href="/images/documents/doc_1794466690.PDF"  target="_blank"><i class="fa-solid fa-file-pdf"></i></a></div>
+        </li>
+               <li>
+          <div class="date">
+            <div class="upper-date">
+              <p class="day">12</p>
+              <p class="month">Nov</p>
+            </div>
+            <div class="lower-date">
+              <p class="year-l">2026</p>
+            </div>
+          </div>
+          <div class="notice-content"><a href="/images/documents/doc_1794466155.PDF"  target="_blank">Notice for students allowed for Repeat Mid Semester Examination 2026-27 <img src="assets/icons/new_icon.gif" alt="NEW" class="new-blink"></a></div>
+          <div class="download-icon"><a href="/images/documents/doc_1794466155.PDF"  target="_blank"><i class="fa-solid fa-file-pdf"></i></a></div>
+        </li>
+               <li>
+          <div class="date">
+            <div class="upper-date">
+              <p class="day">10</p>
+              <p class="month">Nov</p>
+            </div>
+            <div class="lower-date">
+              <p class="year-l">2026</p>
+            </div>
+          </div>
+          <div class="notice-content"><a href="/images/documents/doc_1794313679.pdf"  target="_blank">Notice for Green Passage scholarship 2026-27. <img src="assets/icons/new_icon.gif" alt="NEW" class="new-blink"></a></div>
+          <div class="download-icon"><a href="/images/documents/doc_1794313679.pdf"  target="_blank"><i class="fa-solid fa-file-pdf"></i></a></div>
+        </li>
+               <li>
+          <div class="date">
+            <div class="upper-date">
+              <p class="day">07</p>
+              <p class="month">Nov</p>
+            </div>
+            <div class="lower-date">
+              <p class="year-l">2026</p>
+            </div>
+          </div>
+          <div class="notice-content"><a href="/images/documents/doc_1794029507.pdf"  target="_blank">Get Industry Ready with Zoho <img src="assets/icons/new_icon.gif" alt="NEW" class="new-blink"></a></div>
+          <div class="download-icon"><a href="/images/documents/doc_1794029507.pdf"  target="_blank"><i class="fa-solid fa-file-pdf"></i></a></div>
+        </li>
+             </ul>
+      <a href="all-student-notice.php" class="view-all-btn tabber-btns">View All</a>
+    </div>
+
+
+
+
+  </div>
+</div>        </div>
+        <div class="col-md-6 mx-auto mt-2 mb-3">
+          <div class="content">
+            <h1 class="headings">News and Events <a href="news&events.php" class="view-all-btn">View All</a></h1>
+            <div class="slider-container">
+              <div class="splide" id="splide1">
+                <div class="splide__track">
+                  <ul class="splide__list">
+                                          <li class="splide__slide">
+                        <div class="news-boxes">
+                          <div class="news-image">
+                            <img src="images/photo/events_1794289844.jpg" alt="">
+                          </div>
+                          <p class="dates">10, Nov<br>2026</p>
+                          <p>VSSUT’s achievement in Kushinagar, Uttar Pradesh</p>
+                          <a href="/images/documents/doc_1794289844.pdf"  target="_blank" class="view-all-btn center"><i class="fa-solid fa-eye"></i> Download</a>
+                        </div>
+                      </li>
+                                          <li class="splide__slide">
+                        <div class="news-boxes">
+                          <div class="news-image">
+                            <img src="images/photo/events_1794206197.jpg" alt="">
+                          </div>
+                          <p class="dates">09, Nov<br>2026</p>
+                          <p>VSSUT Golden Jubilee Half Marathon Scheduled for January 10</p>
+                          <a href="/images/documents/doc_1794206197.pdf"  target="_blank" class="view-all-btn center"><i class="fa-solid fa-eye"></i> Download</a>
+                        </div>
+                      </li>
+                                          <li class="splide__slide">
+                        <div class="news-boxes">
+                          <div class="news-image">
+                            <img src="images/photo/events_1793610409.jpg" alt="">
+                          </div>
+                          <p class="dates">02, Nov<br>2026</p>
+                          <p>Inauguration of the 'Electric Vehicle Empowerment' Workshop in VSSUT</p>
+                          <a href="/images/documents/doc_1793610409.pdf"  target="_blank" class="view-all-btn center"><i class="fa-solid fa-eye"></i> Download</a>
+                        </div>
+                      </li>
+                                      </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <div class="row d-flex justify-content-between">
+        <div class="col-md-4 mx-auto  mb-3">
+          <div class="content">
+            <h1 class="headings">Important Links</h1>
+            <ul class="quick">
+              <li><a href="https://www.aicte.gov.in/schemes/students-development-schemes" target="_blank">AICTE Scholarship/Fellowship Schemes</a></li>
+              <li><a href="/payment-instruction.php" target="_blank">Semester Registration Fee Payment</a></li>
+              <li><a href="images/documents/notice_1730536516.PDF" target="_blank">Certificate for Medium of Instruction</a></li>
+              <li><a href="/antiragging-information.php" target="_blank">Antiragging Information</a></li>
+              <li><a href="vssut-awareness-for-covid-19-and-ragging.php" target="_blank">VSSUT Awareness for COVID-19 and Ragging</a></li>
+              <li><a href="documents/notice_1670327843.pdf" target="_blank">Educational Verification for student</a></li>
+              <li><a href="emergency-medical-contact-numbers.php">Emergency Medical Contact Numbers</a></li>
+              <li><a href="documents/notice_1690194527.pdf" target="_blank">Helpline number for academic section</a></li>
+              <li><a href="documents/notice_1730536536.PDF" target="_blank">Certificate for CGPA to Percentage Conversion</a></li>
+              <li><a href="/IQAC/IQAC-approvals-and-accreditations.php" target="_blank">Approvals & Accreditations</a></li>
+              <li><a href="/icc.php" target="_blank">Internal Complaints Committee</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3 mx-auto  mb-3">
+          <div class="content">
+            <h1 class="headings">People @ VSSUT</h1>
+            <div class="people-vssut">
+              <div class="single-ppl">
+                <i class="fa-solid fa-user"></i>
+                <h2><a href="vice-chancellor-s-message.php">Vice Chancellor's Desk</a></h2>
+              </div>
+              <div class="single-ppl">
+                <i class="fa-solid fa-user"></i>
+                <h2><a href="registrar.php">Registrar</a></h2>
+              </div>
+              <div class="single-ppl">
+                <i class="fa-solid fa-user"></i>
+                <h2><a href="comptroller-of-finance.php">Comptroller of Finance</a></h2>
+              </div>
+
+              <div class="single-ppl">
+                <i class="fa-solid fa-user"></i>
+                <h2><a href="deans.php">Deans</a></h2>
+              </div>
+              <div class="single-ppl">
+                <i class="fa-solid fa-user"></i>
+                <h2><a href="head-of-department.php">Head of the Department</a></h2>
+              </div>
+
+
+              <div class="single-ppl">
+                <i class="fa-solid fa-user"></i>
+                <h2><a href="controller-of-examinations.php">Controller of Examinations</a></h2>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5 mx-auto mb-3">
+          <div class="content">
+            <h1 class="headings">Research and Development</h1>
+            <div class="research">
+<div class="content">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a
+        class="nav-link active"
+        id="publication-tab"
+        data-toggle="tab"
+        href="#publication"
+        role="tab"
+        aria-controls="publication"
+        aria-selected="true">Publications
+        </a>
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        id="project-tab"
+        data-toggle="tab"
+        href="#project"
+        role="tab"
+        aria-controls="project"
+        aria-selected="false">Sponsored Project</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div
+      class="tab-pane fade show active"
+      id="publication"
+      role="tabpanel"
+      aria-labelledby="publication-tab">
+
+      <ul class="notices">
+	          <li>
+           <div class="notice-content" >
+                <p class="popup-containt">Das, R., Panda, S., Panigrahi, S.K. (2026) GGBFS-based Self-compacting Geopolymer Concrete with Multi-blended Fine Aggregates. Silicon (1876-990X), Springer, SCIE, Q2, IF=4.1, https://doi.org/10.1007/s12633-026-03930-x</p>
+                <div class="inner-c">Das, R., Panda, S., Panigrahi, S.K. (2026) GGBFS-based Self-compacting Geopolymer Concrete with Multi-blended Fine Aggregates. Silicon (1876-990X), Springer, SCIE, Q2, IF=4.1, https://doi.org/10.1007/s12633-026-03930-x</div>
+              </div>
+        </li>
+		        <li>
+           <div class="notice-content" >
+                <p class="popup-containt">Chandrasekaran, S., Das, A.K. Response Control of Offshore Semi-Submersible with Passive Dampers. Int J Steel Struct (2026). https://doi.org/10.1007/s13296-026-01062-x</p>
+                <div class="inner-c">Chandrasekaran, S., Das, A.K. Response Control of Offshore Semi-Submersible with Passive Dampers. Int J Steel Struct (2026). https://doi.org/10.1007/s13296-026-01062-x</div>
+              </div>
+        </li>
+		        <li>
+           <div class="notice-content" >
+                <p class="popup-containt">Pratibha Bhoi, Ganeswar Nath and J P Panda, “Nano material enhanced mathematical modelling on  heat transfer analysis for thermal energy systems”, Advances in Natural Sciences: Nanoscience and Nanotechnology, Vol.17, 2026. DOI: https://doi.org/10.1088/2043-6262/ae8909</p>
+                <div class="inner-c">Pratibha Bhoi, Ganeswar Nath and J P Panda, “Nano material enhanced mathematical modelling on  heat transfer analysis for thermal energy systems”, Advances in Natural Sciences: Nanoscience and Nanotechnology, Vol.17, 2026. DOI: https://doi.org/10.1088/2043-6262/ae8909</div>
+              </div>
+        </li>
+		        <li>
+           <div class="notice-content" >
+                <p class="popup-containt">Chapala  Sahoo,, Bigyan Ranjan Rout,, J.P. Panda and Kharabela Swain, “Effects of Radiation and Chemical Reaction on MHD Casson fluid flow through a Porous medium”, Suranaree J. Sci. Technol. Vol. 33(2):030385, pp.1-12,2026, DOI: https://doi.org/10.55766/sujst8225</p>
+                <div class="inner-c">Chapala  Sahoo,, Bigyan Ranjan Rout,, J.P. Panda and Kharabela Swain, “Effects of Radiation and Chemical Reaction on MHD Casson fluid flow through a Porous medium”, Suranaree J. Sci. Technol. Vol. 33(2):030385, pp.1-12,2026, DOI: https://doi.org/10.55766/sujst8225</div>
+              </div>
+        </li>
+		        <li>
+           <div class="notice-content" >
+                <p class="popup-containt">S K Patta, J.P. Panda, A Agrawal, “Analytical Investigation of Soret Effect and Chemical Reaction On MHD Flow with Heat Transfer Past A Vertical Porous Plate"Songklanakarin Journal of Science and Technology, Accepted 12.03.2026.</p>
+                <div class="inner-c">S K Patta, J.P. Panda, A Agrawal, “Analytical Investigation of Soret Effect and Chemical Reaction On MHD Flow with Heat Transfer Past A Vertical Porous Plate"Songklanakarin Journal of Science and Technology, Accepted 12.03.2026.</div>
+              </div>
+        </li>
+		      </ul>
+      <a href="all-publications.php" class="view-all-btn tabber-btns">View All Publications</a>
+    </div>
+    <div
+      class="tab-pane fade"
+      id="project"
+      role="tabpanel"
+      aria-labelledby="project-tab">
+      <ul class="notices">	
+                <li>
+             <div class="notice-content" >
+                <p class="popup-containt">AICTE - MODROB project costing Rs 2.8 lakhs  for â€œMachining Performance Evaluation of CVD/PVD Coated Carbide Al2O3 ceramics  and CBN/Diamond cutting tool insertsâ€. (in June 2014).</p>
+                <div class="inner-c">AICTE - MODROB project costing Rs 2.8 lakhs  for â€œMachining Performance Evaluation of CVD/PVD Coated Carbide Al2O3 ceramics  and CBN/Diamond cutting tool insertsâ€. (in June 2014).</div>
+              </div>
+         
+        </li>
+		        <li>
+             <div class="notice-content" >
+                <p class="popup-containt">AICTE - MODROB project costing Rs 7.56 lakhs for â€œModernization of Materials Research  Laboratoryâ€ (2010-2013).</p>
+                <div class="inner-c">AICTE - MODROB project costing Rs 7.56 lakhs for â€œModernization of Materials Research  Laboratoryâ€ (2010-2013).</div>
+              </div>
+         
+        </li>
+		        <li>
+             <div class="notice-content" >
+                <p class="popup-containt"><strong>In the capacity of H.O.D. :</strong> I was looking after for  the purchase and installation of two major equipments (i.e. Instron make UTM of  10 ton capacity and Piezo-electric Force Dynamometer) costing Rs 55 lakhs  funded by DST-FIST (from February 2009 to July 2014).</p>
+                <div class="inner-c"><strong>In the capacity of H.O.D. :</strong> I was looking after for  the purchase and installation of two major equipments (i.e. Instron make UTM of  10 ton capacity and Piezo-electric Force Dynamometer) costing Rs 55 lakhs  funded by DST-FIST (from February 2009 to July 2014).</div>
+              </div>
+         
+        </li>
+		        <li>
+             <div class="notice-content" >
+                <p class="popup-containt">Funding Agency (Scheme) Year : UGC-MRP-2013Title : Development of a high vacuum brazing furnace for joining metals to ceramicsPI/Co-PI : PIDuration(years) : 3.0Amount Sanctioned(In Lakhs) : 14.97Status - completed / ongoing : Completed</p>
+                <div class="inner-c">Funding Agency (Scheme) Year : UGC-MRP-2013Title : Development of a high vacuum brazing furnace for joining metals to ceramicsPI/Co-PI : PIDuration(years) : 3.0Amount Sanctioned(In Lakhs) : 14.97Status - completed / ongoing : Completed</div>
+              </div>
+         
+        </li>
+		        <li>
+             <div class="notice-content" >
+                <p class="popup-containt">Funding Agency (Scheme) Year : CSIR-ERD-2013Title : Development of NCD and UNCD diamond coatings and  their characterization on cemented carbide insertsPI/Co-PI : PIDuration(years) : 3.0Amount Sanctioned(In Lakhs) : 21.92Status - completed / ongoing : Completed</p>
+                <div class="inner-c">Funding Agency (Scheme) Year : CSIR-ERD-2013Title : Development of NCD and UNCD diamond coatings and  their characterization on cemented carbide insertsPI/Co-PI : PIDuration(years) : 3.0Amount Sanctioned(In Lakhs) : 21.92Status - completed / ongoing : Completed</div>
+              </div>
+         
+        </li>
+		      </ul>
+      <a href="all-projects.php" class="view-all-btn tabber-btns">View All Projects</a>
+    </div>
+   
+
+  </div>
+</div>
+</div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <section>
+    <div class="container">
+      <div class="row d-flex justify-content-between " style="padding: 0px;">
+        <div class="col-md-4 mx-auto ">
+          <div class="content">
+            <h1 class="headings">Faculty Achievements </h1>
+            <div class="slider-container">
+              <div class="splide" id="splide2">
+                <div class="splide__track">
+                  <ul class="splide__list">
+                                          <li class="splide__slide">
+                        <div class="news-boxes2">
+                          <div class="news-image" href="images/photo/events_1783498655.png" data-fancybox="gallery" data-caption="Dr. Satya Prakash Sahoo_Computer Science and Engineering-P C Chowdhury Award">
+                            <img src="images/photo/events_1783498655.png" alt="Dr. Satya Prakash Sahoo_Computer Science and Engineering-P C Chowdhury Award">
+                          </div>
+                          <p><a href="/images/documents/oOzSUCCRgIluIE5B.pdf"  target="_blank">Dr. Satya Prakash Sahoo_Computer Science and Engineering-P C Chowdhury Award</a></p>
+                        </div>
+                      </li>
+                                          <li class="splide__slide">
+                        <div class="news-boxes2">
+                          <div class="news-image" href="images/photo/events_1783498667.jpeg" data-fancybox="gallery" data-caption="Dr. Saubhagya Kumar Panigrahi-Civil Engineering Department-Avaya Chandra Nayak Memorial Award">
+                            <img src="images/photo/events_1783498667.jpeg" alt="Dr. Saubhagya Kumar Panigrahi-Civil Engineering Department-Avaya Chandra Nayak Memorial Award">
+                          </div>
+                          <p><a href="/images/documents/f405H830qnDAbXob.pdf"  target="_blank">Dr. Saubhagya Kumar Panigrahi-Civil Engineering Department-Avaya Chandra Nayak Memorial Award</a></p>
+                        </div>
+                      </li>
+                                          <li class="splide__slide">
+                        <div class="news-boxes2">
+                          <div class="news-image" href="images/photo/events_1783498480.jpg" data-fancybox="gallery" data-caption="Dr. Debabrata Giri and Dr. Sudhanshu Ranjan Das-L M Patra Memorial Award">
+                            <img src="images/photo/events_1783498480.jpg" alt="Dr. Debabrata Giri and Dr. Sudhanshu Ranjan Das-L M Patra Memorial Award">
+                          </div>
+                          <p><a href="/images/documents/XtRA5NL4NvfCwULA.pdf"  target="_blank">Dr. Debabrata Giri and Dr. Sudhanshu Ranjan Das-L M Patra Memorial Award</a></p>
+                        </div>
+                      </li>
+                                          <li class="splide__slide">
+                        <div class="news-boxes2">
+                          <div class="news-image" href="images/photo/events_1781420600.jpg" data-fancybox="gallery" data-caption="Ar. Adikanda Biswal Legendary Award 2025 received by Dr. Bharati Mohapatra, Department of Architecture, VSSUT, Burla in IIA Design Carnival Event organized by the Indian Institute of Architects ,Odisha Chapter">
+                            <img src="images/photo/events_1781420600.jpg" alt="Ar. Adikanda Biswal Legendary Award 2025 received by Dr. Bharati Mohapatra, Department of Architecture, VSSUT, Burla in IIA Design Carnival Event organized by the Indian Institute of Architects ,Odisha Chapter">
+                          </div>
+                          <p><a href="javascript:void(0);" >Ar. Adikanda Biswal Legendary Award 2025 received by Dr. Bharati Mohapatra, Department of Architecture, VSSUT, Burla in IIA Design Carnival Event organized by the Indian Institute of Architects ,Odisha Chapter</a></p>
+                        </div>
+                      </li>
+                                          <li class="splide__slide">
+                        <div class="news-boxes2">
+                          <div class="news-image" href="images/photo/events_1781421514.jpg" data-fancybox="gallery" data-caption="Faculty members of VSSUT are enlisted among 2% Scientists as per data base of  Stanford University">
+                            <img src="images/photo/events_1781421514.jpg" alt="Faculty members of VSSUT are enlisted among 2% Scientists as per data base of  Stanford University">
+                          </div>
+                          <p><a href="/images/documents/DfzEB7xdYDhKw9It.jpg"  target="_blank">Faculty members of VSSUT are enlisted among 2% Scientists as per data base of  Stanford University</a></p>
+                        </div>
+                      </li>
+                                          <li class="splide__slide">
+                        <div class="news-boxes2">
+                          <div class="news-image" href="images/photo/events_1743677048.jpg" data-fancybox="gallery" data-caption="Ar. Amit Chatterjee awarded with prestigious Arcause Design Educators Award 2025.">
+                            <img src="images/photo/events_1743677048.jpg" alt="Ar. Amit Chatterjee awarded with prestigious Arcause Design Educators Award 2025.">
+                          </div>
+                          <p><a href="/images/documents/doc_1743674174.jpg" >Ar. Amit Chatterjee awarded with prestigious Arcause Design Educators Award 2025.</a></p>
+                        </div>
+                      </li>
+                                      </ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-md-4 mx-auto ">
+          <h1 class="headings">Student Achievements
+          </h1>
+          <div class="slider-container">
+            <div class="splide" id="splide3">
+              <div class="splide__track">
+                <ul class="splide__list">
+                                      <li class="splide__slide">
+                      <div class="news-boxes2">
+                        <div class="news-image" href="images/photo/events_1793799294.jpg" data-fancybox="gallery" data-caption="Patent on Automatic Lubrication System By VSSUT Students">
+                          <img src="images/photo/events_1793799294.jpg" alt="Patent on Automatic Lubrication System By VSSUT Students">
+                        </div>
+                        <p><a href="/images/documents/doc_1793802932.pdf"  target="_blank">Patent on Automatic Lubrication System By VSSUT Students</a></p>
+                      </div>
+                    </li>
+                                      <li class="splide__slide">
+                      <div class="news-boxes2">
+                        <div class="news-image" href="images/photo/events_1791440513.jpg" data-fancybox="gallery" data-caption=""VSSUT Innovation Spirit. 7 Finalist Teams. Global Recognition".  VSSUT Burla received the Vibrant Pilot Loyalty Award at IEEE YESIST12 2026, Indonesia.">
+                          <img src="images/photo/events_1791440513.jpg" alt=""VSSUT Innovation Spirit. 7 Finalist Teams. Global Recognition".  VSSUT Burla received the Vibrant Pilot Loyalty Award at IEEE YESIST12 2026, Indonesia.">
+                        </div>
+                        <p><a href="/images/documents/doc_1791440835.jpg"  target="_blank">"VSSUT Innovation Spirit. 7 Finalist Teams. Global Recognition".  VSSUT Burla received the Vibrant Pilot Loyalty Award at IEEE YESIST12 2026, Indonesia.</a></p>
+                      </div>
+                    </li>
+                                      <li class="splide__slide">
+                      <div class="news-boxes2">
+                        <div class="news-image" href="images/photo/events_1790245503.png" data-fancybox="gallery" data-caption="Asia Book of Records  by S Sahil Prusty ,  Student of 3rd Semester CSE(AI/ML) of VSSUT, BURLA">
+                          <img src="images/photo/events_1790245503.png" alt="Asia Book of Records  by S Sahil Prusty ,  Student of 3rd Semester CSE(AI/ML) of VSSUT, BURLA">
+                        </div>
+                        <p><a href="/images/documents/" >Asia Book of Records  by S Sahil Prusty ,  Student of 3rd Semester CSE(AI/ML) of VSSUT, BURLA</a></p>
+                      </div>
+                    </li>
+                                      <li class="splide__slide">
+                      <div class="news-boxes2">
+                        <div class="news-image" href="images/photo/events_1790164385.jpg" data-fancybox="gallery" data-caption="Heartiest Congratulations to Mohit Mahapatra, 3rd Year, Mechanical Engineering">
+                          <img src="images/photo/events_1790164385.jpg" alt="Heartiest Congratulations to Mohit Mahapatra, 3rd Year, Mechanical Engineering">
+                        </div>
+                        <p><a href="/images/documents/doc_1790164327.jpg"  target="_blank">Heartiest Congratulations to Mohit Mahapatra, 3rd Year, Mechanical Engineering</a></p>
+                      </div>
+                    </li>
+                                      <li class="splide__slide">
+                      <div class="news-boxes2">
+                        <div class="news-image" href="images/photo/events_1790052648.jpg" data-fancybox="gallery" data-caption="Design Patent approved for VSSUT Robotics Society project ">
+                          <img src="images/photo/events_1790052648.jpg" alt="Design Patent approved for VSSUT Robotics Society project ">
+                        </div>
+                        <p><a href="/images/documents/doc_1790052454.pdf"  target="_blank">Design Patent approved for VSSUT Robotics Society project </a></p>
+                      </div>
+                    </li>
+                                      <li class="splide__slide">
+                      <div class="news-boxes2">
+                        <div class="news-image" href="images/photo/events_1785221156.jpg" data-fancybox="gallery" data-caption="Patent Granted to VSSUT Burla Students">
+                          <img src="images/photo/events_1785221156.jpg" alt="Patent Granted to VSSUT Burla Students">
+                        </div>
+                        <p><a href="/images/documents/"  target="_blank">Patent Granted to VSSUT Burla Students</a></p>
+                      </div>
+                    </li>
+                                  </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mx-auto ">
+          <div class="content">
+            <h1 class="headings">Approval, Accreditation and Ranking</h1>
+            <ul class="rankandreco">
+              <a href="naac.php" target="_blank">
+                <li>
+
+                  <div class="rankandreco-image">
+                    <img src="assets/icons/NAAC_LOGO.png" alt="">
+                  </div>
+
+                  <!-- <h2>Accredited with an A+ Grade by NAAC</h2> -->
+                </li>
+              </a>
+              <a href="./IQAC/IQAC-GOV-ApprovalsDocs.php" target="_blank">
+                <li>
+                  <div class="rankandreco-image">
+                    <img src="assets/icons/Seal_of_Odisha.svg.png" alt="">
+                  </div>
+                  <!-- <h2>UG Engineering programs in Tier-I granted by the NBA.</h2> -->
+                </li>
+              </a>
+              <a href="https://vssut.ac.in/nirf.php">
+                <li>
+                  <div class="rankandreco-image">
+                    <img src="assets/icons/Logo_1.png" alt="">
+                  </div>
+                  <!-- <h2>Top-ranked university under the NIRF</h2> -->
+                </li>
+              </a>
+              <a href="/IQAC/IQAC-COA-ApprovalsDocs.php" target="_blank">
+                <li>
+                  <div class="rankandreco-image">
+                    <img src="assets/icons/councilofar.png" alt="">
+                  </div>
+                  <!-- <h2>Approved by the COA for Architecture programs.</h2> -->
+                </li>
+              </a>
+              <a href="./IQAC/IQAC-AICTE-ApprovalsDocs.php" target="_blank">
+                <li>
+                  <div class="rankandreco-image">
+                    <img src="assets/icons/All_India_Council_for_Technical_Education_logo.png" alt="">
+                  </div>
+                  <!-- <h2>Approved by AICTE under the provisions of the AICTE Act, 1987</h2> -->
+                </li>
+              </a>
+              <a href="./IQAC/IQAC-UGC-ApprovalsDocs.php" target="_blank">
+                <li>
+                  <div class="rankandreco-image">
+                    <img src="assets/icons/UGC_India_Logo.png" alt="">
+                  </div>
+                  <!-- /  <h2>Approved by the UGC for quality education.</h2> -->
+                </li>
+              </a>
+              <a href="/naac-approval-documents.php" target="_blank">
+                <li style="width:100%">
+                  <div class="rankandreco-image">
+                    <img src="assets/icons/NAAC.png" alt="">
+                  </div>
+                  <!-- /  <h2>Approved by the UGC for quality education.</h2> -->
+                </li>
+              </a>
+              <a href="/IQAC/IQAC-AISHE-Certificates.php" target="_blank">
+                <li style="width:100%">
+                  <div class="rankandreco-image">
+                    <img src="assets/icons/AISHE.png" alt="">
+                  </div>
+                  <!-- /  <h2>Approved by the UGC for quality education.</h2> -->
+                </li>
+              </a>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="arcives mt-4 mb-4">
+      <div class="container">
+        <div class="main-box-a">
+          <div class="single-box-a">
+            <img src="assets/icons/1.png" alt="icon">
+            <h2 class="numbers " data-target="10">0</h2>
+            <h3 class="name-a">Departments</h3>
+          </div>
+          <div class="single-box-a">
+            <img src="assets/icons/2.png" alt="icon">
+            <h2 class="numbers " data-target="5000">0</h2>
+            <h3 class="name-a">Students</h3>
+          </div>
+          <div class="single-box-a">
+            <img src="assets/icons/3.png" alt="icon">
+            <h2 class="numbers " data-target="200">0</h2>
+            <h3 class="name-a">Faculty</h3>
+          </div>
+          <div class="single-box-a">
+            <img src="assets/icons/4.png" alt="icon">
+            <h2 class="numbers " data-target="100">0</h2>
+            <h3 class="name-a">Staffs</h3>
+          </div>
+          <!-- <div class="single-box-a">
+            <img src="assets/icons/5.png" alt="icon">
+            <h2 class="numbers " data-target="99999">0</h2>
+            <h3 class="name-a">Books In Library</h3>
+          </div> -->
+          <div class="single-box-a">
+            <img src="assets/icons/hiring.png" alt="icon">
+            <h2 class="numbers " data-target="1400">0</h2>
+            <h3 class="name-a">Student Placed</h3>
+          </div>
+          <div class="single-box-a">
+            <img src="assets/icons/research-and-development.png" alt="icon">
+            <h2 class="numbers " data-target="100">0</h2>
+            <h3 class="name-a">R&D</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <div class="row d-flex justify-content-between " style="padding: 0px;">
+        <div class="col-md-4 mx-auto ">
+          <div class="content">
+            <h1 class="headings">Distinguished Alumni <a href="distinguished-alumni.php" class="view-all-btn">View All</a></h1>
+
+            <div id="carouselExampleControls2" class="carousel slide" data-ride="carousel" data-pause="false">
+              <div class="carousel-inner">
+
+                                    <div class="carousel-item active">
+                      <div class="alumni-list">
+                        <div class="image-almn">
+                          <img src="images/alumni/alumni_1785150163.jpg" alt="">
+                        </div>
+                        <div class="text-alumni">
+                          <h1>Dr. Subham Swaroop Sahoo</h1>
+                          <p>Associate Professor, Aalborg University (AAU), Denmark (2014 Batch)</p>
+                        </div>
+                      </div>
+                    </div>
+                                      <div class="carousel-item ">
+                      <div class="alumni-list">
+                        <div class="image-almn">
+                          <img src="images/alumni/alumni_1739946498.jpg" alt="">
+                        </div>
+                        <div class="text-alumni">
+                          <h1>Prof. Manoranjan Parida</h1>
+                          <p>Director, CSIR-Central Road Research Institute</p>
+                        </div>
+                      </div>
+                    </div>
+                                      <div class="carousel-item ">
+                      <div class="alumni-list">
+                        <div class="image-almn">
+                          <img src="images/alumni/alumni_1739946279.jpg" alt="">
+                        </div>
+                        <div class="text-alumni">
+                          <h1>Nivedita Rath</h1>
+                          <p>Group Executive, Lloyds Banking Group</p>
+                        </div>
+                      </div>
+                    </div>
+                                      <div class="carousel-item ">
+                      <div class="alumni-list">
+                        <div class="image-almn">
+                          <img src="images/alumni/alumni_1739946007.jpg" alt="">
+                        </div>
+                        <div class="text-alumni">
+                          <h1>Er. Ashesh Padhy</h1>
+                          <p>Executive Vice President & Head Odisha Project JSW Steel</p>
+                        </div>
+                      </div>
+                    </div>
+                                      <div class="carousel-item ">
+                      <div class="alumni-list">
+                        <div class="image-almn">
+                          <img src="images/alumni/alumni_1739945818.jpg" alt="">
+                        </div>
+                        <div class="text-alumni">
+                          <h1>Er. Renubala Mohanty</h1>
+                          <p>Retd. GM, L&T. First lady engineer in state of Odisha (1967)</p>
+                        </div>
+                      </div>
+                    </div>
+                                      <div class="carousel-item ">
+                      <div class="alumni-list">
+                        <div class="image-almn">
+                          <img src="images/alumni/alumni_1739944630.jpg" alt="">
+                        </div>
+                        <div class="text-alumni">
+                          <h1>Dr. Binay Kumar Das</h1>
+                          <p>Ex-Director, ITR, Chandipur, DRDO</p>
+                        </div>
+                      </div>
+                    </div>
+                                      <div class="carousel-item ">
+                      <div class="alumni-list">
+                        <div class="image-almn">
+                          <img src="images/alumni/alumni_1739944188.jpg" alt="">
+                        </div>
+                        <div class="text-alumni">
+                          <h1>Prof. Krishna Dev Kumar</h1>
+                          <p>Professor & Canada Research Chair in Space Systems Ryerson University, Canada</p>
+                        </div>
+                      </div>
+                    </div>
+                                      <div class="carousel-item ">
+                      <div class="alumni-list">
+                        <div class="image-almn">
+                          <img src="images/alumni/alumni_1739939676.jpg" alt="">
+                        </div>
+                        <div class="text-alumni">
+                          <h1>Er. Jagdish Mahapatra</h1>
+                          <p>Managing Director for India & SAARC at McAfee, Mumbai</p>
+                        </div>
+                      </div>
+                    </div>
+                                      <div class="carousel-item ">
+                      <div class="alumni-list">
+                        <div class="image-almn">
+                          <img src="images/alumni/alumni_1739938949.jpg" alt="">
+                        </div>
+                        <div class="text-alumni">
+                          <h1>Er. Nalini Kanta Pradhan</h1>
+                          <p>Member of the Legislative Assembly</p>
+                        </div>
+                      </div>
+                    </div>
+                  
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleControls2" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleControls2" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-md-4 mx-auto ">
+          <div class="content">
+            <h1 class="headings">Campus Tour of VSSUT</h1>
+            <div class="iframe-border">
+             <iframe width="100%" height="302" src="https://www.youtube.com/embed/eNhyfXxZGXo?si=NaMYL0LFhYPzzIyv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mx-auto ">
+          <div class="content">
+            <h1 class="headings">Photo Gallery <a href="photo-gallery.php" class="view-all-btn">View All</a></h1>
+            <div class="glry-grid">
+                              <a href="images/gallery/6f716380012377aeecd1e6aef42dc6cb.jpeg" data-fancybox="gallery">
+                  <div class="main-grid-img-box">
+                    <img src="images/gallery/thumb/6f716380012377aeecd1e6aef42dc6cb.jpeg" alt="Chief Guest Prof.S.S.Pattnaik, Honorable VC, Odisha State Open University delivering his speech on University Foundation Day">
+                  </div>
+                </a>
+                              <a href="images/gallery/af746d6e15e5b859e0c6d2ccf0dd7f90.jpeg" data-fancybox="gallery">
+                  <div class="main-grid-img-box">
+                    <img src="images/gallery/thumb/af746d6e15e5b859e0c6d2ccf0dd7f90.jpeg" alt="Garlanding of Veer Surendra Sai Statue on University Foundation Day">
+                  </div>
+                </a>
+                              <a href="images/gallery/0823a98695d124dee63ba992e3311526.jpeg" data-fancybox="gallery">
+                  <div class="main-grid-img-box">
+                    <img src="images/gallery/thumb/0823a98695d124dee63ba992e3311526.jpeg" alt="Van Mahotsav Week Celebration on University Foundation Day from 1st July to 7th July 2026">
+                  </div>
+                </a>
+                              <a href="images/gallery/2edfd67954e5cfe16da29a368e2e426f_1.jpeg" data-fancybox="gallery">
+                  <div class="main-grid-img-box">
+                    <img src="images/gallery/thumb/2edfd67954e5cfe16da29a368e2e426f_1.jpeg" alt="University Foundation Day Seminar at Golden Jubilee Seminar Hall">
+                  </div>
+                </a>
+                              <a href="images/gallery/2edfd67954e5cfe16da29a368e2e426f.jpeg" data-fancybox="gallery">
+                  <div class="main-grid-img-box">
+                    <img src="images/gallery/thumb/2edfd67954e5cfe16da29a368e2e426f.jpeg" alt="VSSUT Celebrates 17th University Foundation Day with Academic Seminar and Van Mahotsav">
+                  </div>
+                </a>
+                              <a href="images/gallery/79f80045ecbc87baf310b7425ffbf0d2_1.jpeg" data-fancybox="gallery">
+                  <div class="main-grid-img-box">
+                    <img src="images/gallery/thumb/79f80045ecbc87baf310b7425ffbf0d2_1.jpeg" alt="VSSUT Celebrates 17th University Foundation Day with Academic Seminar and Van Mahotsav">
+                  </div>
+                </a>
+                          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+
+<div class="yellow-border">
+
+  <div class="blue-background">
+    <img src="assets/icons/traingle.png" alt="" class="trngle">
+    <div class="container">
+      <div class="weather">
+        <p>Campus Weather : </p>
+        <img id="weather-icon" src="" alt="Weather Icon">
+        <p class="temp" id="temp"></p>
+        <p class="description" id="description"></p>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="container">
+    <div class="contacts-ft">
+      <a href=""><i class="fa-solid fa-phone-volume"></i> +91 (0663) 2430211 / +91 (0663) 2430204 </a>
+      <a href=""><i class="fa-solid fa-envelope"></i> registrar@vssut.ac.in</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="f-back">
+
+
+
+
+  <div class="container">
+    <div class="row d-flex justify-content-between p-4">
+      <div class="col-md-4 mx-auto ">
+        <div class="content">
+
+
+          <div class="f-left">
+            <img src="assets/icons/Logo_vssut.svg.png" alt="logo">
+            <h1 class="odia">ବୀର ସୁରେନ୍ଦ୍ର ସାଏ ବୈଷୟିକ ବିଶ୍ୱବିଦ୍ୟାଳୟ</h1>
+            <h1 class="hindi">वीर सुरेंद्र साई प्रौद्योगिकी विश्वविद्यालय</h1>
+            <h1 class="english">Veer Surendra Sai University of Technology</h1>
+            <p>Burla, Sambalpur-768018</p>
+          </div>
+
+          <div class="footer-icons">
+            <a href="https://www.facebook.com/VSSUTofficial/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://x.com/VSSUT_official/" title="twitter" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+            <a href="https://www.instagram.com/vssut_official/" title="instagram" target="_blank" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href=" https://www.linkedin.com/company/vssut-official/" title="linkedin" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5 mx-auto ">
+        <div class="content">
+          <h1 class="headings">Quick Links </h1>
+
+          <div class="link">
+            <ul class="footer-links">
+              <li><a href="ipr-cell.php">IPR CELL</a></li>
+              <li><a href="rti.php">RTI</a></li>
+              <li><a href="disclaimer.php">Disclaimer</a></li>
+              <li><a href="teqip-iii.php">TEQIP - III</a></li>
+              <li><a href="http://www.ugc.ac.in/" target="_blank">UGC</a></li>
+              <li><a href="http://www.aicte-india.org/" target="_blank">AICTE</a></li>
+              <li><a href="https://vssut.samarth.ac.in/index.php/site/login" target="_blank">Samarth-ERP Login</a></li>
+              <li><a href="https://www.aicte.gov.in/schemes/students-development-schemes" target="_blank">AICTE Scholarship</a></li>
+
+            </ul>
+            <ul class="footer-links">
+              <li><a href="bis-activities.php">BIS</a></li>
+              <li><a href="http://www.odisha.gov.in/portal/default.asp" target="_blank">Govt. Of Odisha</a></li>
+              <li><a href="downloads.php">Downloads</a></li>
+              <li><a href="faculty-activities.php">Faculty Activities</a></li>
+              <li><a href="annual-report.php">Annual Report</a></li>
+              <li><a href="cdce.php">CDCE</a></li>
+              <li><a href="https://vssut.ac.in/faculty-profile/">Faculty Login</a></li>
+              <li><a href="recruitment-at-vssut.php">Recruitment @ VSSUT</a></li>
+
+
+          </div>
+
+
+
+        </div>
+      </div>
+      <div class="col-md-3 mx-auto ">
+        <div class="content">
+          <h1 class="headings">Location </h1>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2624.9880852873944!2d83.90458072786595!3d21.496210992454685!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a213da4ec28af2d%3A0xb33a5cc9af8c33c7!2sVeer%20Surendra%20Sai%20University%20of%20Technology!5e0!3m2!1sen!2sin!4v1614233758759!5m2!1sen!2sin"
+            width="100%" height="200px" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+
+
+        </div>
+      </div>
+
+      <div class="col-md-12 mx-auto ">
+        <div class="real-footer">
+          <p>© 2026 Veer Surendra Sai University of Technology, All Rights Reserved.</p>
+          <p>You are Visitor Number : 15942532</p>
+          <p>Developed and Maintained by <a href="https://lumenatechnologies.com/" target="_blank">Lumena Technologies</a></p>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+  </div>
+
+
+</div>
+
+
+</footer>  <style>
+  :root{
+    --zoho-red:   #E8442E;
+    --zoho-amber: #F9B21D;
+    --zoho-green: #089949;
+    --zoho-blue:  #226DB4;
+    --ink:        #0F1B2D;
+    --muted:      #5B6B82;
+  }
+
+  .zoho-float-link{
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 9999;
+    isolation: isolate;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: min(400px, calc(100vw - 28px));
+
+    padding: 12px 18px 12px 12px;
+    border-radius: 18px;
+    background: #fff;            
+    color: var(--ink);
+    text-decoration: none;
+    overflow: hidden;
+
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 15.5px;
+    font-weight: 600;
+    line-height: 1.3;
+
+    box-shadow:
+      0 18px 42px -14px rgba(15, 27, 45, .38),
+      0 4px 12px -4px rgba(15, 27, 45, .12);
+
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+
+  .zoho-float-link::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 2px;                       /* border thickness */
+    border-radius: inherit;
+    background: linear-gradient(120deg,
+      var(--zoho-red), var(--zoho-amber), var(--zoho-green), var(--zoho-blue), var(--zoho-red));
+    background-size: 300% 300%;
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    animation: zoho-gradient 4s linear infinite;
+    pointer-events: none;
+  }
+
+  .zoho-float-link:hover{
+    transform: translateY(-3px);
+    box-shadow:
+      0 24px 52px -16px rgba(15, 27, 45, .45),
+      0 6px 16px -6px rgba(15, 27, 45, .16);
+  }
+
+  .zoho-float-link:focus-visible{
+    outline: 3px solid rgba(34, 109, 180, .55);
+    outline-offset: 4px;
+  }
+
+  /* ---- Logo image (properly sized) ---- */
+  .zoho-logo{
+    flex: 0 0 auto;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    background: #fff;
+  }
+
+  .zoho-logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;                
+    display: block;
+  }
+
+  .zoho-text{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .zoho-word{ font-weight: 800; }
+  .zoho-word span:nth-child(1){ color: var(--zoho-red); }
+  .zoho-word span:nth-child(2){ color: var(--zoho-amber); }
+  .zoho-word span:nth-child(3){ color: var(--zoho-green); }
+  .zoho-word span:nth-child(4){ color: var(--zoho-blue); }
+
+  @keyframes zoho-gradient{
+    0%   { background-position:   0% 50%; }
+    100% { background-position: 300% 50%; }
+  }
+
+  @media (max-width: 480px){
+    .zoho-float-link{
+      right: 14px;
+      bottom: 14px;
+      padding: 10px 14px 10px 10px;
+      gap: 10px;
+      font-size: 13.5px;
+      border-radius: 15px;
+    }
+    .zoho-logo{ width: 36px; height: 36px; border-radius: 8px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .zoho-float-link::before{ animation: none !important; }
+    .zoho-float-link{ transition: none; }
+  }
+</style>
+
+<a
+  class="zoho-float-link"
+  href="https://www.vssut.ac.in/images/documents/doc_1794029507.pdf"
+  aria-label="Get Industry Ready with Zoho"
+>
+  <span class="zoho-logo" aria-hidden="true">
+    <img src="https://www.vssut.ac.in/images/ZOHO.webp" alt="" />
+  </span>
+
+  <span class="zoho-text">
+    <span>Get Industry Ready with <b class="zoho-word"><span>Z</span><span>o</span><span>h</span><span>o</span></b></span>
+  </span>
+</a></body>
+<script src="./assets/js/jquery-3.7.1.js"></script>
+<script src="./assets/js/bootstrap.min.js"></script>
+<script src="./assets/js/fancybox.umd.js"></script>
+<script src="./assets/js/splide.min.js"></script>
+<script src="./assets/js/auto-scroll.min.js"></script>
+<script src="./assets/js/vssut.js"></script>
+<script>
+  const apiKey = '77c967783ac68de6cc13f0854316ed9d';
+  const lat = '21.4974';
+  const lon = '83.9040';
+  async function fetchWeatherData() {
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`);
+    const data = await response.json();
+    document.getElementById('temp').textContent = ` ${data.main.temp}°C`;
+    // document.getElementById('feels-like').textContent = `Feels like: ${data.main.feels_like}°C`;
+    // document.getElementById('humidity').textContent = `Humidity: ${data.main.humidity}%`;
+    document.getElementById('description').textContent = data.weather[0].description;
+    document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+    // const windSpeedKmh = (data.wind.speed * 3.6).toFixed(2);
+    // document.getElementById('wind').textContent = `Wind: ${windSpeedKmh} km/h, ${data.wind.deg}°`;
+  }
+  fetchWeatherData();
+</script>
+
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en,hi,or', // Languages in website
+      includedLanguages: 'en,hi,or', // Languages you want to support
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+</script>
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script>
+  function changeFontSize(action) {
+    let elements = document.querySelectorAll('body, body *'); // Select all elements
+
+    elements.forEach(element => {
+      let currentSize = parseFloat(window.getComputedStyle(element).fontSize);
+
+      if (action === '+') {
+        element.style.fontSize = (currentSize + 1) + 'px'; // Increase by 1px
+      } else if (action === '-') {
+        element.style.fontSize = (currentSize - 1) + 'px'; // Decrease by 1px
+      } else if (action === 'reset') {
+        element.style.fontSize = ''; // Reset to default
+      }
+    });
+  }
+</script>
+<script>
+  console.log(
+    "%cWARNING: Unauthorized manipulation or use of console scripts on this website is strictly prohibited under the Information Technology Act, 2000 of India. Such actions, including unauthorized access or tampering with our website’s code, may result in legal action, fines, and imprisonment.",
+    "color: red; font-size: 20px; font-weight: bold;"
+  );
+</script>
+
+</html>

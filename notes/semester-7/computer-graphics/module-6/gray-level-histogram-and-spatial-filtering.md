@@ -1,213 +1,323 @@
-# Gray Level Histograms & Spatial Filtering
+# Gray-Level Histogram, Histogram Equalization & Spatial Filtering
 
 ## 1. Explanation
-In digital image processing, image enhancement techniques operate directly on pixel intensities to improve visual contrast or extract features. These operations are partitioned into **point operations** (e.g. histogram processing) and **spatial neighborhood operations** (e.g. spatial convolution and correlation).
+
+In digital image processing, spatial domain techniques operate directly on image pixels:
+$$g(x, y) = T[f(x, y)]$$
+where $f(x, y)$ is the input image, $g(x, y)$ is the processed output image, and $T$ is an operator defined over a spatial neighborhood surrounding $(x, y)$.
+
+When the neighborhood is a single pixel ($1 \times 1$), the transformation depends strictly on pixel intensity, giving rise to **point operations** and **histogram processing**. When the neighborhood encompasses surrounding pixels ($3 \times 3$, $5 \times 5$), the transformation represents **spatial filtering** (convolution).
 
 ---
 
-### Gray Level Histograms
-The gray-level histogram of a digital image with intensity levels in the range $[0, L-1]$ is a discrete mathematical function:
+### The Image Histogram: Formal Definition & Interpretation
+
+The **histogram** of a digital image with gray levels in the range $[0, L-1]$ is a discrete frequency function:
 $$h(r_k) = n_k$$
 where:
-- $r_k$: The $k^{\text{th}}$ intensity level ($k = 0, 1, \dots, L-1$). For an 8-bit image, $L = 256$ and $r_k \in [0, 255]$.
-- $n_k$: The total number of pixels in the image with intensity level $r_k$.
+- $r_k$ is the $k$-th gray level ($k \in \{0, 1, \dots, L-1\}$).
+- $n_k$ is the total number of pixels in the image possessing gray level $r_k$.
 
-#### Normalized Histogram (Probability Distribution Function - PDF)
-Dividing by the total number of pixels $MN$ in the image yields the normalized histogram $p(r_k)$:
-$$p(r_k) = \frac{n_k}{MN}, \quad \text{where } \sum_{k=0}^{L-1} p(r_k) = 1$$
-$p(r_k)$ represents the empirical probability of occurrence of intensity level $r_k$.
+#### Normalized Histogram (Probability Mass Function)
+Dividing each frequency $n_k$ by the total number of pixels in the image ($M \times N$) yields the **normalized histogram**:
+$$p(r_k) = \frac{n_k}{M \cdot N}, \quad k = 0, 1, \dots, L-1$$
+- $p(r_k)$ represents the empirical probability of occurrence of gray level $r_k$.
+- $\sum_{k=0}^{L-1} p(r_k) = 1$, and $p(r_k) \ge 0$ for all $k$.
+
+```
+    Dark Image                   Bright Image                 Low-Contrast Image           High-Contrast Image
+       p(rk)                        p(rk)                        p(rk)                        p(rk)
+     ▲                            ▲                            ▲                            ▲
+     │ █                          │         █                  │       ███                  │ █  █   █  █  █
+     │ ██                         │        ██                  │      █████                 │ █████ ███████
+     │ ███                        │       ███                  │       ███                  │ █████████████
+     └─────┴───────► r            └───────┴───► r              └───────┴───► r              └──────────────► r
+     0           L-1              0         L-1                0         L-1                0            L-1
+```
+
+- **Dark Image**: Histogram components are concentrated toward the lower (dark) end near $0$.
+- **Bright Image**: Histogram components are clustered toward the higher (bright) end near $L-1$.
+- **Low-Contrast Image**: Histogram is compressed into a narrow band in the middle of the scale.
+- **High-Contrast Image**: Histogram spans broadly and uniformly across the entire dynamic range from $0$ to $L-1$.
 
 ---
 
-### Histogram Equalization (Contrast Enhancement)
-Histogram equalization is an automated method that transforms an image's intensity levels so that the output image has an approximately **uniform (flat)** probability distribution across the entire range $[0, L-1]$. This stretches contrast in crowded intensity bands, revealing hidden details in underexposed or overexposed images.
+### Histogram Equalization (HE)
 
-#### Continuous Derivation:
-Let continuous variable $r \in [0, L-1]$ represent input image intensity, and $s \in [0, L-1]$ represent output intensity under a transformation function:
-$$s = T(r)$$
+**Histogram Equalization** is an automated, non-linear transformation that flattens and stretches an image's dynamic range so that the resulting histogram approximates a **uniform probability distribution**, maximizing global image contrast.
 
-Requirements on transformation $T(r)$:
-1. $T(r)$ must be strictly monotonically increasing on $[0, L-1]$ ($T(r_1) < T(r_2)$ for $r_1 < r_2$) to preserve the relative brightness order of pixels.
-2. $0 \le T(r) \le L-1$ for $0 \le r \le L-1$.
+#### 1. Continuous Mathematical Derivation
+Let continuous variable $r$ represent input gray levels, normalized such that $0 \le r \le 1$.
+We seek a monotonic transformation $s = T(r)$ mapping $r \in [0, 1]$ to output $s \in [0, 1]$ such that:
+1. $T(r)$ is strictly monotonically increasing ($dT/dr > 0$) to preserve relative brightness ordering.
+2. $0 \le T(r) \le 1$ for $0 \le r \le 1$.
 
-From probability theory, the probability density function (PDF) of $s$ is:
-$$p_s(s) = p_r(r) \left| \frac{dr}{ds} \right|$$
-To achieve a uniform output distribution, we demand:
-$$p_s(s) = \frac{1}{L-1}$$
-Equating and integrating:
-$$\frac{ds}{dr} = (L-1) p_r(r) \implies s = T(r) = (L-1) \int_0^r p_r(w) dw$$
-This is the **Cumulative Distribution Function (CDF)** of the input image scaled by $(L-1)$!
+From elementary probability theory, the probability density function (PDF) of the transformed variable $s$ is related to $p_r(r)$ by:
+$$p_s(s) = p_r(r) \left| \frac{dr}{ds} \right| = \frac{p_r(r)}{\frac{ds}{dr}}$$
 
-#### Discrete Formulation:
-In a digital image with discrete levels, the transformation is expressed as:
-$$\mathbf{s_k = T(r_k) = \text{round}\left( (L - 1) \sum_{j=0}^k p_r(r_j) \right) = \text{round}\left( \frac{L - 1}{MN} \sum_{j=0}^k n_j \right)}$$
+We choose the **Cumulative Distribution Function (CDF)** of $r$ as the transformation function $T(r)$:
+$$s = T(r) = \int_0^r p_r(w) \, dw$$
+Differentiating $s$ with respect to $r$ using the Fundamental Theorem of Calculus:
+$$\frac{ds}{dr} = \frac{d}{dr} \left[ \int_0^r p_r(w) \, dw \right] = p_r(r)$$
+
+Substituting this derivative into the PDF formula:
+$$p_s(s) = \frac{p_r(r)}{p_r(r)} = 1, \quad 0 \le s \le 1$$
+**Conclusion**: The output PDF $p_s(s)$ is a constant ($1.0$), proving that transforming continuous gray levels by their cumulative distribution function produces a **perfectly uniform distribution**.
+
+---
+
+#### 2. Discrete Histogram Equalization Formula
+In discrete digital images, integrals are replaced by summations:
+$$s_k = T(r_k) = \text{round}\left( (L - 1) \sum_{j=0}^k p_r(r_j) \right) = \text{round}\left( \frac{L - 1}{M \cdot N} \sum_{j=0}^k n_j \right)$$
+where:
+- $\sum_{j=0}^k n_j$ is the cumulative pixel count up to gray level $r_k$.
+- $(L - 1)$ scales the normalized cumulative sum into the dynamic integer range $[0, L-1]$.
+- $\text{round}(\cdot)$ quantizes the continuous value to the nearest integer.
 
 ---
 
 ### Spatial Filtering: Convolution vs. Correlation
-Spatial filtering enhances or blurs images by moving a small matrix mask (kernel / filter) of size $m \times n$ (typically $3 \times 3$ or $5 \times 5$, with odd dimensions $m = 2a+1, n = 2b+1$) across every pixel in the image.
+
+A spatial filter consists of a neighborhood (typically a small $3 \times 3$ or $5 \times 5$ matrix of coefficients called a **filter mask**, **kernel**, or **window**) and an operation executed over that neighborhood.
+
+```
+       Image Neighborhood f(x, y)                      Filter Kernel w(s, t)
+    ┌──────────┬──────────┬──────────┐              ┌──────────┬──────────┬──────────┐
+    │ f(x-1,y-1│ f(x-1, y)│ f(x-1,y+1│              │ w(-1,-1) │ w(-1, 0) │ w(-1, 1) │
+    ├──────────┼──────────┼──────────┤              ├──────────┼──────────┼──────────┤
+    │ f(x, y-1)│ f(x, y)  │ f(x, y+1)│       *      │ w(0, -1) │ w(0, 0)  │ w(0, 1)  │
+    ├──────────┼──────────┼──────────┤              ├──────────┼──────────┼──────────┤
+    │ f(x+1,y-1│ f(x+1, y)│ f(x+1,y+1│              │ w(1, -1) │ w(1, 0)  │ w(1, 1)  │
+    └──────────┴──────────┴──────────┘              └──────────┴──────────┴──────────┘
+```
 
 #### 1. Spatial Correlation
-Correlation computes the inner product between the kernel and the image neighborhood:
-$$g(x, y) = w(x, y) \star f(x, y) = \sum_{s=-a}^a \sum_{t=-b}^b w(s, t) f(x + s, \ y + t)$$
+Correlation slides the kernel across the image and computes the sum of products directly:
+$$g(x, y) = w(x, y) \circ f(x, y) = \sum_{s=-a}^a \sum_{t=-b}^b w(s, t) \cdot f(x+s, y+t)$$
 
 #### 2. Spatial Convolution
-Convolution is mathematically identical to correlation **except that the filter mask is rotated by $180^\circ$** before sliding over the image:
-$$g(x, y) = w(x, y) * f(x, y) = \sum_{s=-a}^a \sum_{t=-b}^b w(s, t) f(x - s, \ y - t)$$
-
-> **Academic Insight**:
-> If a spatial filter kernel is **symmetric** ($w(-s, -t) = w(s, t)$, such as Gaussian blur, box blur, or Laplacian masks), rotating by $180^\circ$ leaves the mask unchanged. For symmetric kernels:
-> $$\text{Convolution} \equiv \text{Correlation}$$
+Convolution is identical to correlation, except the filter mask is **rotated by $180^\circ$** before sliding:
+$$g(x, y) = w(x, y) \ast f(x, y) = \sum_{s=-a}^a \sum_{t=-b}^b w(s, t) \cdot f(x-s, y-t)$$
+*Note*: If the filter mask is spatially symmetric (such as Gaussian or box filters where $w(s, t) = w(-s, -t)$), correlation and convolution produce mathematically identical results.
 
 ---
 
-## 2. Example: Histogram Equalization Transformation Function
-```
-Input Histogram p_r(r_k)                  Transformation Function s = T(r)             Output Histogram p_s(s_k)
-       ▲                                         ▲                                            ▲
-       │       * * *                             │                  * *                       │   * * * * * * *
-       │     *       *                           │              * *                           │   * * * * * * *
-       │   *           *                         │          * *                               │   * * * * * * *
-       └───────────────────► r                   └─────────────────────► r                    └───────────────────► s
-       Narrow, low-contrast                      Scaled Cumulative CDF                        Uniform, high-contrast
-```
+### Classification of Spatial Filters
+
+#### 1. Smoothing (Low-Pass) Linear Spatial Filters
+Used for noise reduction, artifact suppression, and blurring of fine details prior to object extraction:
+- **Standard Box / Mean Filter ($3 \times 3$)**:
+  $$w_{\text{box}} = \frac{1}{9} \begin{bmatrix} 1 & 1 & 1 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{bmatrix}$$
+  Replaces each pixel with the arithmetic mean of its neighborhood.
+- **Weighted Gaussian Smoothing Filter ($3 \times 3$)**:
+  $$w_{\text{gauss}} = \frac{1}{16} \begin{bmatrix} 1 & 2 & 1 \\ 2 & 4 & 2 \\ 1 & 2 & 1 \end{bmatrix}$$
+  Weights pixels inversely proportional to distance from the center, preserving edge sharpness better than a uniform box filter.
+
+#### 2. Order-Statistic (Non-Linear) Spatial Filters
+Order-statistic filters sort the pixels contained within the filter sub-window and replace the center pixel with a rank-ordered value:
+- **Median Filter**:
+  $$R = \text{median}\{f(x+s, y+t)\}$$
+  - **Superlative Noise Immunity**: Highly effective at eliminating **salt-and-pepper (impulse) noise** while causing **drastically less blurring of sharp edges** than linear low-pass averaging filters.
+- **Max Filter**: Replaces center with the maximum value (erodes dark spots, expands bright regions).
+- **Min Filter**: Replaces center with the minimum value (erodes bright spots, expands dark regions).
+
+#### 3. Sharpening (High-Pass) Spatial Filters
+Highlight fine transitions and edge details by calculating spatial second derivatives:
+- **The Laplacian Filter ($3 \times 3$)**:
+  $$\nabla^2 f = \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} \approx [f(x+1, y) + f(x-1, y) + f(x, y+1) + f(x, y-1)] - 4f(x, y)$$
+  $$w_{\text{lap4}} = \begin{bmatrix} 0 & 1 & 0 \\ 1 & -4 & 1 \\ 0 & 1 & 0 \end{bmatrix}, \quad w_{\text{lap8}} = \begin{bmatrix} 1 & 1 & 1 \\ 1 & -8 & 1 \\ 1 & 1 & 1 \end{bmatrix}$$
+- **Laplacian Image Enhancement**:
+  $$g(x, y) = f(x, y) - \nabla^2 f(x, y) \implies w_{\text{sharp}} = \begin{bmatrix} 0 & -1 & 0 \\ -1 & 5 & -1 \\ 0 & -1 & 0 \end{bmatrix}$$
+
+---
+
+## 2. Example: Complete Histogram Equalization Walkthrough
+
+**Problem**:
+A $4 \times 4$ image ($M \times N = 16$ pixels) with $L = 8$ gray levels (range $[0, 7]$) has the following pixel distribution:
+$$f = \begin{bmatrix} 1 & 1 & 2 & 3 \\ 1 & 2 & 3 & 4 \\ 2 & 3 & 4 & 5 \\ 3 & 4 & 5 & 6 \end{bmatrix}$$
+Perform histogram equalization. Compute the transformation table, equalized gray levels, and compare initial vs. final histograms.
+
+---
+
+### Step 1: Compute Frequency Table and Normalized Probabilities
+Count occurrences of each gray level $r_k \in [0, 7]$:
+- $r_0 = 0$: $n_0 = 0$
+- $r_1 = 1$: $n_1 = 3$
+- $r_2 = 2$: $n_2 = 3$
+- $r_3 = 3$: $n_3 = 4$
+- $r_4 = 4$: $n_4 = 3$
+- $r_5 = 5$: $n_5 = 2$
+- $r_6 = 6$: $n_6 = 1$
+- $r_7 = 7$: $n_7 = 0$
+Total pixels $M \cdot N = 16$.
+
+### Step 2: Evaluate Discrete Histogram Equalization Formula
+$$s_k = \text{round}\left( \frac{L - 1}{M \cdot N} \sum_{j=0}^k n_j \right) = \text{round}\left( \frac{7}{16} \sum_{j=0}^k n_j \right) = \text{round}\left( 0.4375 \sum_{j=0}^k n_j \right)$$
+
+| $k$ | $r_k$ | $n_k$ | $p(r_k) = n_k/16$ | Cumulative Sum $\sum n_j$ | $s_k = 0.4375 \times \sum n_j$ | Output Gray Level $s_k$ |
+|---|---|---|---|---|---|---|
+| 0 | 0 | 0 | 0.0000 | 0 | $0.000$ | **0** |
+| 1 | 1 | 3 | 0.1875 | 3 | $1.3125$ | **1** |
+| 2 | 2 | 3 | 0.1875 | 6 | $2.6250$ | **3** |
+| 3 | 3 | 4 | 0.2500 | 10 | $4.3750$ | **4** |
+| 4 | 4 | 3 | 0.1875 | 13 | $5.6875$ | **6** |
+| 5 | 5 | 2 | 0.1250 | 15 | $6.5625$ | **7** |
+| 6 | 6 | 1 | 0.0625 | 16 | $7.0000$ | **7** |
+| 7 | 7 | 0 | 0.0000 | 16 | $7.0000$ | **7** |
+
+### Step 3: Mapping Mapping Function
+- Gray level $1 \to 1$
+- Gray level $2 \to 3$
+- Gray level $3 \to 4$
+- Gray level $4 \to 6$
+- Gray levels $5, 6 \to 7$
+
+### Step 4: Transformed Equalized Image Matrix
+$$g = \begin{bmatrix} 1 & 1 & 3 & 4 \\ 1 & 3 & 4 & 6 \\ 3 & 4 & 6 & 7 \\ 4 & 6 & 7 & 7 \end{bmatrix}$$
+
+Notice that original gray levels $1\text{–}6$ (compressed in middle range) are now broadly stretched across the full gamut $[1, 7]$.
 
 ---
 
 ## 3. Applications & Use Cases
-1. **Medical Diagnostic Imaging (X-Ray, Mammography)**: Raw X-ray radiograph images often suffer from narrow dynamic range due to soft-tissue absorption. Applying histogram equalization stretches bone and tissue density into visible contrast bands.
-2. **Satellite Remote Sensing (Landsat, Sentinel)**: Optical multispectral sensors capture high-altitude imagery obscured by atmospheric haze. Spatial filtering (unsharp masking) and histogram equalization reveal fine ground features.
-3. **Convolutional Neural Networks (CNNs)**: Modern computer vision deep learning models perform billions of 2D spatial convolution operations per second across multi-channel feature maps to extract hierarchical visual primitives.
+
+1. **Medical Diagnostic Radiology (Chest X-Rays / Mammography)**:
+   Soft tissue structures in raw digital radiographs exhibit extremely narrow dynamic contrast (pale gray bands). Applying adaptive histogram equalization (CLAHE) dramatically enhances lung nodule visibility without blowing out rib bone contours.
+2. **Satellite & Remote Sensing Surface Analysis**:
+   Optical multispectral imagery captured under atmospheric haze exhibits compressed histograms. Histogram equalization stretches thermal and vegetation reflectance bands to differentiate crop health.
+3. **Low-Light Night Vision Image Enhancement**:
+   Surveillance cameras operating in near-dark conditions stretch photon-starved histograms to restore visibility for human security operators.
 
 ---
 
 ## 4. Solved Numerical / Analytical Examples
 
-### Example 1: Complete Discrete Histogram Equalization [KTU May 2019 / Jan 2023 - 9 Marks]
+### Example 1: Full Frequency Table and Histogram Generation [KTU Dec 2021 Q9]
 **Problem**:
-An image with $L = 8$ gray levels ($r_k \in [0, 7]$) has size $64 \times 64$ pixels ($MN = 4096$).
-The intensity distribution is given below:
+Given the simple $5 \times 5$ image:
+```
+2   1   2   3   2
+3   2   2   4   3
+1   3   5   4   3
+3   4   5   6   7
+2   2   6   7   5
+```
+Write its frequency table and draw its histogram.
 
-| $r_k$ | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
-|---|---|---|---|---|---|---|---|---|
-| $n_k$ | 790 | 1023 | 850 | 656 | 329 | 245 | 122 | 81 |
+**Solution**:
+Total pixels: $M \times N = 5 \times 5 = 25$ pixels.
+Gray levels present range from $1$ to $7$.
 
-Perform discrete histogram equalization. Tabulate the probability distribution $p_r(r_k)$, cumulative distribution function, rounded transformation values $s_k$, and the resulting output histogram $n_{s_k}$.
+**Frequency Table**:
+| Gray Level ($r_k$) | Pixel Occurrences ($n_k$) | Normalized Probability $p(r_k) = n_k/25$ |
+|---|---|---|
+| **0** | 0 | $0.00$ |
+| **1** | 2 | $0.08$ |
+| **2** | 7 | $0.28$ |
+| **3** | 6 | $0.24$ |
+| **4** | 3 | $0.12$ |
+| **5** | 3 | $0.12$ |
+| **6** | 2 | $0.08$ |
+| **7** | 2 | $0.08$ |
+| **Total** | **25** | **1.00** |
 
-**Step-by-step Solution**:
-1. **Formula**:
-   $$s_k = \text{round}\left( 7 \times \sum_{j=0}^k \frac{n_j}{4096} \right)$$
-
-2. **Step-by-Step Tabulation**:
-
-| $k$ | $r_k$ | $n_k$ | $p_r(r_k) = \frac{n_k}{4096}$ | Cumulative $\sum p_r$ | $(L-1) \times \text{CDF}$ | $s_k = \text{round}(\dots)$ |
-|---|---|---|---|---|---|---|
-| 0 | 0 | 790 | $0.1929$ | $0.1929$ | $7 \times 0.1929 = 1.350$ | **1** |
-| 1 | 1 | 1023 | $0.2498$ | $0.4427$ | $7 \times 0.4427 = 3.099$ | **3** |
-| 2 | 2 | 850 | $0.2075$ | $0.6502$ | $7 \times 0.6502 = 4.551$ | **5** |
-| 3 | 3 | 656 | $0.1602$ | $0.8104$ | $7 \times 0.8104 = 5.673$ | **6** |
-| 4 | 4 | 329 | $0.0803$ | $0.8907$ | $7 \times 0.8907 = 6.235$ | **6** |
-| 5 | 5 | 245 | $0.0598$ | $0.9505$ | $7 \times 0.9505 = 6.654$ | **7** |
-| 6 | 6 | 122 | $0.0298$ | $0.9803$ | $7 \times 0.9803 = 6.862$ | **7** |
-| 7 | 7 | 81 | $0.0197$ | $1.0000$ | $7 \times 1.0000 = 7.000$ | **7** |
-
-3. **Output Gray Level Mapping**:
-   - $r_0 = 0 \to s_0 = \mathbf{1}$ ($n = 790$)
-   - $r_1 = 1 \to s_1 = \mathbf{3}$ ($n = 1023$)
-   - $r_2 = 2 \to s_2 = \mathbf{5}$ ($n = 850$)
-   - $r_3 = 3$ and $r_4 = 4$ both map to $s = \mathbf{6}$ ($n = 656 + 329 = 985$)
-   - $r_5 = 5, r_6 = 6, r_7 = 7$ all map to $s = \mathbf{7}$ ($n = 245 + 122 + 81 = 448$)
-
-4. **Resulting Equalized Histogram**:
-   - Gray level 0: 0 pixels
-   - Gray level 1: 790 pixels
-   - Gray level 2: 0 pixels
-   - Gray level 3: 1023 pixels
-   - Gray level 4: 0 pixels
-   - Gray level 5: 850 pixels
-   - Gray level 6: 985 pixels
-   - Gray level 7: 448 pixels
-   Notice how the histogram is spread across the entire dynamic range $[0, 7]$, significantly increasing contrast.
+**Textual Histogram Representation**:
+```
+  n_k
+   ▲
+ 7 │        █
+ 6 │        █    █
+ 5 │        █    █
+ 4 │        █    █
+ 3 │        █    █    █    █
+ 2 │   █    █    █    █    █    █    █
+ 1 │   █    █    █    █    █    █    █
+ 0 └───┴────┴────┴────┴────┴────┴────┴────► r_k
+       1    2    3    4    5    6    7
+```
+The histogram exhibits a unimodal distribution with a prominent peak at gray level $2$, characteristic of a slightly dark, low-contrast image.
 
 ---
 
-### Example 2: Discrete 2D Spatial Convolution Trace [KTU Dec 2021 Pattern]
+### Example 2: Median vs. Mean Filtering on Impulse Noise [Analytical Problem]
 **Problem**:
-Perform discrete 2D spatial convolution of the $3 \times 3$ image patch $F$ with the $3 \times 3$ filter kernel $W$ at center pixel $(2, 2)$:
-$$F = \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{bmatrix}, \quad W = \begin{bmatrix} 1 & 0 & -1 \\ 2 & 0 & -2 \\ 1 & 0 & -1 \end{bmatrix}$$
+A $3 \times 3$ image neighborhood contains a single salt-and-pepper noise spike of intensity $255$ surrounded by dark background pixels:
+$$f = \begin{bmatrix} 12 & 14 & 13 \\ 11 & 255 & 15 \\ 14 & 13 & 12 \end{bmatrix}$$
+Evaluate the response of:
+(a) A $3 \times 3$ arithmetic mean filter.
+(b) A $3 \times 3$ median filter.
 
-**Step-by-step Solution**:
-1. **Rotate Kernel $W$ by $180^\circ$ for Convolution**:
-   Rotating $W$ by $180^\circ$ gives $W_{\text{rot}}$:
-   $$W_{\text{rot}} = \begin{bmatrix} -1 & 0 & 1 \\ -2 & 0 & 2 \\ -1 & 0 & 1 \end{bmatrix}$$
-2. **Element-wise Multiplication and Summation**:
-   $$G(2, 2) = \sum_{s=-1}^1 \sum_{t=-1}^1 W_{\text{rot}}(s, t) F(2+s, 2+t)$$
-   $$\begin{aligned}
-   G(2, 2) &= (-1 \times 1) + (0 \times 2) + (1 \times 3) \\
-           &+ (-2 \times 4) + (0 \times 5) + (2 \times 6) \\
-           &+ (-1 \times 7) + (0 \times 8) + (1 \times 9)
-   \end{aligned}$$
-   $$G(2, 2) = (-1 + 0 + 3) + (-8 + 0 + 12) + (-7 + 0 + 9)$$
-   $$G(2, 2) = 2 + 4 + 2 = \mathbf{8}$$
-3. Convolved output response at center pixel $= \mathbf{8}$.
+**Solution**:
+1. **Arithmetic Mean Filter**:
+   $$\text{Sum} = 12 + 14 + 13 + 11 + 255 + 15 + 14 + 13 + 12 = 359$$
+   $$\text{Output} = \text{round}\left(\frac{359}{9}\right) = 40$$
+   *Analysis*: The noise spike $255$ corrupts the entire neighborhood, pulling the dark pixel from $\approx 13$ up to $40$, creating a visible blurred halo.
 
----
-
-### Example 3: Spatial Averaging and Noise Reduction [KTU Analytical Pattern]
-**Problem**:
-Explain how a $3 \times 3$ box filter (moving average filter) attenuates additive Gaussian zero-mean noise with variance $\sigma^2$. What is the noise variance in the filtered image?
-
-**Step-by-step Solution**:
-1. A $3 \times 3$ box filter mask is:
-   $$W = \frac{1}{9} \begin{bmatrix} 1 & 1 & 1 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{bmatrix}$$
-2. The filtered pixel $g(x, y)$ is the average of 9 independent random variables:
-   $$g(x, y) = \frac{1}{9} \sum_{i=1}^9 f_i$$
-3. By probability theory, for independent identically distributed (i.i.d.) random variables, the variance of the average of $N$ variables is:
-   $$\sigma_g^2 = \text{Var}\left(\frac{1}{N} \sum_{i=1}^N f_i\right) = \frac{1}{N^2} \sum_{i=1}^N \text{Var}(f_i) = \frac{N \sigma^2}{N^2} = \frac{\sigma^2}{N}$$
-4. For $N = 9$:
-   $$\sigma_g^2 = \frac{\sigma^2}{9}$$
-   The filter reduces the noise variance by a factor of **9** (standard deviation is reduced by a factor of 3), effectively smoothing out random grain noise at the cost of blurring sharp edges.
+2. **Median Filter**:
+   Sort the $9$ pixel values in ascending order:
+   $$\text{Sorted} = [11, \ 12, \ 12, \ 13, \ \mathbf{13}, \ 14, \ 14, \ 15, \ 255]$$
+   The median (5th element) is $\mathbf{13}$.
+   $$\text{Output} = 13$$
+   *Analysis*: The impulse noise spike $255$ is **completely eradicated**, restoring the true background intensity of $13$ perfectly without any blurring!
 
 ---
 
 ## 5. Previous Year Questions & Solutions
 
-### Question 1 [KTU May 2019 / January 2023 - 6 Marks]
+---
+
+### Question 1 [Dec 2023 Q19b / Jan 2023 Q94b / June 2022 Q19b / Dec 2020 Q18a / May 2019 Q19b / Dec 2018 Q18b — 6–8 Marks]
 **Question**:
-What is a gray level histogram? Explain the theoretical basis of histogram equalization.
+What do you understand by histogram equalization of an image? Illustrate with a suitable example.
 
 **Solution**:
-1. **Definition of Gray Level Histogram**:
-   The gray-level histogram of an image with intensity levels in the range $[0, L-1]$ is a discrete function $h(r_k) = n_k$, where $r_k$ is the $k^{\text{th}}$ gray level and $n_k$ is the total count of pixels in the image with intensity $r_k$.
-   The normalized histogram gives the probability density of intensities:
-   $$p_r(r_k) = \frac{n_k}{MN}$$
-2. **Theoretical Basis of Histogram Equalization**:
-   - The goal is to construct an intensity transformation $s = T(r)$ such that the output probability distribution $p_s(s)$ is uniformly distributed across the full dynamic range $[0, L-1]$:
-     $$p_s(s) = \frac{1}{L - 1} \quad \text{for } 0 \le s \le L-1$$
-   - From probability transformation theory for continuous random variables:
-     $$p_s(s) = p_r(r) \left| \frac{dr}{ds} \right|$$
-   - Equating $p_s(s) = \frac{1}{L - 1}$:
-     $$\frac{ds}{dr} = (L - 1) p_r(r)$$
-   - Integrating both sides from 0 to $r$:
-     $$s = T(r) = (L - 1) \int_0^r p_r(w) dw$$
-   - This proves that **the ideal transformation function is directly proportional to the Cumulative Distribution Function (CDF)** of the input image. In discrete images, this is implemented as:
-     $$s_k = \text{round}\left( (L - 1) \sum_{j=0}^k \frac{n_j}{MN} \right)$$
+
+**Definition**:
+**Histogram Equalization** is a spatial-domain point transformation method that dynamically remaps the gray levels of an image such that the resulting output image exhibits a nearly **uniform probability distribution** across its full dynamic range. It automatically enhances contrast in images with clustered or narrow histograms.
+
+**Mathematical Formulation**:
+For a digital image of size $M \times N$ with $L$ gray levels, the equalized gray level $s_k$ corresponding to input level $r_k$ is computed using the discrete Cumulative Distribution Function (CDF):
+$$s_k = \text{round}\left( \frac{L - 1}{M \cdot N} \sum_{j=0}^k n_j \right)$$
+where $n_j$ is the frequency of gray level $r_j$.
+
+**Worked Example**:
+Consider an $8 \times 8$ image ($M \cdot N = 64$ pixels) with $L = 8$ gray levels:
+
+| $k$ | Gray Level $r_k$ | Pixel Count $n_k$ | Cumulative $\sum n_j$ | $s_k = \text{round}\left(\frac{7}{64} \sum n_j\right)$ | Final Level $s_k$ |
+|---|---|---|---|---|---|
+| 0 | 0 | 8 | 8 | $\text{round}(0.875)$ | **1** |
+| 1 | 1 | 10 | 18 | $\text{round}(1.968)$ | **2** |
+| 2 | 2 | 16 | 34 | $\text{round}(3.718)$ | **4** |
+| 3 | 3 | 12 | 46 | $\text{round}(5.031)$ | **5** |
+| 4 | 4 | 8 | 54 | $\text{round}(5.906)$ | **6** |
+| 5 | 5 | 6 | 60 | $\text{round}(6.562)$ | **7** |
+| 6 | 6 | 4 | 64 | $\text{round}(7.000)$ | **7** |
+| 7 | 7 | 0 | 64 | $\text{round}(7.000)$ | **7** |
+
+**Conclusion**: The clustered gray levels $0\text{–}6$ are redistributed across levels $1\text{–}7$, dramatically increasing visual contrast.
 
 ---
 
-### Question 2 [KTU December 2020 / June 2024 - 4 Marks]
+### Question 2 [Dec 2023 Q9 / Dec 2018 Q8 — 4 Marks]
 **Question**:
-Distinguish between spatial convolution and spatial correlation in digital image processing.
+What do you understand by correlation and convolution operations in case of image processing?
 
 **Solution**:
-1. **Mathematical Distinction**:
-   - **Spatial Correlation**: Slides a filter mask $w(s, t)$ over image $f(x, y)$ computing element-wise products directly:
-     $$(w \star f)(x, y) = \sum_{s=-a}^a \sum_{t=-b}^b w(s, t) f(x + s, \ y + t)$$
-   - **Spatial Convolution**: First rotates the filter mask $w(s, t)$ by **$180^\circ$** before sliding over the image:
-     $$(w * f)(x, y) = \sum_{s=-a}^a \sum_{t=-b}^b w(s, t) f(x - s, \ y - t)$$
-2. **Symmetric Filters**:
-   If the kernel is symmetric across both axes ($w(-s, -t) = w(s, t)$, such as Gaussian or averaging filters), rotating by $180^\circ$ leaves the mask unchanged. In this case, convolution and correlation yield identical results.
-3. **Application Distinction**:
-   - Correlation is primarily used for **template matching** (finding where a target feature matches a subregion of an image).
-   - Convolution is the fundamental operation of **linear shift-invariant (LSI) systems** and spatial filtering (e.g. edge detection, Gaussian blurring).
 
+Both correlation and convolution are fundamental neighborhood spatial filtering operations that slide a filter mask (kernel) across an image to compute sum-of-product responses.
+
+1. **Spatial Correlation**:
+   The process of displacing a filter mask $w(s, t)$ of size $m \times n$ across an image $f(x, y)$ and computing the linear inner product at each coordinate:
+   $$g(x, y) = w(x, y) \circ f(x, y) = \sum_{s=-a}^a \sum_{t=-b}^b w(s, t) \cdot f(x+s, y+t)$$
+   - *Application*: **Template Matching** (measuring structural similarity between an image region and a reference template).
+
+2. **Spatial Convolution**:
+   Identical to correlation, except that the filter mask is **rotated by $180^\circ$** before performing multiplication and summation:
+   $$g(x, y) = w(x, y) \ast f(x, y) = \sum_{s=-a}^a \sum_{t=-b}^b w(s, t) \cdot f(x-s, y-t)$$
+   - *Application*: Linear Time-Invariant (LTI) system response, Gaussian blurring, edge differentiation.
+
+**Key Difference**:
+- Correlation does not rotate the kernel ($w(s, t)$ applied directly).
+- Convolution rotates the kernel by $180^\circ$ ($w(-s, -t)$ applied).
+- For spatially symmetric kernels (e.g., Gaussian, box filters, Laplacian), **correlation and convolution yield identical numerical results**.
